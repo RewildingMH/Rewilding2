@@ -3,12 +3,6 @@ const Header = (props) => {
     document.querySelector("#menu_hamburguesa").classList.toggle("active");
     document.querySelector("#mainListDiv").classList.toggle("show_list");
   };
-  // //Arreglar
-  //  window.onscroll = ()=> {
-  //      window.scrollY > 100?
-  //          document.querySelector('.nav').classList.add('affix'):
-  //          document.querySelector('.nav').classList.remove('affix')
-  //    };
   const [show, setShow] = useState(true);
   if (props.loggedUser === null) {
     var links = (
