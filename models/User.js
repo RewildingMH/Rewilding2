@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     lastName: String,
     country: String,
     profilePic: String,
-    rol: {type: String, default: "noAdmin"}
+    rol: {type: String, default: "noAdmin"},
+    googleId: String
 })
 
 
