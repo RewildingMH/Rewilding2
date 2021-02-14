@@ -11,7 +11,7 @@ const Petitions = (props) => {
   return (
     <>
       <div>
-        <h2>Petitions</h2>
+        <h1>Petitions</h1>
         {props.allPetitions.map((petition) => {
           return <PetitionCard key={petition._id} petition={petition} />;
         })}
