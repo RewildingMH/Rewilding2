@@ -2,9 +2,19 @@ const Petition = require('../models/Petition')
 
 const petitionController = {
   addPetition: (req, res) => {
-    const { title, author, destination, desc, visits, picture, signatures, date, limitDate, reasons } = req.body
+    const { title, destination, description, limitDate } = req.body.petition
+    const { name, profilePicture, _id } = req.user
     const petitionSave = new Petition({
-      title, author, destination, desc, visits, picture, signatures, date, limitDate, reasons
+      title,
+      author: {
+        name,
+        profilePicture,
+        idUser: _id
+      },
+      destination,
+      desc: description,
+      picture: profilePicture,
+      limitDate
     })
     petitionSave.save()
       .then(petitionSaved => {
@@ -15,17 +25,28 @@ const petitionController = {
       })
   },
 
-  getPetitions: (req, res) => {
-    const { title, author, destination, desc, visits, picture, signatures, date, limitDate, reasons } = req.body
+  getPetitions: async (req, res) => {
+    try {
+      const data = await Petition.find()
+      res.json({
+        success: true,
+        response: data
+      })
+    } catch (error) {
+      res.json({
+        success: false,
+        response: error
+      })
+    }
 
   },
 
   signPetition: async (req, res) => {
-    const { petId, name, profilePicture, reason } = req.body
-    console.log(req.body)
+    const { petId, reason } = req.body.userSign
+    const { name, profilePicture } = req.user
 
     try {
-      await Petition.findOneAndUpdate(
+      const response = await Petition.findOneAndUpdate(
         { _id: petId },
         {
           $push: {
@@ -40,12 +61,12 @@ const petitionController = {
       );
       res.json({
         success: true,
-        respuesta: 'Petition signed'
+        response
       })
     } catch (error) {
       res.json({
         success: false,
-        respuesta: error,
+        response: error,
       })
     }
   }

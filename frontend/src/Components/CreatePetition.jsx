@@ -6,19 +6,22 @@ const CreatePetition = (props) => {
   const [newPetition, setNewPetition] = useState({});
 
   const captureNewPetition = (e) => {
+    console.log(e.target.value, e.target.name);
     const field = e.target.name;
-    const value = e.targe.value;
+    const value = e.target.value;
     setNewPetition({
+      ...newPetition,
       [field]: value,
-      name: props.loggedUser.name,
-      profilePicture: props.loggedUser.profilePicture,
+      token: props.loggedUser.token,
     });
   };
 
   const sendPetition = (e) => {
-    e.preventDefatult();
-    props.CreatePetition(newPetition);
+    console.log(newPetition);
+    e.preventDefault();
+    props.addPetition(newPetition);
   };
+
   return (
     <div>
       <h2>Create petition</h2>
@@ -30,7 +33,6 @@ const CreatePetition = (props) => {
         placeholder="What are you looking to achieve?"
         onChange={captureNewPetition}
       />
-      <input />
 
       <label>Who is it for?</label>
       <p>Who can change this?</p>
@@ -40,16 +42,18 @@ const CreatePetition = (props) => {
         placeholder="Destination of your petition"
         onChange={captureNewPetition}
       />
-      <input />
 
       <label>Explain why you want to change it</label>
       <p>It should be something meaningful</p>
       <textarea name="description" onChange={captureNewPetition}></textarea>
 
+      <label>Choose a limit date for your petition</label>
+      <p>Final date</p>
+      <input name="limitDate" type="date" onChange={captureNewPetition} />
+
       <label>Upload a picture for your petition</label>
       <p>Make it a high res one</p>
       <input name="picture" type="text" onChange={captureNewPetition} />
-      <input />
 
       <button onClick={sendPetition}>Send Petition</button>
     </div>
