@@ -3,7 +3,7 @@ import {Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
 import authActions from "../redux/actions/authActions"
 import {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+
 
 const Login=(props)=>{
     useEffect(()=>{
@@ -28,7 +28,7 @@ const Login=(props)=>{
     const  sendUser= async e =>{
         e.preventDefault()       
         if (loginUser.username === '' || loginUser.password === '') {
-            alert('llenar campos')
+            alert('all fields are required!')
             return false
         }
         setErrores([])
