@@ -4,9 +4,11 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import { connect } from 'react-redux'
 import authActions from './redux/actions/authActions'
 import React, { useState } from 'react'
+import Petitions from './Pages/Petitions.jsx';
 
-function App(props) {
+const App = (props) => {
   const [reload, setReload] = useState(false)
+
   if (props.loggedUser) {
     var routes = <>
       <Route exact path="/" component={HomePage} />
@@ -18,20 +20,25 @@ function App(props) {
         if (respuesta === '/') setReload(!reload)
       })
   } else {
-    var routes = <>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/login" component={LoginPage} />
-      <Redirect to="/" />
-    </>
+    var routes = (
+      <>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/petitions" component={Petitions} />
+        <Redirect to="/" />
+      </>
+    );
   }
-  <>
-    <Router>
-      <Switch>
-        {routes}
-      </Switch>
-    </Router>
-  </>
+  return (
+    <>
+      <Router>
+        <Switch>
+          {routes}
+        </Switch>
+      </Router>
+    </>
   )
+
 }
 
 const mapStateToProps = state => {

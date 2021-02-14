@@ -1,52 +1,52 @@
-import {NavLink, Link} from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import React, { useState } from 'react'
 import authActions from '../redux/actions/authActions'
 
 
-const Header=(props)=>{
+const Header = (props) => {
     const [show, setShow] = useState(true);
-    if (props.loggedUser===null){
-        var links= <> 
-                    <NavLink to="/login" >
-                        <div>Login</div>
-                    </NavLink>
-                    </>
-    }else{
-    var links=    
-        <>
-            <Link>
-                <img src={props.loggedUser.profilePicture}/>
-                <div>
-                    <div onClick={()=>{setShow(!show);}}>
-                        {props.loggedUser.name}
+    if (props.loggedUser === null) {
+        var links = <>
+            <NavLink to="/login" >
+                <div>Login</div>
+            </NavLink>
+        </>
+    } else {
+        var links =
+            <>
+                <Link>
+                    <img src={props.loggedUser.profilePicture} />
+                    <div>
+                        <div onClick={() => { setShow(!show); }}>
+                            {props.loggedUser.name}
+                        </div>
                     </div>
-                </div>
-            </Link>
-            {!show&&
+                </Link>
+                {!show &&
                     <ul>
                         <li>Profile</li>
                         <li >Upgrades</li>
-                        <li onClick={()=>props.logoutUser()} >LogOut</li>
+                        <li onClick={() => props.logoutUser()} >LogOut</li>
                     </ul>}
-        </>
+            </>
     }
-    return(
+    return (
         <>
             <nav>
                 <div >
                     <div >
                         <NavLink to="/" >
-                            <img  alt="logo" src=""/>
+                            <img alt="logo" src="" />
                         </NavLink>
                     </div>
                     <div id="mainListDiv" >
                         <ul>
                             <li>
                                 <NavLink to="/">
-                                        <div>
-                                            <div>Home</div>
-                                        </div>
+                                    <div>
+                                        <div>Home</div>
+                                    </div>
                                 </NavLink>
                             </li>
                             <li>
