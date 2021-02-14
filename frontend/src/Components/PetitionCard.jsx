@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 
 export const PetitionCard = (props) => {
   return (
-    <Link to={`/petition/${_id}`} key={_id}>
+    <Link>
       <h2>Petition</h2>
       <h3>{props.title}</h3>
     </Link>
-  )
-}
+  );
+};
