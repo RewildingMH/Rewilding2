@@ -38,7 +38,6 @@ function App(props) {
     </>
   )
 
-
 }
 
 const mapStateToProps = state => {
