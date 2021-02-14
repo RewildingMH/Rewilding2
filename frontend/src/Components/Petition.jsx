@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 
 export const Petition = (props) => {
   const [comment, setComment] = useState({});
@@ -43,9 +44,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  signPetition: petitionsActions.signPetition,
-  commentPetition: petitionsActions.commentPetition,
-};
+// const mapDispatchToProps = {
+//   signPetition: petitionsActions.signPetition,
+//   commentPetition: petitionsActions.commentPetition,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Petition);
+export default connect(mapStateToProps)(Petition);

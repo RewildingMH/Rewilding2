@@ -10,5 +10,7 @@ export const petitionsReducer = (state = initialState, action) => {
         ...state,
         petitions: action.payload
       }
+    default:
+      return state
   }
 }
