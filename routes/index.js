@@ -26,6 +26,8 @@ router.route('/petitions')
   .post(petitionController.addPetition)
 
 router.route('/signPetition').post(petitionController.signPetition)
+//Blog
+
 
 module.exports = router
 
