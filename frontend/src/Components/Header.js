@@ -1,122 +1,76 @@
-const Header = (props) => {
-    const despliegue = () => {
-        document.querySelector("#menu_hamburguesa").classList.toggle("active");
-        document.querySelector("#mainListDiv").classList.toggle("show_list");
-    };
-    // //Arreglar
-    //  window.onscroll = ()=> {
-    //      window.scrollY > 100?
-    //          document.querySelector('.nav').classList.add('affix'):
-    //          document.querySelector('.nav').classList.remove('affix')
-    //    };
+import {NavLink, Link} from "react-router-dom";
+import { connect } from 'react-redux'
+import React, { useState } from 'react'
+import authActions from '../redux/actions/authActions'
+
+
+const Header=(props)=>{
     const [show, setShow] = useState(true);
-    if (props.loggedUser === null) {
-        var links = (
-            <>
-                <NavLink to="/login" className="nav-link">
-                    <IconContext.Provider value={{ size: "1.25em" }}>
-                        <div className="d-flex align-items-center">
-                            <BiUserCircle />
-                            <div>Login</div>
-                        </div>
-                    </IconContext.Provider>
-                </NavLink>
-            </>
-        );
-    } else {
-        var links = (
-            <>
-                <Link className="nav-link d-flex align-items-center">
-                    <img
-                        src={props.loggedUser.profilePicture}
-                        className="rounded-circle  mr-3"
-                        style={{ height: "40px", width: "40px" }}
-                    />
-                    <div className="container">
-                        <div
-                            type="button"
-                            className="dropdown-toggle d-block"
-                            onClick={() => {
-                                setShow(!show);
-                            }}
-                        >
-                            {props.loggedUser.name}
-                        </div>
-                    </div>
-                </Link>
-                {!show && (
-                    <ul className="d-flex flex-column dropdown-header rounded">
-                        <li className="item-drop h3 p-2">Profile</li>
-                        <li className="item-drop h3 p-2">Mytineraries</li>
-                        <li
-                            className="item-drop h3 p-2"
-                            type="button"
-                            onClick={() => props.logoutUser()}
-                        >
-                            LogOut
-            </li>
-                    </ul>
-                )}
-            </>
-        );
-    }
-    return (
+    if (props.loggedUser===null){
+        var links= <> 
+                    <NavLink to="/login" >
+                        <div>Login</div>
+                    </NavLink>
+                    </>
+    }else{
+    var links=    
         <>
-            <nav className="nav">
-                <div className="container-fluid">
-                    <div className="logo">
-                        <NavLink to="/" className="navbar-brand">
-                            <img alt="logo" src="/assets/Mytinerary-logo.png" />
+            <Link>
+                <img src={props.loggedUser.profilePicture}/>
+                <div>
+                    <div onClick={()=>{setShow(!show);}}>
+                        {props.loggedUser.name}
+                    </div>
+                </div>
+            </Link>
+            {!show&&
+                    <ul>
+                        <li>Profile</li>
+                        <li >Upgrades</li>
+                        <li onClick={()=>props.logoutUser()} >LogOut</li>
+                    </ul>}
+        </>
+    }
+    return(
+        <>
+            <nav>
+                <div >
+                    <div >
+                        <NavLink to="/" >
+                            <img  alt="logo" src=""/>
                         </NavLink>
                     </div>
-                    <div id="mainListDiv" className="main_list">
-                        <ul className="navlinks">
+                    <div id="mainListDiv" >
+                        <ul>
                             <li>
-                                <NavLink to="/" className="nav-link">
-                                    <IconContext.Provider value={{ size: "1.25em" }}>
-                                        <div className="d-flex align-items-center">
-                                            <BiHome />
+                                <NavLink to="/">
+                                        <div>
                                             <div>Home</div>
                                         </div>
-                                    </IconContext.Provider>
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/cities" className="nav-link">
-                                    <IconContext.Provider value={{ size: "1.25em" }}>
-                                        <div className="d-flex align-items-center">
-                                            <BiWorld />
-                                            <div>Cities</div>
-                                        </div>
-                                    </IconContext.Provider>
-                                </NavLink>
+                                {links}
                             </li>
-                            <li>{links}</li>
                         </ul>
                     </div>
-                    <span
-                        className="navTrigger"
-                        id="menu_hamburguesa"
-                        onClick={despliegue}
-                    >
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                    </span>
                 </div>
             </nav>
-        </>
-    );
-};
 
-const mapStateToProps = (state) => {
+
+        </>
+    )
+
+}
+
+const mapStateToProps = state => {
     return {
-        loggedUser: state.authReducer.loggedUser,
-    };
-};
+        loggedUser: state.authR.loggedUser
+    }
+}
 
 const mapDispatchToProps = {
-    logoutUser: authActions.logoutUser,
-};
+    logoutUser: authActions.logoutUser
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
