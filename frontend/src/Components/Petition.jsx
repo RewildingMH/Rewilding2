@@ -32,7 +32,7 @@ export const Petition = (props) => {
 
       <button>Sign petition</button>
 
-      <input type="text" placeholder="Firmo porque ..." />
+      <input type="text" placeholder="I sign because ..." />
       <button onClick={postComment}>Send comment</button>
     </div>
   );

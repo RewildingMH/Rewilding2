@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import petitionsActions from "../redux/actions/PetitionsActions";
 
 const Petitions = (props) => {
@@ -15,6 +17,7 @@ const Petitions = (props) => {
       {/* {props.petitions.map((petition) => {
         // <PetitionCard onClick={sumarVisita} petition={petition} />;
       })} */}
+       <Link to="/">Return to home</Link>
     </div>
   );
 };
