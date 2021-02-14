@@ -58,10 +58,18 @@ const Header = (props) => {
                                         <div>Home</div>
                                     </div>
                                 </NavLink>
-
+                            </li>
+                            <li>
                                 <NavLink to="/petitions">
                                     <div>
                                         <div>Explore</div>
+                                    </div>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/blog">
+                                    <div>
+                                        <div>Blog</div>
                                     </div>
                                 </NavLink>
                             </li>
