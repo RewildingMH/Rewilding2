@@ -13,19 +13,22 @@ require('../config/passport')
 //Routes
 //Sign Up Sign with Google Sign In 
 router.route('/user/signup')
-.post(validator.validNewAccount, userController.signUp)
+  .post(validator.validNewAccount, userController.signUp)
 router.route('/user/sign_google')
-.post(userController.signGoogle)
+  .post(userController.signGoogle)
 
 router.route('/user/signin')
-.post(userController.signIn)
+  .post(userController.signIn)
+router.route('/user/ls')
+  .post(passport.authenticate('jwt', { session: false }), userController.logFromLS)
 router.route('/petitions')
   .get(petitionController.getPetitions)
   .post(petitionController.addPetition)
 
+router.route('/signPetition').post(petitionController.signPetition)
+
 module.exports = router
 
-// 
 
 
 

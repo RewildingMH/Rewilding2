@@ -45,7 +45,7 @@ const Register =(props)=>{
                 }
                 setFile(file)
             }else{
-                console.log('tuvimos un error')
+                console.log('Something went wrong')
             }
         }
     }

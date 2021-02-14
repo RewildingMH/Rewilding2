@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import authActions from "../redux/actions/authActions"
 import {useEffect, useState} from 'react'
 
+
 const Login=(props)=>{
     useEffect(()=>{
         window.scrollTo(0,0)
@@ -27,7 +28,7 @@ const Login=(props)=>{
     const  sendUser= async e =>{
         e.preventDefault()       
         if (loginUser.username === '' || loginUser.password === '') {
-            alert('llenar campos')
+            alert('all fields are required!')
             return false
         }
         setErrores([])
@@ -54,7 +55,7 @@ const Login=(props)=>{
             </div>
             <input type="text" autocomplete="nope" placeholder="Your email address" className="admin_input" name="username"
             onChange={(e)=>handleChange(e)}/>
-            <input type="password" placeholder="Password for Mytinerary" className="admin_input" name="password"
+            <input type="password" placeholder="Password" className="admin_input" name="password"
             onChange={(e)=>handleChange(e)} />
  
             <Button variant="secondary" className="admin_input mx-auto mt-4" type="submit" onClick={sendUser} >
