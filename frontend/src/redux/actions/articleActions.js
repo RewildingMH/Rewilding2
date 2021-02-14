@@ -20,7 +20,7 @@ const articleActions = {
     logFromLS: (token) => {
         return async (dispatch, getState) => {
             try {
-                const respuesta = await axios.post('http://localhost:4000/api/user/ls', {token}, {
+                const respuesta = await axios.post('http://localhost:4000/api/user/ls',  {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
