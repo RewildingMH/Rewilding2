@@ -1,11 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import petitionsActions from "../redux/actions/PetitionsActions";
+import { connect } from "react-redux";
 
-export const PetitionCard = (props) => {
+const PetitionCard = (petition) => {
+  const addVisit = () => {
+    //visitas en la BD +1
+    petition.addVisit();
+  };
+
   return (
-    <Link>
+    <Link to={`/petitions/${petition._id}`} onClick={addVisit}>
       <h2>Petition</h2>
-      <h3>{props.title}</h3>
+      <h3>{petition.title}</h3>
     </Link>
   );
 };
+
+const mapDispatchToProps = {
+  addVisit: petitionsActions.addVisit,
+};
+
+export default connect(null, mapDispatchToProps)(PetitionCard);

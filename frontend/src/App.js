@@ -1,14 +1,18 @@
 import HomePage from './Pages/HomePage'
 import LoginPage from './Pages/LoginPage';
 import '../src/styles/styles.css'
-import Petitions from './Components/Petitions'
+import Petitions from './Pages/Petitions.jsx'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from 'react-redux'
 import authActions from './redux/actions/authActions'
 import React, { useState } from 'react'
+import CreatePetition from './Components/CreatePetition.jsx';
 
-function App(props) {
+
+
+const App = (props) => {
   const [reload, setReload] = useState(false)
+
   if (props.loggedUser) {
     var routes = <>
       <Route exact path="/" component={HomePage} />
@@ -21,12 +25,15 @@ function App(props) {
         if (respuesta === '/') setReload(!reload)
       })
   } else {
-    var routes = <>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/petitions" component={Petitions} />
-      <Redirect to="/" />
-    </>
+    var routes = (
+      <>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/petitions" component={Petitions} />
+        <Route path="/createPetition" component={CreatePetition} />
+        <Redirect to="/" />
+      </>
+    );
   }
   return (
     <>

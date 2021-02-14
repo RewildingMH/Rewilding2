@@ -2,27 +2,23 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 export const Petition = (props) => {
-  const [comment, setComment] = useState({});
+  const [signature, setSignature] = useState({});
 
-  const leerInput = (e) => {
-    const comment = e.target.value;
-    setComment({
-      comment: comment.trim(),
+  const readInput = (e) => {
+    const reason = e.target.value;
+    setSignature({
+      reason: reason.trim(),
       petId: props.petititon._id,
       name: props.loggedUser.firstname,
       profilePicture: props.loggedUser.profilePicture,
     });
   };
 
-  const postComment = async () => {
+  const signPetition = async () => {
     if (props.loggedUser) {
-      if (comment.comment) {
-        await props.postComment(comment);
-      } else {
-        alert("empty comment");
-      }
+      props.signPetition(signature);
     } else {
-      alert("not logged");
+      alert("must be logged");
     }
   };
 
@@ -30,10 +26,12 @@ export const Petition = (props) => {
     <div>
       <h2>Petition: {props.petition.title}</h2>
 
-      <button>Sign petition</button>
-
-      <input type="text" placeholder="I sign because ..." />
-      <button onClick={postComment}>Send comment</button>
+      <input
+        type="text"
+        onChange={readInput}
+        placeholder="I'm signing because ... (optional) "
+      />
+      <button onClick={signPetition}>Sign petition</button>
     </div>
   );
 };
@@ -46,7 +44,6 @@ const mapStateToProps = (state) => {
 
 // const mapDispatchToProps = {
 //   signPetition: petitionsActions.signPetition,
-//   commentPetition: petitionsActions.commentPetition,
 // };
 
 export default connect(mapStateToProps)(Petition);
