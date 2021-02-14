@@ -3,6 +3,7 @@ const cors = require('cors')
 require('dotenv').config()
 require('./config/database')
 const router= require('./routes')
+
 const fileUpload = require('express-fileupload')
 
 
@@ -17,7 +18,7 @@ app.use(fileUpload())
 
 
 
-app.use('/', router)
+app.use('/api', router)
 
 
 app.listen(4000, () => console.log("app on listening on port 4000"))
