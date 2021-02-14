@@ -39,7 +39,7 @@ const Login=(props)=>{
     }
     
     return(
-        <>
+        <div className="loginDiv">
             <h1>Login</h1>
             <GoogleLogin
                 className="login_input justify-content-center"
@@ -53,7 +53,7 @@ const Login=(props)=>{
                 <span>Or</span> 
                 <span className="line mx-auto"></span> 
             </div>
-            <input type="text" autocomplete="nope" placeholder="Your email address" className="admin_input" name="username"
+            <input type="text" autoComplete="nope" placeholder="Your email address" className="admin_input" name="username"
             onChange={(e)=>handleChange(e)}/>
             <input type="password" placeholder="Password" className="admin_input" name="password"
             onChange={(e)=>handleChange(e)} />
@@ -66,7 +66,7 @@ const Login=(props)=>{
                 <span>You do not have an account?</span>
                 <span className="line mx-auto"></span> 
             </div>
-        </>
+        </div>
     )
 }
 const mapStateToProps = state => {

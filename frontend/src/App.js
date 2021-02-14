@@ -9,6 +9,7 @@ import authActions from './redux/actions/authActions'
 import React, { useState } from 'react'
 import CreatePetition from './Components/CreatePetition.jsx';
 import Blog from './Pages/Blog'
+import Petition from './Components/Petition.jsx';
 
 
 
@@ -18,7 +19,7 @@ const App = (props) => {
   if (props.loggedUser) {
     var routes = <>
       <Route exact path="/" component={HomePage} />
-      <Route path="/petitions" component={Petitions} />
+      <Route exact path="/petitions" component={Petitions} />
       <Route path="/createPetition" component={CreatePetition} />
       <Redirect to="/" />
     </>
@@ -45,9 +46,13 @@ const App = (props) => {
         <Switch>
           {routes}
         </Switch>
+        <Route path="/petitions/:id" component={Petition} />
       </Router>
     </>
   )
+
+
+
 
 }
 

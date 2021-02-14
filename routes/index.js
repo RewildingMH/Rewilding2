@@ -24,7 +24,7 @@ router.route('/user/ls')
   .post(passport.authenticate('jwt', { session: false }), userController.logFromLS)
 router.route('/petitions')
   .get(petitionController.getPetitions)
-  .post(petitionController.addPetition)
+  .post(passport.authenticate('jwt', { session: false }), petitionController.addPetition)
 
 router.route('/signPetition').post(petitionController.signPetition)
 //Blog

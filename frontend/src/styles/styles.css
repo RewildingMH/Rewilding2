@@ -5,10 +5,118 @@
 }
 
 body {
+    width: 100vw;
     font-family: 'Nunito Sans', sans-serif;
 }
 
 
 h1, h2 {
     font-family: 'Oswald', sans-serif;
+}
+
+/* header */
+.mainListDiv {
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(10, 78, 10);
+}
+
+
+.mainListDiv p {
+    color: ivory;
+    padding-right: 2vw;
+    text-decoration: none;
+    font-size: 2.5vh;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+.navsDiv {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* homepage */
+
+.containerMain {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(10, 78, 10);
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+}
+
+.containerMain div {
+    display: flex;
+    align-items: center;
+    padding-right: 3vw;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.distanceDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.containerBanner {
+    width: 100%;
+    height: 10vh;
+    background-color: rgb(10, 78, 10);
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ivory;
+    font-size: 3vh;
+}
+
+.divBlog {
+    width: 100%;
+    height: 50vh;
+    background-color: rgb(92, 158, 92);
+    margin-top: 5vh;
+}
+
+.mainTitle {
+    font-size: 10vh;
+}
+
+.containerCarrusel {
+    width: 40vw;
+    height: 50vh;
+    background-color: lightgreen;
+    box-shadow: 10px 10px 20px rgb(37, 37, 37);
+}
+
+/* login */
+
+.loginDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+}
+
+.textMail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

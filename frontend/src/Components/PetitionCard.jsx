@@ -6,13 +6,13 @@ import { connect } from "react-redux";
 const PetitionCard = (petition) => {
   const addVisit = () => {
     //visitas en la BD +1
-    petition.addVisit();
+    // petition.addVisit();
   };
 
   return (
-    <Link to={`/petitions/${petition._id}`} onClick={addVisit}>
+    <Link to={`/petitions/${petition.petition._id}`}>
       <h2>Petition</h2>
-      <h3>{petition.title}</h3>
+      <h3>{petition.petition.title}</h3>
     </Link>
   );
 };
