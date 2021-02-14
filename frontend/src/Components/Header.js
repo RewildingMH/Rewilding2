@@ -11,11 +11,14 @@ const Header = (props) => {
     if (props.loggedUser === null) {
         var links = <>
             <NavLink to="/login" >
-                <div>Login</div>
+                <div><p>Login</p></div>
             </NavLink>
             <NavLink to="/petitions">
-                <div>Petitions</div>
+                <div><p>Petitions</p></div>
             </NavLink>
+            <div>
+                <div><p>Blog</p></div>
+            </div>
         </>
     } else {
         var links =
@@ -28,47 +31,49 @@ const Header = (props) => {
                         </div>
                     </div>
                 </Link>
-                <Link to="/createPetition">
-                    <div>
-                        <div>Create a petition</div>
-                    </div>
-                </Link>
                 {!show &&
                     <ul>
-                        <li>Profile</li>
-                        <li >Upgrades</li>
+                        <li><p>Profile</p></li>
+                        <li ><p>Upgrades</p></li>
                         <li onClick={() => props.logoutUser()} >LogOut</li>
                     </ul>}
+                <Link to="/createPetition">
+                    <div>
+                        <div><p>Create a petition</p></div>
+                    </div>
+                </Link>
+                <div>
+                    <div><p>Blog</p></div>
+                </div>
+
             </>
     }
     return (
         <>
             <nav>
-                <div >
+                <div className="mainListDiv">
                     <div >
                         <NavLink to="/" >
                             <div style={{ backgroundImage: `url(${logo})`, width: "7vw", height: "10vh", backgroundSize: "cover", backgroundPosition: "center" }}></div>
                         </NavLink>
                     </div>
-                    <div id="mainListDiv" >
-                        <ul>
-                            <li>
+                    <div id="mainListDiv" className="navsDiv" >
+                        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+                            <div className="navsDiv">
                                 <NavLink to="/">
                                     <div>
-                                        <div>Home</div>
+                                        <div><p>Home</p></div>
                                     </div>
                                 </NavLink>
 
                                 <NavLink to="/petitions">
                                     <div>
-                                        <div>Explore</div>
+                                        <div><p>Explore</p></div>
                                     </div>
                                 </NavLink>
-                            </li>
-                            <li>
                                 {links}
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
