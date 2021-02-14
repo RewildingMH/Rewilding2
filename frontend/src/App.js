@@ -31,7 +31,7 @@ function App(props) {
       </Switch>
     </Router>
   </>
-  )
+  
 }
 
 const mapStateToProps = state => {
