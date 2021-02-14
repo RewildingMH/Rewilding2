@@ -5,9 +5,9 @@ const Profile = () => {
     //Género, edad, 
     //numero de telefono
     //email (si quiere que lo vean o no)
-
+    
 
     //contenido perfil
     //peticiones creadas
-
+    //articulos en el blog creados
 }

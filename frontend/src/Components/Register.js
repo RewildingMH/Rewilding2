@@ -75,7 +75,7 @@ const Register =(props)=>{
             <GoogleLogin 
                 className="login_input justify-content-center"
                 clientId="466964485297-vadqpskqigjmjlh81uijpggpiaalluu2.apps.googleusercontent.com"
-                buttonText="Login with Google"
+                buttonText="Register with Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}

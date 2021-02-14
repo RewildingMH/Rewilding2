@@ -3,7 +3,6 @@ import axios from "axios"
 const authActions = {
     newUser: (newUser, file) => {
         return async (dispatch, getState) => {
-            console.log(newUser, file)
             const form = new FormData()
             form.append('name',newUser.name)
             form.append('lastName',newUser.lastName)
