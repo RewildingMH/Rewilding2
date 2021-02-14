@@ -38,15 +38,18 @@ const App = (props) => {
   }
   return (
     <>
-      <Router>
-        <Header />
-        <Switch>
-          {routes}
-        </Switch>
-      </Router>
-    </>
+    <Router>
+      <Header />
+      <Switch>
+        {routes}
+      </Switch>
+    </Router>
+  </>
   )
-
+    
+  
+ 
+  
 }
 
 const mapStateToProps = state => {
