@@ -24,13 +24,19 @@ function App(props) {
       <Redirect to="/" />
     </>
   }
-  <>
+  return(
+    <>
     <Router>
       <Switch>
         {routes}
       </Switch>
     </Router>
-  </>  
+  </>
+
+
+  )
+  
+  
 }
 
 const mapStateToProps = state => {
