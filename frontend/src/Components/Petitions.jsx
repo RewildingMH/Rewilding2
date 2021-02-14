@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import petitionsActions from '../redux/actions/petitionsActions'
 import PetitionCard from './Petition'
 
 const Petitions = (props) => {
@@ -27,7 +28,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   getPetitions: petitionsActions.getPetitions,
-  addVisit: petitionsActions.addVisit,
+  //addVisit: PetitionsActions.addVisit,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Petitions)
