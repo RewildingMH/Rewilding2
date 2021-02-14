@@ -1,10 +1,11 @@
 import HomePage from './Pages/HomePage'
 import LoginPage from './Pages/LoginPage';
+import '../src/styles/styles.css'
+import Petitions from './Components/Petitions'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from 'react-redux'
 import authActions from './redux/actions/authActions'
 import React, { useState } from 'react'
-import Petitions from './Pages/Petitions.jsx';
 import CreatePetition from './Components/CreatePetition.jsx';
 
 
@@ -15,6 +16,7 @@ const App = (props) => {
   if (props.loggedUser) {
     var routes = <>
       <Route exact path="/" component={HomePage} />
+      <Route path="/petitions" component={Petitions} />
       <Redirect to="/" />
     </>
   } else if (localStorage.getItem('token')) {

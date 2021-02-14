@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import petitionsActions from "../redux/actions/PetitionsActions";
 import PetitionCard from "../Components/PetitionCard";
-import { Link } from "react-router-dom";
 
 const Petitions = (props) => {
   console.log(props);

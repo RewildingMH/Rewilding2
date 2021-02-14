@@ -4,12 +4,17 @@ import React, { useState } from 'react'
 import authActions from '../redux/actions/authActions'
 
 
+
 const Header = (props) => {
     const [show, setShow] = useState(true);
+    const logo = "./assets/logo.png"
     if (props.loggedUser === null) {
         var links = <>
             <NavLink to="/login" >
                 <div>Login</div>
+            </NavLink>
+            <NavLink to="/petitions">
+                <div>Petitions</div>
             </NavLink>
         </>
     } else {
@@ -40,7 +45,7 @@ const Header = (props) => {
                 <div >
                     <div >
                         <NavLink to="/" >
-                            <img alt="logo" src="" />
+                            <div style={{ backgroundImage: `url(${logo})`, width: "50vw", height: "20vh", backgroundSize: "cover", backgroundPosition: "center" }}></div>
                         </NavLink>
                     </div>
                     <div id="mainListDiv" >
