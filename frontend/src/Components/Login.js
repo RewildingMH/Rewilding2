@@ -39,7 +39,7 @@ const Login=(props)=>{
     }
     
     return(
-        <>
+        <div className="loginDiv">
             <h1>Login</h1>
             <GoogleLogin
                 className="login_input justify-content-center"
@@ -66,7 +66,7 @@ const Login=(props)=>{
                 <span>You do not have an account?</span>
                 <span className="line mx-auto"></span> 
             </div>
-        </>
+        </div>
     )
 }
 const mapStateToProps = state => {
