@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import petitionsActions from "../redux/actions/PetitionsActions";
 import PetitionCard from "../Components/PetitionCard";
 
 const Petitions = (props) => {
-  console.log(props);
+  useEffect(() => {
+    props.getPetitions();
+  }, []);
 
   return (
     <>
       <div>
         <h2>Petitions</h2>
         {props.allPetitions.map((petition) => {
-          return <PetitionCard petition={petition} />;
+          return <PetitionCard key={petition._id} petition={petition} />;
         })}
       </div>
     </>

@@ -13,14 +13,11 @@ const Header = (props) => {
             <NavLink to="/login" >
                 <div>Login</div>
             </NavLink>
-            <NavLink to="/petitions">
-                <div>Petitions</div>
-            </NavLink>
         </>
     } else {
         var links =
             <>
-                <Link>
+                <Link to="/">
                     <img src={props.loggedUser.profilePicture} alt="profile" />
                     <div>
                         <div onClick={() => { setShow(!show); }}>
