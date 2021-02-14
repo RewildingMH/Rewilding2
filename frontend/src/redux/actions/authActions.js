@@ -3,6 +3,7 @@ import axios from "axios"
 const authActions = {
     newUser: (newUser, file) => {
         return async (dispatch, getState) => {
+            console.log(newUser, file)
             const form = new FormData()
             form.append('name',newUser.name)
             form.append('lastName',newUser.lastName)
@@ -11,7 +12,7 @@ const authActions = {
             form.append('country',newUser.country)
             form.append('profilePicture', file.name)
             form.append('file', file)
-            const respuesta = await axios.post('http://localhost:4000/user/signup', form, {headers:{'Content-Type':'multipart/formdata'}})
+            const respuesta = await axios.post('http://localhost:4000/api/user/signup', form, {headers:{'Content-Type':'multipart/formdata'}})
             if (!respuesta.data.success) {
                 return respuesta.data
             }

@@ -19,6 +19,8 @@ router.route('/user/sign_google')
 
 router.route('/user/signin')
 .post(userController.signIn)
+router.route('/user/ls')
+.post(passport.authenticate('jwt', {session: false}), userController.logFromLS)
 router.route('/petitions')
   .get(petitionController.getPetitions)
   .post(petitionController.addPetition)
