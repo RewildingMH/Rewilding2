@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 import authActions from './redux/actions/authActions'
 import React, { useState } from 'react'
 import Petitions from './Pages/Petitions.jsx';
+import CreatePetition from './Components/CreatePetition.jsx';
+
+
 
 const App = (props) => {
   const [reload, setReload] = useState(false)
@@ -25,6 +28,7 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/petitions" component={Petitions} />
+        <Route path="/createPetition" component={CreatePetition} />
         <Redirect to="/" />
       </>
     );

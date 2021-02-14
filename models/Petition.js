@@ -3,16 +3,18 @@ const mongoose = require('mongoose')
 
 const petitionSchema = new mongoose.Schema({
   title: String,
-  author: String,
+  author: [{ name: String, profilePicture: String }],
   destination: String,
   desc: String,
   visits: Number,
   picture: String,
   signatures: Number,
-  date: Date,
   limitDate: Date,
-  comments: [{ username: String, userPic: String, comment: String }],
-})
+  reasons: [{ name: String, profilePicture: String, reason: String }],
+  isVerified: { type: Boolean, default: true }
+},
+  { timestamps: true }
+)
 
 const Petition = mongoose.model('petition', petitionSchema)
 

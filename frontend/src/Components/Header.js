@@ -16,12 +16,15 @@ const Header = (props) => {
         var links =
             <>
                 <Link>
-                    <img src={props.loggedUser.profilePicture} />
+                    <img src={props.loggedUser.profilePicture} alt="profile" />
                     <div>
                         <div onClick={() => { setShow(!show); }}>
                             {props.loggedUser.name}
                         </div>
                     </div>
+                </Link>
+                <Link to="/new_petition">
+                    Create a petition
                 </Link>
                 {!show &&
                     <ul>
@@ -46,6 +49,16 @@ const Header = (props) => {
                                 <NavLink to="/">
                                     <div>
                                         <div>Home</div>
+                                    </div>
+                                </NavLink>
+                                <NavLink to="/createPetition">
+                                    <div>
+                                        <div>Create a petition</div>
+                                    </div>
+                                </NavLink>
+                                <NavLink to="/petitions">
+                                    <div>
+                                        <div>Explore</div>
                                     </div>
                                 </NavLink>
                             </li>
