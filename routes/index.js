@@ -5,6 +5,7 @@ const router = express.Router()
 //Controladores
 const userController = require('../controllers/userController')
 const petitionController = require('../controllers/petitionController')
+const blogController = require('../controllers/blogController')
 //middleware
 const validator = require('../controllers/validator')
 const passport = require('passport')
@@ -27,7 +28,8 @@ router.route('/petitions')
 
 router.route('/signPetition').post(petitionController.signPetition)
 //Blog
-
+router.route('/blog')
+.post(passport.authenticate('jwt', {session: false}), validator.isAdmin,blogController.addArticle)
 
 module.exports = router
 
