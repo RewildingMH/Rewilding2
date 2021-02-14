@@ -1,7 +1,7 @@
 import HomePage from './Pages/HomePage'
 import LoginPage from './Pages/LoginPage';
 import '../src/styles/styles.css'
-import Petitions from './Components/Petitions'
+import Petitions from './Pages/Petitions.jsx'
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from 'react-redux'
 import authActions from './redux/actions/authActions'
