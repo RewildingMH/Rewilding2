@@ -47,7 +47,7 @@ const Header = (props) => {
                 <div >
                     <div >
                         <NavLink to="/" >
-                            <div style={{ backgroundImage: `url(${logo})`, width: "50vw", height: "20vh", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                            <div style={{ backgroundImage: `url(${logo})`, width: "7vw", height: "10vh", backgroundSize: "cover", backgroundPosition: "center" }}></div>
                         </NavLink>
                     </div>
                     <div id="mainListDiv" >
