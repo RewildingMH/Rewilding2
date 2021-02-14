@@ -1,8 +1,10 @@
-const express= require('express')
-const router= express.Router()
+const express = require('express')
+const router = express.Router()
+
 
 //Controladores
 const userController = require('../controllers/userController')
+const petitionController = require('../controllers/petitionController')
 //middleware
 const validator = require('../controllers/validator')
 const passport = require('passport')
@@ -17,6 +19,9 @@ router.route('/user/sign_google')
 
 router.route('/user/signin')
 .post(userController.signIn)
+router.route('/petitions')
+  .get(petitionController.getPetitions)
+  .post(petitionController.addPetition)
 
 module.exports = router
 
