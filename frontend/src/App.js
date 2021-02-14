@@ -1,4 +1,5 @@
 import HomePage from './Pages/HomePage'
+import Header from './Components/Header'
 import LoginPage from './Pages/LoginPage';
 import '../src/styles/styles.css'
 import Petitions from './Pages/Petitions.jsx'
@@ -17,6 +18,7 @@ const App = (props) => {
     var routes = <>
       <Route exact path="/" component={HomePage} />
       <Route path="/petitions" component={Petitions} />
+      <Route path="/createPetition" component={CreatePetition} />
       <Redirect to="/" />
     </>
   } else if (localStorage.getItem('token')) {
@@ -30,21 +32,24 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/petitions" component={Petitions} />
-        <Route path="/createPetition" component={CreatePetition} />
         <Redirect to="/" />
       </>
     );
   }
   return (
     <>
-      <Router>
-        <Switch>
-          {routes}
-        </Switch>
-      </Router>
-    </>
+    <Router>
+      <Header />
+      <Switch>
+        {routes}
+      </Switch>
+    </Router>
+  </>
   )
-
+    
+  
+ 
+  
 }
 
 const mapStateToProps = state => {

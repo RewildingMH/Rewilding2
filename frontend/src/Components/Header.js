@@ -28,8 +28,10 @@ const Header = (props) => {
                         </div>
                     </div>
                 </Link>
-                <Link to="/new_petition">
-                    Create a petition
+                <Link to="/createPetition">
+                    <div>
+                        <div>Create a petition</div>
+                    </div>
                 </Link>
                 {!show &&
                     <ul>
@@ -45,7 +47,7 @@ const Header = (props) => {
                 <div >
                     <div >
                         <NavLink to="/" >
-                            <div style={{ backgroundImage: `url(${logo})`, width: "50vw", height: "20vh", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                            <div style={{ backgroundImage: `url(${logo})`, width: "7vw", height: "10vh", backgroundSize: "cover", backgroundPosition: "center" }}></div>
                         </NavLink>
                     </div>
                     <div id="mainListDiv" >
@@ -56,11 +58,7 @@ const Header = (props) => {
                                         <div>Home</div>
                                     </div>
                                 </NavLink>
-                                <NavLink to="/createPetition">
-                                    <div>
-                                        <div>Create a petition</div>
-                                    </div>
-                                </NavLink>
+
                                 <NavLink to="/petitions">
                                     <div>
                                         <div>Explore</div>
