@@ -20,3 +20,5 @@ const petitionController = {
 
   }
 }
+
+module.exports = petitionController
