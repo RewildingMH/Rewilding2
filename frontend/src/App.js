@@ -39,6 +39,7 @@ const App = (props) => {
   return (
     <>
     <Router>
+      <Header />
       <Switch>
         {routes}
       </Switch>
