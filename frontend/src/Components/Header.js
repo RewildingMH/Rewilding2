@@ -28,8 +28,10 @@ const Header = (props) => {
                         </div>
                     </div>
                 </Link>
-                <Link to="/new_petition">
-                    Create a petition
+                <Link to="/createPetition">
+                    <div>
+                        <div>Create a petition</div>
+                    </div>
                 </Link>
                 {!show &&
                     <ul>
@@ -56,11 +58,7 @@ const Header = (props) => {
                                         <div>Home</div>
                                     </div>
                                 </NavLink>
-                                <NavLink to="/createPetition">
-                                    <div>
-                                        <div>Create a petition</div>
-                                    </div>
-                                </NavLink>
+
                                 <NavLink to="/petitions">
                                     <div>
                                         <div>Explore</div>

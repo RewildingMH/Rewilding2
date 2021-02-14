@@ -18,6 +18,7 @@ const App = (props) => {
     var routes = <>
       <Route exact path="/" component={HomePage} />
       <Route path="/petitions" component={Petitions} />
+      <Route path="/createPetition" component={CreatePetition} />
       <Redirect to="/" />
     </>
   } else if (localStorage.getItem('token')) {
@@ -31,7 +32,6 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/petitions" component={Petitions} />
-        <Route path="/createPetition" component={CreatePetition} />
         <Redirect to="/" />
       </>
     );
