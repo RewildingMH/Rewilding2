@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import authActions from "../redux/actions/authActions"
 import {useEffect, useState} from 'react'
 
+
 const Login=(props)=>{
     useEffect(()=>{
         window.scrollTo(0,0)
@@ -27,7 +28,7 @@ const Login=(props)=>{
     const  sendUser= async e =>{
         e.preventDefault()       
         if (loginUser.username === '' || loginUser.password === '') {
-            alert('llenar campos')
+            alert('all fields are required!')
             return false
         }
         setErrores([])
@@ -42,7 +43,7 @@ const Login=(props)=>{
             <h1>Login</h1>
             <GoogleLogin
                 className="login_input justify-content-center"
-                clientId="759756529264-mj8c1nc0j1f5ot1jqt4bm91hv3ogo4u1.apps.googleusercontent.com"
+                clientId="466964485297-vadqpskqigjmjlh81uijpggpiaalluu2.apps.googleusercontent.com"
                 buttonText="Login with Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
@@ -54,7 +55,7 @@ const Login=(props)=>{
             </div>
             <input type="text" autoComplete="nope" placeholder="Your email address" className="admin_input" name="username"
             onChange={(e)=>handleChange(e)}/>
-            <input type="password" placeholder="Password for Mytinerary" className="admin_input" name="password"
+            <input type="password" placeholder="Password" className="admin_input" name="password"
             onChange={(e)=>handleChange(e)} />
  
             <Button variant="secondary" className="admin_input mx-auto mt-4" type="submit" onClick={sendUser} >

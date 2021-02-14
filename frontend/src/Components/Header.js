@@ -1,52 +1,68 @@
-import {NavLink, Link} from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import React, { useState } from 'react'
 import authActions from '../redux/actions/authActions'
 
 
-const Header=(props)=>{
+
+const Header = (props) => {
     const [show, setShow] = useState(true);
-    if (props.loggedUser===null){
-        var links= <> 
-                    <NavLink to="/login" >
-                        <div>Login</div>
-                    </NavLink>
-                    </>
-    }else{
-    var links=    
-        <>
-            <Link>
-                <img src={props.loggedUser.profilePicture}/>
-                <div>
-                    <div onClick={()=>{setShow(!show);}}>
-                        {props.loggedUser.name}
+    const logo = "./assets/logo.png"
+    if (props.loggedUser === null) {
+        var links = <>
+            <NavLink to="/login" >
+                <div>Login</div>
+            </NavLink>
+            <NavLink to="/petitions">
+                <div>Petitions</div>
+            </NavLink>
+        </>
+    } else {
+        var links =
+            <>
+                <Link>
+                    <img src={props.loggedUser.profilePicture} alt="profile" />
+                    <div>
+                        <div onClick={() => { setShow(!show); }}>
+                            {props.loggedUser.name}
+                        </div>
                     </div>
-                </div>
-            </Link>
-            {!show&&
+                </Link>
+                <Link to="/createPetition">
+                    <div>
+                        <div>Create a petition</div>
+                    </div>
+                </Link>
+                {!show &&
                     <ul>
                         <li>Profile</li>
                         <li >Upgrades</li>
-                        <li onClick={()=>props.logoutUser()} >LogOut</li>
+                        <li onClick={() => props.logoutUser()} >LogOut</li>
                     </ul>}
-        </>
+            </>
     }
-    return(
+    return (
         <>
             <nav>
                 <div >
                     <div >
                         <NavLink to="/" >
-                            <img  alt="logo" src=""/>
+                            <div style={{ backgroundImage: `url(${logo})`, width: "7vw", height: "10vh", backgroundSize: "cover", backgroundPosition: "center" }}></div>
                         </NavLink>
                     </div>
                     <div id="mainListDiv" >
                         <ul>
                             <li>
                                 <NavLink to="/">
-                                        <div>
-                                            <div>Home</div>
-                                        </div>
+                                    <div>
+                                        <div>Home</div>
+                                    </div>
+                                </NavLink>
+
+                                <NavLink to="/petitions">
+                                    <div>
+                                        <div>Explore</div>
+                                    </div>
                                 </NavLink>
                             </li>
                             <li>

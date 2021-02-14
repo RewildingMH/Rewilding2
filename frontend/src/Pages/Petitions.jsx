@@ -1,21 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import petitionsActions from "../redux/actions/PetitionsActions";
+import PetitionCard from "../Components/PetitionCard";
 
 const Petitions = (props) => {
   console.log(props);
 
-  const sumarVisita = () => {
-    //visitas en la BD +1
-  };
-
   return (
-    <div>
-      <h2>Petitions</h2>
-      {/* {props.petitions.map((petition) => {
-        // <PetitionCard onClick={sumarVisita} petition={petition} />;
-      })} */}
-    </div>
+    <>
+      <div>
+        <h2>Petitions</h2>
+        {props.allPetitions.map((petition) => {
+          return <PetitionCard petition={petition} />;
+        })}
+      </div>
+    </>
   );
 };
 
@@ -27,6 +26,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   getPetitions: petitionsActions.getPetitions,
+  addVisit: petitionsActions.addVisit,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Petitions);
