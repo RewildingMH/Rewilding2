@@ -2,12 +2,12 @@ import { NavLink, Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import React, { useState } from 'react'
 import authActions from '../redux/actions/authActions'
+import logo from '../assets/logo2.png'
 
 
 
 const Header = (props) => {
     const [show, setShow] = useState(true);
-    const logo = "./assets/logo.png"
     if (props.loggedUser === null) {
         var links = <>
             <NavLink to="/login" >
@@ -23,6 +23,14 @@ const Header = (props) => {
     } else {
         var links =
             <>
+                <Link to="/createPetition">
+                    <div>
+                        <div><p>Create a petition</p></div>
+                    </div>
+                </Link>
+                <div>
+                    <div><p>Blog</p></div>
+                </div>
                 <Link>
                     <img src={props.loggedUser.profilePicture} alt="profile" />
                     <div>
@@ -37,14 +45,6 @@ const Header = (props) => {
                         <li ><p>Upgrades</p></li>
                         <li onClick={() => props.logoutUser()} >LogOut</li>
                     </ul>}
-                <Link to="/createPetition">
-                    <div>
-                        <div><p>Create a petition</p></div>
-                    </div>
-                </Link>
-                <div>
-                    <div><p>Blog</p></div>
-                </div>
 
             </>
     }
@@ -54,7 +54,7 @@ const Header = (props) => {
                 <div className="mainListDiv">
                     <div >
                         <NavLink to="/" >
-                            <div style={{ backgroundImage: `url(${logo})`, width: "7vw", height: "10vh", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                            <div style={{ backgroundImage: `url(${logo})`, width: "9vw", height: "14vh", backgroundSize: "cover", backgroundPosition: "center" }}></div>
                         </NavLink>
                     </div>
                     <div id="mainListDiv" className="navsDiv" >

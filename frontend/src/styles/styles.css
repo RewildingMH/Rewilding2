@@ -5,6 +5,7 @@
 }
 
 body {
+    width: 100vw;
     font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -20,13 +21,13 @@ h1, h2 {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(92, 158, 92);
+    background-color: rgb(10, 78, 10);
 }
 
 
 .mainListDiv p {
     color: ivory;
-    margin-right: 2vw;
+    padding-right: 2vw;
     text-decoration: none;
     font-size: 2.5vh;
 }
@@ -44,12 +45,18 @@ nav a {
 /* homepage */
 
 .containerMain {
-    width: 90%;
-    height: 80vh;
+    width: 100vw;
+    height: 100vh;
     background-color: rgb(10, 78, 10);
     display: flex;
     justify-content:flex-end;
     align-items: center;
+}
+
+.containerMain div {
+    display: flex;
+    align-items: center;
+    padding-right: 3vw;
 }
 
 .container {
@@ -71,6 +78,11 @@ nav a {
     height: 10vh;
     background-color: rgb(10, 78, 10);
     margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ivory;
+    font-size: 3vh;
 }
 
 .divBlog {
