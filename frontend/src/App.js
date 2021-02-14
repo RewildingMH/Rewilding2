@@ -1,4 +1,5 @@
 import HomePage from './Pages/HomePage'
+import Header from './Components/Header'
 import LoginPage from './Pages/LoginPage';
 import '../src/styles/styles.css'
 import Petitions from './Pages/Petitions.jsx'
@@ -38,6 +39,7 @@ const App = (props) => {
   return (
     <>
       <Router>
+        <Header />
         <Switch>
           {routes}
         </Switch>
