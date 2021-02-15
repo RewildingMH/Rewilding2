@@ -1,21 +1,26 @@
 import React from "react";
 
-export const Reasons = (reason) => {
+export const Reasons = ({reasons}) => {
   return (
     <div>
-      {reason.reason.map(({ reason, name, profilePicture }) => (
-        <div style={{ display: "flex" }}>
-          <div
-            style={{
-              backgroundImage: `url(${profilePicture})`,
-              width: "100px",
-              height: "100px",
-            }}
-          ></div>
-          <h5>{name}</h5>
-          <p>{reason}</p>
-        </div>
-      ))}
+      {reasons.map(({name, profilePicture, reason}) => 
+      <div style={{ display: "flex" }}>
+      <>
+      <div
+        style={{
+          backgroundImage: `url(${profilePicture})`,
+          width: "100px",
+          height: "100px",
+        }}
+      ></div>
+      <h5>{name}</h5>
+      <p>{reason}</p>
+   
+      </> 
+    </div>           
+      
+      )}
+        
     </div>
   );
 };

@@ -1,6 +1,5 @@
 const initialState = {
-  allPetitions: [],
-  reasons: []
+  allPetitions: []
 }
 
 
@@ -11,16 +10,17 @@ export const petitionsReducer = (state = initialState, action) => {
         ...state,
         allPetitions: action.payload
       }
-    case 'GET_REASONS':
-      return {
-        ...state,
-        reasons: action.payload.map(({ reasons }) => reasons)
-      }
     case 'SIGN_PETITION':
+      console.log(action.payload._id)
       return {
         ...state,
-        reasons: state.reasons.map(reasons => reasons._id === action.payload._id ? reasons = action.payload : reasons)
+        allPetitions: state.allPetitions.map(petition => petition._id === action.payload._id ? action.payload : petition)
       }
+    // case 'SIGN_PETITION':
+    //   return {
+    //     ...state,
+    //     reasons: state.reasons.map(reasons => reasons._id === action.payload._id ? reasons = action.payload : reasons)
+    //   }
     default:
       return state
   }

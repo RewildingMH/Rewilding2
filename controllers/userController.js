@@ -25,7 +25,7 @@ const userController = {
         const passwordHasheado = bcryptjs.hashSync(password, 10)
         const profilePictureUbicacion= `/assets/profilePictures/${file.name}`
         var newUser = new User({
-            name, lastName, username, profilePicture:profilePictureUbicacion,  password: passwordHasheado, country
+            name, lastName, username, profilePicture:profilePictureUbicacion,  password: passwordHasheado, country, rol: "personal account"
         })
         var newUserSaved = await newUser.save()
         var token = jwt.sign({...newUserSaved}, process.env.SECRET_KEY, {})
@@ -36,7 +36,8 @@ const userController = {
                 token,
                 name: newUserSaved.name, 
                 profilePicture: newUserSaved.profilePicture, 
-                username: newUserSaved.username   }})      
+                username: newUserSaved.username,
+                rol: newUserSaved.rol   }})      
     },
     signGoogle: async(req, res)=>{
         const {givenName, familyName, email,  googleId, imageUrl} = req.body
@@ -48,11 +49,12 @@ const userController = {
                 token,
                 name: userExists.name,
                 profilePicture: userExists.profilePicture,
-                username: userExists.username
+                username: userExists.username,
+                rol: userExists.rol
             }})
         }else{
             var newUser = new User({
-                name:givenName, lastName:familyName, username:email, profilePicture:imageUrl, googleId
+                name:givenName, lastName:familyName, username:email, profilePicture:imageUrl, googleId , rol: "personal account"
             })
             var newUserSaved = await newUser.save()
             var token = jwt.sign({...newUserSaved}, process.env.SECRET_KEY, {})
@@ -61,7 +63,8 @@ const userController = {
                 token, 
                 name: newUserSaved.name,
                 profilePicture: newUserSaved.profilePicture,
-                username:newUserSaved.username
+                username:newUserSaved.username,
+                rol: newUserSaved.rol
             }})
         }
 
@@ -82,7 +85,8 @@ const userController = {
             token, 
             name: userExists.name,
             profilePicture: userExists.profilePicture,
-            username: userExists.username
+            username: userExists.username,
+            rol: userExists.rol
         }})
     },
     logFromLS: (req, res) => {
@@ -90,7 +94,8 @@ const userController = {
             token: req.body.token, 
             name: req.user.name, 
             profilePicture: req.user.profilePicture,
-            username: req.user.username
+            username: req.user.username,
+            rol: req.user.rol
         }})
     }
 }

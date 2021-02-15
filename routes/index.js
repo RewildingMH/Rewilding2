@@ -26,7 +26,7 @@ router.route('/petitions')
   .get(petitionController.getPetitions)
   .post(passport.authenticate('jwt', { session: false }), petitionController.addPetition)
 
-router.route('/signPetition').post(petitionController.signPetition)
+router.route('/signPetition').post(passport.authenticate('jwt', { session: false }), petitionController.signPetition)
 //Blog
 router.route('/blog')
 .post(passport.authenticate('jwt', {session: false}), validator.isAdmin,blogController.addArticle)
