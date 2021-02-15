@@ -16,9 +16,6 @@ const Header = (props) => {
             <NavLink to="/petitions">
                 <div><p>Petitions</p></div>
             </NavLink>
-            <div>
-                <div><p>Blog</p></div>
-            </div>
         </>
     } else {
         var links =
@@ -28,9 +25,6 @@ const Header = (props) => {
                         <div><p>Create a petition</p></div>
                     </div>
                 </Link>
-                <div>
-                    <div><p>Blog</p></div>
-                </div>
                 <Link>
                     <img src={props.loggedUser.profilePicture} alt="profile" />
                     <div>
@@ -71,8 +65,12 @@ const Header = (props) => {
                                         <div><p>Explore</p></div>
                                     </div>
                                 </NavLink>
-                            
-                            
+                                <NavLink to="/blog">
+                                    <div>
+                                        <div><p>Blog</p></div>
+                                    </div>
+                                </NavLink>
+                           
                                 {links}
                             
                             </div>

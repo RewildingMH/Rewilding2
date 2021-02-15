@@ -1,38 +1,38 @@
 import React,  { useState } from "react";
 import { connect } from "react-redux";
+import articleActions from '../redux/actions/articleActions'
 
 
 const Blog = (props) => {
+  console.log(props)
     const [article, setArticle] = useState({
       title: "",
-      message: ""
-    });
-
-    const token = localStorage.setItem('token')
-    console.log(token)
-
+      message: "",
+      articleCategories: ""
+    })
     const readInput = (e) => {
       const {name, value} = e.target
       setArticle({...article, [name]: value});
-    };
+    }
 
     const sendArticle = async (e) => {
       e.preventDefault()
-      if(article.title === "", article.image === "", article.message === ""){
+      if(article.title === "", article.articleCategories === "", article.message === ""){
         alert("All fields are required")
         return false
       }
-      const response = await article //props.newArticle(article, file, token), linea 69
-      console.log(response)
+      const token = localStorage.getItem('token')
+      alert(`Titulo ${article.title}, categoria  ${article.articleCategories}, mensaje  ${article.message}, token ${token} `)
+  
+      //const response = await props.newArticle(article, file, token)
     }
     //recordatorio: cambiar pic de pathImage por defecto linea 32.
-    const [pathImage, setPathImage]= useState('/assets/loguito.png')
+    const [pathImage, setPathImage]= useState('/assets/losago.png')
     const [file, setFile] = useState()
     //Funcion para previsualizar imagenes
     const onFileChange= e =>{
         if(e.target.files && e.target.files.length > 0){
             const file = e.target.files[0]
-            console.log(file)
             if(file.type.includes('image')){
                 const reader = new FileReader()
                 reader.readAsDataURL(file)
@@ -54,12 +54,16 @@ const Blog = (props) => {
         <label htmlFor="signature-pic" className="label_input_file" >
             <div className="d-flex flex-column align-items-center">
               <p>Select your picture</p> 
-                <img className="img-fluid profile-pic-register" src={pathImage} alt="profile-pic"/>
+                <img className="" src={pathImage} alt="logo"/>
             </div>
         </label>
-          <select>
-            <option>hola</option>
-          </select>
+        <select name="articleCategories" onChange={readInput} >
+          <option value="" selected>Select a Category</option>
+            {props.articleCategories.map((category, index) => {
+                                    return <option key={index} value={category}>{category}</option>
+                                })}
+        </select>
+        
             <input type="file" id="signature-pic" className="admin_input input-file"
             name="file" onChange={onFileChange} required/>
             <div style={{display: 'flex'}}>
@@ -71,6 +75,15 @@ const Blog = (props) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    articles: state.articleR.articles,
+    articleCategories: state.articleR.articleCategories
+  }
+}
 
+const mapDispatchToProps = {
+  newArticle: articleActions.newArticle
+}
 
-export default Blog
+export default connect(mapStateToProps, mapDispatchToProps)(Blog)

@@ -2,6 +2,7 @@ const Article = require('../models/Article')
 
 const articleController = {
   addArticle: (req, res) => {
+    console.log(req.body)
     const {  } = req.body
     const {} =req.files
     const articleSave = new Article({

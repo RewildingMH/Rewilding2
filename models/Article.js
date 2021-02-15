@@ -6,7 +6,7 @@ const articleSchema = new mongoose.Schema({
   descripcion: String,
   visits: Number,
   picture: String,
-  articleCategory:{type:String, enum:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION"]},
+  articleCategories:{type:String, enum:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION"]},
 },
   { timestamps: true }
 )

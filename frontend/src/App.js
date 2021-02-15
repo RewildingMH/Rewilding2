@@ -11,8 +11,6 @@ import CreatePetition from './Components/CreatePetition.jsx';
 import Blog from './Pages/Blog'
 import Petition from './Components/Petition.jsx';
 
-
-
 const App = (props) => {
   const [reload, setReload] = useState(false)
 
@@ -21,6 +19,7 @@ const App = (props) => {
       <Route exact path="/" component={HomePage} />
       <Route exact path="/petitions" component={Petitions} />
       <Route path="/createPetition" component={CreatePetition} />
+      <Route exact path="/blog" component={Blog} />
       <Redirect to="/" />
     </>
   } else if (localStorage.getItem('token')) {
