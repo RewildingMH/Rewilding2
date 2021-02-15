@@ -11,7 +11,6 @@ export const petitionsReducer = (state = initialState, action) => {
         allPetitions: action.payload
       }
     case 'SIGN_PETITION':
-      console.log(action.payload._id)
       return {
         ...state,
         allPetitions: state.allPetitions.map(petition => petition._id === action.payload._id ? action.payload : petition)

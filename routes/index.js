@@ -29,7 +29,9 @@ router.route('/petitions')
 router.route('/signPetition').post(passport.authenticate('jwt', { session: false }), petitionController.signPetition)
 //Blog
 router.route('/blog')
-.post(passport.authenticate('jwt', {session: false}), validator.isAdmin,blogController.addArticle)
+  .post(passport.authenticate('jwt', { session: false }), validator.isAdmin, blogController.addArticle)
+
+router.route('/petitions/like').post(passport.authenticate('jwt', { session: false }), userController.likeReason)
 
 module.exports = router
 

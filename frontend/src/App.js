@@ -33,7 +33,7 @@ const App = (props) => {
       <>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
-        <Route path="/petitions" component={Petitions} />
+        <Route exact path="/petitions" component={Petitions} />
         <Route path="/blog" component={Blog} />
         <Redirect to="/" />
       </>

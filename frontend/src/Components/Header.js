@@ -65,16 +65,13 @@ const Header = (props) => {
                                         <div><p>Home</p></div>
                                     </div>
                                 </NavLink>
-                            
                                 <NavLink to="/petitions">
-                                    <div>
-                                        <div><p>Explore</p></div>
-                                    </div>
+                                    <div><p>Petitions</p></div>
                                 </NavLink>
-                            
-                            
+
+
                                 {links}
-                            
+
                             </div>
                         </div>
                     </div>

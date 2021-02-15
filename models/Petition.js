@@ -7,10 +7,10 @@ const petitionSchema = new mongoose.Schema({
   id: { type: mongoose.Schema.ObjectId, ref: 'user' },
   destination: String,
   desc: String,
-  visits: Number,
-  votes: Array,
+  visits: { type: Number, default: 0 },
+  votes: [{ id: String }],
   picture: String,
-  signatures: Number,
+  signatures: { type: Array, default: [] },
   limitDate: Date,
   reasons: [{ name: String, profilePicture: String, reason: String, likes: Array }],
   isVerified: { type: Boolean, default: true }

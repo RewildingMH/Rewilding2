@@ -1,9 +1,25 @@
 const Petition = require('../models/Petition')
+const path = require('path')
+
 
 const petitionController = {
   addPetition: (req, res) => {
-    const { title, destination, description, limitDate } = req.body.petition
+    console.log(req.body)
+    const { title, destination, description, limitDate } = req.body
     const { name, profilePicture, _id } = req.user
+    const file = req.files.file
+
+
+    file.mv(path.join(__dirname, '../frontend/public/assets/petitionsPictures/' + file.name), error => {
+      if (error) {
+        console.log(error)
+        return res.json({ response: error })
+      }
+    })
+
+    const petitionsPicturesLocation = `/assets/petitionsPictures/${file.name}`
+
+
     const petitionSave = new Petition({
       title,
       author: {
@@ -13,7 +29,7 @@ const petitionController = {
       },
       destination,
       desc: description,
-      picture: profilePicture,
+      picture: petitionsPicturesLocation,
       limitDate
     })
     petitionSave.save()
@@ -55,6 +71,11 @@ const petitionController = {
               profilePicture,
               reason,
             }
+          },
+          $addToSet: {
+            signatures: {
+              id: req.user._id
+            },
           }
         },
         { new: true }
