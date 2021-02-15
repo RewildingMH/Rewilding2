@@ -30,7 +30,8 @@ router.route('/signPetition').post(petitionController.signPetition)
 //Blog
 router.route('/blog')
 .post(passport.authenticate('jwt', {session: false}), validator.isAdmin,blogController.addArticle)
-
+.get(blogController.getArticles)
+.put(blogController.updateArticle)
 module.exports = router
 
 

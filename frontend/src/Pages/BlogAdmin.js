@@ -1,15 +1,18 @@
-import React,  { useState } from "react";
+import React,  { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import articleActions from '../redux/actions/articleActions'
+import BlogArticle from '../Components/BlogArticle'
 
-
-const Blog = (props) => {
-  console.log(props)
+const BlogAdmin = (props) => {
     const [article, setArticle] = useState({
       title: "",
-      message: "",
-      articleCategories: ""
+      descripcion: "",
+      articleCategory: ""
     })
+    useEffect(() => {
+      props.getArticles();
+    }, [])
+
     const readInput = (e) => {
       const {name, value} = e.target
       setArticle({...article, [name]: value});
@@ -17,14 +20,12 @@ const Blog = (props) => {
 
     const sendArticle = async (e) => {
       e.preventDefault()
-      if(article.title === "", article.articleCategories === "", article.message === ""){
+      if(article.title === "", article.articleCategory === "", article.descripcion === ""){
         alert("All fields are required")
         return false
       }
       const token = localStorage.getItem('token')
-      alert(`Titulo ${article.title}, categoria  ${article.articleCategories}, mensaje  ${article.message}, token ${token} `)
-  
-      //const response = await props.newArticle(article, file, token)
+      await props.newArticle(article, file, token)
     }
     //recordatorio: cambiar pic de pathImage por defecto linea 32.
     const [pathImage, setPathImage]= useState('/assets/losago.png')
@@ -57,7 +58,7 @@ const Blog = (props) => {
                 <img className="" src={pathImage} alt="logo"/>
             </div>
         </label>
-        <select name="articleCategories" onChange={readInput} >
+        <select name="articleCategory" onChange={readInput} >
           <option value="" selected>Select a Category</option>
             {props.articleCategories.map((category, index) => {
                                     return <option key={index} value={category}>{category}</option>
@@ -67,10 +68,40 @@ const Blog = (props) => {
             <input type="file" id="signature-pic" className="admin_input input-file"
             name="file" onChange={onFileChange} required/>
             <div style={{display: 'flex'}}>
-            <textarea name="message" onChange={readInput} cols="55" rows="12" placeholder="Write something in this article" required  />
+            <textarea name="descripcion" onChange={readInput} cols="55" rows="12" placeholder="Write something in this article" required  />
             </div>
         <button onClick={sendArticle}>Submit</button>
       </div>
+      <table>
+          <thead>
+              <tr>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Description</th>
+                  <th>Image</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+          </thead>
+          <tbody>
+              {props.articles.map((article)=>{
+                  return <BlogArticle article={article} />
+                      
+                      // <>
+                      //     <tr>
+                      //         <td>{title}</td>
+                      //         <td>{category} </td>
+                      //         <td>{descripcion}</td>
+                      //         <td>{picture}</td>
+                      //         <td >Editar</td>
+                      //         <td >Borrar</td>
+                      //     </tr>
+                      // </>
+                  
+
+              }) }
+          </tbody>
+      </table>
     </>
   );
 };
@@ -83,7 +114,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  newArticle: articleActions.newArticle
+  newArticle: articleActions.newArticle,
+  getArticles: articleActions.getArticles
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Blog)
+export default connect(mapStateToProps, mapDispatchToProps)(BlogAdmin)
