@@ -11,7 +11,7 @@ const Header = (props) => {
     if (props.loggedUser === null) {
         var links = <>
             <NavLink to="/login" >
-                <div><p>Login</p></div>
+                <div><p>LoginJAJAJA</p></div>
             </NavLink>
             <NavLink to="/petitions">
                 <div><p>Petitions</p></div>
