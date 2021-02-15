@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import petitionsActions from "../redux/actions/PetitionsActions";
-import { Reasons } from './Reasons';
-
+import { Reasons } from "./Reasons";
 
 const Petition = (props) => {
   const [signature, setSignature] = useState({});
@@ -10,9 +9,8 @@ const Petition = (props) => {
   const [reload, setReload] = useState(false);
 
   const id = props.match.params.id;
-
   const { onePetition } = props;
-  console.log(props.onePetition)
+
   useEffect(() => {
     setPetition(onePetition.filter((petition) => petition._id === id));
     props.onePetition.length === 0 && props.history.push("/petitions");
@@ -28,7 +26,6 @@ const Petition = (props) => {
     });
   };
 
-  
   const signPetition = async () => {
     if (props.loggedUser) {
       setReload(!reload);
@@ -50,7 +47,8 @@ const Petition = (props) => {
       <h4>Signatures</h4>
       {petition.length && <Reasons reasons={petition[0].reasons} />}
     </div>
-)}
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
