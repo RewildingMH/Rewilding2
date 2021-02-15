@@ -9,9 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Header = (props) => {
-    window.onscroll = ()=> {
-        window.scrollY > 100? 
-            document.querySelector('.navBar').classList.add('affix'):
+    window.onscroll = () => {
+        window.scrollY > 100 ?
+            document.querySelector('.navBar').classList.add('affix') :
             document.querySelector('.navBar').classList.remove('affix')
     };
     if (props.loggedUser === null) {
@@ -37,9 +37,9 @@ const Header = (props) => {
                     <div>
                         <div className="adminBlog"><p>Admin Blog</p></div>
                     </div>
-                </Link> 
+                </Link>
                 <div className="userHeader">
-                    <Link className="userHeaderLink">
+                    <Link to="/" className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                     </Link>
                     <Dropdown className="drop">

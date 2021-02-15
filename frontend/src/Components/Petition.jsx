@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import petitionsActions from "../redux/actions/PetitionsActions";
-import { Reasons } from './Reasons';
-
+import userActions from "../redux/actions/userActions";
+import Reasons from "./Reasons";
 
 const Petition = (props) => {
-  const [signature, setSignature] = useState({});
+  const id = props.match.params.id;
   const [petition, setPetition] = useState({});
   const [reload, setReload] = useState(false);
 
-  const id = props.match.params.id;
+  const [signature, setSignature] = useState(
+    props.loggedUser && { reason: "", petId: id, token: props.loggedUser.token }
+  );
 
   const { onePetition } = props;
-  console.log(props.onePetition)
+
   useEffect(() => {
     setPetition(onePetition.filter((petition) => petition._id === id));
     props.onePetition.length === 0 && props.history.push("/petitions");
-    props.getReason();
   }, [id, onePetition]);
 
   const readInput = (e) => {
     const reason = e.target.value;
+
     setSignature({
       reason: reason.trim(),
       petId: id,
@@ -28,7 +30,6 @@ const Petition = (props) => {
     });
   };
 
-  
   const signPetition = async () => {
     if (props.loggedUser) {
       setReload(!reload);
@@ -40,17 +41,48 @@ const Petition = (props) => {
 
   return (
     <div>
-      <h2>Petition: {petition.length ? petition[0].title : ""}</h2>
-      <input
-        type="text"
-        onChange={readInput}
-        placeholder="I'm signing because ... (optional) "
-      />
-      <button onClick={signPetition}>Sign petition</button>
-      <h4>Signatures</h4>
-      {petition.length && <Reasons reasons={petition[0].reasons} />}
+      {petition.length && (
+        <>
+          <h2>Petition: {petition[0].title}</h2>
+
+          <div
+            style={{
+              backgroundImage: `url(${petition[0].picture})`,
+              width: "100px",
+              height: "100px",
+              backgroundSize: "cover",
+            }}
+          ></div>
+          <div>{petition[0].desc}</div>
+          <p>
+            {petition[0].signatures.length >= petition[0].goal ? (
+              <p>probando</p>
+            ) : petition[0].signatures.length === 1 ? (
+              petition[0].signatures.length +
+              " person has already signed this petition"
+            ) : (
+              petition[0].signatures.length +
+              " persons have already signed this petition"
+            )}
+          </p>
+
+          {petition[0].signatures.length < petition[0].goal && (
+            <>
+              <input
+                type="text"
+                onChange={readInput}
+                placeholder="I'm signing because ... (optional) "
+              />
+              <button onClick={signPetition}>Sign petition</button>
+            </>
+          )}
+          <h4>Signatures</h4>
+          <Reasons reasons={petition[0].reasons} petId={petition[0]._id} />
+        </>
+      )}
     </div>
-)}
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -61,7 +93,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   signPetition: petitionsActions.signPetition,
-  getReason: petitionsActions.getReason,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Petition);

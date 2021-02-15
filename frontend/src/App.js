@@ -1,5 +1,4 @@
 import HomePage from './Pages/HomePage'
-import Header from './Components/Header'
 import LoginPage from './Pages/LoginPage';
 import '../src/styles/styles.css'
 import Petitions from './Pages/Petitions.jsx'
@@ -19,17 +18,17 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
-        <Route exact path="/adminBlog" component={BlogAdmin}/>
-        <Redirect to="/" /> 
+        <Route exact path="/adminBlog" component={BlogAdmin} />
+        <Redirect to="/" />
       </>
     } else {
       var routes = <>
-      <Route exact path="/" component={HomePage} />
-      <Route exact path="/petitions" component={Petitions} />
-      <Route path="/createPetition" component={CreatePetition} />
-      <Route exact path="/blog" component={BlogAdmin} />
-      <Redirect to="/" />
-    </>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/petitions" component={Petitions} />
+        <Route path="/createPetition" component={CreatePetition} />
+        <Route exact path="/blog" component={BlogAdmin} />
+        <Redirect to="/" />
+      </>
     }
   } else if (localStorage.getItem('token')) {
     props.logFromLS(localStorage.getItem('token'))
@@ -73,7 +72,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   logFromLS: authActions.logFromLS
-  
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
