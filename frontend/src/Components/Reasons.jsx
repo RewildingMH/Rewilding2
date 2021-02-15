@@ -4,6 +4,7 @@ export const Reasons = ({reasons}) => {
   return (
     <div>
       {reasons.map(({name, profilePicture, reason}) => 
+      reason !== "" && 
       <div style={{ display: "flex" }}>
       <>
       <div
@@ -14,8 +15,7 @@ export const Reasons = ({reasons}) => {
         }}
       ></div>
       <h5>{name}</h5>
-      <p>{reason}</p>
-   
+      <p>{reason}</p>  
       </> 
     </div>           
       

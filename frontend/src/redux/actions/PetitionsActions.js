@@ -14,12 +14,6 @@ const PetitionsActions = {
   //   }
   // }
 
-  getReason: () => {
-    return async (dispatch, getState) => {
-      const response = await axios.get('http://localhost:4000/api/petitions')
-      dispatch({ type: 'GET_REASONS', payload: response.data.response })
-    }
-  },
   signPetition: userSign => {
     return async (dispatch, getState) => {
       const response = await axios.post('http://localhost:4000/api/signPetition', { userSign },

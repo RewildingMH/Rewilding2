@@ -5,29 +5,29 @@ import { Reasons } from './Reasons';
 
 
 const Petition = (props) => {
-  const [signature, setSignature] = useState({});
+  const id = props.match.params.id;
   const [petition, setPetition] = useState({});
   const [reload, setReload] = useState(false);
 
-  const id = props.match.params.id;
-
+  const [signature, setSignature] = useState(props.loggedUser && {reason: "", petId: id, token: props.loggedUser.token});
+                                             
   const { onePetition } = props;
   console.log(props.onePetition)
   useEffect(() => {
     setPetition(onePetition.filter((petition) => petition._id === id));
     props.onePetition.length === 0 && props.history.push("/petitions");
-    props.getReason();
   }, [id, onePetition]);
 
-  const readInput = (e) => {
+  const readInput = (e) => { 
+    
     const reason = e.target.value;
-    setSignature({
+    
+    setSignature({    
       reason: reason.trim(),
       petId: id,
       token: props.loggedUser.token,
     });
   };
-
   
   const signPetition = async () => {
     if (props.loggedUser) {
@@ -61,7 +61,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   signPetition: petitionsActions.signPetition,
-  getReason: petitionsActions.getReason,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Petition);

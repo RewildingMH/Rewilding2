@@ -66,12 +66,6 @@ const Header = (props) => {
                                     </div>
                                 </NavLink>
                             
-                                <NavLink to="/petitions">
-                                    <div>
-                                        <div><p>Explore</p></div>
-                                    </div>
-                                </NavLink>
-                            
                             
                                 {links}
                             
