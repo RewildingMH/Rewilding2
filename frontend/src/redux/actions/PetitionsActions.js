@@ -7,12 +7,13 @@ const PetitionsActions = {
       dispatch({ type: 'ALL_PETITIONS', payload: response.data.response })
     }
   },
-  // addVisit: () => {
-  //   return async (dispatch, getState) => {
-  //     const response = await axios.get('http://localhost:4000/api/petitions')
-  //     dispatch({ type: 'ADD_PETITIONS', payload: response.data.response })
-  //   }
-  // }
+
+  addVisit: (petId) => {
+    return async (dispatch, getState) => {
+      const response = await axios.post('http://localhost:4000/api/petitions/visits', { petId })
+      dispatch({ type: 'ADD_PETITIONS', payload: response.data.response })
+    }
+  },
 
   signPetition: userSign => {
     return async (dispatch, getState) => {
@@ -37,13 +38,15 @@ const PetitionsActions = {
       description,
       title,
       destination,
-      token
+      token,
+      goal
     } = petition
     const form = new FormData()
     form.append('title', title)
     form.append('limitDate', limitDate)
     form.append('description', description)
     form.append('destination', destination)
+    form.append('goal', goal)
     form.append('petitionPicture', file.name)
     form.append('file', file)
     return async (dispatch, getState) => {
@@ -59,7 +62,8 @@ const PetitionsActions = {
         payload: response.data.response
       })
     }
-  }
+  },
+
 }
 
 export default PetitionsActions

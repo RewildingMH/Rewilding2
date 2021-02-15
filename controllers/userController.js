@@ -7,8 +7,7 @@ const path = require('path')
 
 const userController = {
     signUp: async (req, res) => {
-        console.log(req.body)
-        console.log(req.files)
+
         const errores = []
         const { name, lastName, username, password, country } = req.body
         const file = req.files.file
@@ -19,7 +18,7 @@ const userController = {
         }
         file.mv(path.join(__dirname, '../frontend/public/assets/profilePictures/' + file.name), error => {
             if (error) {
-                console.log(error)
+
                 return res.json({ response: error })
             }
         }
@@ -122,21 +121,104 @@ const userController = {
                 },
                 { new: true }
             );
-            console.log(response)
+
             res.json({
                 success: true,
                 response
             })
         } catch (error) {
-            console.log(error)
             res.json({
                 success: false,
                 response: error,
             })
         }
-    }
+    },
 
+    dislikeReason: async (req, res) => {
+        try {
+            const { petId, id } = req.params
+            const response = await Petition.findOneAndUpdate(
+                { _id: petId, 'reasons._id': id },
+                {
+                    $pull:
+                    {
+                        'reasons.$.likes': {
+                            id: req.user._id
+                        }
+                    }
+
+                },
+                { new: true });
+
+            res.json({
+                success: true,
+                response
+            })
+        } catch (error) {
+
+            res.json({
+                success: true,
+                error
+            })
+        }
+    },
+    deleteReason: async (req, res) => {
+        try {
+            const { petId, reasonId } = req.params
+            const response = await Petition.findOneAndUpdate(
+                { _id: petId },
+                {
+                    $pull: {
+                        reasons: {
+                            _id: reasonId,
+                        },
+                    },
+                },
+                { new: true }
+            )
+            res.json({
+                success: true,
+                response
+            })
+        } catch (error) {
+            res.json({
+                success: false,
+                error
+            })
+
+        }
+    },
+    modifyReason: async (req, res) => {
+        try {
+            const response = await Petition.findOneAndUpdate(
+                {
+                    _id: req.body.petId,
+                    "reasons._id": req.body.id,
+                },
+                {
+                    $set: {
+                        "reasons.$.reason": req.body.modification,
+                    },
+                },
+                { new: true }
+            );
+
+            res.json({
+                success: true,
+                response
+            });
+        } catch (error) {
+
+            res.json({
+                succes: true,
+                error
+            })
+        }
+    },
 
 }
+
+
+
 
 module.exports = userController

@@ -15,11 +15,26 @@ export const petitionsReducer = (state = initialState, action) => {
         ...state,
         allPetitions: state.allPetitions.map(petition => petition._id === action.payload._id ? action.payload : petition)
       }
-    // case 'SIGN_PETITION':
-    //   return {
-    //     ...state,
-    //     reasons: state.reasons.map(reasons => reasons._id === action.payload._id ? reasons = action.payload : reasons)
-    //   }
+    case 'LIKE':
+      return {
+        ...state,
+        allPetitions: state.allPetitions.map(petition => petition._id === action.payload._id ? action.payload : petition)
+      }
+    case 'DISLIKE':
+      return {
+        ...state,
+        allPetitions: state.allPetitions.map(petition => petition._id === action.payload._id ? action.payload : petition)
+      }
+    case 'DELETE_REASON':
+      return {
+        ...state,
+        allPetitions: state.allPetitions.map(petition => petition._id === action.payload._id ? action.payload : petition)
+      }
+    case 'MODIFY_REASON':
+      return {
+        ...state,
+        allPetitions: state.allPetitions.map(petition => petition._id === action.payload._id ? action.payload : petition)
+      }
     default:
       return state
   }

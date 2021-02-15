@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import petitionsActions from "../redux/actions/PetitionsActions";
+import userActions from "../redux/actions/userActions";
 import Reasons from "./Reasons";
 
 const Petition = (props) => {
@@ -38,8 +39,6 @@ const Petition = (props) => {
     }
   };
 
-  console.log(petition);
-
   return (
     <div>
       {petition.length && (
@@ -56,19 +55,27 @@ const Petition = (props) => {
           ></div>
           <div>{petition[0].desc}</div>
           <p>
-            {petition[0].signatures.length === 1
-              ? petition[0].signatures.length +
-                " person has already signed this petition"
-              : petition[0].signatures.length +
-                " persons have already signed this petition"}
+            {petition[0].signatures.length >= petition[0].goal ? (
+              <p>probando</p>
+            ) : petition[0].signatures.length === 1 ? (
+              petition[0].signatures.length +
+              " person has already signed this petition"
+            ) : (
+              petition[0].signatures.length +
+              " persons have already signed this petition"
+            )}
           </p>
 
-          <input
-            type="text"
-            onChange={readInput}
-            placeholder="I'm signing because ... (optional) "
-          />
-          <button onClick={signPetition}>Sign petition</button>
+          {petition[0].signatures.length < petition[0].goal && (
+            <>
+              <input
+                type="text"
+                onChange={readInput}
+                placeholder="I'm signing because ... (optional) "
+              />
+              <button onClick={signPetition}>Sign petition</button>
+            </>
+          )}
           <h4>Signatures</h4>
           <Reasons reasons={petition[0].reasons} petId={petition[0]._id} />
         </>

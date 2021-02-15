@@ -8,7 +8,6 @@ const CreatePetition = (props) => {
   const [file, setFile] = useState();
 
   const captureNewPetition = (e) => {
-    console.log(e.target.value, e.target.name);
     const field = e.target.name;
     const value = e.target.value;
     setNewPetition({
@@ -38,7 +37,6 @@ const CreatePetition = (props) => {
   const sendPetition = (e) => {
     e.preventDefault();
     props.addPetition(newPetition, file);
-    console.log(newPetition, file);
     props.history.push("/petitions");
   };
 
@@ -70,6 +68,10 @@ const CreatePetition = (props) => {
       <label>Choose a limit date for your petition</label>
       <p>Final date</p>
       <input name="limitDate" type="date" onChange={captureNewPetition} />
+
+      <label>Choose a goal for your petition</label>
+      <p>Signature limit</p>
+      <input name="goal" type="number" onChange={captureNewPetition} />
 
       <label>Upload a picture for your petition</label>
       <p>Make it a high res one</p>

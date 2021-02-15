@@ -4,8 +4,7 @@ const path = require('path')
 
 const petitionController = {
   addPetition: (req, res) => {
-    console.log(req.body)
-    const { title, destination, description, limitDate } = req.body
+    const { title, destination, description, limitDate, goal } = req.body
     const { name, profilePicture, _id } = req.user
     const file = req.files.file
 
@@ -30,7 +29,8 @@ const petitionController = {
       destination,
       desc: description,
       picture: petitionsPicturesLocation,
-      limitDate
+      limitDate,
+      goal
     })
     petitionSave.save()
       .then(petitionSaved => {
@@ -88,6 +88,29 @@ const petitionController = {
       res.json({
         success: false,
         response: error,
+      })
+    }
+  },
+  addVisit: async (req, res) => {
+
+    try {
+      const response = await Petition.findOneAndUpdate(
+        { _id: req.body.petId },
+        {
+          $inc: {
+            visits: 1
+          },
+        },
+        { new: true }
+      )
+      res.json({
+        success: true,
+        response,
+      })
+    } catch (error) {
+      res.json({
+        success: false,
+        error
       })
     }
   }
