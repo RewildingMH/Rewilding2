@@ -6,8 +6,6 @@ const path= require('path')
 
 const userController = {
     signUp: async (req, res) => {
-        console.log(req.body)
-        console.log(req.files)
         const errores=[]
         const {name, lastName, username,  password, country} = req.body
         const file= req.files.file

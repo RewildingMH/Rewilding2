@@ -8,11 +8,8 @@ import { connect } from 'react-redux'
 import authActions from './redux/actions/authActions'
 import React, { useState } from 'react'
 import CreatePetition from './Components/CreatePetition.jsx';
-import Blog from './Pages/Blog'
+import BlogAdmin from './Pages/BlogAdmin'
 import Petition from './Components/Petition.jsx';
-import BlogAdmin from './Components/BlogAdmin'
-
-
 
 const App = (props) => {
   const [reload, setReload] = useState(false)
@@ -30,6 +27,7 @@ const App = (props) => {
       <Route exact path="/" component={HomePage} />
       <Route exact path="/petitions" component={Petitions} />
       <Route path="/createPetition" component={CreatePetition} />
+      <Route exact path="/blog" component={BlogAdmin} />
       <Redirect to="/" />
     </>
     }
@@ -44,7 +42,7 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/petitions" component={Petitions} />
-        <Route path="/blog" component={Blog} />
+        <Route path="/blog" component={BlogAdmin} />
         <Redirect to="/" />
       </>
     );
