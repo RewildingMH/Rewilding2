@@ -29,7 +29,7 @@ const PetitionsActions = {
           },
         }
       )
-
+      
       dispatch({
         type: 'SIGN_PETITION',
         payload: response.data.response
