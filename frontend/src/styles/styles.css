@@ -4,66 +4,143 @@
     box-sizing: border-box;
 }
 
-body {
-    width: 100vw;
-    font-family: 'Nunito Sans', sans-serif;
+#root {
+    height: auto;
+    width: auto;
 }
 
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Nunito Sans', sans-serif;
+}
 
 h1, h2 {
     font-family: 'Oswald', sans-serif;
 }
 
 /* header */
+
+.navBar {
+    width: 100%;
+    position: fixed;
+    z-index: auto;
+}
+
 .mainListDiv {
-    height: 15vh;
+    height: 20vh;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(10, 78, 10);
+    background-color: rgba(46, 46, 46, 0.274);
 }
 
+.createPetition {
+    width: 15vw;
+}
 
 .mainListDiv p {
     color: ivory;
-    padding-right: 2vw;
     text-decoration: none;
     font-size: 2.5vh;
+    display: flex;
 }
 
 nav a {
     text-decoration: none;
 }
 
-.navsDiv {
-    width: 30%;
+.navContainer{
     display: flex;
-    justify-content: space-evenly;
+    align-items: center;
+    
 }
 
+.navContainer p {
+    margin-left: 1vw;
+}
+
+.logoDiv {
+    width: 9vw;
+    height: 14vh;
+    background-size: cover;
+    background-Position: center ;
+}
+
+.userHeaderLink{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-right: 1vw;
+}
+
+.userHeaderName {
+    text-decoration: none;
+}
+
+.userHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.navsDiv {
+    width: 40%;
+    display: flex;
+    margin-left: 5vw;
+}
+
+.userImg {
+    width: 4.5vw;
+    height: 9vh;
+    border-radius: 15vw;
+}
+
+.drop p {
+    color: black;
+    font-size: 1.7vh;
+}
+
+.dropMenu {
+    margin-top: 1vh;
+}
+
+.noUserHeader {
+    display: flex;
+    align-items: center;
+    margin-right: 5vw; 
+}
+
+.affix {
+    padding: 0;
+    background-color: rgb(46, 46, 46);
+}
 /* homepage */
 
 .containerMain {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: rgb(10, 78, 10);
     display: flex;
-    justify-content:flex-end;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    /* position: relative;
+    z-index: 5;  */
 }
 
-.containerMain div {
+/* .containerMain div {
     display: flex;
     align-items: center;
     padding-right: 3vw;
-}
+} */
 
-.container {
+.containerHome {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .distanceDiv {
@@ -88,19 +165,12 @@ nav a {
 .divBlog {
     width: 100%;
     height: 50vh;
-    background-color: rgb(92, 158, 92);
+    background-color: rgb(46, 46, 46);
     margin-top: 5vh;
 }
 
 .mainTitle {
     font-size: 10vh;
-}
-
-.containerCarrusel {
-    width: 40vw;
-    height: 50vh;
-    background-color: lightgreen;
-    box-shadow: 10px 10px 20px rgb(37, 37, 37);
 }
 
 /* login */

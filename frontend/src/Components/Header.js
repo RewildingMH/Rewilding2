@@ -3,21 +3,26 @@ import { connect } from 'react-redux'
 import React, { useState } from 'react'
 import authActions from '../redux/actions/authActions'
 import logo from '../assets/logo2.png'
+import { Dropdown } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
 const Header = (props) => {
-    const [show, setShow] = useState(true);
+    window.onscroll = () => {
+        window.scrollY > 100 ?
+            document.querySelector('.navBar').classList.add('affix') :
+            document.querySelector('.navBar').classList.remove('affix')
+    };
     if (props.loggedUser === null) {
         var links = <>
-            <NavLink to="/login" >
-                <div><p>Login</p></div>
-            </NavLink>
-            <NavLink to="/petitions">
-                <div><p>Petitions</p></div>
-            </NavLink>
-            <div>
-                <div><p>Blog</p></div>
+            <div id="mainListDiv" className="noUserHeader" >
+                <NavLink to="/login" >
+                    <div><p>Login</p></div>
+                </NavLink>
+                <NavLink to="/petitions">
+                    <div><p>Petitions</p></div>
+                </NavLink>
             </div>
         </>
     } else {
@@ -25,55 +30,56 @@ const Header = (props) => {
             <>
                 <Link to="/createPetition">
                     <div>
-                        <div><p>Create a petition</p></div>
+                        <div className="createPetition"><p>Create a petition</p></div>
                     </div>
                 </Link>
-                <div>
-                    <div><p>Blog</p></div>
-                </div>
-                <Link>
-                    <img src={props.loggedUser.profilePicture} alt="profile" />
+                <Link to="/adminBlog">
                     <div>
-                        <div onClick={() => { setShow(!show); }}>
-                            {props.loggedUser.name}
-                        </div>
+                        <div className="adminBlog"><p>Admin Blog</p></div>
                     </div>
                 </Link>
-                {!show &&
-                    <ul>
-                        <li><p>Profile</p></li>
-                        <li ><p>Upgrades</p></li>
-                        <li onClick={() => props.logoutUser()} >LogOut</li>
-                    </ul>}
+                <div className="userHeader">
+                    <Link to="/" className="userHeaderLink">
+                        <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
+                    </Link>
+                    <Dropdown className="drop">
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            {props.loggedUser.name}
+                        </Dropdown.Toggle>
 
+                        <Dropdown.Menu className="dropMenu">
+                            <Dropdown.Item href="#/action-1"><p>Profile</p></Dropdown.Item>
+                            <Dropdown.Item href="#/action-2"><p>Upgrades</p></Dropdown.Item>
+                            <Dropdown.Item href="#/action-3"><p onClick={() => props.logoutUser()}>Log Out</p></Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
             </>
     }
     return (
         <>
-            <nav>
+            <nav className="navBar">
                 <div className="mainListDiv">
-                    <div >
-                        <NavLink to="/" >
-                            <div style={{ backgroundImage: `url(${logo})`, width: "9vw", height: "14vh", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                    <div>
+                        <NavLink to="/">
+                            <div style={{ backgroundImage: `url(${logo})` }} className="logoDiv"></div>
                         </NavLink>
                     </div>
-                    <div id="mainListDiv" className="navsDiv" >
-                        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-                            <div className="navsDiv">
-                                <NavLink to="/">
-                                    <div>
-                                        <div><p>Home</p></div>
-                                    </div>
-                                </NavLink>
-                                <NavLink to="/petitions">
-                                    <div><p>Petitions</p></div>
-                                </NavLink>
-
-
-                                {links}
-
+                    <div id="mainListDiv" className="navContainer" >
+                        <div className="navsDiv">
+                            <NavLink to="/">
+                                <div>
+                                    <div><p>Home</p></div>
+                                </div>
+                            </NavLink>
+                            <NavLink to="/petitions">
+                                <div><p>Petitions</p></div>
+                            </NavLink>
+                            <div>
+                                <p>Blog</p>
                             </div>
                         </div>
+                        {links}
                     </div>
                 </div>
             </nav>

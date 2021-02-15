@@ -41,6 +41,9 @@ router.route('/petitions/modifyReason').put(passport.authenticate('jwt', { sessi
 
 router.route('/petitions/visits').post(petitionController.addVisit)
 
+  .post(passport.authenticate('jwt', { session: false }), validator.isAdmin, blogController.addArticle)
+  .get(blogController.getArticles)
+  .put(blogController.updateArticle)
 module.exports = router
 
 
