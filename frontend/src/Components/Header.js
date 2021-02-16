@@ -9,11 +9,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Header = (props) => {
-    /* window.onscroll = () => {
-        window.scrollY > 100 ?
+    window.onscroll = () => {
+        window.scrollY > 300 ?
             document.querySelector('.navBar').classList.add('affix') :
             document.querySelector('.navBar').classList.remove('affix')
-    }; */
+    }; 
+
     if (props.loggedUser === null) {
         var links = <>
             <NavLink to="/login" >
@@ -37,9 +38,9 @@ const Header = (props) => {
                         {props.loggedUser.name}
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="dropMenu">
-                        <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Upgrades</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3" onClick={() => props.logoutUser()}>Log Out</Dropdown.Item>
+                        <Dropdown.Item ><Link to="/profile" className="profileDrop">Profile</Link></Dropdown.Item>
+                        <Dropdown.Item >Upgrades</Dropdown.Item>
+                        <Dropdown.Item onClick={() => props.logoutUser()} className="logOutDrop">Log Out</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </>
@@ -57,9 +58,9 @@ const Header = (props) => {
                             {props.loggedUser.name}
                         </Dropdown.Toggle>
                         <Dropdown.Menu className="dropMenu">
-                            <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Upgrades</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3" onClick={() => props.logoutUser()}>Log Out</Dropdown.Item>
+                            <Dropdown.Item ><Link to="/profile" className="profileDrop">Profile</Link></Dropdown.Item>
+                            <Dropdown.Item >Upgrades</Dropdown.Item>
+                            <Dropdown.Item onClick={() => props.logoutUser()} className="logOutDrop">Log Out</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </>

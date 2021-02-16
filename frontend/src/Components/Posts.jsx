@@ -51,18 +51,18 @@ const Posts = (props) => {
   return (
     <div>
       <div>
-        <div>
+        <div className="fotoNombrePosts">
           <div>foto</div>
           <div>nombre</div>
         </div>
-        <div>
+        <div className="postsTextArea">
           <textarea
             name="text"
             placeholder="What's on your mind"
             onChange={captureNewPost}
           />
         </div>
-        <div>
+        <div className="filesPost">
           <input type="file" onChange={onFileChange} />
           <img
             className="img-fluid profile-pic-profile-submit"
