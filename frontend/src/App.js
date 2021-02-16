@@ -11,24 +11,25 @@ import BlogAdmin from './Pages/BlogAdmin'
 import Petition from './Components/Petition.jsx';
 
 const App = (props) => {
+
   const [reload, setReload] = useState(false)
   if (props.loggedUser) {
     if (props.loggedUser.rol === "admin") {
-      var routes = <>
+      var routes = <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
         <Route exact path="/adminBlog" component={BlogAdmin} />
         <Redirect to="/" />
-      </>
+      </Switch>
     } else {
-      var routes = <>
+      var routes = <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
         <Route exact path="/blog" component={BlogAdmin} />
         <Redirect to="/" />
-      </>
+      </Switch>
     }
   } else if (localStorage.getItem('token')) {
     props.logFromLS(localStorage.getItem('token'))
@@ -37,13 +38,13 @@ const App = (props) => {
       })
   } else {
     var routes = (
-      <>
+      <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/petitions" component={Petitions} />
         <Route path="/blog" component={BlogAdmin} />
         <Redirect to="/" />
-      </>
+      </Switch>
     );
   }
 
@@ -51,9 +52,7 @@ const App = (props) => {
   return (
     <>
       <Router>
-        <Switch>
           {routes}
-        </Switch>
         <Route path="/petitions/:id" component={Petition} />
       </Router>
     </>
