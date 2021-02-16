@@ -12,29 +12,26 @@ const Community = (props) => {
     setPopular(allPetitions.sort((a, b) => b.visits - a.visits));
   }, [allPetitions]);
 
-  console.log(props);
-
   useEffect(() => {
     props.getPetitions();
     props.getArticles();
   }, []);
+
   return (
     <>
     <div className="communityBanner"></div>
-    <div className="comunityContainer">
-      <div className="comunityEntry container">
-        {popular.slice(0, 3).map(({ title, picture }) => (
-          <>
-          <div className="communityInfo">
-            <div className="communityImg" style={{backgroundImage: `url(${picture})`}}></div>
-              <p>{title}</p>
-          </div>
-          </>
-        ))}
+      <div className="comunityContainer">
+        <div className="comunityEntry container">
+          {popular.slice(0, 3).map(({ title, picture }) => (
+            <>
+            <div className="communityInfo">
+              <div className="communityImg" style={{backgroundImage: `url(${picture})`}}></div>
+                <p>{title}</p>
+            </div>
+            </>
+          ))}
+        </div>
       </div>
-      <Posts />
-      <div>latest blog entries</div>
-    </div>
     </>
   );
 };
