@@ -20,6 +20,7 @@ const App = (props) => {
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
         <Route exact path="/adminBlog" component={BlogAdmin} />
+        <Route path="/petitions/:id" component={Petition} />
         <Redirect to="/" />
       </Switch>
     } else {
@@ -28,6 +29,8 @@ const App = (props) => {
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
         <Route exact path="/blog" component={BlogAdmin} />
+        <Route path="/petitions/:id" component={Petition} />
+
         <Redirect to="/" />
       </Switch>
     }
@@ -43,6 +46,7 @@ const App = (props) => {
         <Route path="/login" component={LoginPage} />
         <Route path="/petitions" component={Petitions} />
         <Route path="/blog" component={BlogAdmin} />
+        <Route path="/petitions/:id" component={Petition} />
         <Redirect to="/" />
       </Switch>
     );
@@ -52,8 +56,7 @@ const App = (props) => {
   return (
     <>
       <Router>
-          {routes}
-        <Route path="/petitions/:id" component={Petition} />
+        {routes}
       </Router>
     </>
   )

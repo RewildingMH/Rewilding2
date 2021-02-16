@@ -62,7 +62,7 @@ const Reasons = ({
   return (
     <div>
       {reasons.map(
-        ({ name, profilePicture, reason, _id, likes }) =>
+        ({ name, profilePicture, reason, _id, likes, userId }) =>
           reason !== "" && (
             <div style={{ display: "flex" }}>
               <div
@@ -74,12 +74,31 @@ const Reasons = ({
               ></div>
               <h5>{name}</h5>
               <p>{reason}</p>
-              <button onClick={like} id={_id}>
-                ♥{likes.length}
-              </button>
-              <button onClick={dislike} id={_id}>
-                ♥{likes.length}
-              </button>
+
+              {loggedUser ? (
+                likes.find((like) => like.id === loggedUser.userId) ? (
+                  <button onClick={dislike} id={_id}>
+                    DISLIKE♥{likes.length}
+                  </button>
+                ) : (
+                  <button onClick={like} id={_id}>
+                    LIKE♥{likes.length}
+                  </button>
+                )
+              ) : (
+                <button id={_id}>LIKE♥{likes.length}</button>
+              )}
+
+              {loggedUser.userId === userId && (
+                <>
+                  <button onClick={removeReason} id={_id}>
+                    DELETE
+                  </button>
+                  <button onClick={changeReason}>EDIT</button>
+                </>
+              )}
+
+              {/* 
               <button onClick={removeReason} id={_id}>
                 DELETE
               </button>
@@ -89,7 +108,7 @@ const Reasons = ({
                 name="modification"
                 type="text"
                 onChange={captureChange}
-              />
+              /> */}
             </div>
           )
       )}
