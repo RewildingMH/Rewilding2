@@ -49,7 +49,7 @@ const BlogAdmin = (props) => {
 //estilo linea 66 de prueba(el div).
   return (
     <>
-      <div>
+      <div className="adminBlog container">
         <h2>Blog</h2>
         <input type="text" onChange={readInput} name="title"placeholder="Put your title for this article"/>
         <label htmlFor="signature-pic" className="label_input_file" >

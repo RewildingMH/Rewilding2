@@ -9,7 +9,7 @@ const LoginPage = () =>{
     const [show, setShow] = useState(true);
     return(
         <>
-           <div className="container mt-4">
+           <div className="container">
                <div className="row justify-content-center">
                    <div className="col-6 text-center">
                         {!show? <Register/>:<Login/> }

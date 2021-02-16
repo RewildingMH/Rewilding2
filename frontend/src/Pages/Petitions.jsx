@@ -10,11 +10,12 @@ const Petitions = (props) => {
 
   return (
     <>
-      <div>
-        <h1>Petitions</h1>
-        {props.allPetitions.map((petition) => {
-          return <PetitionCard key={petition._id} petition={petition} />;
-        })}
+      <div className="petitionBanner"></div>
+      <div className="petitionContainer">
+            <h1>Petitions</h1>
+            {props.allPetitions.map((petition) => {
+              return <PetitionCard key={petition._id} petition={petition} />;
+            })}
       </div>
     </>
   );
