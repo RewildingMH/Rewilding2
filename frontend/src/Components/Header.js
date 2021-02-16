@@ -38,6 +38,11 @@ const Header = (props) => {
                         <div className="adminBlog"><p>Admin Blog</p></div>
                     </div>
                 </Link>
+                <Link to="/comunnity">
+                    <div>
+                        <div className="adminBlog"><p>Community</p></div>
+                    </div>
+                </Link>
                 <div className="userHeader">
                     <Link to="/" className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />

@@ -22,6 +22,7 @@ const Reasons = ({
   };
 
   const [edit, setEdit] = useState({});
+  const [visible, setVisible] = useState(false);
 
   const dislike = (e) => {
     const id = e.target.id;
@@ -55,6 +56,11 @@ const Reasons = ({
   };
 
   const changeReason = (e) => {
+    setVisible(!visible);
+    e.preventDefault();
+  };
+
+  const sendModification = (e) => {
     e.preventDefault();
     modifyReason(edit);
   };
@@ -73,7 +79,19 @@ const Reasons = ({
                 }}
               ></div>
               <h5>{name}</h5>
-              <p>{reason}</p>
+              {visible ? (
+                <>
+                  <input
+                    id={_id}
+                    name="modification"
+                    type="text"
+                    onChange={captureChange}
+                  />
+                  <button onClick={sendModification}>SEND</button>
+                </>
+              ) : (
+                <p>{reason}</p>
+              )}
 
               {loggedUser ? (
                 likes.find((like) => like.id === loggedUser.userId) ? (
@@ -89,7 +107,7 @@ const Reasons = ({
                 <button id={_id}>LIKE♥{likes.length}</button>
               )}
 
-              {loggedUser.userId === userId && (
+              {loggedUser && loggedUser.userId === userId && (
                 <>
                   <button onClick={removeReason} id={_id}>
                     DELETE
@@ -97,18 +115,6 @@ const Reasons = ({
                   <button onClick={changeReason}>EDIT</button>
                 </>
               )}
-
-              {/* 
-              <button onClick={removeReason} id={_id}>
-                DELETE
-              </button>
-              <button onClick={changeReason}>EDIT</button>
-              <input
-                id={_id}
-                name="modification"
-                type="text"
-                onChange={captureChange}
-              /> */}
             </div>
           )
       )}

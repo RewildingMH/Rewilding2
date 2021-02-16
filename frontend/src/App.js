@@ -9,6 +9,7 @@ import React, { useState } from 'react'
 import CreatePetition from './Components/CreatePetition.jsx';
 import BlogAdmin from './Pages/BlogAdmin'
 import Petition from './Components/Petition.jsx';
+import Community from './Pages/Community';
 
 const App = (props) => {
 
@@ -30,7 +31,7 @@ const App = (props) => {
         <Route path="/createPetition" component={CreatePetition} />
         <Route exact path="/blog" component={BlogAdmin} />
         <Route path="/petitions/:id" component={Petition} />
-
+        <Route path="/community" component={Community} />
         <Redirect to="/" />
       </Switch>
     }
@@ -44,7 +45,7 @@ const App = (props) => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
-        <Route path="/petitions" component={Petitions} />
+        <Route exact path="/petitions" component={Petitions} />
         <Route path="/blog" component={BlogAdmin} />
         <Route path="/petitions/:id" component={Petition} />
         <Redirect to="/" />
