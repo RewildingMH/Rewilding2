@@ -54,6 +54,8 @@ router.route('/posts/comments').post(passport.authenticate('jwt', { session: fal
 
 router.route('/posts/like').post(passport.authenticate('jwt', { session: false }), postController.likePost)
 
+router.route('/posts/dislike/:postId').delete(passport.authenticate('jwt', { session: false }), postController.dislikePost)
+
 module.exports = router
 
 

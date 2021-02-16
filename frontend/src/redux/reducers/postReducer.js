@@ -15,6 +15,12 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         allPosts: state.allPosts.map(post => post._id === action.payload._id ? action.payload : post)
       }
+
+    case 'LIKE_POST':
+      return {
+        ...state,
+        allPosts: state.allPosts.map(post => post._id === action.payload._id ? action.payload : post)
+      }
     default:
       return state
   }

@@ -61,6 +61,21 @@ const postActions = {
         payload: response.data.response
       })
     }
+  },
+  sendDislikePost: dislikePost => {
+    const { postId, token } = dislikePost
+    return async (dispatch, getState) => {
+      const response = await axios.delete(`http://localhost:4000/api/posts/dislike/${postId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+      dispatch({
+        type: 'LIKE_POST',
+        payload: response.data.response
+      })
+    }
   }
 
 }
