@@ -13,7 +13,7 @@ const petitionSchema = new mongoose.Schema({
   signatures: { type: Array, default: [] },
   limitDate: Date,
   goal: Number,
-  reasons: [{ name: String, profilePicture: String, reason: String, likes: Array }],
+  reasons: [{ name: String, profilePicture: String, reason: String, likes: Array, userId: String }],
   isVerified: { type: Boolean, default: true }
 },
   { timestamps: true }
