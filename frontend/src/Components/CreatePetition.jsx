@@ -41,6 +41,8 @@ const CreatePetition = (props) => {
   };
 
   return (
+    <>
+    <div className="createPetitionBanner"></div>
     <div>
       <h2>Create petition</h2>
       <label>Write down the title of your petition</label>
@@ -85,6 +87,7 @@ const CreatePetition = (props) => {
 
       <button onClick={sendPetition}>Send Petition</button>
     </div>
+    </>
   );
 };
 
