@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import postActions from "../redux/actions/postActions";
 
-const Post = ({ post, loggedUser, newComment, sendLikePost }) => {
+const Post = ({
+  post,
+  loggedUser,
+  newComment,
+  sendLikePost,
+  sendDislikePost,
+}) => {
   const [comment, setComment] = useState({});
 
   const captureChange = (e) => {
@@ -23,11 +29,22 @@ const Post = ({ post, loggedUser, newComment, sendLikePost }) => {
 
   const likePost = (e) => {
     e.preventDefault();
+    console.log();
     sendLikePost({
       postId: post._id,
       token: loggedUser.token,
     });
   };
+
+  const dislikePost = (e) => {
+    e.preventDefault();
+    sendDislikePost({
+      postId: post._id,
+      token: loggedUser.token,
+    });
+  };
+
+  console.log(post.likes);
 
   return (
     <div>
@@ -44,8 +61,23 @@ const Post = ({ post, loggedUser, newComment, sendLikePost }) => {
         ></div>
       )}
       <h3>{post.text}</h3>
-      <div>LIKES:{post.likes.length}</div>
-      <button onClick={likePost}>♥</button>
+
+      {loggedUser ? (
+        post.likes.find((like) => like._id === loggedUser.userId) ? (
+          <button onClick={dislikePost} id={post._id}>
+            DISLIKE♥{post.likes.length}
+          </button>
+        ) : (
+          <button onClick={likePost} id={post._id}>
+            LIKE♥{post.likes.length}
+          </button>
+        )
+      ) : (
+        <button onClick={() => alert("must be logged in")}>
+          LIKE♥{post.likes.length}
+        </button>
+      )}
+
       <div>
         <p>COMMENTS</p>
         {post.comments.map(({ comment, name, profilePicture, likes }) => (
@@ -86,6 +118,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   newComment: postActions.newComment,
   sendLikePost: postActions.sendLikePost,
+  sendDislikePost: postActions.sendDislikePost,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

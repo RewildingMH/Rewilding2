@@ -116,7 +116,30 @@ const postController = {
 
     }
   },
+  dislikePost: async (req, res) => {
+    try {
+      const { postId } = req.params
+      const response = await Post.findOneAndUpdate(
+        { _id: postId },
+        {
+          $pull: {
+            likes: { _id: req.user._id }
+          }
+        }, { new: true })
+      res.json({
+        success: true,
+        response
+      })
 
+
+    } catch (error) {
+      console.log(error)
+      res.json({
+        success: false,
+        error
+      })
+    }
+  }
 }
 
 module.exports = postController
