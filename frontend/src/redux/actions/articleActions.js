@@ -25,17 +25,32 @@ const articleActions = {
             dispatch({type: 'GET_ARTICLES', payload: response.data.response})
         }
     },
-    editArticle:(articleId)=>{
+    editArticle:(article)=>{
+        
         return async(dispatch, getState) => {
             try{
-                const response = await axios.put('http://localhost:4000/api/blog', {articleId})
-                dispatch({type: 'UPDATE_ARTICLES', payload: response.data.response})
+                const response = await axios.put('http://localhost:4000/api/blog', {article})
+                dispatch({type: 'UPDATE_ARTICLE', payload: response.data.response})
             }
             catch(error){
                 console.log(error)
               }
         }   
     },
+    deleteArticle:(id) => {
+        console.log(id)
+        return async (dispatch, getState) => {
+          const response = await axios.put('http://localhost:4000/api/blog/delete',{id})
+          dispatch({ type: 'DELETE_ARTICLE', payload: response.data.response })
+        }
+      },
+    commentArticle: (comment, id, token) => {
+        console.log(comment)
+        return async(dispatch, getState) => {
+            const response = await axios.post('http://localhost:400/api/blog/comment', {comment})
+            dispatch({type: 'COMMENT_ARTICLE', payload: response.data.response})
+        }
+    }
 }
 
 export default articleActions
