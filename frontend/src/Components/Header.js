@@ -14,6 +14,7 @@ const Header = (props) => {
             document.querySelector('.navBar').classList.add('affix') :
             document.querySelector('.navBar').classList.remove('affix')
     }; 
+    // este es el que va 
     if (props.loggedUser === null) {
         var links = <>
             <NavLink to="/login" >
