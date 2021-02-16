@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import petitionsActions from "../redux/actions/PetitionsActions";
+import petitionsActions from "../redux/actions/petitionsActions";
 import { connect } from "react-redux";
 
 const PetitionCard = (props) => {

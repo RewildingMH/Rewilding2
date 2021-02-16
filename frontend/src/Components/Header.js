@@ -9,82 +9,95 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Header = (props) => {
+<<<<<<< HEAD
     // window.onscroll = () => {
     //     window.scrollY > 100 ?
     //         document.querySelector('.navBar').classList.add('affix') :
     //         document.querySelector('.navBar').classList.remove('affix')
     // };
+=======
+    /* window.onscroll = () => {
+        window.scrollY > 100 ?
+            document.querySelector('.navBar').classList.add('affix') :
+            document.querySelector('.navBar').classList.remove('affix')
+    }; */
+>>>>>>> 2fb2c221981124606ce439ae227d583dcbc36c55
     if (props.loggedUser === null) {
         var links = <>
-            <div id="mainListDiv" className="noUserHeader" >
-                <NavLink to="/login" >
-                    <div><p>Login</p></div>
-                </NavLink>
-                <NavLink to="/petitions">
-                    <div><p>Petitions</p></div>
-                </NavLink>
-            </div>
+            <NavLink to="/login" >
+                <p>Login</p>
+            </NavLink>
         </>
     } else {
-        var links =
-            <>
-                <Link to="/createPetition">
-                    <div>
-                        <div className="createPetition"><p>Create a petition</p></div>
-                    </div>
-                </Link>
-                <Link to="/adminBlog">
-                    <div>
-                        <div className="adminBlog"><p>Admin Blog</p></div>
-                    </div>
-                </Link>
-                <div className="userHeader">
-                    <Link to="/" className="userHeaderLink">
+        if (props.loggedUser.rol === "admin") {
+            var links = <>
+                <NavLink to="/createPetition">
+                    <p>Create a petition</p>
+                </NavLink>
+                <NavLink to="/adminBlog">
+                    <p>Admin Blog</p>
+                </NavLink>
+                <NavLink to="/" className="userHeaderLink">
+                    <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
+                </NavLink>
+                <Dropdown className="drop">
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        {props.loggedUser.name}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="dropMenu">
+                        <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Upgrades</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3" onClick={() => props.logoutUser()}>Log Out</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </>
+        } else {
+            var links =
+                <>
+                    <NavLink to="/createPetition">
+                        <p>Create a petition</p>
+                    </NavLink>
+                    <NavLink to="/" className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
-                    </Link>
+                    </NavLink>
                     <Dropdown className="drop">
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
                             {props.loggedUser.name}
                         </Dropdown.Toggle>
-
                         <Dropdown.Menu className="dropMenu">
-                            <Dropdown.Item href="#/action-1"><p>Profile</p></Dropdown.Item>
-                            <Dropdown.Item href="#/action-2"><p>Upgrades</p></Dropdown.Item>
-                            <Dropdown.Item href="#/action-3"><p onClick={() => props.logoutUser()}>Log Out</p></Dropdown.Item>
+                            <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Upgrades</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3" onClick={() => props.logoutUser()}>Log Out</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                </div>
-            </>
+                </>
+        }
+
     }
     return (
         <>
             <nav className="navBar">
-                <div className="mainListDiv">
-                    <div>
-                        <NavLink to="/">
-                            <div style={{ backgroundImage: `url(${logo})` }} className="logoDiv"></div>
-                        </NavLink>
-                    </div>
-                    <div id="mainListDiv" className="navContainer" >
-                        <div className="navsDiv">
-                            <NavLink to="/">
-                                <div>
-                                    <div><p>Home</p></div>
-                                </div>
-                            </NavLink>
-                            <NavLink to="/petitions">
-                                <div><p>Petitions</p></div>
-                            </NavLink>
-                            <div>
-                                <p>Blog</p>
-                            </div>
-                        </div>
-                        {links}
-                    </div>
+                <div className="logo">
+                    <NavLink to="/">
+                        <div style={{ backgroundImage: `url(${logo})` }} className="logoDiv"></div>
+                    </NavLink>
+                </div>
+                <div className="pages">
+                    <NavLink to="/">
+                        <p>Home</p>
+                    </NavLink>
+                    <NavLink to="/blog">
+                        <p>Blog</p>
+                    </NavLink>
+                    <NavLink to="/community">
+                        <p>Community</p>
+                    </NavLink>
+                    <NavLink to="/petitions">
+                        <p>Petitions</p>
+                    </NavLink>
+                    {links}
                 </div>
             </nav>
-
-
         </>
     )
 

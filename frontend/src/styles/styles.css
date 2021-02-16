@@ -5,13 +5,13 @@
 }
 
 #root {
-    height: auto;
-    width: auto;
+    width: 100%;
+    height: 100vh;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+    width: auto;
+    height: auto;
     font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -24,7 +24,40 @@ h1, h2 {
 .navBar {
     width: 100%;
     position: fixed;
-    z-index: auto;
+    /* z-index: auto;  */
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.239);
+}
+
+.pages {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pages p {
+    text-decoration: none;
+    margin-right: 2vw;
+    color: rgb(255, 255, 255);
+    font-size: large;
+    transition: .3s;
+}
+
+.pages p:hover {
+    border-radius: 0.5vw;
+    padding: 0.5vw 1vw;
+    transition: .3s;
+    background-color: rgba(68, 68, 68, 0.335);
+    border-bottom: 2px solid green;
+}
+
+#dropdown-basic {
+    margin-bottom: 1vh;
+    background-color: rgba(51, 102, 40, 0.335);
+    color: black;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.507);
+    border-radius: 0.5vw;
 }
 
 .mainListDiv {
@@ -69,8 +102,16 @@ nav a {
     background-Position: center ;
 }
 
+.active p{
+    border-radius: 0.5vw;
+    padding: 0.5vw 1vw;
+    background-color: rgba(245, 245, 245, 0.301);
+    border-bottom: 2px solid green;
+    color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
 .userHeaderLink{
-    margin-top: 1vh;
     margin-bottom: 1vh;
     margin-right: 1vw;
 }
@@ -92,9 +133,14 @@ nav a {
 }
 
 .userImg {
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
     width: 4.5vw;
     height: 9vh;
     border-radius: 15vw;
+}
+
+.drop {
+    margin-right: 1vw;
 }
 
 .drop p {
@@ -120,20 +166,27 @@ nav a {
 
 .containerMain {
     width: 100%;
-    height: 100vh;
-    background-color: rgb(10, 78, 10);
+    height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* position: relative;
-    z-index: 5;  */
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: 120%;
+    animation: movement 30s infinite linear alternate;
 }
 
-/* .containerMain div {
-    display: flex;
-    align-items: center;
-    padding-right: 3vw;
-} */
+@keyframes movement {
+    from {
+        background-position: bottom left;
+    } to {
+        background-position: top right;
+    }
+}
+
+.sloganBanner {
+    margin-right: 2vw;
+}
 
 .containerHome {
     display: flex;
@@ -141,10 +194,12 @@ nav a {
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
 }
 
 .distanceDiv {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -154,7 +209,7 @@ nav a {
     width: 100%;
     height: 10vh;
     background-color: rgb(10, 78, 10);
-    margin-top: 5vh;
+    margin-top: 1vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -182,6 +237,7 @@ nav a {
     align-items: center;
     height: 50vh;
     width: 100%;
+    margin-top: 10vh;
 }
 
 .textMail {
@@ -189,4 +245,57 @@ nav a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/* Petitions */ 
+
+.petitionContainer {
+    width: 100%;
+    height: 100%;
+}
+
+/* Create Petition */
+
+.createPetitionBanner {
+    width: 100%;
+    height: 70vh;
+    background-image: url('https://images.theconversation.com/files/90375/original/image-20150731-24504-exqdo3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop');
+}
+
+/* Admin Blog */ 
+
+.adminBlog {
+    width: 100%;
+    height: 100%;
+}
+
+.adminBanner {
+    width: 100%;
+    height: 70vh;
+    background-image: url('https://media.apnarm.net.au/media/images/2020/04/06/v3imagesbin6355055de02e35c86ddcd8d4879ffa8b-szww8ekgypuha3rd4u2_t1880.jpg');
+    background-size: cover;
+}
+
+/* Blog */ 
+
+.bannerBlog {
+    width: 100%;
+    height: 70vh;
+    background-image: url('https://www.siliconweek.com/wp-content/uploads/2017/09/para-portada-post.jpg');
+}
+
+/* Community */ 
+
+.communityBanner {
+    width: 100%;
+    height: 70vh;
+    background-image: url('https://b8g9x2x5.rocketcdn.me/wp-content/uploads/2018/08/social-communities_eulfrn.png');
+}
+
+/* petitions */ 
+
+.petitionBanner {
+    width: 100%;
+    height: 70vh;
+    background-image: url('https://images.theconversation.com/files/90375/original/image-20150731-24504-exqdo3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop');
 }

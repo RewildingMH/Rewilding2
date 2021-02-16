@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const PetitionsActions = {
+const petitionsActions = {
   getPetitions: () => {
     return async (dispatch, getState) => {
       const response = await axios.get('http://localhost:4000/api/petitions')
@@ -66,4 +66,4 @@ const PetitionsActions = {
 
 }
 
-export default PetitionsActions
+export default petitionsActions

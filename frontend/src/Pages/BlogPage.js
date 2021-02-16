@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 import React,  { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import articleActions from '../redux/actions/articleActions'
 //import CommentArticle from '../Components/CommentArticle'
 import { IconContext } from "react-icons"
 import {BiPaperPlane} from 'react-icons/bi'
+=======
+import React from "react";
+/* import { connect } from "react-redux"; */
+>>>>>>> 2fb2c221981124606ce439ae227d583dcbc36c55
 
 
 const BlogPage = (props) => {
@@ -40,6 +45,7 @@ const BlogPage = (props) => {
   console.log(props)
   return (
     <>
+<<<<<<< HEAD
 
     {props.articles && props.articles.map(({title, author, articleCategory, descripcion, comments }) => 
     
@@ -79,6 +85,10 @@ const BlogPage = (props) => {
       </div>
       ) 
       }
+=======
+      <div className="bannerBlog"></div>
+      <div>Este es el componente blog</div>
+>>>>>>> 2fb2c221981124606ce439ae227d583dcbc36c55
     </>
   );
 };
@@ -94,4 +104,6 @@ const mapDispatchToProps = {
   commentArticles: articleActions.commentArticle
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BlogPage)
+
+export default BlogPage
+/* export default connect(mapStateToProps, mapDispatchToProps)(BlogPage) */

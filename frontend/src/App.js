@@ -8,8 +8,15 @@ import authActions from './redux/actions/authActions'
 import React, { useState } from 'react'
 import CreatePetition from './Components/CreatePetition.jsx';
 import BlogAdmin from './Pages/BlogAdmin'
+<<<<<<< HEAD
 import Petition from './Components/Petition.jsx'
 import BlogPage from './Pages/BlogPage'
+=======
+import Petition from './Components/Petition.jsx';
+import BlogPage from './Pages/BlogPage'
+import Community from './Pages/Community'
+import Header from './Components/Header';
+>>>>>>> 2fb2c221981124606ce439ae227d583dcbc36c55
 
 const App = (props) => {
 
@@ -20,8 +27,14 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
-        <Route exact path="/adminBlog" component={BlogAdmin} />
         <Route exact path="/blog" component={BlogPage} />
+        <Route exact path="/adminBlog" component={BlogAdmin} />
+<<<<<<< HEAD
+        <Route exact path="/blog" component={BlogPage} />
+=======
+        <Route path="/petitions/:id" component={Petition} />
+        <Route path="/community" component={Community} />
+>>>>>>> 2fb2c221981124606ce439ae227d583dcbc36c55
         <Redirect to="/" />
       </Switch>
     } else {
@@ -29,7 +42,13 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
+<<<<<<< HEAD
         <Route exact path="/blog" component={BlogPage} />
+=======
+        <Route exact path="/blog" component={BlogAdmin} />
+        <Route path="/petitions/:id" component={Petition} />
+        <Route path="/community" component={Community} />
+>>>>>>> 2fb2c221981124606ce439ae227d583dcbc36c55
         <Redirect to="/" />
       </Switch>
     }
@@ -43,8 +62,15 @@ const App = (props) => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
+<<<<<<< HEAD
         <Route path="/petitions" component={Petitions} />
         <Route path="/blog" component={BlogPage} />
+=======
+        <Route exact path="/petitions" component={Petitions} />
+        <Route path="/blog" component={BlogAdmin} />
+        <Route path="/petitions/:id" component={Petition} />
+        <Route path="/community" component={Community} />
+>>>>>>> 2fb2c221981124606ce439ae227d583dcbc36c55
         <Redirect to="/" />
       </Switch>
     );
@@ -54,7 +80,8 @@ const App = (props) => {
   return (
     <>
       <Router>
-          {routes}
+        <Header />
+        {routes}
         <Route path="/petitions/:id" component={Petition} />
       </Router>
     </>

@@ -59,7 +59,7 @@ const petitionController = {
 
   signPetition: async (req, res) => {
     const { petId, reason } = req.body.userSign
-    const { name, profilePicture } = req.user
+    const { name, profilePicture, _id } = req.user
 
     try {
       const response = await Petition.findOneAndUpdate(
@@ -70,6 +70,7 @@ const petitionController = {
               name,
               profilePicture,
               reason,
+              userId: _id
             }
           },
           $addToSet: {

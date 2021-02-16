@@ -22,6 +22,7 @@ const Reasons = ({
   };
 
   const [edit, setEdit] = useState({});
+  const [visible, setVisible] = useState(false);
 
   const dislike = (e) => {
     const id = e.target.id;
@@ -55,6 +56,11 @@ const Reasons = ({
   };
 
   const changeReason = (e) => {
+    setVisible(!visible);
+    e.preventDefault();
+  };
+
+  const sendModification = (e) => {
     e.preventDefault();
     modifyReason(edit);
   };
@@ -62,7 +68,7 @@ const Reasons = ({
   return (
     <div>
       {reasons.map(
-        ({ name, profilePicture, reason, _id, likes }) =>
+        ({ name, profilePicture, reason, _id, likes, userId }) =>
           reason !== "" && (
             <div style={{ display: "flex" }}>
               <div
@@ -73,23 +79,42 @@ const Reasons = ({
                 }}
               ></div>
               <h5>{name}</h5>
-              <p>{reason}</p>
-              <button onClick={like} id={_id}>
-                ♥{likes.length}
-              </button>
-              <button onClick={dislike} id={_id}>
-                ♥{likes.length}
-              </button>
-              <button onClick={removeReason} id={_id}>
-                DELETE
-              </button>
-              <button onClick={changeReason}>EDIT</button>
-              <input
-                id={_id}
-                name="modification"
-                type="text"
-                onChange={captureChange}
-              />
+              {visible ? (
+                <>
+                  <input
+                    id={_id}
+                    name="modification"
+                    type="text"
+                    onChange={captureChange}
+                  />
+                  <button onClick={sendModification}>SEND</button>
+                </>
+              ) : (
+                <p>{reason}</p>
+              )}
+
+              {loggedUser ? (
+                likes.find((like) => like.id === loggedUser.userId) ? (
+                  <button onClick={dislike} id={_id}>
+                    DISLIKE♥{likes.length}
+                  </button>
+                ) : (
+                  <button onClick={like} id={_id}>
+                    LIKE♥{likes.length}
+                  </button>
+                )
+              ) : (
+                <button id={_id}>LIKE♥{likes.length}</button>
+              )}
+
+              {loggedUser && loggedUser.userId === userId && (
+                <>
+                  <button onClick={removeReason} id={_id}>
+                    DELETE
+                  </button>
+                  <button onClick={changeReason}>EDIT</button>
+                </>
+              )}
             </div>
           )
       )}

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import petitionsActions from "../redux/actions/PetitionsActions";
+import petitionsActions from "../redux/actions/petitionsActions";
 import PetitionCard from "../Components/PetitionCard";
 
 const Petitions = (props) => {
@@ -10,11 +10,12 @@ const Petitions = (props) => {
 
   return (
     <>
-      <div>
-        <h1>Petitions</h1>
-        {props.allPetitions.map((petition) => {
-          return <PetitionCard key={petition._id} petition={petition} />;
-        })}
+      <div className="petitionBanner"></div>
+      <div className="petitionContainer">
+            <h1>Petitions</h1>
+            {props.allPetitions.map((petition) => {
+              return <PetitionCard key={petition._id} petition={petition} />;
+            })}
       </div>
     </>
   );

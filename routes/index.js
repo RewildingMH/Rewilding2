@@ -4,6 +4,7 @@ const router = express.Router()
 
 //Controladores
 const userController = require('../controllers/userController')
+const postController = require('../controllers/postController')
 const petitionController = require('../controllers/petitionController')
 const blogController = require('../controllers/blogController')
 //middleware
@@ -49,6 +50,7 @@ router.route('/petitions/delete/:reasonId/:petId')
 router.route('/petitions/modifyReason')
 .put(passport.authenticate('jwt', { session: false }), userController.modifyReason)
 
+router.route('/posts').post(passport.authenticate('jwt', { session: false }), postController.addPost)
 
 router.route('/petitions/visits')
 .post(petitionController.addVisit)
