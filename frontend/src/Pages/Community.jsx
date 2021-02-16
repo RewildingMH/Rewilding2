@@ -21,19 +21,14 @@ const Community = (props) => {
   return (
     <>
     <div className="communityBanner"></div>
-    <div style={{ display: "flex" }}>
-      <div>
+    <div className="comunityContainer">
+      <div className="comunityEntry container">
         {popular.slice(0, 3).map(({ title, picture }) => (
           <>
-            <div
-              style={{
-                backgroundImage: `url(${picture})`,
-                width: "100px",
-                height: "100px",
-                backgroundSize: "cover",
-              }}
-            ></div>
-            <p>{title}</p>
+          <div className="communityInfo">
+            <div className="communityImg" style={{backgroundImage: `url(${picture})`}}></div>
+              <p>{title}</p>
+          </div>
           </>
         ))}
       </div>
