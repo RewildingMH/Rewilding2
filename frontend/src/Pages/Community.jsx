@@ -19,6 +19,8 @@ const Community = (props) => {
     props.getArticles();
   }, []);
   return (
+    <>
+    <div className="communityBanner"></div>
     <div style={{ display: "flex" }}>
       <div>
         {popular.slice(0, 3).map(({ title, picture }) => (
@@ -38,6 +40,7 @@ const Community = (props) => {
       <Posts />
       <div>latest blog entries</div>
     </div>
+    </>
   );
 };
 
