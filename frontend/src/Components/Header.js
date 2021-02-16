@@ -16,45 +16,25 @@ const Header = (props) => {
     }; */
     if (props.loggedUser === null) {
         var links = <>
-                        <NavLink to="/login" >
-                            <p>Login</p>
-                        </NavLink>
-                    </>
+            <NavLink to="/login" >
+                <p>Login</p>
+            </NavLink>
+        </>
     } else {
-        if (props.loggedUser.rol === "admin"){
-            var links= <>
-                        <NavLink to="/createPetition">
+        if (props.loggedUser.rol === "admin") {
+            var links = <>
+                <NavLink to="/createPetition">
                     <p>Create a petition</p>
                 </NavLink>
                 <NavLink to="/adminBlog">
                     <p>Admin Blog</p>
-                </NavLink> 
-                <NavLink to="/" className="userHeaderLink">
-                    <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
-                </NavLink>
-                <Dropdown className="drop">
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            {props.loggedUser.name}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu className="dropMenu">
-                        <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Upgrades</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3" onClick={() => props.logoutUser()}>Log Out</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                    </>
-        } else {
-            var links =
-            <>
-                <NavLink to="/createPetition">
-                    <p>Create a petition</p>
                 </NavLink>
                 <NavLink to="/" className="userHeaderLink">
                     <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                 </NavLink>
                 <Dropdown className="drop">
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            {props.loggedUser.name}
+                        {props.loggedUser.name}
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="dropMenu">
                         <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
@@ -63,8 +43,28 @@ const Header = (props) => {
                     </Dropdown.Menu>
                 </Dropdown>
             </>
+        } else {
+            var links =
+                <>
+                    <NavLink to="/createPetition">
+                        <p>Create a petition</p>
+                    </NavLink>
+                    <NavLink to="/" className="userHeaderLink">
+                        <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
+                    </NavLink>
+                    <Dropdown className="drop">
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            {props.loggedUser.name}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu className="dropMenu">
+                            <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Upgrades</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3" onClick={() => props.logoutUser()}>Log Out</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </>
         }
-        
+
     }
     return (
         <>
@@ -81,7 +81,7 @@ const Header = (props) => {
                     <NavLink to="/blog">
                         <p>Blog</p>
                     </NavLink>
-                    <NavLink to="/comunity"> 
+                    <NavLink to="/comunity">
                         <p>Comunity</p>
                     </NavLink>
                     <NavLink to="/petitions">

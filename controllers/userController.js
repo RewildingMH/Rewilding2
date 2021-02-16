@@ -39,7 +39,8 @@ const userController = {
                 name: newUserSaved.name,
                 profilePicture: newUserSaved.profilePicture,
                 username: newUserSaved.username,
-                rol: newUserSaved.rol
+                rol: newUserSaved.rol,
+                userId: newUserSaved._id
             }
         })
     },
@@ -55,7 +56,8 @@ const userController = {
                     name: userExists.name,
                     profilePicture: userExists.profilePicture,
                     username: userExists.username,
-                    rol: userExists.rol
+                    rol: userExists.rol,
+                    idUser: userExists._id
                 }
             })
         } else {
@@ -71,7 +73,8 @@ const userController = {
                     name: newUserSaved.name,
                     profilePicture: newUserSaved.profilePicture,
                     username: newUserSaved.username,
-                    rol: newUserSaved.rol
+                    rol: newUserSaved.rol,
+                    idUser: newUserSaved._id
                 }
             })
         }
@@ -95,7 +98,8 @@ const userController = {
                     name: userExists.name,
                     profilePicture: userExists.profilePicture,
                     username: userExists.username,
-                    rol: userExists.rol
+                    rol: userExists.rol,
+                    userId: userExists._id
                 }
             })
     },
@@ -106,7 +110,9 @@ const userController = {
                 name: req.user.name,
                 profilePicture: req.user.profilePicture,
                 username: req.user.username,
-                rol: req.user.rol
+                rol: req.user.rol,
+                userId: req.user._id
+
             }
         })
     },

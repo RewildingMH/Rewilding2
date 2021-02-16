@@ -10,7 +10,7 @@ import CreatePetition from './Components/CreatePetition.jsx';
 import BlogAdmin from './Pages/BlogAdmin'
 import Petition from './Components/Petition.jsx';
 import BlogPage from './Pages/BlogPage'
-import Comunity from './Components/Comunity'
+import Community from './Pages/Community'
 import Header from './Components/Header';
 
 const App = (props) => {
@@ -24,7 +24,8 @@ const App = (props) => {
         <Route path="/createPetition" component={CreatePetition} />
         <Route exact path="/blog" component={BlogPage} />
         <Route exact path="/adminBlog" component={BlogAdmin} />
-        <Route path="/comunity" component={Comunity}/>
+        <Route path="/petitions/:id" component={Petition} />
+        <Route path="/community" component={Community} />
         <Redirect to="/" />
       </Switch>
     } else {
@@ -32,8 +33,9 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
-        <Route exact path="/blog" component={BlogPage} />
-        <Route path="/comunity" component={Comunity}/>
+        <Route exact path="/blog" component={BlogAdmin} />
+        <Route path="/petitions/:id" component={Petition} />
+        <Route path="/community" component={Community} />
         <Redirect to="/" />
       </Switch>
     }
@@ -47,9 +49,10 @@ const App = (props) => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
-        <Route path="/petitions" component={Petitions} />
-        <Route path="/blog" component={BlogPage} />
-        <Route path="/comunity" component={Comunity}/>
+        <Route exact path="/petitions" component={Petitions} />
+        <Route path="/blog" component={BlogAdmin} />
+        <Route path="/petitions/:id" component={Petition} />
+        <Route path="/community" component={Community} />
         <Redirect to="/" />
       </Switch>
     );
@@ -59,8 +62,8 @@ const App = (props) => {
   return (
     <>
       <Router>
-      <Header/>
-          {routes}
+        <Header />
+        {routes}
         <Route path="/petitions/:id" component={Petition} />
       </Router>
     </>

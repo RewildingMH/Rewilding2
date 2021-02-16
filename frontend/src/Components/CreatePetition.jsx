@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import PetitionsActions from "../redux/actions/PetitionsActions";
+import petitionsActions from "../redux/actions/petitionsActions";
 
 const CreatePetition = (props) => {
   const [newPetition, setNewPetition] = useState({});
@@ -95,7 +95,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  addPetition: PetitionsActions.addPetition,
+  addPetition: petitionsActions.addPetition,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreatePetition);
