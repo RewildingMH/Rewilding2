@@ -167,13 +167,21 @@ nav a {
 .containerMain {
     width: 100%;
     height: 100%;
-    background-color: rgb(10, 78, 10);
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    background-position: center;
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 120%;
+    animation: movement 30s infinite linear alternate;
+}
+
+@keyframes movement {
+    from {
+        background-position: bottom left;
+    } to {
+        background-position: top right;
+    }
 }
 
 .sloganBanner {
@@ -246,12 +254,26 @@ nav a {
     height: 100%;
 }
 
+/* Create Petition */
+
+.createPetitionBanner {
+    width: 100%;
+    height: 70vh;
+    background-image: url('https://images.theconversation.com/files/90375/original/image-20150731-24504-exqdo3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop');
+}
 
 /* Admin Blog */ 
 
 .adminBlog {
     width: 100%;
     height: 100%;
+}
+
+.adminBanner {
+    width: 100%;
+    height: 70vh;
+    background-image: url('https://media.apnarm.net.au/media/images/2020/04/06/v3imagesbin6355055de02e35c86ddcd8d4879ffa8b-szww8ekgypuha3rd4u2_t1880.jpg');
+    background-size: cover;
 }
 
 /* Blog */ 

@@ -81,8 +81,8 @@ const Header = (props) => {
                     <NavLink to="/blog">
                         <p>Blog</p>
                     </NavLink>
-                    <NavLink to="/comunity">
-                        <p>Comunity</p>
+                    <NavLink to="/community">
+                        <p>Community</p>
                     </NavLink>
                     <NavLink to="/petitions">
                         <p>Petitions</p>
