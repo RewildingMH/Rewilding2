@@ -29,8 +29,21 @@ router.route('/petitions')
 router.route('/signPetition').post(passport.authenticate('jwt', { session: false }), petitionController.signPetition)
 //Blog
 router.route('/blog')
-.post(passport.authenticate('jwt', {session: false}), validator.isAdmin,blogController.addArticle)
+  .post(passport.authenticate('jwt', { session: false }), validator.isAdmin, blogController.addArticle)
 
+router.route('/petitions/like').post(passport.authenticate('jwt', { session: false }), userController.likeReason)
+router.route('/petitions/dislike/:petId/:id').delete(passport.authenticate('jwt', { session: false }), userController.dislikeReason)
+
+router.route('/petitions/delete/:reasonId/:petId').delete(passport.authenticate('jwt', { session: false }), userController.deleteReason)
+
+router.route('/petitions/modifyReason').put(passport.authenticate('jwt', { session: false }), userController.modifyReason)
+
+
+router.route('/petitions/visits').post(petitionController.addVisit)
+
+  .post(passport.authenticate('jwt', { session: false }), validator.isAdmin, blogController.addArticle)
+  .get(blogController.getArticles)
+  .put(blogController.updateArticle)
 module.exports = router
 
 
