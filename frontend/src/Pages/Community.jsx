@@ -20,18 +20,22 @@ const Community = (props) => {
   return (
     <>
     <div className="communityBanner"></div>
-      <div className="comunityContainer">
-        <div className="comunityEntry container">
-          {popular.slice(0, 3).map(({ title, picture }) => (
-            <>
-            <div className="communityInfo">
-              <div className="communityImg" style={{backgroundImage: `url(${picture})`}}></div>
-                <p>{title}</p>
-            </div>
-            </>
-          ))}
-        </div>
+    <div className="comunityContainer">
+    <div>
+            <Posts />
+          </div>
+      <div className="comunityEntry container">
+        {popular.slice(0, 3).map(({ title, picture }) => (
+          <>
+          <div className="communityInfo">
+            <div className="communityImg" style={{backgroundImage: `url(${picture})`}}></div>
+              <p>{title}</p>
+          </div>
+          <div>latest blog entries</div>
+          </>
+        ))}
       </div>
+    </div>
     </>
   );
 };

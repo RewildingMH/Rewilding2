@@ -24,7 +24,7 @@ h1, h2 {
 .navBar {
     width: 100%;
     position: fixed;
-    /* z-index: auto;  */
+    padding: 5vh;
     display: flex;
     justify-content: space-between;
     background-color: rgba(0, 0, 0, 0.239);
@@ -160,7 +160,7 @@ nav a {
 }
 
 .affix {
-    padding: 0;
+    padding: 0.5vh;
     background-color: rgb(46, 46, 46);
     transition: .8s;
 }
