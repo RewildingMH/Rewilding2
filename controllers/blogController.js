@@ -46,20 +46,44 @@ const articleController = {
       })
     }
   },
-  updateArticle: (req, res) => {
-    const articleId= req.body.idItinerary
-      Itinerary.findOneAndUpdate(
-        {_id: articleId}, 
-        {$set: {
-          'title': req.body.title,
-          'descripcion':req.body.descripcion,
-          'articleCategory':req.body.articleCategory,
-      }},
-        {new: true}
-      )
-      .then(data => res.json({success: true, response: data}))
-      .catch(error => res.json({success: false, error}))
+  editArticle: async (req, res) => {
+    const {_id, title, descripcion, articleCategory} = req.body.article
+    try 
+      {await  Article.findOneAndUpdate(
+          {_id: _id}, 
+          {$set: {
+            'title': title,
+            'descripcion':descripcion,
+            'articleCategory':articleCategory,
+        }},
+          {new: true}
+        )}
+      
+      catch(error) {res.json({success: false, error})}
     },
+    deleteArticle: async(req, res) => {
+      console.log(req.body)
+      
+      try {
+          const {id} = req.body
+          const response = await Article.findOneAndDelete(
+              { _id: id }
+          )
+          res.json({
+              success: true,
+              response
+          })
+      } catch (error) {
+          res.json({
+              success: false,
+              error
+          })
+      }
+  },
+    commentArticle: async(req, res) => {
+      console.log(req.body)
+      console.log(req.user)
+    }
 } 
  
 
