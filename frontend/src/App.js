@@ -27,7 +27,7 @@ const App = (props) => {
         <Route exact path="/adminBlog" component={BlogAdmin} />
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
-        <Route path="/profile" component={Profile}/>
+        <Route path="/profile" component={Profile} />
         <Redirect to="/" />
       </Switch>
     } else {
@@ -38,7 +38,7 @@ const App = (props) => {
         <Route exact path="/blog" component={BlogPage} />
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
-        <Route path="/profile" component={Profile}/>
+        <Route path="/profile" component={Profile} />
         <Redirect to="/" />
       </Switch>
     }
@@ -67,7 +67,6 @@ const App = (props) => {
       <Router>
         <Header />
         {routes}
-        <Route path="/petitions/:id" component={Petition} />
       </Router>
     </>
   )

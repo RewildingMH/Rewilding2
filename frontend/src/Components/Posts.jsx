@@ -7,10 +7,15 @@ const Posts = (props) => {
   const [newPost, setNewPost] = useState({});
   const [pathImage, setPathImage] = useState("/assets/avatar.png");
   const [file, setFile] = useState();
+  const [posts, setPosts] = useState([]);
+  const { allPosts } = props;
 
   useEffect(() => {
     props.getPosts();
   }, []);
+  useEffect(() => {
+    setPosts(allPosts);
+  }, [allPosts]);
 
   const captureNewPost = (e) => {
     const field = e.target.name;
@@ -41,9 +46,10 @@ const Posts = (props) => {
 
   const sendPost = (e) => {
     e.preventDefault();
-    if (newPost.text.length < 50 || newPost.text.length > 300) {
+    if (newPost.text.length < 1 || newPost.text.length > 300) {
       alert("no pasa");
     } else {
+      e.preventDefault();
       props.addPost(newPost, file);
     }
   };
@@ -73,9 +79,10 @@ const Posts = (props) => {
           <button onClick={sendPost}>Publish</button>
         </div>
       </div>
-      {props.allPosts.map((post) => {
-        return <Post post={post} />;
-      })}
+      {props.allPosts &&
+        props.allPosts.map((post) => {
+          return <Post post={post} />;
+        })}
     </div>
   );
 };
