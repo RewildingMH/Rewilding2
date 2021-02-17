@@ -54,7 +54,6 @@ const App = (props) => {
         <Route path="/login" component={LoginPage} />
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/blog" component={BlogPage} />
-        {/* <Route path="/blog/:id" component={Article} /> */}
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
         <Redirect to="/" />

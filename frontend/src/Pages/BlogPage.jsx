@@ -7,60 +7,75 @@ import {Link} from 'react-router-dom'
 
 const BlogPage = (props) => {
   const [preloader, setPreloader]= useState(true)
-  const [portada, setPortada]= useState([])
-  const [portadaMini, setPortadaMini]= useState([])
   useEffect(() => {
-    fetcheo()
-    
+    fetch()
   }, [])
-  
-  async function fetcheo() {
+
+ async function fetch () {
     await props.getArticles()
-    setPortada (props.articles.slice(props.articles.length - 1, props.articles.length))
-  setPortadaMini (props.articles.slice(props.articles.length - 2, props.articles.length- 1))
-  setPreloader(false) 
- }  
-console.log(portada[0])
+    setPreloader(false)
+ }
+ 
   return (
     <>
+    {props.allArticles && 
       <div className="container-fluid bg-dark portadaBlog p-5">
         <div className="row m-5">
-          <div className="col-8">
             {preloader?
               <div className="preloader">
                 <div className="loader"></div>
               </div>
-          :
-              <Link to={`/blog/${portada[0]}`} className="text-decoration-none ">
-                <img src={portada[0].picture} className="img-fluid portadaImg" />
-
-                <p className="h3 mt-3 tituloBlog">{portada[0].title}</p>
-              </Link>
+            :
+            <>
+              <div className="col-8">
+                <Link to={`/blog/${props.articlePort[0]._id}`} className="text-decoration-none ">
+                  <img src={props.articlePort[0].picture} className="img-fluid portadaImg" />
+                  <div>
+                    <p className="my-3 categoryBlog">| {props.articlePort[0].articleCategory} |</p>
+                    <p className="h3 tituloBlog">{props.articlePort[0].title}</p>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-4">
+                <Link to={`/blog/${props.articlePortMini[0]._id}`} className="text-decoration-none ">
+                  <img src={props.articlePortMini[0].picture} className="img-fluid" />
+                  <p className="my-3 categoryBlog">| {props.articlePortMini[0].articleCategory} |</p>        
+                  <p className="h4 tituloBlog">{props.articlePortMini[0].title}</p>
+                </Link>                  
+              </div>
+              {props.articlesList.map(({_id, picture, title, articleCategory }) =>{
+                return(
+                      <>
+                        <div className="col-4">             
+                          <Link to={`/blog/${_id}`} className="text-decoration-none ">
+                            <img src={picture} className="img-fluid" />
+                            <p className="my-3 categoryBlog">| {articleCategory} |</p>
+                            <p className="h4 bg-dark tituloBlog">{title}</p>
+                          </Link>                       
+                        </div>
+                      </> 
+                    )
+                  })
+                }
+           </>
           }
           
             
-          </div>
-          <div className="col-4">
-          {preloader?
-              <div className="preloader">
-                <div className="loader"></div>
-              </div>
-          :
-              <Link to="/blog" className="text-decoration-none ">
-                <img src={portadaMini[0].picture} className="img-fluid" />
-                <p className="h4 mt-3 tituloBlog">{portadaMini[0].title}</p>
-              </Link>
-          }
-          
-          </div>
+       
+          {/* 
+       */}
         </div>
       </div>
+    }
     </>
   )
 };
 const mapStateToProps = state => {
   return {
-    articles: state.articleR.articles,
+    allArticles: state.articleR.allArticles,
+    articlePort: state.articleR.articlePort,
+    articlePortMini: state.articleR.articlePortMini,
+    articlesList: state.articleR.articlesList,
   }
 }
 
