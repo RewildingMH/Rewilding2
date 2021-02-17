@@ -11,16 +11,19 @@ const PetitionCard = (props) => {
 
   return (
     <Link to={`/petitions/${props.petition._id}`} onClick={addVisit}>
-      <h2>Petition</h2>
-      <h3>{props.petition.title}</h3>
       <div
         style={{
           backgroundImage: `url(${props.petition.picture})`,
-          width: "100px",
-          height: "100px",
+          width: "15vw",
+          height: "20vh",
           backgroundSize: "cover",
+          backgroundPosition:"center"
         }}
       ></div>
+      <div className="titlePetition">
+        <h2>{props.petition.title}</h2>
+      </div>
+
       <div>
         <p>
           {props.petition.desc.length > 100
@@ -31,9 +34,9 @@ const PetitionCard = (props) => {
           {props.petition.signatures.length
             ? props.petition.signatures.length === 1
               ? props.petition.signatures.length +
-                " person has already signed this petition"
+              " person has already signed this petition"
               : props.petition.signatures.length +
-                " persons have already signed this petition"
+              " persons have already signed this petition"
             : "No one has signed this petition yet"}
         </p>
       </div>

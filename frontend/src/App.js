@@ -67,7 +67,6 @@ const App = (props) => {
       <Router>
         <Header />
         {routes}
-        <Route path="/petitions/:id" component={Petition} />
       </Router>
     </>
   )
