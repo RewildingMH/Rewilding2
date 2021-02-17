@@ -1,6 +1,6 @@
 const initialState = {
     articles: [],
-    articleCategories:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION"]
+    articleCategories:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION", "Animals in the wild", "Ecology"]
 }
 
 
@@ -30,6 +30,11 @@ export function articleReducer  (state = initialState, action){
             return {
                 ...state, 
                 articles: action.payload 
+            }
+        case 'SINGLE_CITY':
+            return {
+                ...state,
+                singleArticle: action.payload
             }
         default:
             return state

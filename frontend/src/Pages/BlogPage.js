@@ -1,5 +1,7 @@
 import React,  { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import articleActions from '../redux/actions/articleActions'
 //import CommentArticle from '../Components/CommentArticle'
 import { IconContext } from "react-icons"
@@ -33,22 +35,22 @@ const BlogPage = (props) => {
   //   }
   // };
 
+  console.log(props.articles)
   useEffect(() => {
     props.getArticles();
   }, [])
-  
-  console.log(props)
+  console.log(props.articles)
   return (
     <>
 
-    {props.articles && props.articles.map(({title, author, articleCategory, descripcion, comments }) => 
-    
+    {props.articles && props.articles.map(({title, author, articleCategory, descripcion, comments, _id}) => 
       <div className="container mt-4">
         <div className="row">
           <div className="col-6">
+            <Link to={`/blog/${_id}`} >
             <h1>{title}</h1>
+            </Link>
             <div className="d-flex" >
-              <img src={author[0].profilePicture} className="rounded-circle mr-3" style={{height: "25px", width:"25px"}} />
               <p>{author[0].name}</p>
             </div>
             <h3>{articleCategory}</h3>
@@ -94,6 +96,4 @@ const mapDispatchToProps = {
   commentArticles: articleActions.commentArticle
 }
 
-
-export default BlogPage
-/* export default connect(mapStateToProps, mapDispatchToProps)(BlogPage) */
+export default connect(mapStateToProps, mapDispatchToProps)(BlogPage)
