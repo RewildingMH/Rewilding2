@@ -76,7 +76,7 @@ const Header = (props) => {
                     </NavLink>
                 </div>
                 <div className="pages">
-                    <NavLink to="/">
+                    <NavLink exact to="/">
                         <p>Home</p>
                     </NavLink>
                     <NavLink to="/blog">
