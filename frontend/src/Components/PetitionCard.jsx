@@ -4,6 +4,7 @@ import petitionsActions from "../redux/actions/petitionsActions";
 import { connect } from "react-redux";
 
 const PetitionCard = (props) => {
+  console.log(props.petition._id)
   const addVisit = (e) => {
     const id = props.petition._id;
     props.addVisit(id);

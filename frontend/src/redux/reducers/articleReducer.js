@@ -31,6 +31,11 @@ export function articleReducer  (state = initialState, action){
                 ...state, 
                 articles: action.payload 
             }
+        case 'SINGLE_CITY':
+            return {
+                ...state,
+                articles: action.payload
+            }
         default:
             return state
     }

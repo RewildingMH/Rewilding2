@@ -32,6 +32,7 @@ router.route('/signPetition')
 //Blog
 router.route('/blog')
 .get(blogController.getArticles)
+router.route('/blog/:id')
 .put(blogController.editArticle)
 router.route('/blog/delete')
 .put(blogController.deleteArticle)
