@@ -219,6 +219,18 @@ nav a {
     font-size: 3vh;
 }
 
+.containerPetBanner {
+    width: 100%;
+    height: 10vh;
+    background-color: rgb(98, 76, 27);
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ivory;
+    font-size: 3vh;
+}
+
 .divBlog {
     width: 100%;
     height: 50vh;
@@ -254,6 +266,9 @@ nav a {
 .petitionContainer {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Create Petition */
@@ -261,7 +276,6 @@ nav a {
 .createPetitionBanner {
     width: 100%;
     height: 70vh;
-    background-image: url('https://images.theconversation.com/files/90375/original/image-20150731-24504-exqdo3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop');
 }
 
 /* Admin Blog */ 
