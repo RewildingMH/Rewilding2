@@ -27,7 +27,7 @@ h1, h2 {
     padding: 5vh;
     display: flex;
     justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.239);
+    background-color: rgba(0, 0, 0, 0.281);
     transition: 1s; 
 }
 
@@ -41,15 +41,15 @@ h1, h2 {
     text-decoration: none;
     margin-right: 2vw;
     color: rgb(255, 255, 255);
+    padding: 0.5vw 1vw;
     font-size: large;
     transition: .3s;
 }
 
 .pages p:hover {
     border-radius: 0.5vw;
-    padding: 0.5vw 1vw;
     transition: .3s;
-    background-color: rgba(68, 68, 68, 0.335);
+    background-color: rgba(68, 68, 68, 0.356);
     border-bottom: 2px solid green;
 }
 
@@ -69,10 +69,6 @@ h1, h2 {
     align-items: center;
     justify-content: space-between;
     background-color: rgba(46, 46, 46, 0.274);
-}
-
-.createPetition {
-    width: 15vw;
 }
 
 .mainListDiv p {
@@ -106,7 +102,7 @@ nav a {
 .active p{
     border-radius: 0.5vw;
     padding: 0.5vw 1vw;
-    background-color: rgba(245, 245, 245, 0.301);
+    background-color: rgba(245, 245, 245, 0);
     border-bottom: 2px solid green;
     color: rgb(255, 255, 255);
     box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
@@ -211,7 +207,6 @@ nav a {
     width: 100%;
     height: 10vh;
     background-color: rgb(10, 78, 10);
-    margin-top: 1vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -302,6 +297,205 @@ nav a {
     width: 100%;
     height: 70vh;
 }
+
+.createPetitionContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.createPetitionContainer p {
+    color: green;
+    text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.109);
+}
+
+.createPetitionContainer h5,h6 {
+    text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.233);
+}
+
+
+/* input 1 & 2 */
+
+.createPetitionInput1nd2 {
+    width: 40vw;
+    height: 25vh;
+    background-color: rgba(0, 0, 0, 0.157);
+    border-radius: 2vh;
+    padding: 3vh 2vw;
+    margin: 5vh 0;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
+.createPetitionInput1nd2 input {
+    margin-top: 1vh;
+    box-shadow: 2px 2px 5px #999;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.123);
+    border: none;
+    outline: none;
+    border-bottom: 0.5vh solid green;
+    width: 100%;
+    height: 7vh;
+    padding: 1vw;
+    font-size: 1vw;
+    text-align: center;
+    border-radius: 1vw;
+    transition: .5s;
+    color: rgb(0, 0, 0);
+}
+
+/* input 3 */ 
+
+.createPetitionInput3 {
+    width: 40vw;
+    height: 25vh;
+    background-color: rgba(0, 0, 0, 0.157);
+    border-radius: 2vh;
+    padding: 3vh 2vw;
+    margin: 5vh 0;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+
+}
+
+.createPetitionInput3 textarea {
+    width: 100%;
+    resize: none;
+    margin-top: 1vh;
+    box-shadow: 2px 2px 5px #999;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.123);
+    border: none;
+    outline: none;
+    border-bottom: 0.5vh solid green;
+    width: 100%;
+    height: 10vh;
+    padding: 1vw;
+    font-size: 1vw;
+    text-align: center;
+    border-radius: 1vw;
+    transition: .5s;
+    color: rgb(0, 0, 0);
+}
+
+/* input 4 */
+
+.createPetitionInput4 {
+    width: 40vw;
+    height: 25vh;
+    background-color: rgba(0, 0, 0, 0.157);
+    border-radius: 2vh;
+    padding: 3vh 2vw;
+    margin: 5vh 0;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+
+}
+
+.createPetitionInput4 input {
+    margin-top: 1vh;
+    box-shadow: 2px 2px 5px #999;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.123);
+    border: none;
+    outline: none;
+    border-bottom: 0.5vh solid green;
+    width: 100%;
+    height: 7vh;
+    padding: 1vw;
+    font-size: 1vw;
+    text-align: center;
+    border-radius: 1vw;
+    transition: .5s;
+    color: rgb(0, 0, 0);
+}
+
+
+/*input 5 */
+
+.createPetitionInput5 {
+    width: 40vw;
+    height: 25vh;
+    background-color: rgba(0, 0, 0, 0.157);
+    border-radius: 2vh;
+    padding: 3vh 2vw;
+    margin: 5vh 0;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+
+}
+
+.createPetitionInput5 input {
+    margin-top: 1vh;
+    margin-left: 9vw;
+    box-shadow: 2px 2px 5px #999;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.123);
+    border: none;
+    outline: none;
+    border-bottom: 0.5vh solid green;
+    width: 50%;
+    height: 7vh;
+    padding: 1vw;
+    font-size: 1vw;
+    text-align: center;
+    border-radius: 1vw;
+    transition: .5s;
+    color: rgb(0, 0, 0);
+}
+
+/* input 6 */
+
+.createPetitionInput6 {
+    width: 40vw;
+    height: 45vh;
+    background-color: rgba(0, 0, 0, 0.157);
+    border-radius: 2vh;
+    padding: 3vh 2vw;
+    margin: 5vh 0;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+
+}
+
+.createPetitionUploadFile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-pic-profile-submit{
+    margin-bottom: 2vh;
+    width: 50%;
+    height: 50%;
+    border-radius: 1vw;
+    margin-left: 9vw;
+    margin-top: 1vh;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+    cursor: pointer;
+}
+
+.createPetitionUploadFile input {
+    display: none;
+}
+
+.createPetitionButton button {
+    border-radius: 0.5vw;
+    color: rgba(255, 255, 255, 0.692);
+    transition: .3s;
+    background-color: rgba(0, 0, 0, 0.65);
+    border: none;
+    border-bottom: 2px solid green;
+    padding: 0.8vw 2vw;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+    margin-bottom: 5vw;
+}
+
+.createPetitionButton button:hover {
+    background-color: black;
+}
+
+
 
 /* Admin Blog */ 
 
