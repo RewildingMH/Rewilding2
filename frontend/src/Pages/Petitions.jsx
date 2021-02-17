@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import petitionsActions from "../redux/actions/petitionsActions";
+import petitionsActions from '../redux/actions/petitionsActions'
 import PetitionCard from "../Components/PetitionCard";
 
 const Petitions = (props) => {

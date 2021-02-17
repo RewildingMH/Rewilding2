@@ -12,6 +12,7 @@ import Petition from './Components/Petition.jsx';
 import BlogPage from './Pages/BlogPage'
 import Community from './Pages/Community'
 import Header from './Components/Header';
+import Profile from './Components/Profile.jsx'
 
 const App = (props) => {
 
@@ -26,6 +27,7 @@ const App = (props) => {
         <Route exact path="/adminBlog" component={BlogAdmin} />
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
+        <Route path="/profile" component={Profile}/>
         <Redirect to="/" />
       </Switch>
     } else {
@@ -33,9 +35,10 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
-        <Route exact path="/blog" component={BlogAdmin} />
+        <Route exact path="/blog" component={BlogPage} />
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
+        <Route path="/profile" component={Profile}/>
         <Redirect to="/" />
       </Switch>
     }
@@ -50,7 +53,7 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
         <Route exact path="/petitions" component={Petitions} />
-        <Route path="/blog" component={BlogAdmin} />
+        <Route path="/blog" component={BlogPage} />
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
         <Redirect to="/" />

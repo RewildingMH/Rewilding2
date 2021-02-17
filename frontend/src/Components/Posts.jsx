@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import postActions from "../redux/actions/postActions";
+import Post from "./Post";
 
 const Posts = (props) => {
   const [newPost, setNewPost] = useState({});
   const [pathImage, setPathImage] = useState("/assets/avatar.png");
   const [file, setFile] = useState();
+
+  useEffect(() => {
+    props.getPosts();
+  }, []);
 
   const captureNewPost = (e) => {
     const field = e.target.name;
@@ -36,24 +41,28 @@ const Posts = (props) => {
 
   const sendPost = (e) => {
     e.preventDefault();
-    props.addPost(newPost, file);
+    if (newPost.text.length < 50 || newPost.text.length > 300) {
+      alert("no pasa");
+    } else {
+      props.addPost(newPost, file);
+    }
   };
 
   return (
     <div>
       <div>
-        <div>
+        <div className="fotoNombrePosts">
           <div>foto</div>
           <div>nombre</div>
         </div>
-        <div>
+        <div className="postsTextArea">
           <textarea
             name="text"
             placeholder="What's on your mind"
             onChange={captureNewPost}
           />
         </div>
-        <div>
+        <div className="filesPost">
           <input type="file" onChange={onFileChange} />
           <img
             className="img-fluid profile-pic-profile-submit"
@@ -64,7 +73,9 @@ const Posts = (props) => {
           <button onClick={sendPost}>Publish</button>
         </div>
       </div>
-      {/* mapeo de posts posts.map((post) => <div>posteo<div/>) */}
+      {props.allPosts.map((post) => {
+        return <Post post={post} />;
+      })}
     </div>
   );
 };
@@ -72,11 +83,13 @@ const Posts = (props) => {
 const mapStateToProps = (state) => {
   return {
     loggedUser: state.authR.loggedUser,
+    allPosts: state.postR.allPosts,
   };
 };
 
 const mapDispatchToProps = {
   addPost: postActions.addPost,
+  getPosts: postActions.getPosts,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);

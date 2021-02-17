@@ -27,25 +27,35 @@ router.route('/petitions')
   .get(petitionController.getPetitions)
   .post(passport.authenticate('jwt', { session: false }), petitionController.addPetition)
 
-router.route('/signPetition').post(passport.authenticate('jwt', { session: false }), petitionController.signPetition)
+router.route('/signPetition')
+.post(passport.authenticate('jwt', { session: false }), petitionController.signPetition)
 //Blog
 router.route('/blog')
-  .post(passport.authenticate('jwt', { session: false }), validator.isAdmin, blogController.addArticle)
+.get(blogController.getArticles)
+.put(blogController.editArticle)
+router.route('/blog/delete')
+.put(blogController.deleteArticle)
+router.route('/blog/comment')
+.post(blogController.commentArticle)
 
-router.route('/petitions/like').post(passport.authenticate('jwt', { session: false }), userController.likeReason)
-router.route('/petitions/dislike/:petId/:id').delete(passport.authenticate('jwt', { session: false }), userController.dislikeReason)
 
-router.route('/petitions/delete/:reasonId/:petId').delete(passport.authenticate('jwt', { session: false }), userController.deleteReason)
+router.route('/petitions/delete/:reasonId/:petId')
+.delete(passport.authenticate('jwt', { session: false }), userController.deleteReason)
 
-router.route('/petitions/modifyReason').put(passport.authenticate('jwt', { session: false }), userController.modifyReason)
+router.route('/petitions/modifyReason')
+.put(passport.authenticate('jwt', { session: false }), userController.modifyReason)
 
-router.route('/posts').post(passport.authenticate('jwt', { session: false }), postController.addPost)
+router.route('/posts').post(passport.authenticate('jwt', { session: false }), postController.addPost).get(postController.getPosts)
 
-router.route('/petitions/visits').post(petitionController.addVisit)
+router.route('/petitions/visits')
+.post(petitionController.addVisit)
 
-  .post(passport.authenticate('jwt', { session: false }), validator.isAdmin, blogController.addArticle)
-  .get(blogController.getArticles)
-  .put(blogController.updateArticle)
+router.route('/posts/comments').post(passport.authenticate('jwt', { session: false }), postController.addComment)
+
+router.route('/posts/like').post(passport.authenticate('jwt', { session: false }), postController.likePost)
+
+router.route('/posts/dislike/:postId').delete(passport.authenticate('jwt', { session: false }), postController.dislikePost)
+
 module.exports = router
 
 

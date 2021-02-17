@@ -2,6 +2,7 @@ import React,  { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import articleActions from '../redux/actions/articleActions'
 import BlogArticle from '../Components/BlogArticle'
+import Table from 'react-bootstrap/Table'
 
 const BlogAdmin = (props) => {
     const [article, setArticle] = useState({
@@ -11,7 +12,7 @@ const BlogAdmin = (props) => {
     })
     useEffect(() => {
       props.getArticles();
-    }, [])
+    }, [props.articles])
 
     const readInput = (e) => {
       const {name, value} = e.target
@@ -49,8 +50,8 @@ const BlogAdmin = (props) => {
 //estilo linea 66 de prueba(el div).
   return (
     <>
-      <div className="adminBlog container">
-        <h2>Blog</h2>
+      <div>
+        <h2>Blog agregar articulo</h2>
         <input type="text" onChange={readInput} name="title"placeholder="Put your title for this article"/>
         <label htmlFor="signature-pic" className="label_input_file" >
             <div className="d-flex flex-column align-items-center">
@@ -72,36 +73,28 @@ const BlogAdmin = (props) => {
             </div>
         <button onClick={sendArticle}>Submit</button>
       </div>
-      <table>
+      <h1>Editar y borrar articulos</h1>
+      <div classname="container">
+        <Table striped bordered hover>
           <thead>
               <tr>
                   <th>Title</th>
                   <th>Category</th>
                   <th>Description</th>
-                  <th>Image</th>
                   <th>Edit</th>
                   <th>Delete</th>
               </tr>
           </thead>
           <tbody>
               {props.articles.map((article)=>{
-                  return <BlogArticle article={article} />
-                      
-                      // <>
-                      //     <tr>
-                      //         <td>{title}</td>
-                      //         <td>{category} </td>
-                      //         <td>{descripcion}</td>
-                      //         <td>{picture}</td>
-                      //         <td >Editar</td>
-                      //         <td >Borrar</td>
-                      //     </tr>
-                      // </>
-                  
+                  return <BlogArticle article={article} />                
 
               }) }
           </tbody>
-      </table>
+        </Table>
+      </div>
+
+      
     </>
   );
 };
