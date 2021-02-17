@@ -8,9 +8,8 @@ import authActions from './redux/actions/authActions'
 import React, { useState } from 'react'
 import CreatePetition from './Components/CreatePetition.jsx';
 import BlogAdmin from './Pages/BlogAdmin'
-import BlogPage from './Pages/BlogPage'
+import BlogPage from './Pages/BlogPage.jsx'
 import Petition from './Components/Petition.jsx';
-import BlogPage from './Pages/BlogPage'
 import Community from './Pages/Community'
 import Header from './Components/Header';
 import Profile from './Components/Profile.jsx'
