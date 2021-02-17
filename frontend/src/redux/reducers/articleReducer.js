@@ -1,6 +1,6 @@
 const initialState = {
     articles: [],
-    articleCategories:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION"]
+    articleCategories:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION", "Animals in the wild", "Ecology"]
 }
 
 

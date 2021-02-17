@@ -483,12 +483,27 @@ nav a {
 }
 /* blog stiles */
 .portadaBlog{
-    height: 70vh;
+    height: 100vh;
 }
 .tituloBlog{
     color: white;
+    font-weight: 700;
+    width: 70%;
 }
-
+.tituloBlog:hover{
+    color: thistle;
+}
+.portadaImg{
+    max-width: 70%;
+    animation: movement 30s infinite linear alternate;
+}
+@keyframes movement {
+    from {
+        background-position: bottom left;
+    } to {
+        background-position: top right;
+    }
+}
 /* Loader */
 .preloader {
     position: fixed;
