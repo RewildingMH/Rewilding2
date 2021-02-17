@@ -39,7 +39,6 @@ const BlogPage = (props) => {
   useEffect(() => {
     props.getArticles();
   }, [])
-  
   console.log(props.articles)
   return (
     <>
@@ -48,11 +47,10 @@ const BlogPage = (props) => {
       <div className="container mt-4">
         <div className="row">
           <div className="col-6">
-            <Link>
+            <Link to={`/blog/${_id}`} >
             <h1>{title}</h1>
             </Link>
             <div className="d-flex" >
-              <img src={author[0].profilePicture} className="rounded-circle mr-3" style={{height: "25px", width:"25px"}} />
               <p>{author[0].name}</p>
             </div>
             <h3>{articleCategory}</h3>

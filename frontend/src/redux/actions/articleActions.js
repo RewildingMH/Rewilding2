@@ -25,11 +25,11 @@ const articleActions = {
             dispatch({type: 'GET_ARTICLES', payload: response.data.response})
         }
     },
-    singleArticle: (id) => {
-        console.log(id)
+    singleArticle: () => {
         return async(dispatch, getState) => {
-            const response = await axios.get(`http://localhost:4000/api/blog/${id}`)
-            dispatch({type: 'SINGLE_ARTICLE', payload: response.data.response})
+            const article = getState().auth.articles
+            // const response = await axios.get('http://localhost:4000/api/blog')
+            dispatch({type: 'SINGLE_ARTICLE', payload: article})
         }   
     },
     editArticle:(article)=>{
