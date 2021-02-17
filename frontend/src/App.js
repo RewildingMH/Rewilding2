@@ -65,7 +65,7 @@ const App = (props) => {
   return (
     <>
       <Router>
-        <Header />
+        {/* <Header /> */}
         {routes}
         <Route path="/petitions/:id" component={Petition} />
       </Router>
