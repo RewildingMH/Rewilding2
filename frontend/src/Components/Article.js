@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import articleActions from '../redux/actions/articleActions'
 
 const Article = (props) =>{
-    // const [article, setArticle] = useState({});
-    // const id = req.match.params.id
+
     
     const id = props.match.params.id
 
@@ -16,8 +15,6 @@ const Article = (props) =>{
 
     return (
         <div>
-        <h1>{props.articles.title}</h1>
-        <h4>{'hola'}</h4>
         <p>{'hola'}</p>
        </div>
     )
