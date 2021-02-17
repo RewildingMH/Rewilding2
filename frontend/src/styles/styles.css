@@ -679,6 +679,9 @@ nav a {
 .portadaBlog{
     height: 100vh;
 }
+.categoryBlog{
+    color: white;
+}
 .tituloBlog{
     color: white;
     font-weight: 700;
