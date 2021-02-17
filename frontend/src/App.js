@@ -8,7 +8,7 @@ import authActions from './redux/actions/authActions'
 import React, { useState } from 'react'
 import CreatePetition from './Components/CreatePetition.jsx';
 import BlogAdmin from './Pages/BlogAdmin'
-import BlogPage from './Pages/BlogPage.js'
+import BlogPage from './Pages/BlogPage.jsx'
 import Petition from './Components/Petition.jsx';
 import Community from './Pages/Community'
 import Header from './Components/Header';
@@ -29,7 +29,7 @@ const App = (props) => {
         <Route exact path="/adminBlog" component={BlogAdmin} />
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
-        <Route path="/profile" component={Profile}/>
+        <Route path="/profile" component={Profile} />
         <Redirect to="/" />
       </Switch>
     } else {
@@ -41,7 +41,7 @@ const App = (props) => {
         <Route path="/article/:id" component={Article} />
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
-        <Route path="/profile" component={Profile}/>
+        <Route path="/profile" component={Profile} />
         <Redirect to="/" />
       </Switch>
     }
@@ -71,7 +71,6 @@ const App = (props) => {
       <Router>
         <Header />
         {routes}
-        <Route path="/petitions/:id" component={Petition} />
       </Router>
     </>
   )
