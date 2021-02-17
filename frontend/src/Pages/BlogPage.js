@@ -2,13 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 
 
-const BlogPage = (props) => {
+const BlogPage = () => {
     
   return (
     <>
-     
+     <h1>
+      Hola
+     </h1>
     </>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BlogPage)
+export default BlogPage

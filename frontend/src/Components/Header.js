@@ -16,15 +16,14 @@ const Header = (props) => {
     };
     if (props.loggedUser === null) {
         var links = <>
-            <div id="mainListDiv" className="noUserHeader" >
                 <NavLink to="/login" >
                     <div><p>Login</p></div>
                 </NavLink>
                 <NavLink to="/petitions">
                     <div><p>Petitions</p></div>
                 </NavLink>
-            </div>
         </>
+        //ACA TIENE Q IR ELSE IF Q PREGUNTE SI EL USUARIO LOGUEADO ES ADMIN, SI ES ADMIN LE MUESTRO EL NAVLINK CON LA RUTA ADMINBLOG, SI NO ES ADMIN LE MUESTRO LOS LINKS DEL USUARIO LOGUEADO COMUN
     } else {
         var links =
             <>
@@ -75,11 +74,14 @@ const Header = (props) => {
                             <NavLink to="/petitions">
                                 <div><p>Petitions</p></div>
                             </NavLink>
-                            <div>
-                                <p>Blog</p>
-                            </div>
+                            <NavLink to="/blog">
+                                <div>
+                                    <p>Blog</p>
+                                </div>
+                            </NavLink>
+                            {links}        
                         </div>
-                        {links}
+                        
                     </div>
                 </div>
             </nav>

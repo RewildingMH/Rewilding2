@@ -8,6 +8,7 @@ import authActions from './redux/actions/authActions'
 import React, { useState } from 'react'
 import CreatePetition from './Components/CreatePetition.jsx';
 import BlogAdmin from './Pages/BlogAdmin'
+import BlogPage from './Pages/BlogPage'
 import Petition from './Components/Petition.jsx';
 
 const App = (props) => {
@@ -26,7 +27,7 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
-        <Route exact path="/blog" component={BlogAdmin} />
+        <Route exact path="/blog" component={BlogPage} />
         <Redirect to="/" />
       </>
     }
@@ -41,7 +42,7 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/petitions" component={Petitions} />
-        <Route path="/blog" component={BlogAdmin} />
+        <Route path="/blog" component={BlogPage} />
         <Redirect to="/" />
       </>
     );
