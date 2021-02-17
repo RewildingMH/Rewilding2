@@ -65,6 +65,7 @@ const Post = ({
   const sendPostModification = (e) => {
     e.preventDefault();
     submitPostModification(postModification, file);
+    setVisible(!visible);
   };
 
   const sendComment = (e) => {
@@ -91,20 +92,23 @@ const Post = ({
   return (
     <div>
       <div style={{ backgroundColor: `url(${post.userPic})` }}></div>
-      <h5>{post.username}</h5>
+
       {post.picture && (
-        <div
-          style={{
-            backgroundImage: `url(${post.picture})`,
-            width: "20px",
-            height: "20px",
-            backgroundSize: "cover",
-          }}
-        ></div>
+        <div className="d-flex justify-content-center">
+          <div
+            style={{
+              backgroundImage: `url(${post.picture})`,
+              width: "40rem",
+              height: "20rem",
+              backgroundSize: "cover",
+            }}
+          ></div>
+        </div>
       )}
+      <h5>From {post.username} : </h5>
       <h3>{post.text}</h3>
 
-      {loggedUser && post.length > 0 ? (
+      {loggedUser ? (
         post.likes.find((like) => like._id === loggedUser.userId) ? (
           <button onClick={dislikePost} id={post._id}>
             DISLIKE♥{post.likes.length}
@@ -115,11 +119,9 @@ const Post = ({
           </button>
         )
       ) : (
-        <>
-          <button onClick={() => alert("must be logged in")}>
-            LIKE♥{post.likes.length}
-          </button>
-        </>
+        <button onClick={() => alert("must be logged in")}>
+          LIKE♥{post.likes.length}
+        </button>
       )}
       {loggedUser && loggedUser.userId === post.userId && (
         <button onClick={() => setVisible(!visible)}>EDIT</button>

@@ -57,15 +57,12 @@ const Posts = (props) => {
   return (
     <div>
       <div>
-        <div className="fotoNombrePosts">
-          <div>foto</div>
-          <div>nombre</div>
-        </div>
         <div className="postsTextArea">
           <textarea
             name="text"
             placeholder="What's on your mind"
             onChange={captureNewPost}
+            className="w-100"
           />
         </div>
         <div className="filesPost">

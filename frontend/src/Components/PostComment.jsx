@@ -70,45 +70,53 @@ const PostComment = ({
   return (
     <div>
       <div style={{ display: "flex" }}>
-        <div
-          style={{
-            backgroundImage: `url(${profilePicture})`,
-            width: "20px",
-            height: "20px",
-            backgroundSize: "cover",
-          }}
-        ></div>
-        <p>{name}</p>
+        <div className="col-12 flex-1">
+          <div style={{ display: "flex" }}>
+            <div
+              style={{
+                backgroundImage: `url(${profilePicture})`,
+                width: "20px",
+                height: "20px",
+                backgroundSize: "cover",
+                marginRight: "5vw",
+              }}
+            ></div>
 
-        {visible ? (
-          <>
-            <input
-              type="text"
-              name="newCommentEdit"
-              placeholder={comment}
-              onChange={captureNewComment}
-            />
-            <button onClick={editComment}>SEND</button>
-          </>
-        ) : (
-          <p>{comment}</p>
-        )}
-        <p>LIKES: {likes.length}</p>
-        {loggedUser ? (
-          likes.find((like) => like.id === loggedUser.userId) ? (
-            <button onClick={dislikeComment}>DISLIKE COMMENT♥</button>
+            {visible ? (
+              <>
+                <input
+                  type="text"
+                  name="newCommentEdit"
+                  placeholder={comment}
+                  onChange={captureNewComment}
+                />
+                <button onClick={editComment}>SEND</button>
+              </>
+            ) : (
+              <div>
+                <p>{name}</p>
+                <p>{comment}</p>
+              </div>
+            )}
+          </div>
+
+          <p>LIKES: {likes.length}</p>
+          {loggedUser ? (
+            likes.find((like) => like.id === loggedUser.userId) ? (
+              <button onClick={dislikeComment}>DISLIKE COMMENT♥</button>
+            ) : (
+              <button onClick={likeComment}>LIKE COMMENT♥</button>
+            )
           ) : (
-            <button onClick={likeComment}>LIKE COMMENT♥</button>
-          )
-        ) : (
-          <button> LIKE COMMENT♥</button>
-        )}
-        {loggedUser && loggedUser.userId === userId && (
-          <>
-            <button onClick={deleteComment}>DELETE</button>
-            <button onClick={mostrarInput}>EDIT</button>
-          </>
-        )}
+            <button> LIKE COMMENT♥</button>
+          )}
+          {loggedUser && loggedUser.userId === userId && (
+            <>
+              <button onClick={deleteComment}>DELETE</button>
+              <button onClick={mostrarInput}>EDIT</button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
