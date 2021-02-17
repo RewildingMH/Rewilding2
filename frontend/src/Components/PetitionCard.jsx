@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import petitionsActions from "../redux/actions/PetitionsActions";
+import petitionsActions from "../redux/actions/petitionsActions";
 import { connect } from "react-redux";
 
 const PetitionCard = (props) => {
@@ -28,7 +28,13 @@ const PetitionCard = (props) => {
             : props.petition.desc}
         </p>
         <p>
-          {props.petition.signatures.length} have already signed this petition
+          {props.petition.signatures.length
+            ? props.petition.signatures.length === 1
+              ? props.petition.signatures.length +
+                " person has already signed this petition"
+              : props.petition.signatures.length +
+                " persons have already signed this petition"
+            : "No one has signed this petition yet"}
         </p>
       </div>
     </Link>

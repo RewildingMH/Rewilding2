@@ -10,26 +10,38 @@ import CreatePetition from './Components/CreatePetition.jsx';
 import BlogAdmin from './Pages/BlogAdmin'
 import BlogPage from './Pages/BlogPage'
 import Petition from './Components/Petition.jsx';
+import BlogPage from './Pages/BlogPage'
+import Community from './Pages/Community'
+import Header from './Components/Header';
+import Profile from './Components/Profile.jsx'
 
 const App = (props) => {
+
   const [reload, setReload] = useState(false)
   if (props.loggedUser) {
     if (props.loggedUser.rol === "admin") {
-      var routes = <>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/petitions" component={Petitions} />
-        <Route path="/createPetition" component={CreatePetition} />
-        <Route exact path="/adminBlog" component={BlogAdmin} />
-        <Redirect to="/" />
-      </>
-    } else {
-      var routes = <>
+      var routes = <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/petitions" component={Petitions} />
         <Route path="/createPetition" component={CreatePetition} />
         <Route exact path="/blog" component={BlogPage} />
+        <Route exact path="/adminBlog" component={BlogAdmin} />
+        <Route path="/petitions/:id" component={Petition} />
+        <Route path="/community" component={Community} />
+        <Route path="/profile" component={Profile}/>
         <Redirect to="/" />
-      </>
+      </Switch>
+    } else {
+      var routes = <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/petitions" component={Petitions} />
+        <Route path="/createPetition" component={CreatePetition} />
+        <Route exact path="/blog" component={BlogPage} />
+        <Route path="/petitions/:id" component={Petition} />
+        <Route path="/community" component={Community} />
+        <Route path="/profile" component={Profile}/>
+        <Redirect to="/" />
+      </Switch>
     }
   } else if (localStorage.getItem('token')) {
     props.logFromLS(localStorage.getItem('token'))
@@ -38,13 +50,15 @@ const App = (props) => {
       })
   } else {
     var routes = (
-      <>
+      <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
-        <Route path="/petitions" component={Petitions} />
+        <Route exact path="/petitions" component={Petitions} />
         <Route path="/blog" component={BlogPage} />
+        <Route path="/petitions/:id" component={Petition} />
+        <Route path="/community" component={Community} />
         <Redirect to="/" />
-      </>
+      </Switch>
     );
   }
 
@@ -52,9 +66,8 @@ const App = (props) => {
   return (
     <>
       <Router>
-        <Switch>
-          {routes}
-        </Switch>
+        <Header />
+        {routes}
         <Route path="/petitions/:id" component={Petition} />
       </Router>
     </>
