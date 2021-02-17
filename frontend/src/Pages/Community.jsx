@@ -18,7 +18,7 @@ const Community = (props) => {
     props.getArticles();
   }, []);
 
-  console.log(popular);
+  console.log(props);
 
   return (
     <>
@@ -77,7 +77,7 @@ const mapStateToProps = (state) => {
   return {
     allPetitions: state.petitionsR.allPetitions,
     loggedUser: state.authR.loggedUser,
-    articles: state.articleR.articles,
+    articles: state.articleR.allArticles,
   };
 };
 const mapDispatchToProps = {

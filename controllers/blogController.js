@@ -35,10 +35,12 @@ const articleController = {
   getArticles: async(req, res) => {
     try {
       const data = await Article.find()
+      
       res.json({
         success: true,
         response: data
       })
+
     } catch (error) {
       res.json({
         success: false,

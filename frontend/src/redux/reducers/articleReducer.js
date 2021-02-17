@@ -1,6 +1,9 @@
 const initialState = {
-    articles: [],
-    articleCategories:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION"]
+    allArticles: [],
+    articlePort: [],
+    articlePortMini: [],
+    articlesList: [],
+    articleCategories:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION", "Animals in the wild", "Ecology"]
 }
 
 
@@ -14,7 +17,10 @@ export function articleReducer  (state = initialState, action){
         case 'GET_ARTICLES':
             return {
                 ...state,
-                articles: action.payload
+                allArticles: action.payload,
+                articlePort: action.payload.slice(action.payload.length - 1, action.payload.length),
+                articlePortMini: action.payload.slice(action.payload.length - 2, action.payload.length- 1),
+                articlesList: action.payload.slice(0, action.payload.length- 2),
             }
         case 'UPDATE_ARTICLE':
             return {
@@ -30,6 +36,11 @@ export function articleReducer  (state = initialState, action){
             return {
                 ...state, 
                 articles: action.payload 
+            }
+        case 'SINGLE_CITY':
+            return {
+                ...state,
+                singleArticle: action.payload
             }
         default:
             return state

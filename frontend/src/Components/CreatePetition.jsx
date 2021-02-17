@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import petitionsActions from "../redux/actions/petitionsActions";
+import petitionsActions from "../redux/actions/petitionsActions"
 
 const CreatePetition = (props) => {
   const [newPetition, setNewPetition] = useState({});
