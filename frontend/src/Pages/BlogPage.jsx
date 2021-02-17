@@ -28,7 +28,7 @@ const BlogPage = (props) => {
             :
             <>
               <div className="col-8">
-                <Link to={`/blog/${props.articlePort[0]._id}`} className="text-decoration-none ">
+                <Link to={`/article/${props.articlePort[0]._id}`} className="text-decoration-none ">
                   <img src={props.articlePort[0].picture} className="img-fluid portadaImg" />
                   <div>
                     <p className="my-3 categoryBlog">| {props.articlePort[0].articleCategory} |</p>
@@ -37,7 +37,7 @@ const BlogPage = (props) => {
                 </Link>
               </div>
               <div className="col-4">
-                <Link to={`/blog/${props.articlePortMini[0]._id}`} className="text-decoration-none ">
+                <Link to={`/article/${props.articlePortMini[0]._id}`} className="text-decoration-none ">
                   <img src={props.articlePortMini[0].picture} className="img-fluid" />
                   <p className="my-3 categoryBlog">| {props.articlePortMini[0].articleCategory} |</p>        
                   <p className="h4 tituloBlog">{props.articlePortMini[0].title}</p>
@@ -47,7 +47,7 @@ const BlogPage = (props) => {
                 return(
                       <>
                         <div className="col-4">             
-                          <Link to={`/blog/${_id}`} className="text-decoration-none ">
+                          <Link to={`/article/${_id}`} className="text-decoration-none ">
                             <img src={picture} className="img-fluid" />
                             <p className="my-3 categoryBlog">| {articleCategory} |</p>
                             <p className="h4 bg-dark tituloBlog">{title}</p>
