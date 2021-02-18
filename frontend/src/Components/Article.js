@@ -2,32 +2,31 @@ import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import articleActions from '../redux/actions/articleActions'
 
-const Article = (props) =>{
+const Article = (props) => {
 
-    
-    const id = props.match.params.id
 
-    useEffect(() => {
-        props.singleArticle(id)
-    }, [])
+  const id = props.match.params.id
 
-    console.log(props)
+  useEffect(() => {
+    props.singleArticle(id)
+  }, [])
 
-    return (
-        <div>
-        <p>{'hola'}</p>
-       </div>
-    )
+
+  return (
+    <div>
+      <p>{'hola'}</p>
+    </div>
+  )
 }
 
 const mapStateToProps = state => {
-    return {
-      articles: state.articleR.articles,
-    }
+  return {
+    articles: state.articleR.articles,
   }
+}
 
 const mapDispatchToProps = {
-    singleArticle: articleActions.singleArticle
+  singleArticle: articleActions.singleArticle
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article)
