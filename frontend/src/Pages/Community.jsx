@@ -4,6 +4,7 @@ import Posts from "../Components/Posts";
 import petitionsActions from "../redux/actions/petitionsActions";
 import articleActions from "../redux/actions/articleActions";
 import { Link } from "react-router-dom";
+import communityPic from "../assets/communityImg.png"
 
 const Community = (props) => {
   const [popular, setPopular] = useState([]); // Estado para guardar las peticiones más populares
@@ -22,7 +23,7 @@ const Community = (props) => {
 
   return (
     <>
-      <div className="communityBanner"></div>
+      <div className="communityBanner" style={{backgroundImage: `url(${communityPic})`, backgroundPosition: "center", backgroundSize: "cover"}}></div>
       <div className="comunityContainer">
         <div className="comunityEntry align-items-start">
           <div

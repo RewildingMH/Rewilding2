@@ -19,7 +19,6 @@ h1,
 h2 {
   font-family: "Oswald", sans-serif;
 }
-
 /* header */
 
 .navBar {
@@ -49,9 +48,8 @@ h2 {
 }
 
 .pages p:hover {
-  border-radius: 0.5vw;
   transition: 0.3s;
-  background-color: rgba(68, 68, 68, 0.356);
+  /* background-color: rgba(68, 68, 68, 0.356); */
   border-bottom: 2px solid green;
 }
 
@@ -101,12 +99,11 @@ nav a {
 }
 
 .active p {
-  border-radius: 0.5vw;
   padding: 0.5vw 1vw;
-  background-color: rgba(245, 245, 245, 0);
+  /* background-color: rgba(245, 245, 245, 0); */
   border-bottom: 2px solid green;
   color: rgb(255, 255, 255);
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+  /* box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555); */
 }
 
 .userHeaderLink {
@@ -157,7 +154,7 @@ nav a {
 
 .affix {
   padding: 0.5vh;
-  background-color: rgb(46, 46, 46);
+  background-color: #3e4444;
   transition: 0.8s;
 }
 /* homepage */
@@ -207,7 +204,7 @@ nav a {
 .containerBanner {
   width: 100%;
   height: 10vh;
-  background-color: rgb(10, 78, 10);
+  background-color:  #405d27;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -215,11 +212,22 @@ nav a {
   font-size: 3vh;
 }
 
+.containerPetBanner {
+    width: 100%;
+    height: 10vh;
+    background-color: rgb(98, 76, 27);
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ivory;
+    font-size: 3vh;
+}
+
 .divBlog {
   width: 100%;
-  height: 50vh;
-  background-color: rgb(46, 46, 46);
-  margin-top: 5vh;
+  height: 100%;
+  background-color: #3e4444;
 }
 
 .mainTitle {
@@ -247,17 +255,52 @@ nav a {
 
 /* Petitions */
 
+.allPetitions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80vw;
+}
+
+.allPetitions a {
+    background-color: rgba(0, 0, 0, 0.116);
+    border-radius: 2vh;
+    width: 80%;
+    height: 20vh;
+    text-decoration: none;
+    color: rgb(58, 37, 37);
+    box-shadow: -10px 10px 8px rgb(56, 42, 42);
+    display: flex;
+    margin-bottom: 5vh;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
 .petitionContainer {
-  width: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.petitionImg {
+  background-color: crimson;
+  min-width: 15vw;
   height: 100%;
+  border-radius: 2vh;
+}
+
+.titlePetition {
+    display: flex;
+    justify-content: center;
 }
 
 /* Create Petition */
 
 .createPetitionBanner {
-  width: 100%;
-  height: 70vh;
-  background-image: url("https://images.theconversation.com/files/90375/original/image-20150731-24504-exqdo3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop");
+    width: 100%;
+    height: 70vh;
 }
 
 .createPetitionContainer {
@@ -275,16 +318,22 @@ h6 {
   text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.233);
 }
 
+.backgroundCard {
+  background-color: rgba(0, 0, 0, 0.116);
+  border-radius: 2vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
 /* input 1 & 2 */
 
 .createPetitionInput1nd2 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput1nd2 input {
@@ -311,11 +360,9 @@ h6 {
 .createPetitionInput3 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput3 textarea {
@@ -344,11 +391,9 @@ h6 {
 .createPetitionInput4 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput4 input {
@@ -375,11 +420,9 @@ h6 {
 .createPetitionInput5 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput5 input {
@@ -407,11 +450,9 @@ h6 {
 .createPetitionInput6 {
   width: 40vw;
   height: 45vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionUploadFile {
@@ -479,7 +520,6 @@ h6 {
 .communityBanner {
   width: 100%;
   height: 70vh;
-  background-image: url("https://b8g9x2x5.rocketcdn.me/wp-content/uploads/2018/08/social-communities_eulfrn.png");
 }
 
 .comunityContainer {
@@ -701,6 +741,19 @@ textarea {
     background-position: top right;
   }
 }
+
+/* article style */
+.textArticle {
+  color: whitesmoke;
+}
+.titleArticle{
+  color:whitesmoke;
+  text-align:center;
+}
+.picArticle{
+  width: 50vw
+}
+
 /* Loader */
 .preloader {
   position: fixed;

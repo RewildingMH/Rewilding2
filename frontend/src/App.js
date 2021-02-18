@@ -14,6 +14,7 @@ import Community from './Pages/Community'
 import Header from './Components/Header';
 import Article from './Components/Article'
 import Profile from './Components/Profile.jsx'
+import ScrollToTop from './Components/ScrollTop'
 
 const App = (props) => {
 
@@ -29,7 +30,7 @@ const App = (props) => {
         <Route exact path="/adminBlog" component={BlogAdmin} />
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
-        <Route path="/profile" component={Profile} />
+        <Route path="/profile/:id" component={Profile}/>
         <Redirect to="/" />
       </Switch>
     } else {
@@ -41,7 +42,7 @@ const App = (props) => {
         <Route path="/article/:id" component={Article} />
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
-        <Route path="/profile" component={Profile} />
+        <Route path="/profile/:id" component={Profile}/>
         <Redirect to="/" />
       </Switch>
     }
@@ -60,6 +61,7 @@ const App = (props) => {
         <Route path="/article/:id" component={Article} />
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
+        <Route path="/profile/:id" component={Profile}/> 
         <Redirect to="/" />
       </Switch>
     );
@@ -69,8 +71,10 @@ const App = (props) => {
   return (
     <>
       <Router>
-        <Header />
-        {routes}
+        <ScrollToTop>
+          <Header />
+          {routes}
+        </ScrollToTop>  
       </Router>
     </>
   )
