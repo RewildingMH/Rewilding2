@@ -740,6 +740,19 @@ textarea {
     background-position: top right;
   }
 }
+
+/* article style */
+.textArticle {
+  color: whitesmoke;
+}
+.titleArticle{
+  color:whitesmoke;
+  text-align:center;
+}
+.picArticle{
+  width: 50vw
+}
+
 /* Loader */
 .preloader {
   position: fixed;
