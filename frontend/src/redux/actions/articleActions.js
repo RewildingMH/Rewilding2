@@ -47,12 +47,11 @@ const articleActions = {
     commentArticle: (comment, token) => {
         console.log(comment)
         return async(dispatch, getState) => {
-            const response = await axios.post('http://localhost:4000/api/blog/comment', {comment, token}, {
-                headers: {
+            const response = await axios.put('http://localhost:4000/api/article/comment', {comment}, {
+                headers:{
                     Authorization: `Bearer ${token}`
                 }
-            }
-            )
+            })
             dispatch({type: 'COMMENT_ARTICLE', payload: response.data.response})
         }
     }

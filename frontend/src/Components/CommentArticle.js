@@ -17,7 +17,7 @@ const CommentArticle = (props) =>{
           [name]: value,
         })
       }
-      console.log(comment)
+      console.log(props)
       
       const sendComment = (e) => {
         e.preventDefault()
