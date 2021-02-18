@@ -6,7 +6,6 @@ const initialState = {
     articleCategories:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION", "Animals in the wild", "Ecology"]
 }
 
-
 export function articleReducer  (state = initialState, action){
     switch(action.type){
         case 'ADD_ARTICLE':

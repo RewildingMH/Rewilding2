@@ -12,7 +12,6 @@ export function authReducer(state = initialState, action) {
             localStorage.setItem('username', action.payload.response.username)
             localStorage.setItem('rol', action.payload.response.rol)
             localStorage.setItem('userId', action.payload.response.userId)
-
             return {
                 ...state,
                 loggedUser: action.payload.response
