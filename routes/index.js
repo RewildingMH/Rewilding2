@@ -28,34 +28,44 @@ router.route('/petitions')
   .post(passport.authenticate('jwt', { session: false }), petitionController.addPetition)
 
 router.route('/signPetition')
-.post(passport.authenticate('jwt', { session: false }), petitionController.signPetition)
+  .post(passport.authenticate('jwt', { session: false }), petitionController.signPetition)
 //Blog
 router.route('/blog')
-.get(blogController.getArticles)
-.put(blogController.editArticle)
-.post(passport.authenticate('jwt', { session: false }), blogController.addArticle)
+  .get(blogController.getArticles)
+  .put(blogController.editArticle)
 router.route('/blog/delete')
-.put(blogController.deleteArticle)
+  .put(blogController.deleteArticle)
 router.route('/blog/comment')
-.post(blogController.commentArticle)
-
-
+  .post(blogController.commentArticle)
+// router.route('blog/:id')
+// .get(blogController.singleArticle)
 router.route('/petitions/delete/:reasonId/:petId')
-.delete(passport.authenticate('jwt', { session: false }), userController.deleteReason)
+  .delete(passport.authenticate('jwt', { session: false }), userController.deleteReason)
 
 router.route('/petitions/modifyReason')
-.put(passport.authenticate('jwt', { session: false }), userController.modifyReason)
+  .put(passport.authenticate('jwt', { session: false }), userController.modifyReason)
 
-router.route('/posts').post(passport.authenticate('jwt', { session: false }), postController.addPost).get(postController.getPosts)
+router.route('/posts').post(passport.authenticate('jwt', { session: false }), postController.addPost).get(postController.getPosts).put(passport.authenticate('jwt', { session: false }), postController.modifyPost)
 
-router.route('/petitions/visits')
-.post(petitionController.addVisit)
+router.route('/petitions/visits').post(petitionController.addVisit)
 
-router.route('/posts/comments').post(passport.authenticate('jwt', { session: false }), postController.addComment)
+router.route('/petitions/like').post(passport.authenticate('jwt', { session: false }), userController.likeReason)
+
+router.route('/petitions/dislike/:petId/:id').delete(passport.authenticate('jwt', { session: false }), userController.dislikeReason)
+
+router.route('/posts/comments').post(passport.authenticate('jwt', { session: false }), postController.addComment).put(passport.authenticate('jwt', { session: false }), postController.editComment)
 
 router.route('/posts/like').post(passport.authenticate('jwt', { session: false }), postController.likePost)
 
 router.route('/posts/dislike/:postId').delete(passport.authenticate('jwt', { session: false }), postController.dislikePost)
+
+router.route('/posts/:postId').delete(passport.authenticate('jwt', { session: false }), postController.deletePost)
+
+router.route('/posts/likeComments').post(passport.authenticate('jwt', { session: false }), postController.likeComment)
+
+router.route('/posts/dislikeComments/:idComment/:postId').delete(passport.authenticate('jwt', { session: false }), postController.dislikeComment)
+
+router.route('/posts/comments/:postId/:idComment').delete(passport.authenticate('jwt', { session: false }), postController.deleteComment)
 
 module.exports = router
 
