@@ -38,7 +38,7 @@ const Header = (props) => {
                         {props.loggedUser.name}
                     </Dropdown.Toggle>
                     <Dropdown.Menu className="dropMenu">
-                        <Dropdown.Item ><Link to="/profile" className="profileDrop">Profile</Link></Dropdown.Item>
+                        <Dropdown.Item ><Link to={`/profile/${props.loggedUser.userId}`} className="profileDrop">Profile</Link></Dropdown.Item>
                         <Dropdown.Item >Upgrades</Dropdown.Item>
                         <Dropdown.Item onClick={() => props.logoutUser()} className="logOutDrop">Log Out</Dropdown.Item>
                     </Dropdown.Menu>
@@ -58,7 +58,7 @@ const Header = (props) => {
                             {props.loggedUser.name}
                         </Dropdown.Toggle>
                         <Dropdown.Menu className="dropMenu">
-                            <Dropdown.Item ><Link to="/profile" className="profileDrop">Profile</Link></Dropdown.Item>
+                            <Dropdown.Item ><Link to={`/profile/${props.loggedUser.userId}`} className="profileDrop">Profile</Link></Dropdown.Item>
                             <Dropdown.Item >Upgrades</Dropdown.Item>
                             <Dropdown.Item onClick={() => props.logoutUser()} className="logOutDrop">Log Out</Dropdown.Item>
                         </Dropdown.Menu>
