@@ -12,7 +12,7 @@ const PetitionCard = (props) => {
 
   return (
     <Link to={`/petitions/${props.petition._id}`} onClick={addVisit}>
-      <div
+      <div className="petitionImg"
         style={{
           backgroundImage: `url(${props.petition.picture})`,
           width: "15vw",
