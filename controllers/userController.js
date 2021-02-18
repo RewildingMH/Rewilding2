@@ -57,7 +57,7 @@ const userController = {
                     profilePicture: userExists.profilePicture,
                     username: userExists.username,
                     rol: userExists.rol,
-                    idUser: userExists._id
+                    userId: userExists._id
                 }
             })
         } else {
@@ -74,7 +74,7 @@ const userController = {
                     profilePicture: newUserSaved.profilePicture,
                     username: newUserSaved.username,
                     rol: newUserSaved.rol,
-                    idUser: newUserSaved._id
+                    userId: newUserSaved._id
                 }
             })
         }
