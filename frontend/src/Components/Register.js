@@ -12,7 +12,6 @@ const Register =(props)=>{
         props.getCountries()
     }, [])
     useEffect(()=>{
-        window.scrollTo(0,0)
     })
     //Usuario a cargar en la db
     var [newUser, setNewUser] = useState({
