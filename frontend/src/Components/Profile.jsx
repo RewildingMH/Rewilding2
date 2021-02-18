@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from "react-redux";
-
+import profileActions from '../redux/actions/profileActions';
+//6029350efdc51a222466912d
 const Profile = (props) => {
-    console.log(props.loggedUser)
+    const {country, lastName, name, profilePicture, rol, username} = props.profileUser
+    useEffect(() => {
+        props.getUsersById(props.match.params.id)
+    }, [])
+
     return (
         <>
         <div className="profilebanner">
@@ -11,13 +16,13 @@ const Profile = (props) => {
         <h2 className="text-center mt-4">Profile Options</h2>
         <div className="profileContainer container">
             <div className="profileInfo">
-                <div className="nameInfo">Name: {props.loggedUser.name}</div>
+                <div className="nameInfo">Name: {name} {lastName}</div>
                 <div className="profileInfoImg" style={{
-                    backgroundImage: `url(${props.loggedUser.profilePicture})`
+                    backgroundImage: `url(${profilePicture})`
                 }}>
                     <button>Change Img</button>
                 </div>
-                <div className="userNameInfo">Email: {props.loggedUser.username}</div>
+                <div className="userNameInfo">Email: {username}</div>
             </div>
             <div className="changePassword">Forget your password?</div>
             <div className="adicionalInfo">
@@ -30,15 +35,20 @@ const Profile = (props) => {
                 <div className="petitionsContent">peticiones creadas</div>
                 <div className="blogsContent">articulos en el blog creados</div>
             </div>
-        </div>
+        </div> 
         </>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        loggedUser: state.authR.loggedUser,
+        profileUser: state.profileR.profileUser
         };
     };
 
-    export default connect(mapStateToProps, null)(Profile);
+const mapDispatchToProps = {
+        getUsersById: profileActions.getUsersById
+    }
+
+
+    export default connect(mapStateToProps, mapDispatchToProps)(Profile);

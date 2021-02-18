@@ -13,8 +13,6 @@ const Reason = ({
 }) => {
   const { name, profilePicture, reason, _id, likes, userId } = reasons;
 
-  console.log(reasons);
-
   const like = (e) => {
     const id = e.target.id;
     likeReason({
@@ -68,56 +66,57 @@ const Reason = ({
     modifyReason(edit);
     setVisible(!visible);
   };
-  console.log(likes);
   return (
     <div>
-      <div style={{ display: "flex" }}>
-        <div
-          style={{
-            backgroundImage: `url(${profilePicture})`,
-            width: "100px",
-            height: "100px",
-          }}
-        ></div>
-        <h5>{name}</h5>
-        {visible ? (
-          <>
-            <input
-              id={_id}
-              name="modification"
-              type="text"
-              onChange={captureChange}
-              placeholder={reason}
-            />
-            <button onClick={sendModification}>SEND</button>
-          </>
-        ) : (
-          <p>{reason}</p>
-        )}
-
-        {loggedUser ? (
-          likes.find((like) => like.id === loggedUser.userId) ? (
-            <button onClick={dislike} id={_id}>
-              DISLIKE♥{likes.length}
-            </button>
+      {reason.length > 0 && (
+        <div style={{ display: "flex" }}>
+          <div
+            style={{
+              backgroundImage: `url(${profilePicture})`,
+              width: "100px",
+              height: "100px",
+            }}
+          ></div>
+          <h5>{name}</h5>
+          {visible ? (
+            <>
+              <input
+                id={_id}
+                name="modification"
+                type="text"
+                onChange={captureChange}
+                placeholder={reason}
+              />
+              <button onClick={sendModification}>SEND</button>
+            </>
           ) : (
-            <button onClick={like} id={_id}>
-              LIKE♥{likes.length}
-            </button>
-          )
-        ) : (
-          <button id={_id}>LIKE♥{likes.length}</button>
-        )}
+            <p>{reason}</p>
+          )}
 
-        {loggedUser && loggedUser.userId === userId && (
-          <>
-            <button onClick={removeReason} id={_id}>
-              DELETE
-            </button>
-            <button onClick={changeReason}>EDIT</button>
-          </>
-        )}
-      </div>
+          {loggedUser ? (
+            likes.find((like) => like.id === loggedUser.userId) ? (
+              <button onClick={dislike} id={_id}>
+                DISLIKE♥{likes.length}
+              </button>
+            ) : (
+              <button onClick={like} id={_id}>
+                LIKE♥{likes.length}
+              </button>
+            )
+          ) : (
+            <button id={_id}>LIKE♥{likes.length}</button>
+          )}
+
+          {loggedUser && loggedUser.userId === userId && (
+            <>
+              <button onClick={removeReason} id={_id}>
+                DELETE
+              </button>
+              <button onClick={changeReason}>EDIT</button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };
