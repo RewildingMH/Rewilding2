@@ -215,6 +215,18 @@ nav a {
   font-size: 3vh;
 }
 
+.containerPetBanner {
+    width: 100%;
+    height: 10vh;
+    background-color: rgb(98, 76, 27);
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ivory;
+    font-size: 3vh;
+}
+
 .divBlog {
   width: 100%;
   height: 50vh;
@@ -247,17 +259,44 @@ nav a {
 
 /* Petitions */
 
+.allPetitions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 80vw;
+}
+
+.allPetitions a {
+    background-color: rgb(197, 159, 36);
+    width: 80%;
+    border-radius: 20px;
+    text-decoration: none;
+    color: rgb(58, 37, 37);
+    box-shadow: -10px 10px 8px rgb(56, 42, 42);
+    display: flex;
+    margin-bottom: 5vh;
+}
+
 .petitionContainer {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titlePetition {
+    display: flex;
+    justify-content: center;
 }
 
 /* Create Petition */
 
 .createPetitionBanner {
-  width: 100%;
-  height: 70vh;
-  background-image: url("https://images.theconversation.com/files/90375/original/image-20150731-24504-exqdo3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop");
+    width: 100%;
+    height: 70vh;
 }
 
 .createPetitionContainer {
