@@ -4,13 +4,13 @@ const initialState = {
     singleArticle: [],
     articlePortMini: [],
     articlesList: [],
-    articleCategories:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION", "Animals in the wild", "Ecology"],
+    articleCategories: ["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION", "Animals in the wild", "Ecology"],
     lastArticles: []
 }
 
 
-export function articleReducer  (state = initialState, action){
-    switch(action.type){
+export function articleReducer(state = initialState, action) {
+    switch (action.type) {
         case 'ADD_ARTICLE':
             return {
                 ...state,
@@ -21,8 +21,8 @@ export function articleReducer  (state = initialState, action){
                 ...state,
                 allArticles: action.payload,
                 articlePort: action.payload.slice(action.payload.length - 1, action.payload.length),
-                articlePortMini: action.payload.slice(action.payload.length - 2, action.payload.length- 1),
-                articlesList: action.payload.slice(0, action.payload.length- 2),
+                articlePortMini: action.payload.slice(action.payload.length - 2, action.payload.length - 1),
+                articlesList: action.payload.slice(0, action.payload.length - 2),
                 lastArticles: action.payload.slice(action.payload.length - 6, action.payload.length)
             }
         case 'UPDATE_ARTICLE':
@@ -37,8 +37,8 @@ export function articleReducer  (state = initialState, action){
             }
         case 'COMMENT_ARTICLE':
             return {
-                ...state, 
-                articles: action.payload 
+                ...state,
+                articles: action.payload
             }
         default:
             return state

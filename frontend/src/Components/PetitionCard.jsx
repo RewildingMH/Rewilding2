@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import petitionsActions from "../redux/actions/petitionsActions";
 import { connect } from "react-redux";
 
+//COMPONENTE QUE RECIBE DE SU PADRE TODAS LAS PETICIONES MAPEADAS Y LAS RENDERIZA
 const PetitionCard = (props) => {
-  console.log(props.petition._id)
+  //FUNCIÓN PARA SUMAR VISITAS A CADA PETICIÓN CUANDO SE LE HACE CLIC
   const addVisit = (e) => {
     const id = props.petition._id;
     props.addVisit(id);
@@ -12,13 +13,14 @@ const PetitionCard = (props) => {
 
   return (
     <Link to={`/petitions/${props.petition._id}`} onClick={addVisit}>
-      <div className="petitionImg"
+      <div
+        className="petitionImg"
         style={{
           backgroundImage: `url(${props.petition.picture})`,
-          width: "15vw",
-          height: "20vh",
+          width: "500px",
+          height: "500px",
           backgroundSize: "cover",
-          backgroundPosition:"center"
+          backgroundPosition: "center",
         }}
       ></div>
       <div className="titlePetition">
@@ -31,13 +33,14 @@ const PetitionCard = (props) => {
             ? props.petition.desc.slice(0, 100) + "..."
             : props.petition.desc}
         </p>
+        {/* CONDICIÓN QUE RENDERIZA CUÁNTAS PERSONAS FIRMARON ESA PETICIÓN */}
         <p>
           {props.petition.signatures.length
             ? props.petition.signatures.length === 1
               ? props.petition.signatures.length +
-              " person has already signed this petition"
+                " person has already signed this petition"
               : props.petition.signatures.length +
-              " persons have already signed this petition"
+                " persons have already signed this petition"
             : "No one has signed this petition yet"}
         </p>
       </div>

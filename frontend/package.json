@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.7.1",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta2",
+    "compressorjs": "^1.0.7",
     "get-google-fonts": "^1.2.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
@@ -19,6 +20,7 @@
     "react-scripts": "^4.0.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "sweetalert2": "^10.15.3",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
