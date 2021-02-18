@@ -25,13 +25,6 @@ const articleActions = {
             dispatch({type: 'GET_ARTICLES', payload: response.data.response})
         }
     },
-    singleArticle: () => {
-        return async(dispatch, getState) => {
-            const article = getState().auth.articles
-            // const response = await axios.get('http://localhost:4000/api/blog')
-            dispatch({type: 'SINGLE_ARTICLE', payload: article})
-        }   
-    },
     editArticle:(article)=>{
         
         return async(dispatch, getState) => {
@@ -51,10 +44,15 @@ const articleActions = {
           dispatch({ type: 'DELETE_ARTICLE', payload: response.data.response })
         }
       },
-    commentArticle: (comment, id, token) => {
+    commentArticle: (comment, token) => {
         console.log(comment)
         return async(dispatch, getState) => {
-            const response = await axios.post('http://localhost:400/api/blog/comment', {comment})
+            const response = await axios.post('http://localhost:4000/api/blog/comment', {comment, token}, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            )
             dispatch({type: 'COMMENT_ARTICLE', payload: response.data.response})
         }
     }
