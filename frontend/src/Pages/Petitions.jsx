@@ -13,9 +13,9 @@ const Petitions = (props) => {
     <>
       <div className="petitionBanner" style={{ backgroundImage: `url(${petitionImg})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
       <div className="petitionContainer">
-        <div className="containerPetBanner">
+        {/* <div className="containerBanner">
           <h1>PETITIONS</h1>
-        </div>
+        </div> */}
         <div className="allPetitions">
           {props.allPetitions.map((petition) => {
             return <PetitionCard key={petition._id} petition={petition} />;
