@@ -70,6 +70,7 @@ const Register =(props)=>{
         
     return(
         <>
+            <div className="communityBanner"></div>
             <h1>Register</h1>
             <GoogleLogin 
                 className="login_input justify-content-center"

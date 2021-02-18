@@ -19,7 +19,6 @@ h1,
 h2 {
   font-family: "Oswald", sans-serif;
 }
-
 /* header */
 
 .navBar {
@@ -49,9 +48,8 @@ h2 {
 }
 
 .pages p:hover {
-  border-radius: 0.5vw;
   transition: 0.3s;
-  background-color: rgba(68, 68, 68, 0.356);
+  /* background-color: rgba(68, 68, 68, 0.356); */
   border-bottom: 2px solid green;
 }
 
@@ -101,12 +99,11 @@ nav a {
 }
 
 .active p {
-  border-radius: 0.5vw;
   padding: 0.5vw 1vw;
-  background-color: rgba(245, 245, 245, 0);
+  /* background-color: rgba(245, 245, 245, 0); */
   border-bottom: 2px solid green;
   color: rgb(255, 255, 255);
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+  /* box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555); */
 }
 
 .userHeaderLink {
@@ -157,7 +154,7 @@ nav a {
 
 .affix {
   padding: 0.5vh;
-  background-color: rgb(46, 46, 46);
+  background-color: #3e4444;
   transition: 0.8s;
 }
 /* homepage */
@@ -207,7 +204,7 @@ nav a {
 .containerBanner {
   width: 100%;
   height: 10vh;
-  background-color: rgb(10, 78, 10);
+  background-color:  #405d27;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -229,9 +226,8 @@ nav a {
 
 .divBlog {
   width: 100%;
-  height: 50vh;
-  background-color: rgb(46, 46, 46);
-  margin-top: 5vh;
+  height: 100%;
+  background-color: #3e4444;
 }
 
 .mainTitle {
@@ -314,16 +310,22 @@ h6 {
   text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.233);
 }
 
+.backgroundCard {
+  background-color: rgba(0, 0, 0, 0.116);
+  border-radius: 2vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
 /* input 1 & 2 */
 
 .createPetitionInput1nd2 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput1nd2 input {
@@ -350,11 +352,9 @@ h6 {
 .createPetitionInput3 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput3 textarea {
@@ -383,11 +383,9 @@ h6 {
 .createPetitionInput4 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput4 input {
@@ -414,11 +412,9 @@ h6 {
 .createPetitionInput5 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput5 input {
@@ -446,11 +442,9 @@ h6 {
 .createPetitionInput6 {
   width: 40vw;
   height: 45vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionUploadFile {

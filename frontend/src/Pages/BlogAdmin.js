@@ -102,7 +102,7 @@ const BlogAdmin = (props) => {
 
 const mapStateToProps = state => {
   return {
-    articles: state.articleR.articles,
+    articles: state.articleR.allArticles,
     articleCategories: state.articleR.articleCategories
   }
 }
