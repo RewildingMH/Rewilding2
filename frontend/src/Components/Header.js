@@ -18,17 +18,17 @@ const Header = (props) => {
     if (props.loggedUser === null) {
         var links = <>
             <NavLink to="/login" >
-                <p>Login</p>
+                <p>LOGIN</p>
             </NavLink>
         </>
     } else {
         if (props.loggedUser.rol === "admin") {
             var links = <>
                 <NavLink to="/createPetition">
-                    <p>Create a petition</p>
+                    <p>CREATE PETITION</p>
                 </NavLink>
                 <NavLink to="/adminBlog">
-                    <p>Admin Blog</p>
+                    <p>ADMIN BLOG</p>
                 </NavLink>
                 <NavLink to="/" className="userHeaderLink">
                     <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
@@ -48,7 +48,7 @@ const Header = (props) => {
             var links =
                 <>
                     <NavLink to="/createPetition">
-                        <p>Create a petition</p>
+                        <p>CREATE PETITION</p>
                     </NavLink>
                     <NavLink to="/" className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
@@ -77,16 +77,16 @@ const Header = (props) => {
                 </div>
                 <div className="pages">
                     <NavLink exact to="/">
-                        <p>Home</p>
+                        <p>HOME</p>
                     </NavLink>
                     <NavLink to="/blog">
-                        <p>Blog</p>
+                        <p>BLOG</p>
                     </NavLink>
                     <NavLink to="/community">
-                        <p>Community</p>
+                        <p>COMMUNITY</p>
                     </NavLink>
                     <NavLink to="/petitions">
-                        <p>Petitions</p>
+                        <p>PETITIONS</p>
                     </NavLink>
                     {links}
                 </div>
