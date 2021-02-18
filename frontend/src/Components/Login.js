@@ -7,7 +7,7 @@ import {useEffect, useState} from 'react'
 
 const Login=(props)=>{
     useEffect(()=>{
-        window.scrollTo(0,0)
+        
     })
     const responseGoogle = async (response) => {
        const respuesta = await props.loginWithGoogle(response.profileObj)      
