@@ -14,6 +14,7 @@ import Community from './Pages/Community'
 import Header from './Components/Header';
 import Article from './Components/Article'
 import Profile from './Components/Profile.jsx'
+import ScrollToTop from './Components/ScrollTop'
 
 const App = (props) => {
 
@@ -69,8 +70,10 @@ const App = (props) => {
   return (
     <>
       <Router>
-        <Header />
-        {routes}
+        <ScrollToTop>
+          <Header />
+          {routes}
+        </ScrollToTop>  
       </Router>
     </>
   )

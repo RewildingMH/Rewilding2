@@ -9,11 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Header = (props) => {
-    // window.onscroll = () => {
-    //     window.scrollY > 300 ?
-    //         document.querySelector('.navBar').classList.add('affix') :
-    //         document.querySelector('.navBar').classList.remove('affix')
-    // }; 
+    window.onscroll = () => {
+        window.scrollY > 300 ?
+            document.querySelector('.navBar').classList.add('affix') :
+            document.querySelector('.navBar').classList.remove('affix')
+    }; 
 
     if (props.loggedUser === null) {
         var links = <>
