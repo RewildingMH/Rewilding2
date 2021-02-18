@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import petitionsActions from "../redux/actions/petitionsActions"
+import createPetBanner from "../assets/createPetitionImg.png"
 
 const CreatePetition = (props) => {
   const [newPetition, setNewPetition] = useState({});
@@ -42,7 +43,7 @@ const CreatePetition = (props) => {
 
   return (
     <>
-    <div className="createPetitionBanner"></div>
+    <div className="createPetitionBanner" style={{backgroundImage: `url(${createPetBanner})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
     <div className="createPetitionContainer container mt-4">
       <h2 className="text-center">Create petition</h2>
       <div className="part1 d-flex justify-content-around">
