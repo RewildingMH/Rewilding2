@@ -4,7 +4,6 @@ import articleActions from '../redux/actions/articleActions'
 import {Link} from 'react-router-dom'
 
 
-
 const BlogPage = (props) => {
   const [preloader, setPreloader]= useState(true)
   useEffect(() => {
@@ -18,18 +17,29 @@ const BlogPage = (props) => {
  
   return (
     <>
+    <div className="portadaBlog">
+      <div className="portadaBanner">
+        <h3>
+          At Rewilding there is a great job behind each campaign and we want to share it with you through this space.
+        </h3>
+      </div>
+    </div>
+    <div className="containerBanner">
+      <h2>CONTRIBUTE ON CAUSES BY SIGNING PETITIONS, WE NEED YOU TO BE PART.</h2>
+    </div>
     {props.allArticles && 
-      <div className="container-fluid bg-dark portadaBlog p-5">
-        <div className="row m-5">
+    <div className="container-fluid p-3 bg-green">   
+      <div className="container" >
+        <div className="row">
             {preloader?
               <div className="preloader">
                 <div className="loader"></div>
               </div>
             :
             <>
-              <div className="col-8">
+              <div className="col-6">
                 <Link to={`/article/${props.articlePort[0]._id}`} className="text-decoration-none ">
-                  <img src={props.articlePort[0].picture} className="img-fluid portadaImg" />
+                  <img src={props.articlePort[0].picture} className=" img-fluid rounded" />
                   <div>
                     <p className="my-3 categoryBlog">| {props.articlePort[0].articleCategory} |</p>
                     <p className="h3 tituloBlog">{props.articlePort[0].title}</p>
@@ -38,7 +48,7 @@ const BlogPage = (props) => {
               </div>
               <div className="col-4">
                 <Link to={`/article/${props.articlePortMini[0]._id}`} className="text-decoration-none ">
-                  <img src={props.articlePortMini[0].picture} className="img-fluid" />
+                  <img src={props.articlePortMini[0].picture} className="img-fluid rounded-lg" />
                   <p className="my-3 categoryBlog">| {props.articlePortMini[0].articleCategory} |</p>        
                   <p className="h4 tituloBlog">{props.articlePortMini[0].title}</p>
                 </Link>                  
@@ -59,14 +69,10 @@ const BlogPage = (props) => {
                 }
            </>
           }
-          
-            
-       
-          {/* 
-       */}
         </div>
       </div>
-    }
+    </div>
+    } 
     </>
   )
 };
