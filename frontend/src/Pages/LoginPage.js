@@ -2,7 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import React, { useState } from 'react';
 import Login from '../Components/Login'
 import Register from '../Components/Register'
-import bannerLogIn from "../assets/bannerLogIn.png"
+import bannerLogIn from "../assets/bannerLog.png"
 
 
 const LoginPage = () => {
@@ -10,7 +10,7 @@ const LoginPage = () => {
     return (
         <>
             <div className="communityBanner" style={{ backgroundImage: `url(${bannerLogIn})`, backgroundPosition: "center", backgroundSize: "cover" }}></div>
-            <div className="container col-6 my-5">
+            <div className="container col-6 my-5 containerLog" >
                 <div className="row justify-content-center">
                     <div className="col-8 text-center">
                         {!show ? <Register /> : <Login />}
