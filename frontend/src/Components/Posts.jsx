@@ -63,10 +63,29 @@ const Posts = (props) => {
     }
   };
 
+  const successToast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+
   // Funcion para validar y llamar a la action que añade un posteo nuevo
   const sendPost = (e) => {
-    console.log(newPost.text.length);
     e.preventDefault();
+    if (!newPost.text) {
+      errorAlert(
+        "error",
+        "Oops!",
+        "You must include some text in your post first! 😅"
+      );
+      return;
+    }
     if (newPost.text.split(" ").length < 3 && newPost.text.length < 10) {
       errorAlert("error", "Oops!", "Text is too short! 😅");
     } else if (
@@ -75,6 +94,11 @@ const Posts = (props) => {
     ) {
       errorAlert("error", "Oops!", "Text is too long! 😅");
     } else {
+      document.getElementById("postText").value = "";
+      successToast.fire({
+        icon: "success",
+        title: "Post uploaded",
+      });
       e.preventDefault();
       props.addPost(newPost, file);
     }
@@ -104,6 +128,7 @@ const Posts = (props) => {
               props.loggedUser ? props.loggedUser.name : ""
             } ?`}
             onChange={captureNewPost}
+            id="postText"
             className="w-100"
           />
         </div>

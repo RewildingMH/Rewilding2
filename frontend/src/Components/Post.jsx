@@ -107,21 +107,30 @@ const Post = ({
     removePost({ token: loggedUser.token, postId: post._id });
     successToast.fire({
       icon: "success",
-      title: "Post deleted successfully",
+      title: "Post deleted!",
     });
     setVisible(!visible);
   };
+
   const sendPostModification = (e) => {
     e.preventDefault();
     e.stopPropagation();
     submitPostModification(postModification, file);
     setPostModification({});
     setVisible(!visible);
+    successToast.fire({
+      icon: "success",
+      title: "Post modified!",
+    });
   };
 
   const sendComment = (e) => {
     e.preventDefault();
     newComment(comment);
+    successToast.fire({
+      icon: "success",
+      title: "Comment posted",
+    });
   };
 
   const likePost = (e) => {

@@ -9,6 +9,7 @@ import {
   AiFillDelete,
   AiTwotoneEdit,
 } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const PostComment = ({
   comment,
@@ -26,6 +27,18 @@ const PostComment = ({
 }) => {
   const [visible, setVisible] = useState(false);
   const [newComment, setNewComment] = useState({});
+
+  const successToast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
 
   const likeComment = (e) => {
     e.preventDefault();
@@ -51,6 +64,10 @@ const PostComment = ({
       idComment,
       token: loggedUser.token,
     });
+    successToast.fire({
+      icon: "success",
+      title: "Comment deleted!",
+    });
   };
 
   const mostrarInput = (e) => {
@@ -73,6 +90,10 @@ const PostComment = ({
   const editComment = (e) => {
     setVisible(!visible);
     editCommentPost(newComment);
+    successToast.fire({
+      icon: "success",
+      title: "Comment modified!",
+    });
   };
 
   return (
