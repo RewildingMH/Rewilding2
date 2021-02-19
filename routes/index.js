@@ -7,6 +7,7 @@ const userController = require('../controllers/userController')
 const postController = require('../controllers/postController')
 const petitionController = require('../controllers/petitionController')
 const blogController = require('../controllers/blogController')
+const profileController = require('../controllers/profileController')
 //middleware
 const validator = require('../controllers/validator')
 const passport = require('passport')
@@ -66,6 +67,9 @@ router.route('/posts/likeComments').post(passport.authenticate('jwt', { session:
 router.route('/posts/dislikeComments/:idComment/:postId').delete(passport.authenticate('jwt', { session: false }), postController.dislikeComment)
 
 router.route('/posts/comments/:postId/:idComment').delete(passport.authenticate('jwt', { session: false }), postController.deleteComment)
+
+/* Routes Profile */ 
+router.route('/profile/:id').get(profileController.getUserId)
 
 module.exports = router
 

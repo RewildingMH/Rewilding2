@@ -19,18 +19,16 @@ h1,
 h2 {
   font-family: "Oswald", sans-serif;
 }
-
 /* header */
 
 .navBar {
   width: 100%;
   position: fixed;
-  padding: 5vh;
+  padding: 2vh;
   display: flex;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.281);
   transition: 1s;
-  z-index: 3;
 }
 
 .pages {
@@ -49,9 +47,7 @@ h2 {
 }
 
 .pages p:hover {
-  border-radius: 0.5vw;
   transition: 0.3s;
-  background-color: rgba(68, 68, 68, 0.356);
   border-bottom: 2px solid green;
 }
 
@@ -94,19 +90,18 @@ nav a {
 }
 
 .logoDiv {
-  width: 9vw;
-  height: 14vh;
+  width: 5vw;
+  height: 10vh;
   background-size: cover;
   background-position: center;
 }
 
 .active p {
-  border-radius: 0.5vw;
   padding: 0.5vw 1vw;
-  background-color: rgba(245, 245, 245, 0);
+  /* background-color: rgba(245, 245, 245, 0); */
   border-bottom: 2px solid green;
   color: rgb(255, 255, 255);
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+  /* box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555); */
 }
 
 .userHeaderLink {
@@ -157,7 +152,7 @@ nav a {
 
 .affix {
   padding: 0.5vh;
-  background-color: rgb(46, 46, 46);
+  background-color: #3e4444;
   transition: 0.8s;
 }
 /* homepage */
@@ -206,8 +201,9 @@ nav a {
 
 .containerBanner {
   width: 100%;
-  height: 10vh;
-  background-color: rgb(10, 78, 10);
+  height: 10%;
+  padding: 1vw;
+  background-color:  #405d27;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -229,15 +225,93 @@ nav a {
 
 .divBlog {
   width: 100%;
-  height: 50vh;
-  background-color: rgb(46, 46, 46);
-  margin-top: 5vh;
+  /* height: 100%; */
+  background-color: #3e4444;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lastArticlesCard {
+  display: flex;
+  align-items: flex-end;
+  width: 20%;
+  height: 70%;
+  margin-left: 1vw;
+  margin-bottom: 1vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center;
+  border-radius: 1vw;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+}
+.lastArticlesCreated, .lastPetitionsCreated {
+  background-color: #3e4444;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 3vw;
+  color: white;
+}
+.lastArticlesCard {
+  transition: .5s;
+}
+.lastArticlesCard:hover{
+  transform: translateY(-5px);
+  box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.164);
+}
+
+.lastArticleTitle {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.466);
+  font-size: large;
+  padding: 3vh;
+  transition: .5s;
+}
+
+.lastArticleTitle:hover {
+  color: #405d27;
+  transition: .5s;
+}
+
+.lastArticleDesc {
+  color: white;
+  font-size: medium;
+}
+.lastArticlesInfo {
+  display: flex;
+  justify-content: space-around;
+  color: grey;
+  background-color: rgba(0, 0, 0, 0.801);
+  align-items: center;
+}
+
+.lastArticlesInfo p { 
+  margin-top: 2vh;
+}
+
+.lastArticlesInfo span {
+  color: #405d27;
+  font-weight: bold;
+}
+
+.articleDate {
+  position: relative;
+  left: 3%;
+  color: white;
 }
 
 .mainTitle {
   font-size: 10vh;
 }
 
+.lastPetitionsContainer {
+  width: 30%;
+  height: 20%;
+  background-size: cover;
+  border-radius: 1vw;
+  color: white;
+}
 /* login */
 
 .loginDiv {
@@ -264,19 +338,20 @@ nav a {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 100%;
     width: 80vw;
 }
 
 .allPetitions a {
-    background-color: rgb(197, 159, 36);
+    background-color: rgba(0, 0, 0, 0.116);
+    border-radius: 2vh;
     width: 80%;
-    border-radius: 20px;
+    height: 20vh;
     text-decoration: none;
     color: rgb(58, 37, 37);
     box-shadow: -10px 10px 8px rgb(56, 42, 42);
     display: flex;
     margin-bottom: 5vh;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .petitionContainer {
@@ -285,6 +360,13 @@ nav a {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.petitionImg {
+  background-color: crimson;
+  min-width: 15vw;
+  height: 100%;
+  border-radius: 2vh;
 }
 
 .titlePetition {
@@ -314,16 +396,22 @@ h6 {
   text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.233);
 }
 
+.backgroundCard {
+  background-color: rgba(0, 0, 0, 0.116);
+  border-radius: 2vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
 /* input 1 & 2 */
 
 .createPetitionInput1nd2 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput1nd2 input {
@@ -350,11 +438,9 @@ h6 {
 .createPetitionInput3 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput3 textarea {
@@ -383,11 +469,9 @@ h6 {
 .createPetitionInput4 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput4 input {
@@ -414,11 +498,9 @@ h6 {
 .createPetitionInput5 {
   width: 40vw;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionInput5 input {
@@ -446,11 +528,9 @@ h6 {
 .createPetitionInput6 {
   width: 40vw;
   height: 45vh;
-  background-color: rgba(0, 0, 0, 0.157);
   border-radius: 2vh;
   padding: 3vh 2vw;
   margin: 5vh 0;
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .createPetitionUploadFile {
@@ -506,7 +586,6 @@ h6 {
 }
 
 /* Blog */
-
 .bannerBlog {
   width: 100%;
   height: 70vh;
@@ -518,7 +597,6 @@ h6 {
 .communityBanner {
   width: 100%;
   height: 70vh;
-  background-image: url("https://b8g9x2x5.rocketcdn.me/wp-content/uploads/2018/08/social-communities_eulfrn.png");
 }
 
 .comunityContainer {
@@ -714,8 +792,61 @@ textarea {
   resize: none !important;
 }
 /* blog stiles */
+.portadaContainer{
+  padding-top: 13vh;
+}
+.containerMain {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: 120%;
+  animation: movement 30s infinite linear alternate;
+}
+.portadaBlog::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url('../assets/blog_portada.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
 .portadaBlog {
-  height: 100vh;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  padding: 15% 10% 10% 10%;
+  position: relative;
+  z-index: -1; 
+}
+
+.portadaBanner{
+  height: auto;
+  width: 60vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  z-index: 1;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2vw;
+  border-radius: 15px;
+}
+.bg-green{
+  background-color: #83b74b59;
 }
 .categoryBlog {
   color: white;
@@ -728,18 +859,7 @@ textarea {
 .tituloBlog:hover {
   color: thistle;
 }
-.portadaImg {
-  max-width: 70%;
-  animation: movement 30s infinite linear alternate;
-}
-@keyframes movement {
-  from {
-    background-position: bottom left;
-  }
-  to {
-    background-position: top right;
-  }
-}
+
 
 /* article style */
 .textArticle {
@@ -771,7 +891,7 @@ textarea {
   margin: -75px 0 0 -75px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #9370db;
+  border-top-color: #82b74b;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
@@ -784,7 +904,7 @@ textarea {
   bottom: 5px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #ba55d3;
+  border-top-color: #405d27;
   -webkit-animation: spin 3s linear infinite;
   animation: spin 3s linear infinite;
 }
@@ -797,7 +917,7 @@ textarea {
   bottom: 15px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #ff00ff;
+  border-top-color: #c194a6;
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
 }

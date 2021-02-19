@@ -2,21 +2,37 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import postActions from "../redux/actions/postActions";
 import Post from "./Post";
+import Swal from "sweetalert2";
 
 const Posts = (props) => {
   const [newPost, setNewPost] = useState({});
   const [pathImage, setPathImage] = useState("/assets/avatar.png");
   const [file, setFile] = useState();
   const [posts, setPosts] = useState([]);
-  const { allPosts } = props;
 
+  const { allPosts } = props; // Destructuración
+  //ALERTAS LINDAS
+  const errorAlert = (type, title, text) => {
+    Swal.fire({
+      icon: type,
+      title: title,
+      text: text,
+      confirmButtonText: "Ok",
+    });
+  };
+
+  // Obtiene todos los posteos al montar el componente
   useEffect(() => {
     props.getPosts();
   }, []);
+
+  // Esto sirve para re-renderizar el componente cuando se manda un nuevo posteo,
+  // es decir, el useEffect se dispara nuevamente cada vez que allPosts cambia
   useEffect(() => {
     setPosts(allPosts);
   }, [allPosts]);
 
+  // Funcion para capturar un posteo nuevo.
   const captureNewPost = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -27,23 +43,24 @@ const Posts = (props) => {
     });
   };
 
+  // Funcion para capturar una subida de archivo de imagen
   const onFileChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       if (file.type.includes("image")) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
-
         reader.onload = function load() {
           setPathImage(reader.result);
         };
         setFile(file);
       } else {
-        console.log("Something went wrong");
+        errorAlert("error", "Something went wrong");
       }
     }
   };
 
+  // Funcion para validar y llamar a la action que añade un posteo nuevo
   const sendPost = (e) => {
     e.preventDefault();
     if (newPost.text.length < 1 || newPost.text.length > 300) {
@@ -76,8 +93,8 @@ const Posts = (props) => {
           <button onClick={sendPost}>Publish</button>
         </div>
       </div>
-      {props.allPosts &&
-        props.allPosts.map((post) => {
+      {posts &&
+        posts.map((post) => {
           return <Post post={post} />;
         })}
     </div>

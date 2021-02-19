@@ -12,7 +12,6 @@ const Register =(props)=>{
         props.getCountries()
     }, [])
     useEffect(()=>{
-        window.scrollTo(0,0)
     })
     //Usuario a cargar en la db
     var [newUser, setNewUser] = useState({
@@ -71,6 +70,7 @@ const Register =(props)=>{
         
     return(
         <>
+            <div className="communityBanner"></div>
             <h1>Register</h1>
             <GoogleLogin 
                 className="login_input justify-content-center"

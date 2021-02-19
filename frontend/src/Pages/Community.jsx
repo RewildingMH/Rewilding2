@@ -4,25 +4,26 @@ import Posts from "../Components/Posts";
 import petitionsActions from "../redux/actions/petitionsActions";
 import articleActions from "../redux/actions/articleActions";
 import { Link } from "react-router-dom";
+import communityPic from "../assets/communityImg.png"
 
 const Community = (props) => {
-  const [popular, setPopular] = useState([]);
-  const { allPetitions } = props;
+  const [popular, setPopular] = useState([]); // Estado para guardar las peticiones más populares
+  const { allPetitions } = props; // Destructuración
 
+  // Ordena las peticiones por visitas, de mayor a menor
   useEffect(() => {
     setPopular(allPetitions.sort((a, b) => b.visits - a.visits));
   }, [allPetitions]);
 
+  // Llama a todas las peticiones y todos los articulos cuando se monta el componente
   useEffect(() => {
     props.getPetitions();
     props.getArticles();
   }, []);
 
-  console.log(props);
-
   return (
     <>
-      <div className="communityBanner"></div>
+      <div className="communityBanner" style={{backgroundImage: `url(${communityPic})`, backgroundPosition: "center", backgroundSize: "cover"}}></div>
       <div className="comunityContainer">
         <div className="comunityEntry align-items-start">
           <div
@@ -72,7 +73,9 @@ const Community = (props) => {
     </>
   );
 };
+// *Se aplica el metodo slice para obtener solo 3 de todas las peticiones/articulos
 
+// Lee todas las peticiones, los articulos y el usuario logueado
 const mapStateToProps = (state) => {
   return {
     allPetitions: state.petitionsR.allPetitions,
@@ -80,8 +83,11 @@ const mapStateToProps = (state) => {
     articles: state.articleR.allArticles,
   };
 };
+
+// Lee las actions para traer todas las peticiones y los articulos
 const mapDispatchToProps = {
   getPetitions: petitionsActions.getPetitions,
   getArticles: articleActions.getArticles,
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Community);

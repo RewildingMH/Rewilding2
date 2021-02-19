@@ -4,19 +4,18 @@ const path = require('path')
 
 const petitionController = {
   addPetition: (req, res) => {
+    //PARA AGREGAR UNA NUEVA PETICIÓN ES OBLIGATORIO ENVIAR FOTO
     const { title, destination, description, limitDate, goal } = req.body
     const { name, profilePicture, _id } = req.user
     const file = req.files.file
-
-
-    file.mv(path.join(__dirname, '../frontend/public/assets/petitionsPictures/' + file.name), error => {
+    file.mv(path.join(__dirname, '../frontend/public/assets/petitionsPictures/' + file.md5), error => {
       if (error) {
-        console.log(error)
+
         return res.json({ response: error })
       }
     })
 
-    const petitionsPicturesLocation = `/assets/petitionsPictures/${file.name}`
+    const petitionsPicturesLocation = `/assets/petitionsPictures/${file.md5}`
 
 
     const petitionSave = new Petition({
