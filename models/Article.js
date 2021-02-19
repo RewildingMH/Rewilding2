@@ -8,7 +8,7 @@ const articleSchema = new mongoose.Schema({
   visits: {type:Number, default:0},
   picture: String,
   articleCategory:{type:String, enum:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION", "Animals in the wild", "Ecology"]},
-  comments: [{ name: String, profilePicture: String, comments: String }],
+  comments: [{ name: String, profilePicture: String, comment: String }],
 },
   { timestamps: true }
 )

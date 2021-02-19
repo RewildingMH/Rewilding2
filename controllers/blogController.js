@@ -83,9 +83,56 @@ const articleController = {
       }
   },
     commentArticle: async(req, res) => {
-      console.log(req.body)
-      console.log(req.user)
-    }
+      try{
+      const {comment, artId} = req.body
+      const {profilePicture, name} = req.user
+      
+     const response = await Article.findOneAndUpdate(
+        {_id: artId}, 
+        {
+        $push:{
+          comments:{ profilePicture, comment, name}
+        }
+      },
+        {new:true}
+        )
+        res.json({
+          success: true,
+          response
+        })
+      }catch(error){
+        res.json({
+          success: false,
+          error
+        })
+      }
+  },
+  deleteComment: async(req, res) =>{
+    console.log(req.body)
+    try {
+    const { artId, idComment } = req.body
+      const response = await Article.findOneAndUpdate(
+        { _id: artId },
+        {
+          $pull: {
+            comments: {
+              _id: idComment
+            }
+          }
+        },
+        { new: true })
+        console.log(response)
+        res.json({
+          success: true,
+          response
+        })
+      } catch (error) {
+        res.json({
+          success: false,
+          error
+        })
+      }
+  }
 } 
  
 
