@@ -75,7 +75,7 @@ const Posts = (props) => {
 
   return (
     <div>
-      <div>
+      <div className="inputPostContainer">
         <div className="postsTextArea">
           <div className="profilePictureOnPostContainer">
             <div

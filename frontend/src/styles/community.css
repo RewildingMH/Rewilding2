@@ -60,7 +60,6 @@
 .filesPost {
   border: 1px solid grey;
   display: flex;
-  width: 100%;
   flex-direction: row;
   margin: 0;
   justify-content: space-around;
@@ -68,6 +67,10 @@
   height: 6rem;
   margin-bottom: 5rem;
   padding: 0 0.3rem;
+}
+
+.inputPostContainer {
+  margin: 0 5rem;
 }
 
 .filesPost > img {
@@ -84,7 +87,7 @@
 
 .postContainer {
   border: 1px solid grey;
-  margin: 3rem 0;
+  margin: 3rem 5rem;
 }
 
 .postHeader {
@@ -255,4 +258,8 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+nav {
+  z-index: 3 !important;
 }
