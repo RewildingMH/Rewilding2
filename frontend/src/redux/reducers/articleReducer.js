@@ -23,7 +23,7 @@ export function articleReducer(state = initialState, action) {
                 articlePort: action.payload.slice(action.payload.length - 1, action.payload.length),
                 articlePortMini: action.payload.slice(action.payload.length - 2, action.payload.length - 1),
                 articlesList: action.payload.slice(0, action.payload.length - 2),
-                lastArticles: action.payload.slice(action.payload.length - 6, action.payload.length)
+                lastArticles: action.payload.slice(action.payload.length - 8, action.payload.length)
             }
         case 'UPDATE_ARTICLE':
             return {

@@ -24,12 +24,11 @@ h2 {
 .navBar {
   width: 100%;
   position: fixed;
-  padding: 5vh;
+  padding: 2vh;
   display: flex;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.281);
   transition: 1s;
-  z-index: 3;
 }
 
 .pages {
@@ -49,7 +48,6 @@ h2 {
 
 .pages p:hover {
   transition: 0.3s;
-  /* background-color: rgba(68, 68, 68, 0.356); */
   border-bottom: 2px solid green;
 }
 
@@ -203,7 +201,8 @@ nav a {
 
 .containerBanner {
   width: 100%;
-  height: 10vh;
+  height: 10%;
+  padding: 1vw;
   background-color:  #405d27;
   display: flex;
   justify-content: center;
@@ -226,14 +225,93 @@ nav a {
 
 .divBlog {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   background-color: #3e4444;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lastArticlesCard {
+  display: flex;
+  align-items: flex-end;
+  width: 20%;
+  height: 70%;
+  margin-left: 1vw;
+  margin-bottom: 1vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center;
+  border-radius: 1vw;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+}
+.lastArticlesCreated, .lastPetitionsCreated {
+  background-color: #3e4444;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 3vw;
+  color: white;
+}
+.lastArticlesCard {
+  transition: .5s;
+}
+.lastArticlesCard:hover{
+  transform: translateY(-5px);
+  box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.164);
+}
+
+.lastArticleTitle {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.466);
+  font-size: large;
+  padding: 3vh;
+  transition: .5s;
+}
+
+.lastArticleTitle:hover {
+  color: #405d27;
+  transition: .5s;
+}
+
+.lastArticleDesc {
+  color: white;
+  font-size: medium;
+}
+.lastArticlesInfo {
+  display: flex;
+  justify-content: space-around;
+  color: grey;
+  background-color: rgba(0, 0, 0, 0.801);
+  align-items: center;
+}
+
+.lastArticlesInfo p { 
+  margin-top: 2vh;
+}
+
+.lastArticlesInfo span {
+  color: #405d27;
+  font-weight: bold;
+}
+
+.articleDate {
+  position: relative;
+  left: 3%;
+  color: white;
 }
 
 .mainTitle {
   font-size: 10vh;
 }
 
+.lastPetitionsContainer {
+  width: 30%;
+  height: 20%;
+  background-size: cover;
+  border-radius: 1vw;
+  color: white;
+}
 /* login */
 
 .loginDiv {
