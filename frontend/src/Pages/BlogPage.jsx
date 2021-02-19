@@ -18,8 +18,13 @@ const BlogPage = (props) => {
  
   return (
     <>
+    <div className="portadaBlog">
+      <div>
+
+      </div>
+    </div>
     {props.allArticles && 
-      <div className="container-fluid bg-dark portadaBlog p-5">
+      <div className="container-fluid p-5">
         <div className="row m-5">
             {preloader?
               <div className="preloader">
