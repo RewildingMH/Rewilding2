@@ -20,16 +20,18 @@ const HomePage = (props) => {
                 <div className="containerBanner">
                     <h2>CONTRIBUTE ON CAUSES BY SIGNING PETITIONS, WE NEED YOU TO BE PART.</h2>
                 </div>
-                    <div className="lastArticlesCreated">
-                        <h2>Last Articles Created</h2>
+                <div className="lastArticlesCreated">
+                    <h2>Last Articles Created</h2>
+                </div>
+                <div className="divBlog">
+                    {props.lastArticles.map(lastArticle => <LastArticles key={lastArticle._id} lastArticle={lastArticle}/>)} 
+                    <div className="lastPetitionsCreated"> 
+                        <h2>Last Petitions Created</h2>
                     </div>
-                    <div className="divBlog">
-                        {props.lastArticles.map(lastArticle => <LastArticles key={lastArticle._id} lastArticle={lastArticle}/>)} 
-                        <div className="lastPetitionsCreated"> 
-                            <h2>Last Petitions Created</h2>
-                        </div>
-                        {props.lastPetitions.map(lastPetition => <LastPetitions key={lastPetition._id} lastPetition=    {lastPetition}/>)}  
-                    </div>
+                    {props.lastPetitions.map(lastPetition => <LastPetitions key={lastPetition._id} lastPetition=    {lastPetition}/>)}
+                    <div className="white">
+                    </div>  
+                </div>
         </div>
         </>
     )

@@ -1,4 +1,5 @@
 import axios from "axios";
+import  Swal  from 'sweetalert2';
 
 const userActions = {
   // Likear una razon de firma
@@ -74,14 +75,12 @@ const userActions = {
 
   recoverPassword: email => {
     return async (dispatch, getState) => {
-      const response = await axios.get(`http://localhost:4000/api/password/${email.userEmail}`)
-      if(!response.data.response){
-        return response.data
-      }
-      if(response.data.response === null){
-        return "Tu email no está registrado"
+      const response = await axios.post('http://localhost:4000/api/password/', {email})
+      if(response.data.success === false){
+        Swal.fire(response.data.message)
       }
       dispatch({type: 'PASSWORD', payload: response.data.response})
+      
     }
   }
 }

@@ -15,7 +15,7 @@ import Header from './Components/Header';
 import Article from './Components/Article'
 import Profile from './Components/Profile.jsx'
 import ScrollToTop from './Components/ScrollTop'
-import {MailValidate}  from './Components/MailValidate';
+import MailValidate  from './Components/MailValidate';
 
 const App = (props) => {
 

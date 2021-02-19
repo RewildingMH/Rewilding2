@@ -8,8 +8,7 @@ const validator = {
             username: Joi.string().trim().required().email({ tlds: {allow: false} }),
             profilePicture: Joi.string().trim().required(),
             password: Joi.string().trim().required().min(6).max(8),
-            rol: Joi.string().trim(),
-            country: Joi.string().required()
+            rol: Joi.string().trim()
         }) 
 
         const validation = schema.validate(req.body, {abortEarly: false})

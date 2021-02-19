@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema({
     profilePicture: { type: String, required: true },
     password: String,
     rol: { type: String, required: true, default: "personal account" },
-    country: { type: String, required: true, default: "USA" },
     googleId: { type: String, default: null }
 })
 
