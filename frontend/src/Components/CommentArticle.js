@@ -33,10 +33,10 @@ const CommentArticle = (props) => {
           commentId: e.target.id
         })
       }
-      const editComment = (e) => {
+      const ReComment = (e) => {
         e.preventDefault()
         props.editComment({
-          artId: props.
+         
         })
       }
 
@@ -48,14 +48,14 @@ const CommentArticle = (props) => {
               <img src={profilePicture}></img>
               <div>
                 <button id={_id} onClick={deleteComment}>delete</button>
-                <button id={_id} onClick={editComment}>edit</button>
+                <button id={_id} onClick={'ReComment'}>edit</button>
               </div>
               <p>{name}</p>
               
               {visible ? 
               <p>{comment}</p>
               :
-              <input name="editComment" placeholder={`${comment}`} type="text" onChange={editComment} /> 
+              <input name="editComment" placeholder={`${comment}`} type="text" /> 
               }
               </>
               )}
