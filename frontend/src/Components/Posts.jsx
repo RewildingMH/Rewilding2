@@ -5,6 +5,7 @@ import Post from "./Post";
 import Swal from "sweetalert2";
 import "../styles/community.css";
 import { Button } from "reactstrap";
+import { BsFillImageFill } from "react-icons/bs";
 
 const Posts = (props) => {
   const [newPost, setNewPost] = useState({});
@@ -57,16 +58,22 @@ const Posts = (props) => {
         };
         setFile(file);
       } else {
-        errorAlert("error", "Something went wrong");
+        errorAlert("error", "Oops!", "You must upload a valid image file");
       }
     }
   };
 
   // Funcion para validar y llamar a la action que añade un posteo nuevo
   const sendPost = (e) => {
+    console.log(newPost.text.length);
     e.preventDefault();
-    if (newPost.text.length < 1 || newPost.text.length > 300) {
-      alert("no pasa");
+    if (newPost.text.split(" ").length < 3 && newPost.text.length < 10) {
+      errorAlert("error", "Oops!", "Text is too short! 😅");
+    } else if (
+      newPost.text.split(" ").length > 500 &&
+      newPost.text.length > 700
+    ) {
+      errorAlert("error", "Oops!", "Text is too long! 😅");
     } else {
       e.preventDefault();
       props.addPost(newPost, file);
@@ -101,13 +108,15 @@ const Posts = (props) => {
           />
         </div>
         <div className="filesPost">
-          <input type="file" onChange={onFileChange} />
+          <label for="file-upload" class="custom-file-upload">
+            <BsFillImageFill class="aiIcon upload" /> Upload Picture
+          </label>
+          <input id="file-upload" type="file" onChange={onFileChange} />
           <div
             style={{
-              width: "50px",
-              height: "50px",
               backgroundImage: `url(${pathImage})`,
               backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
             className="postPicturePreview"

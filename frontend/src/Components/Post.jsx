@@ -6,6 +6,8 @@ import Compressor from "compressorjs";
 import Swal from "sweetalert2";
 import "../styles/community.css";
 import { AiFillHeart, AiOutlineHeart, AiOutlineSend } from "react-icons/ai";
+import { Button } from "reactstrap";
+import { BsFillImageFill } from "react-icons/bs";
 
 const Post = ({
   post,
@@ -21,6 +23,7 @@ const Post = ({
   const [visible, setVisible] = useState(false);
   const [pathImage, setPathImage] = useState("/assets/fileImage.jpg");
   const [file, setFile] = useState();
+  const [visibleComment, setVisibleComment] = useState(false);
 
   const errorAlert = (type, title, text) => {
     Swal.fire({
@@ -55,8 +58,6 @@ const Post = ({
   };
 
   const oneDate = post.createdAt;
-
-  console.log(post);
 
   const onFileChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -112,6 +113,7 @@ const Post = ({
   };
   const sendPostModification = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     submitPostModification(postModification, file);
     setPostModification({});
     setVisible(!visible);
@@ -154,23 +156,28 @@ const Post = ({
             }}
             className="profilePictureOnPost"
           ></div>
-          <h5 className="postUsername">{post.username}</h5>
-        </div>
-        <div className="postDate">
-          <h4>{oneDate && oneDate.slice(0, 10)}</h4>
+          <div className="nameAndDate">
+            <div className="postUsernameContainer">
+              <h5 className="postUsername">{post.username}</h5>
+            </div>
+            <div className="postDate">
+              <h4>{oneDate && oneDate.slice(0, 10)}</h4>
+            </div>
+          </div>
         </div>
       </div>
 
       {post.picture && (
-        <div className="d-flex justify-content-center postPicture">
+        <div className="d-flex justify-content-center postPictureContainer">
           <div
             style={{
               backgroundImage: `url(${post.picture})`,
-              width: "40rem",
-              height: "20rem",
+              width: "100%",
+              height: "30rem",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
+            className="postPicture"
           ></div>
         </div>
       )}
@@ -207,55 +214,104 @@ const Post = ({
             {post.likes.length}
           </div>
         )}
-        {loggedUser && loggedUser.userId === post.userId && (
-          <button onClick={() => setVisible(!visible)}>EDIT</button>
-        )}
+
         {visible && (
           <>
             <input
               type="text"
               name="editPost"
               onChange={capturePostModification}
+              class="postInputEdit"
+              placeholder={post.text.slice(0, 30) + "..."}
             ></input>
-            <input type="file" name="fileEdit" onChange={onFileChange} />
-            <img src={pathImage} alt="modification" />
-            <button onClick={sendPostModification}>SEND</button>
-            <button onClick={deletePost}>DELETE POST</button>
+            <input
+              type="file"
+              id="file-upload-post"
+              name="fileEdit"
+              onChange={onFileChange}
+            />
+            <label for="file-upload-post" class="custom-file-upload-post">
+              <BsFillImageFill class="aiIcon upload" />
+            </label>
+            <div className="colorButtonsEditPost">
+              <Button
+                onClick={deletePost}
+                color="danger"
+                style={{ margin: "0 0.3rem" }}
+              >
+                DELETE
+              </Button>
+              <Button
+                onClick={sendPostModification}
+                color="success"
+                style={{ margin: "0 0.3rem" }}
+              >
+                CONFIRM
+              </Button>
+            </div>
           </>
         )}
+        {loggedUser && loggedUser.userId === post.userId && (
+          <Button onClick={() => setVisible(!visible)}> EDIT</Button>
+        )}
       </div>
+      {visible && (
+        <div className="imagePreviewContainer">
+          <div
+            style={{
+              width: "50rem",
+              height: "30rem",
+              backgroundImage: `url(${pathImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            className="editPictureOnPost"
+          ></div>
+        </div>
+      )}
 
       <div className="commentsContainer">
         <div className="commentSectionTitle">
           <p>Comments</p>
         </div>
-        <div className="commentsMap">
-          {post.comments.length ? (
-            post.comments.map(
-              ({ comment, name, profilePicture, likes, _id, userId }) => (
-                <PostComment
-                  key={_id}
-                  comment={comment}
-                  name={name}
-                  profilePicture={profilePicture}
-                  likes={likes}
-                  idComment={_id}
-                  postId={post._id}
-                  userId={userId}
-                />
-              )
-            )
-          ) : (
-            <div className="noComments">
-              <div
-                style={{
-                  backgroundImage: `url(${noCommentsPlaceholder})`,
-                }}
-                className="noCommentsPlaceholder"
-              ></div>
-              <span>No comments yet!</span>
+
+        {visibleComment && (
+          <div className="commentsMapContainer">
+            <div className="commentsMap">
+              {post.comments.length ? (
+                post.comments.map(
+                  ({ comment, name, profilePicture, likes, _id, userId }) => (
+                    <PostComment
+                      key={_id}
+                      comment={comment}
+                      name={name}
+                      profilePicture={profilePicture}
+                      likes={likes}
+                      idComment={_id}
+                      postId={post._id}
+                      userId={userId}
+                    />
+                  )
+                )
+              ) : (
+                <div className="noComments">
+                  <div
+                    style={{
+                      backgroundImage: `url(${noCommentsPlaceholder})`,
+                    }}
+                    className="noCommentsPlaceholder"
+                  ></div>
+                  <span>No comments yet!</span>
+                </div>
+              )}
             </div>
-          )}
+          </div>
+        )}
+        <div className="viewMoreContainer">
+          <span
+            onClick={() => setVisibleComment(!visibleComment)}
+            style={{ cursor: "pointer" }}
+          >{`View${visibleComment ? " less" : " more"}`}</span>
         </div>
         <div className="inputContainer">
           <input
