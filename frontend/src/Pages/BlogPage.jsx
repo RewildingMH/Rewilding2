@@ -76,7 +76,7 @@ const BlogPage = (props) => {
               </div>
             </div>
           </div>
-          <div className="bannerLatest">
+          <div className="bannerLatest my-3">
                     <h2>Last Articles Created</h2>
                 </div>
           <div className="container">
