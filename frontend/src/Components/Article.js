@@ -3,17 +3,17 @@ import { connect } from 'react-redux'
 import articleActions from '../redux/actions/articleActions'
 import CommentArticle from './CommentArticle'
 
-const Article = (props) => {
-  const [preloader, setPreloader] = useState(false)
-  const [article, setArticle] = useState({});
-
-  const id = props.match.params.id
-  const { allArticles } = props
-  useEffect(() => {
-    if (props.allArticles.length > 0) {
-      setArticle(allArticles.filter((article) => article._id === id));
-    }
-  }, [id, allArticles])
+const Article = (props) =>{
+    const [preloader, setPreloader]= useState(false)
+    const [article, setArticle] = useState({});
+    
+    const id = props.match.params.id
+    const {allArticles} = props
+    useEffect(() => {
+        if(props.allArticles.length > 0){
+          setArticle(allArticles.filter((article) => article._id === id));
+        }
+    }, [id, allArticles])
 
   useEffect(() => {
     if (props.allArticles.length > 0) {
@@ -40,9 +40,9 @@ const Article = (props) => {
           </div>
         )
       }
-
-    </div>
-  )
+        
+       </div>
+    )
 }
 
 const mapStateToProps = state => {

@@ -1,39 +1,44 @@
-import {NavLink, Link} from "react-router-dom";
-import {Button} from 'react-bootstrap'
+import { NavLink, Link } from "react-router-dom";
 import React, { useState } from 'react';
 import Login from '../Components/Login'
 import Register from '../Components/Register'
+import bannerLogIn from "../assets/bannerLogIn.png"
 
 
-const LoginPage = () =>{
+const LoginPage = () => {
     const [show, setShow] = useState(true);
-    return(
+    return (
         <>
-           <div className="container">
-               <div className="row justify-content-center">
-                   <div className="col-6 text-center">
-                        {!show? <Register/>:<Login/> }
-                        <Button variant="primary" className="admin_input mx-auto" onClick={() => {setShow(!show);}}>
+            <div className="communityBanner" style={{ backgroundImage: `url(${bannerLogIn})`, backgroundPosition: "center", backgroundSize: "cover" }}></div>
+            <div className="container col-6 my-5">
+                <div className="row justify-content-center">
+                    <div className="col-8 text-center">
+                        {!show ? <Register /> : <Login />}
+                        <button onClick={() => { setShow(!show); }} className="btnLog">
                             {show ? 'Register' : 'Login'}
-                        </Button>
-                   </div>
-               </div>
-               <div className="row justify-content-center mt-3">
-                    <div className="textMail">
-                        <h3>We keep your email in a 100% secure way to:</h3>
-                        <p className="h4">Identify your profile</p>
-                        <p className="h4">Notify you about new petitions</p>       
-                        <p className="h4">Keep you updated about your petitions's status</p>       
+                        </button>
                     </div>
                 </div>
-               <div className="row justify-content-center">
+                {/* <div className="row justify-content-center mt-3">
+                     
+                    <div className="textMail">
+                        <p>We keep your email in a 100% secure way to:</p>
+                        <p>Identify your profile</p>
+                        <p>Notify you about new petitions</p>
+                        <p>Keep you updated about your petitions's status</p>
+                    </div>
+                </div> */}
+                <div className="row justify-content-center">
                     <div className="col-6 text-center">
                         <p className="h6">By registering you are accepting our Terms and Conditions and our Privacy Policies</p>
                     </div>
                 </div>
-                
-            <Link to="/">Return to home</Link>
-           </div>
+
+                <Link to="/"><p style={{ width: "10vw", display: "inline" }}>Return to home</p></Link>
+
+            </div>
+            <div className="white">
+            </div>
         </>
     )
 }
