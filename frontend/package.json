@@ -9,6 +9,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta2",
     "compressorjs": "^1.0.7",
+    "emailjs-com": "^2.6.4",
     "get-google-fonts": "^1.2.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
