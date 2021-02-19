@@ -36,8 +36,9 @@ router.route('/blog')
 router.route('/blog/delete')
   .put(blogController.deleteArticle)
 router.route('/article/comment')
-  .put(passport.authenticate('jwt', { session: false }), blogController.commentArticle)
-
+  .post(passport.authenticate('jwt', { session: false }), blogController.commentArticle)
+router.route('/article/comment/:artId')
+  .delete(blogController.deleteComment)
 router.route('/petitions/delete/:reasonId/:petId')
   .delete(passport.authenticate('jwt', { session: false }), userController.deleteReason)
 

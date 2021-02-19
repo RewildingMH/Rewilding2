@@ -13,7 +13,7 @@ export function articleReducer  (state = initialState, action){
         case 'ADD_ARTICLE':
             return {
                 ...state,
-                articles: state.articles.map(article => article._id === action.payload._id ? action.payload : article)
+                allArticles: state.allArticles.map(article => article._id === action.payload._id ? action.payload : article)
             }
         case 'GET_ARTICLES':
             return {
@@ -26,17 +26,22 @@ export function articleReducer  (state = initialState, action){
         case 'UPDATE_ARTICLE':
             return {
                 ...state,
-                articles: state.articles.map(article => article._id === action.payload._id ? action.payload : article)
+                allArticles: state.allArticles.map(article => article._id === action.payload._id ? action.payload : article)
             }
-        case 'DELETE_ARTICLE':
-            return {
-                ...state,
-                articles: state.articles.map(article => article._id === action.payload._id ? action.payload : article)
-            }
+        // case 'DELETE_ARTICLE':
+        //     return {
+        //         ...state,
+        //         articles: state.articles.map(article => article._id === action.payload._id ? action.payload : article)
+        //     }
         case 'COMMENT_ARTICLE':
             return {
                 ...state, 
-                articles: action.payload 
+                allArticles: state.allArticles.map(article => article._id === action.payload._id ? action.payload : article)
+            }
+        case 'DELETE_COMMENT':
+            return {
+                ...state,
+                allArticles: action.payload
             }
         default:
             return state

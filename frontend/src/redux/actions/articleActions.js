@@ -38,23 +38,39 @@ const articleActions = {
         }   
     },
     deleteArticle:(id) => {
-        console.log(id)
         return async (dispatch, getState) => {
           const response = await axios.put('http://localhost:4000/api/blog/delete',{id})
           dispatch({ type: 'DELETE_ARTICLE', payload: response.data.response })
         }
       },
-    commentArticle: (comment, token) => {
-        console.log(comment)
+    commentArticle: newComment => {
+        const {comment, token, artId} = newComment
+        
         return async(dispatch, getState) => {
-            const response = await axios.put('http://localhost:4000/api/article/comment', {comment}, {
+            const response = await axios.post('http://localhost:4000/api/article/comment', {comment, artId}, 
+            {
                 headers:{
                     Authorization: `Bearer ${token}`
                 }
             })
             dispatch({type: 'COMMENT_ARTICLE', payload: response.data.response})
         }
-    }
+    },
+    deleteComment: remove => {
+        const { artId, token, commentId } = remove
+        console.log(artId)
+        return async (dispatch, getState) => {
+          const response = await axios.delete(`http://localhost:4000/api/article/comment/${artId}`, {commentId},
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          dispatch({ type: 'DELETE_COMMENT', payload: response.data.response })
+          console.log(response)
+        }
+      }
 }
 
 export default articleActions
