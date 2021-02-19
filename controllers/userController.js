@@ -9,7 +9,7 @@ const userController = {
     signUp: async (req, res) => {
 
         const errores = []
-        const { name, lastName, username, password, country } = req.body
+        const { name, lastName, username, password} = req.body
         const file = req.files.file
         const userExists = await User.findOne({ username: username })
         if (userExists) {
@@ -27,7 +27,7 @@ const userController = {
             const passwordHasheado = bcryptjs.hashSync(password, 10)
             const profilePictureUbicacion = `/assets/profilePictures/${file.name}`
             var newUser = new User({
-                name, lastName, username, profilePicture: profilePictureUbicacion, password: passwordHasheado, country, rol: "personal account"
+                name, lastName, username, profilePicture: profilePictureUbicacion, password: passwordHasheado, rol: "personal account"
             })
             var newUserSaved = await newUser.save()
             var token = jwt.sign({ ...newUserSaved }, process.env.SECRET_KEY, {})

@@ -76,7 +76,7 @@ const CreatePetition = (props) => {
         }}
       ></div>
       <div className="createPetitionContainer container mt-4">
-        <h2 className="text-center">Create petition</h2>
+        <h2 className="text-center">CREATE PETITION</h2>
         <div className="backgroundCard">
           <div className="part1 d-flex justify-content-around">
             <div className="createPetitionInput1nd2">

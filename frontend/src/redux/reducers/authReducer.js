@@ -1,6 +1,5 @@
 const initialState = {
-    loggedUser: null,
-    countries: []
+    loggedUser: null
 }
 
 export function authReducer(state = initialState, action) {
@@ -21,11 +20,6 @@ export function authReducer(state = initialState, action) {
             return {
                 ...state,
                 loggedUser: null
-            }
-        case 'GET_COUNTRIES':
-            return {
-                ...state,
-                countries: action.payload.data
             }
         default:
             return state

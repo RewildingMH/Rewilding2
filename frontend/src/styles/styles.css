@@ -321,14 +321,76 @@ nav a {
   align-items: center;
   height: 50vh;
   width: 100%;
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 
 .textMail {
+  background-color: rgba(34, 102, 25, 0.733);
+  border-radius: 2vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+
+.container {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  padding: 1vh;
+  background-color: rgba(0, 0, 0, 0.116);
+  border-radius: 2vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
+.container a {
+  text-decoration: none;
+  color: #4c6b2b;
+}
+
+.container a:hover {
+  color: brown;
+}
+
+.btnLog {
+  width: 10vw;
+  height: 5vh;
+  background-color: #4c6b2b;
+  color: rgb(253, 248, 241);
+  border: none;
+  border-radius: 20px;
+}
+
+.loginDiv input {
+  margin-top: 2vh;
+  width: 20vw;
+  outline: none;
+}
+
+.loginDiv h1 {
+  margin-bottom: 3vh;
+}
+
+.forgotPass:hover {
+  cursor: pointer;
+  color: brown;
+}
+
+/* Register */
+
+.registerDiv {
+  margin-top: 5vh;
+}
+
+.registerDiv input {
+  margin-top: 2vh;
+  width: 20vw;
+  outline: none;
+}
+
+.registerDiv h1 {
+  margin-bottom: 3vh;
 }
 
 /* Petitions */

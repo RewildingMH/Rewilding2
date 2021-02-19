@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import articleActions from '../redux/actions/articleActions'
 import CommentArticle from './CommentArticle'
 
-<<<<<<< HEAD
 const Article = (props) =>{
     const [preloader, setPreloader]= useState(false)
     const [article, setArticle] = useState({});
@@ -15,14 +14,6 @@ const Article = (props) =>{
           setArticle(allArticles.filter((article) => article._id === id));
         }
     }, [id, allArticles])
-=======
-const Article = (props) => {
-  const [preloader, setPreloader] = useState(false)
-  const [article, setArticle] = useState({});
-
-  const id = props.match.params.id
-  const { allArticles } = props
->>>>>>> 8e758028b4e943b274f108f3924cc7d794cf829f
 
   useEffect(() => {
     if (props.allArticles.length > 0) {
@@ -49,15 +40,9 @@ const Article = (props) => {
           </div>
         )
       }
-<<<<<<< HEAD
         
        </div>
     )
-=======
-      <CommentArticle article={article} />
-    </div>
-  )
->>>>>>> 8e758028b4e943b274f108f3924cc7d794cf829f
 }
 
 const mapStateToProps = state => {

@@ -11,7 +11,6 @@ const CommentArticle = (props) => {
         const name = e.target.name;
         const newComment = e.target.value;
         setComment({
-<<<<<<< HEAD
           ...comment,
           artId: props.article._id,
           token: props.loggedUser.token,
@@ -53,25 +52,6 @@ const CommentArticle = (props) => {
             </div>
             </>
             )
-=======
-            ...comment,
-            id: props.article[0]._id,
-            token: props.loggedUser.token,
-            [name]: value,
-        })
-    }
-    console.log(comment)
-
-    const sendComment = (e) => {
-        e.preventDefault()
-        props.commentArticle(comment)
-    }
-
-    return (<div>
-        <input type="text" name="comments" placeholder="New Comment" onChange={readInput} />
-        <button onClick={sendComment}>Submit</button>
-    </div>)
->>>>>>> 8e758028b4e943b274f108f3924cc7d794cf829f
 }
 
 const mapStateToProps = state => {
