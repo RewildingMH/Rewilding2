@@ -108,15 +108,15 @@ const articleController = {
       }
   },
   deleteComment: async(req, res) =>{
-    console.log(req.body)
+    console.log(req.params)
     try {
-    const { artId, idComment } = req.body
+    const { artId, commentId } = req.params
       const response = await Article.findOneAndUpdate(
         { _id: artId },
         {
           $pull: {
             comments: {
-              _id: idComment
+              _id: commentId
             }
           }
         },
@@ -132,6 +132,9 @@ const articleController = {
           error
         })
       }
+  },
+  editComment:(req, res) => {
+    console.log(req.body)
   }
 } 
  

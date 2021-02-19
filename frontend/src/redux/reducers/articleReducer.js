@@ -37,18 +37,18 @@ export function articleReducer(state = initialState, action) {
         //     }
         case 'COMMENT_ARTICLE':
             return {
-<<<<<<< HEAD
                 ...state, 
                 allArticles: state.allArticles.map(article => article._id === action.payload._id ? action.payload : article)
             }
         case 'DELETE_COMMENT':
             return {
                 ...state,
-                allArticles: action.payload
-=======
+                allArticles: state.allArticles.map(article => article._id === action.payload._id ? action.payload : article)
+            }
+        case 'EDIT_COMMENT':
+            return {
                 ...state,
-                articles: action.payload
->>>>>>> 8e758028b4e943b274f108f3924cc7d794cf829f
+                allArticles: state.allArticles.map(article => article._id === action.payload._id ? action.payload : article)
             }
         default:
             return state

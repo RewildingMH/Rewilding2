@@ -57,10 +57,10 @@ const articleActions = {
         }
     },
     deleteComment: remove => {
+      console.log(remove)
         const { artId, token, commentId } = remove
-        console.log(artId)
         return async (dispatch, getState) => {
-          const response = await axios.delete(`http://localhost:4000/api/article/comment/${artId}`, {commentId},
+          const response = await axios.delete(`http://localhost:4000/api/article/comment/${artId}/${commentId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -69,6 +69,19 @@ const articleActions = {
           )
           dispatch({ type: 'DELETE_COMMENT', payload: response.data.response })
           console.log(response)
+        }
+      },
+      editComment: (edit) => {
+        const { commentId, artId, comment, token } = edit
+        console.log(edit)
+        return async (dispatch, getState) => {
+          const response = await axios.put('http://localhost:4000/api/article/comments', { artId, commentId, comment },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+          dispatch({ type: 'EDIT_COMMENT', payload: response.data.response })
         }
       }
 }
