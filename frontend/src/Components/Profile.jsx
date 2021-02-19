@@ -16,7 +16,7 @@ const Profile = (props) => {
         <h2 className="text-center mt-4">Profile Options</h2>
         <div className="profileContainer container">
             <div className="profileInfo">
-                <div className="nameInfo">Name: {name}</div>
+                <div className="nameInfo">Name: {name} {lastName}</div>
                 <div className="profileInfoImg" style={{
                     backgroundImage: `url(${profilePicture})`
                 }}>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import postActions from "../redux/actions/postActions";
 import PostComment from "./PostComment";
+import Compressor from "compressorjs";
+import Swal from "sweetalert2";
 
 const Post = ({
   post,
@@ -18,6 +20,27 @@ const Post = ({
   const [pathImage, setPathImage] = useState("/assets/avatar.png");
   const [file, setFile] = useState();
 
+  const errorAlert = (type, title, text) => {
+    Swal.fire({
+      icon: type,
+      title: title,
+      text: text,
+      confirmButtonText: "Ok",
+    });
+  };
+
+  const successToast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+
   const captureChange = (e) => {
     const name = e.target.name;
     const newComment = e.target.value;
@@ -29,6 +52,37 @@ const Post = ({
     });
   };
 
+  const onFileChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      if (file.type.includes("image")) {
+        const compressedFile = new Compressor(file, {
+          quality: 0.2,
+          success(result) {
+            const reader = new FileReader();
+            reader.readAsDataURL(result);
+            reader.onload = function load() {
+              setPathImage(reader.result);
+            };
+          },
+        });
+        setFile(compressedFile);
+        setPostModification({
+          ...postModification,
+          compressedFile,
+          token: loggedUser.token,
+          postId: post._id,
+        });
+      } else {
+        errorAlert(
+          "error",
+          "Something went wrong!",
+          "Files must be of an image type"
+        );
+      }
+    }
+  };
+
   const capturePostModification = (e) => {
     const name = e.target.name;
     const newPost = e.target.value;
@@ -36,35 +90,24 @@ const Post = ({
       ...postModification,
       postId: post._id,
       token: loggedUser.token,
+      file,
       [name]: newPost,
     });
-  };
-
-  const onFileChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0];
-      if (file.type.includes("image")) {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-
-        reader.onload = function load() {
-          setPathImage(reader.result);
-        };
-        setFile(file);
-      } else {
-        console.log("Something went wrong");
-      }
-    }
   };
 
   const deletePost = (e) => {
     e.preventDefault();
     removePost({ token: loggedUser.token, postId: post._id });
+    successToast.fire({
+      icon: "success",
+      title: "Post deleted successfully",
+    });
+    setVisible(!visible);
   };
-
   const sendPostModification = (e) => {
     e.preventDefault();
     submitPostModification(postModification, file);
+    setPostModification({});
     setVisible(!visible);
   };
 
@@ -101,6 +144,7 @@ const Post = ({
               width: "40rem",
               height: "20rem",
               backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
           ></div>
         </div>
@@ -119,7 +163,7 @@ const Post = ({
           </button>
         )
       ) : (
-        <button onClick={() => alert("must be logged in")}>
+        <button onClick={() => errorAlert("error", "must be logged in")}>
           LIKE♥{post.likes.length}
         </button>
       )}
