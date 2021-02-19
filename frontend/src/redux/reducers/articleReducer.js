@@ -37,7 +37,7 @@ export function articleReducer(state = initialState, action) {
         //     }
         case 'COMMENT_ARTICLE':
             return {
-                ...state,
+                ...state, 
                 allArticles: state.allArticles.map(article => article._id === action.payload._id ? action.payload : article)
             }
         case 'DELETE_COMMENT':
