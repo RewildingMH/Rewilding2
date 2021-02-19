@@ -111,6 +111,7 @@
   color: white;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  justify-content: space-between;
 }
 
 .userCredentialsOnPost {
@@ -420,4 +421,10 @@ input[type="file"] {
 .singleCommentContainer {
   border-top: 1px solid black;
   margin: 0 3rem;
+}
+
+.likesHeaderContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
 }

@@ -5,15 +5,16 @@ import authActions from '../redux/actions/authActions'
 import logo from '../assets/logoNuevo.png'
 import { Dropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AiOutlineLogout } from "react-icons/ai";
 
 
 
 const Header = (props) => {
-    window.onscroll = () => {
-        window.scrollY > 300 ?
-            document.querySelector('.navBar').classList.add('affix') :
-            document.querySelector('.navBar').classList.remove('affix')
-    }; 
+    // window.onscroll = () => {
+    //     window.scrollY > 300 ?
+    //         document.querySelector('.navBar').classList.add('affix') :
+    //         document.querySelector('.navBar').classList.remove('affix')
+    // }; 
 
     if (props.loggedUser === null) {
         var links = <>
@@ -30,19 +31,13 @@ const Header = (props) => {
                 <NavLink to="/adminBlog">
                     <p>ADMIN BLOG</p>
                 </NavLink>
-                <NavLink to="/" className="userHeaderLink">
+                <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                     <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                 </NavLink>
-                <Dropdown className="drop">
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        {props.loggedUser.name}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu className="dropMenu">
-                        <Dropdown.Item ><Link to={`/profile/${props.loggedUser.userId}`} className="profileDrop">Profile</Link></Dropdown.Item>
-                        <Dropdown.Item >Upgrades</Dropdown.Item>
-                        <Dropdown.Item onClick={() => props.logoutUser()} className="logOutDrop">Log Out</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+                <div className="userHeaderNamendLogOut">
+                    <p>Hi! {props.loggedUser.name}</p>
+                    <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
+                </div>
             </>
         } else {
             var links =
@@ -50,19 +45,13 @@ const Header = (props) => {
                     <NavLink to="/createPetition">
                         <p>CREATE PETITION</p>
                     </NavLink>
-                    <NavLink to="/" className="userHeaderLink">
+                    <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                     </NavLink>
-                    <Dropdown className="drop">
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            {props.loggedUser.name}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu className="dropMenu">
-                            <Dropdown.Item ><Link to={`/profile/${props.loggedUser.userId}`} className="profileDrop">Profile</Link></Dropdown.Item>
-                            <Dropdown.Item >Upgrades</Dropdown.Item>
-                            <Dropdown.Item onClick={() => props.logoutUser()} className="logOutDrop">Log Out</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    <div className="userHeaderNamendLogOut">
+                        <p>Hi! {props.loggedUser.name}</p>
+                        <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
+                    </div>
                 </>
         }
 

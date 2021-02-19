@@ -174,6 +174,41 @@ const Post = ({
             </div>
           </div>
         </div>
+        <div className="likesHeaderContainer">
+          {loggedUser ? (
+            post.likes.find((like) => like._id === loggedUser.userId) ? (
+              <div className="likeContainer">
+                <div
+                  className="dispatchLike"
+                  onClick={dislikePost}
+                  id={post._id}
+                >
+                  <AiFillHeart
+                    style={{ color: "darkred", cursor: "pointer" }}
+                  />
+                  {post.likes.length}
+                </div>
+              </div>
+            ) : (
+              <div className="likeContainer">
+                <div className="dispatchLike" onClick={likePost} id={post._id}>
+                  <AiOutlineHeart
+                    style={{ color: "darkred", cursor: "pointer" }}
+                  />
+                  {post.likes.length}
+                </div>
+              </div>
+            )
+          ) : (
+            <div className="likeContainer">
+              <AiOutlineHeart
+                onClick={() => errorAlert("error", "must be logged in")}
+                style={{ color: "darkred", cursor: "pointer" }}
+              />
+              {post.likes.length}
+            </div>
+          )}
+        </div>
       </div>
 
       {post.picture && (
@@ -196,34 +231,6 @@ const Post = ({
       </div>
 
       <div className="userInteractionsOnPost">
-        {loggedUser ? (
-          post.likes.find((like) => like._id === loggedUser.userId) ? (
-            <div className="likeContainer">
-              <div className="dispatchLike" onClick={dislikePost} id={post._id}>
-                <AiFillHeart style={{ color: "darkred", cursor: "pointer" }} />
-                {post.likes.length}
-              </div>
-            </div>
-          ) : (
-            <div className="likeContainer">
-              <div className="dispatchLike" onClick={likePost} id={post._id}>
-                <AiOutlineHeart
-                  style={{ color: "darkred", cursor: "pointer" }}
-                />
-                {post.likes.length}
-              </div>
-            </div>
-          )
-        ) : (
-          <div className="likeContainer">
-            <AiOutlineHeart
-              onClick={() => errorAlert("error", "must be logged in")}
-              style={{ color: "darkred", cursor: "pointer" }}
-            />
-            {post.likes.length}
-          </div>
-        )}
-
         {visible && (
           <>
             <input
