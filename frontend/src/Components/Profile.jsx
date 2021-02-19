@@ -1,12 +1,18 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { connect } from "react-redux";
 import profileActions from '../redux/actions/profileActions';
+import petitionsActions from './../redux/actions/petitionsActions';
+import { ProfilePetitios } from './ProfilePetitios';
 const Profile = (props) => {
-    const {lastName, name, profilePicture, username} = props.profileUser
+    const [petitionsProfile, setPetitionsProfile ] = useState([])
+    const {lastName, name, profilePicture, username} = props.profileUser 
     useEffect(() => {
         props.getUsersById(props.match.params.id)
-    }, [])
+        props.getPetitions()
+        setPetitionsProfile(props.petitions.filter(petition => petition.author[0].idUser === props.match.params.id))
+    }, [props.match.params.id])
 
+    console.log(petitionsProfile)
     return (
         <>
         <div className="profilebanner">
@@ -22,7 +28,7 @@ const Profile = (props) => {
         <div className="profileContainer container">
             <div className="petandblogs">
                 <div className="perfilContent">contenido perfil</div>
-                <div className="petitionsContent">peticiones creadas</div>
+                {petitionsProfile.map(petition => <div className="petitionsContent"><ProfilePetitios petition={petition} /></div>)}
             </div>
         </div> 
         </>
@@ -31,12 +37,14 @@ const Profile = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        profileUser: state.profileR.profileUser
+        profileUser: state.profileR.profileUser,
+        petitions: state.petitionsR.allPetitions
         };
     };
 
 const mapDispatchToProps = {
-        getUsersById: profileActions.getUsersById
+        getUsersById: profileActions.getUsersById,
+        getPetitions: petitionsActions.getPetitions
     }
 
 

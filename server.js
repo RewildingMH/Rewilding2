@@ -6,8 +6,6 @@ const router = require('./routes')
 
 const fileUpload = require('express-fileupload')
 
-
-
 const app = express()
 //Middlewares
 //Me traduce las peticiones de json a objeto para poder cargarlos a la database
@@ -15,8 +13,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use(fileUpload())
-
-
 
 app.use('/api', router)
 

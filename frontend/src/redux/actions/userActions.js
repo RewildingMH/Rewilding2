@@ -1,4 +1,5 @@
 import axios from "axios";
+import  Swal  from 'sweetalert2';
 
 const userActions = {
   // Likear una razon de firma
@@ -69,6 +70,17 @@ const userActions = {
           },
         })
       dispatch({ type: 'MODIFY_REASON', payload: response.data.response })
+    }
+  },
+
+  recoverPassword: email => {
+    return async (dispatch, getState) => {
+      const response = await axios.post('http://localhost:4000/api/password/', {email})
+      if(response.data.success === false){
+        Swal.fire(response.data.message)
+      }
+      dispatch({type: 'PASSWORD', payload: response.data.response})
+      
     }
   }
 }
