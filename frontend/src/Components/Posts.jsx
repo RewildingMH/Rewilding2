@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import postActions from "../redux/actions/postActions";
 import Post from "./Post";
 import Swal from "sweetalert2";
+import "../styles/community.css";
+import { Button } from "reactstrap";
 
 const Posts = (props) => {
   const [newPost, setNewPost] = useState({});
@@ -75,22 +77,42 @@ const Posts = (props) => {
     <div>
       <div>
         <div className="postsTextArea">
+          <div className="profilePictureOnPostContainer">
+            <div
+              style={{
+                width: "50px",
+                height: "50px",
+                backgroundImage: `url(${
+                  props.loggedUser ? props.loggedUser.profilePicture : ""
+                })`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              className="profilePictureOnPost"
+            ></div>
+          </div>
           <textarea
             name="text"
-            placeholder="What's on your mind"
+            placeholder={`What's on your mind ${
+              props.loggedUser ? props.loggedUser.name : ""
+            } ?`}
             onChange={captureNewPost}
             className="w-100"
           />
         </div>
         <div className="filesPost">
           <input type="file" onChange={onFileChange} />
-          <img
-            className="img-fluid profile-pic-profile-submit"
-            src={pathImage}
-            alt="petition-pic"
-            style={{ width: "100px", height: "100px" }}
-          />
-          <button onClick={sendPost}>Publish</button>
+          <div
+            style={{
+              width: "50px",
+              height: "50px",
+              backgroundImage: `url(${pathImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            className="postPicturePreview"
+          ></div>
+          <Button onClick={sendPost}>Publish</Button>
         </div>
       </div>
       {posts &&
