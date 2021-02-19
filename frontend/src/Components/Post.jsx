@@ -8,6 +8,7 @@ import "../styles/community.css";
 import { AiFillHeart, AiOutlineHeart, AiOutlineSend } from "react-icons/ai";
 import { Button } from "reactstrap";
 import { BsFillImageFill } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 const Post = ({
   post,
@@ -155,7 +156,7 @@ const Post = ({
     <div className="postContainer">
       <div className="postHeader">
         <div className="userCredentialsOnPost">
-          <div
+          <Link to={`/profile/${post.userId}`} 
             style={{
               width: "50px",
               height: "50px",
@@ -164,7 +165,7 @@ const Post = ({
               backgroundPosition: "center",
             }}
             className="profilePictureOnPost"
-          ></div>
+          ></Link>
           <div className="nameAndDate">
             <div className="postUsernameContainer">
               <h5 className="postUsername">{post.username}</h5>
