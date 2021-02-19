@@ -1,7 +1,6 @@
 import React from 'react'
 
-export const ProfilePetitios = ({petition}) => {
-    console.log(petition)
+export const ProfilePetitions = ({petition}) => {
     return (
         <div>            
                 <div>
