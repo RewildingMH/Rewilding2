@@ -846,21 +846,54 @@ textarea {
   border-radius: 15px;
 }
 .bg-green{
-  background-color: #83b74b59;
+  background-color: #83b74b;
 }
 .categoryBlog {
-  color: white;
+  color: #405d27;
+  font-weight: 700;
+
 }
+
 .tituloBlog {
-  color: white;
+  color: black;
   font-weight: 700;
   width: 70%;
+  text-align: left;
 }
 .tituloBlog:hover {
-  color: thistle;
+  transform: scale(1.02);
 }
+.descripcionBlog{
+  color: #3e4444;
+  text-align: justify;
+}
+.scale-img{
+  background-size: contain;
+  background-position: center;
+}
+.scale-img:hover{
+  background-size: cover;
+  background-position: top;
+  transform: scale(1.03);
+  transition: 1s;
 
-
+}
+.bannerLatest {
+  width: 100%;
+  height: 10%;
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 3vh;
+}
+.articlesList {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 /* article style */
 .textArticle {
   color: whitesmoke;
@@ -917,7 +950,7 @@ textarea {
   bottom: 15px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #c194a6;
+  border-top-color: #c1946a;
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
 }

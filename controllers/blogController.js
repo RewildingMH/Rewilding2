@@ -3,7 +3,6 @@ const path= require('path')
 
 const articleController = { 
   addArticle: async (req, res) => {
-    console.log(req.body)
     const { title,descripcion, articleCategory } = req.body
     const { name, profilePicture, _id } = req.user
     const file =req.files.file
@@ -63,9 +62,7 @@ const articleController = {
       
       catch(error) {res.json({success: false, error})}
     },
-    deleteArticle: async(req, res) => {
-      console.log(req.body)
-      
+    deleteArticle: async(req, res) => {     
       try {
           const {id} = req.body
           const response = await Article.findOneAndDelete(
@@ -108,7 +105,6 @@ const articleController = {
       }
   },
   deleteComment: async(req, res) =>{
-    console.log(req.body)
     try {
     const { artId, idComment } = req.body
       const response = await Article.findOneAndUpdate(
