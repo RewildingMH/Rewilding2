@@ -3,26 +3,17 @@ import { connect } from 'react-redux'
 import articleActions from '../redux/actions/articleActions'
 import CommentArticle from './CommentArticle'
 
-<<<<<<< HEAD
-const Article = (props) =>{
-    const [preloader, setPreloader]= useState(false)
-    const [article, setArticle] = useState({});
-    
-    const id = props.match.params.id
-    const {allArticles} = props
-    useEffect(() => {
-        if(props.allArticles.length > 0){
-          setArticle(allArticles.filter((article) => article._id === id));
-        }
-    }, [id, allArticles])
-=======
 const Article = (props) => {
   const [preloader, setPreloader] = useState(false)
   const [article, setArticle] = useState({});
 
   const id = props.match.params.id
   const { allArticles } = props
->>>>>>> 8e758028b4e943b274f108f3924cc7d794cf829f
+  useEffect(() => {
+    if (props.allArticles.length > 0) {
+      setArticle(allArticles.filter((article) => article._id === id));
+    }
+  }, [id, allArticles])
 
   useEffect(() => {
     if (props.allArticles.length > 0) {
@@ -45,19 +36,13 @@ const Article = (props) => {
             <img src={article.picture} className="picArticle"></img>
             <p className="textArticle">Visits: {article.visits}</p>
             <p>{`${article.descripcion.slice(0, 700)}...`}</p>
-            <CommentArticle article={article} articlecomment={article.comments}/>
+            <CommentArticle article={article} articlecomment={article.comments} />
           </div>
         )
       }
-<<<<<<< HEAD
-        
-       </div>
-    )
-=======
-      <CommentArticle article={article} />
+
     </div>
   )
->>>>>>> 8e758028b4e943b274f108f3924cc7d794cf829f
 }
 
 const mapStateToProps = state => {
