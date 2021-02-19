@@ -9,6 +9,11 @@ const Article = (props) => {
 
   const id = props.match.params.id
   const { allArticles } = props
+  useEffect(() => {
+    if (props.allArticles.length > 0) {
+      setArticle(allArticles.filter((article) => article._id === id));
+    }
+  }, [id, allArticles])
 
   useEffect(() => {
     if (props.allArticles.length > 0) {
@@ -31,10 +36,11 @@ const Article = (props) => {
             <img src={article.picture} className="picArticle"></img>
             <p className="textArticle">Visits: {article.visits}</p>
             <p>{`${article.descripcion.slice(0, 700)}...`}</p>
+            <CommentArticle article={article} articlecomment={article.comments} />
           </div>
         )
       }
-      <CommentArticle article={article} />
+
     </div>
   )
 }

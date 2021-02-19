@@ -70,6 +70,19 @@ const userActions = {
         })
       dispatch({ type: 'MODIFY_REASON', payload: response.data.response })
     }
+  },
+
+  recoverPassword: email => {
+    return async (dispatch, getState) => {
+      const response = await axios.get(`http://localhost:4000/api/password/${email.userEmail}`)
+      if(!response.data.response){
+        return response.data
+      }
+      if(response.data.response === null){
+        return "Tu email no está registrado"
+      }
+      dispatch({type: 'PASSWORD', payload: response.data.response})
+    }
   }
 }
 

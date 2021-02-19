@@ -1,6 +1,7 @@
 const initialState = {
     loggedUser: null,
-    countries: []
+    countries: [],
+    oneUser: {}
 }
 
 export function authReducer(state = initialState, action) {
@@ -12,7 +13,6 @@ export function authReducer(state = initialState, action) {
             localStorage.setItem('username', action.payload.response.username)
             localStorage.setItem('rol', action.payload.response.rol)
             localStorage.setItem('userId', action.payload.response.userId)
-
             return {
                 ...state,
                 loggedUser: action.payload.response
@@ -28,6 +28,11 @@ export function authReducer(state = initialState, action) {
                 ...state,
                 countries: action.payload.data
             }
+        case 'PASSWORD':
+            return{
+                ...state,
+                oneUser: action.payload
+            }    
         default:
             return state
     }

@@ -8,6 +8,7 @@ const postController = require('../controllers/postController')
 const petitionController = require('../controllers/petitionController')
 const blogController = require('../controllers/blogController')
 const profileController = require('../controllers/profileController')
+const emailController = require('../controllers/emailController')
 
 //middleware
 const validator = require('../controllers/validator')
@@ -38,9 +39,10 @@ router.route('/blog')
   .put(blogController.editArticle)
 router.route('/blog/delete')
   .put(blogController.deleteArticle)
-router.route('/blog/comment')
-  .post(passport.authenticate('jwt', { session: false }),blogController.commentArticle)
-
+router.route('/article/comment')
+  .post(passport.authenticate('jwt', { session: false }), blogController.commentArticle)
+router.route('/article/comment/:artId')
+  .delete(blogController.deleteComment)
 router.route('/petitions/delete/:reasonId/:petId')
   .delete(passport.authenticate('jwt', { session: false }), userController.deleteReason)
 
@@ -72,6 +74,7 @@ router.route('/posts/comments/:postId/:idComment').delete(passport.authenticate(
 /* Routes Profile */ 
 router.route('/profile/:id').get(profileController.getUserId)
 
+router.route('/password/').post(emailController.recoverPasword)
 
 
 module.exports = router

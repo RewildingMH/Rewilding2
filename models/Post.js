@@ -9,7 +9,7 @@ const postSchema = new mongoose.Schema({
   text: { type: String, required: true },
   likes: { type: Array, default: [] },
   comments: [{ name: String, profilePicture: String, comment: String, likes: Array, userId: String }],
-})
+}, { timestamps: true })
 
 const Post = mongoose.model('post', postSchema)
 

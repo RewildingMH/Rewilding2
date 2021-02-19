@@ -15,6 +15,7 @@ import Header from './Components/Header';
 import Article from './Components/Article'
 import Profile from './Components/Profile.jsx'
 import ScrollToTop from './Components/ScrollTop'
+import {MailValidate}  from './Components/MailValidate';
 
 const App = (props) => {
 
@@ -62,6 +63,7 @@ const App = (props) => {
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
         <Route path="/profile/:id" component={Profile}/> 
+        <Route path="/password" component={MailValidate} />
         <Redirect to="/" />
       </Switch>
     );
