@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import petitionsActions from "../redux/actions/petitionsActions";
 import PetitionCard from "../Components/PetitionCard";
 import petitionImg from "../assets/petitionsImg.png";
+import petitionsActions from './../redux/actions/petitionsActions';
 
 //COMPONENTE QUE LEE LAS PETICIONES REALIZADAS
 const Petitions = (props) => {

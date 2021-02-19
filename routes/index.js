@@ -8,6 +8,7 @@ const postController = require('../controllers/postController')
 const petitionController = require('../controllers/petitionController')
 const blogController = require('../controllers/blogController')
 const profileController = require('../controllers/profileController')
+const emailController = require('../controllers/emailController')
 //middleware
 const validator = require('../controllers/validator')
 const passport = require('passport')
@@ -69,6 +70,10 @@ router.route('/posts/comments/:postId/:idComment').delete(passport.authenticate(
 
 /* Routes Profile */ 
 router.route('/profile/:id').get(profileController.getUserId)
+
+//PROBANDO MAIL
+router.route('/email')
+  .post(emailController.sendEmail)
 
 module.exports = router
 
