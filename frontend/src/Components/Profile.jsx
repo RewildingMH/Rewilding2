@@ -16,20 +16,16 @@ const Profile = (props) => {
     return (
         <>
         <div className="profilebanner">
-            <div className="container d-flex flex-column">
-                <div className="profileInfoImg" style={{backgroundImage: `url(${profilePicture})`}}>
+            <div className="container d-flex flex-column align-items-center margin-negativo">
+                <div className="profileInfoImg rounded-circle" style={{backgroundImage: `url(${profilePicture})`}}>
                     
                 </div>
                 <div className="h1">{name} {lastName}</div>
             </div>
 
         </div>
-       
-        <div className="profileContainer container">
-            <div className="petandblogs">
-                <div className="perfilContent">contenido perfil</div>
-                {petitionsProfile.map(petition => <div className="petitionsContent"><ProfilePetitios petition={petition} /></div>)}
-            </div>
+        <div className="container">               
+            {petitionsProfile.map(petition => <div className="petitionsContent"><ProfilePetitios petition={petition} /></div>)}
         </div> 
         </>
     )
