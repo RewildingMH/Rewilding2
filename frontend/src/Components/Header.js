@@ -48,6 +48,10 @@ const Header = (props) => {
                     <NavLink to="/" className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                     </NavLink>
+                    <div className="userHeaderNamendLogOut">
+                        <p>Hi! {props.loggedUser.name}</p>
+                        <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
+                    </div>
                 </>
         }
 
