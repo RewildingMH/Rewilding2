@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import petitionsActions from "../redux/actions/petitionsActions";
 import Reasons from "./Reasons";
 import Swal from "sweetalert2";
+import banner from "../assets/bannerPetitionInd.png"
 
 const Petition = (props) => {
   const id = props.match.params.id; // id en la ruta del navegador
@@ -28,24 +29,24 @@ const Petition = (props) => {
     const reason = e.target.value;
     props.loggedUser
       ? setSignature({
-          reason: reason.trim(),
-          petId: id,
-          token: props.loggedUser.token,
-        })
+        reason: reason.trim(),
+        petId: id,
+        token: props.loggedUser.token,
+      })
       : Swal.fire({
-          title: "Oops!",
-          text: "You must be logged in to sign this petition!",
-          icon: "warning",
-          confirmButtonColor: "#c1946a",
-          confirmButtonText: "Log me in!",
-          background: "#82b74b",
-          iconColor: "white",
-          backdrop: "rgba(64, 93, 39, 0.3)",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            props.history.push("/login");
-          }
-        });
+        title: "Oops!",
+        text: "You must be logged in to sign this petition!",
+        icon: "warning",
+        confirmButtonColor: "#c1946a",
+        confirmButtonText: "Log me in!",
+        background: "#82b74b",
+        iconColor: "white",
+        backdrop: "rgba(64, 93, 39, 0.3)",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          props.history.push("/login");
+        }
+      });
   };
 
   // Funcion que referencia a la action con el objeto de la firma
@@ -74,6 +75,14 @@ const Petition = (props) => {
     <div>
       {petition.length && (
         <>
+          <div
+            className="createPetitionBanner"
+            style={{
+              backgroundImage: `url(${banner})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
           <h2>Petition: {petition[0].title}</h2>
 
           <div
@@ -94,8 +103,8 @@ const Petition = (props) => {
             ) : petition[0].signatures.length === 1 ? (
               petition[0].signatures.length + " person has "
             ) : (
-              petition[0].signatures.length + " persons have "
-            )}
+                  petition[0].signatures.length + " persons have "
+                )}
             already signed this petition
           </p>
 
