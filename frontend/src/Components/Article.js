@@ -36,7 +36,7 @@ const Article = (props) =>{
             <img src={article.picture} className="picArticle"></img>
             <p className="textArticle">Visits: {article.visits}</p>
             <p>{`${article.descripcion.slice(0, 700)}...`}</p>
-            <CommentArticle article={article} articlecomment={article.comments}/>
+            <CommentArticle article={article} articlecomment={article.comments} />
           </div>
         )
       }
