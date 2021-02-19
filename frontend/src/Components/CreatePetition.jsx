@@ -75,10 +75,10 @@ const CreatePetition = (props) => {
           backgroundPosition: "center",
         }}
       ></div>
-      <div className="createPetitionContainer container mt-4">
-        <h2 className="text-center">CREATE PETITION</h2>
+      <div className="createPetitionContainer col-6 container mt-4">
+        <h2 className="text-center" style={{paddingTop: "2vh"}}>CREATE PETITION</h2>
         <div className="backgroundCard">
-          <div className="part1 d-flex justify-content-around">
+          <div>
             <div className="createPetitionInput1nd2">
               <h5 className="text-center">
                 Write down the title of your petition
@@ -102,7 +102,7 @@ const CreatePetition = (props) => {
               />
             </div>
           </div>
-          <div className="part2 d-flex justify-content-around">
+          <div>
             <div className="createPetitionInput3">
               <h5 className="text-center">Explain why you want to change it</h5>
               <p className="text-center">It should be something meaningful</p>
@@ -123,7 +123,7 @@ const CreatePetition = (props) => {
               />
             </div>
           </div>
-          <div className="part3 d-flex justify-content-around">
+          <div>
             <div className="createPetitionInput5">
               <h5 className="text-center">Choose a goal for your petition</h5>
               <p className="text-center">Signature limit</p>
@@ -159,6 +159,7 @@ const CreatePetition = (props) => {
           <button onClick={sendPetition}>Send Petition</button>
         </div>
       </div>
+      <div className="white"></div>
     </>
   );
 };

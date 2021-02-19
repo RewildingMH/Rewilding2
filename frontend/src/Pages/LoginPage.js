@@ -10,7 +10,7 @@ const LoginPage = () => {
     return (
         <>
             <div className="communityBanner" style={{ backgroundImage: `url(${bannerLogIn})`, backgroundPosition: "center", backgroundSize: "cover" }}></div>
-            <div className="container">
+            <div className="container col-6 my-5">
                 <div className="row justify-content-center">
                     <div className="col-8 text-center">
                         {!show ? <Register /> : <Login />}
@@ -34,7 +34,10 @@ const LoginPage = () => {
                     </div>
                 </div>
 
-                <Link to="/"><p style={{width:"10vw", display: "inline"}}>Return to home</p></Link>
+                <Link to="/"><p style={{ width: "10vw", display: "inline" }}>Return to home</p></Link>
+
+            </div>
+            <div className="white">
             </div>
         </>
     )
