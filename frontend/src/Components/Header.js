@@ -45,7 +45,7 @@ const Header = (props) => {
                     <NavLink to="/createPetition">
                         <p>CREATE PETITION</p>
                     </NavLink>
-                    <NavLink to="/" className="userHeaderLink">
+                    <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                     </NavLink>
                     <div className="userHeaderNamendLogOut">

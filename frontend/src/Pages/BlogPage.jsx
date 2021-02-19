@@ -35,7 +35,7 @@ const BlogPage = (props) => {
         <div className="containerBanner">
           <h2>CONTRIBUTE ON CAUSES BY SIGNING PETITIONS, WE NEED YOU TO BE PART.</h2>
         </div>
-        <div className="container-fluid">
+        <div className="container-fluid mt-3">
           <div className="container" >
             <div className="row">
               <div className="col-12">
