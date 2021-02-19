@@ -5,6 +5,7 @@ import authActions from '../redux/actions/authActions'
 import logo from '../assets/logoNuevo.png'
 import { Dropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AiOutlineLogout } from "react-icons/ai";
 
 
 
@@ -30,10 +31,17 @@ const Header = (props) => {
                 <NavLink to="/adminBlog">
                     <p>ADMIN BLOG</p>
                 </NavLink>
-                <NavLink to="/" className="userHeaderLink">
+                <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                     <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                 </NavLink>
-                <Dropdown className="drop">
+                <div className="userHeaderNamendLogOut">
+                    <p>Hi! {props.loggedUser.name}</p>
+                    <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
+                </div>
+
+                
+
+                {/* <Dropdown className="drop">
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
                         {props.loggedUser.name}
                     </Dropdown.Toggle>
@@ -42,7 +50,7 @@ const Header = (props) => {
                         <Dropdown.Item >Upgrades</Dropdown.Item>
                         <Dropdown.Item onClick={() => props.logoutUser()} className="logOutDrop">Log Out</Dropdown.Item>
                     </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown> */}
             </>
         } else {
             var links =
@@ -53,7 +61,7 @@ const Header = (props) => {
                     <NavLink to="/" className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                     </NavLink>
-                    <Dropdown className="drop">
+                    {/* <Dropdown className="drop">
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
                             {props.loggedUser.name}
                         </Dropdown.Toggle>
@@ -62,7 +70,7 @@ const Header = (props) => {
                             <Dropdown.Item >Upgrades</Dropdown.Item>
                             <Dropdown.Item onClick={() => props.logoutUser()} className="logOutDrop">Log Out</Dropdown.Item>
                         </Dropdown.Menu>
-                    </Dropdown>
+                    </Dropdown> */}
                 </>
         }
 

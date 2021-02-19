@@ -7,31 +7,30 @@ import { BiPaperPlane, BiTrash, BiEdit, BiBlock } from 'react-icons/bi'
 const CommentArticle = (props) => {
   const [comment, setComment] = useState({});
 
-  const readInput = (e) => {
-    const name = e.target.name;
-    const newComment = e.target.value;
-    setComment({
-      ...comment,
-      artId: props.article._id,
-      token: props.loggedUser.token,
-      [name]: newComment,
-    })
-  }
+    const readInput = (e) => {
+        const name = e.target.name;
+        const newComment = e.target.value;
+        setComment({
+          ...comment,
+          artId: props.article._id,
+          token: props.loggedUser.token,
+          [name]: newComment,
+        })
+      }
+      
+      const sendComment = (e) => {
+        e.preventDefault()
+        props.commentArticle(comment)
+      }
 
-  const sendComment = (e) => {
-    e.preventDefault()
-    props.commentArticle(comment)
-  }
-  console.log(props)
-  const deleteComment = (e) => {
-    e.preventDefault()
-    props.deleteArticle({
-      artId: props.article._id,
-      token: props.loggedUser.token,
-      commentId: e.target.id
-    })
-  }
-
+      const deleteComment = (e) => {
+        e.preventDefault()
+        props.deleteArticle({
+          artId: props.article._id,
+          token: props.loggedUser.token,
+          commentId: e.target.id
+        })
+      }
   return (
     <>
       <div>
