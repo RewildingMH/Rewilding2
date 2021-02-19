@@ -2,7 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import React, { useState } from 'react'
 import authActions from '../redux/actions/authActions'
-import logo from '../assets/logo2.png'
+import logo from '../assets/logoNuevo.png'
 import { Dropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
