@@ -6,7 +6,7 @@ import { BiPaperPlane, BiTrash, BiEdit, BiBlock } from 'react-icons/bi'
 
 const CommentArticle = (props) => {
     const [comment, setComment] = useState({});
-    const [editComment, setEditComment] = useState({})
+    const [reComment, setReComment] = useState({})
     const [visible, setVisible] = useState(true)
 
     const readInput = (e) => {
@@ -33,11 +33,26 @@ const CommentArticle = (props) => {
           commentId: e.target.id
         })
       }
-      const ReComment = (e) => {
-        e.preventDefault()
-        props.editComment({
-         
+
+      const modifyComment = (e) => {
+        const name = e.target.name
+        const newComment = e.target.value
+        setReComment({
+          ...reComment,
+          commentId: e.target.id,
+          artId: props.article._id,
+          token: props.loggedUser.token,
+          [name]: newComment
         })
+      }
+
+      const updateComment = async (e) => {
+        e.preventDefault()
+        if(reComment.editComment === undefined){
+          setVisible(!visible)
+          return false
+        }
+        await props.editComment(reComment)
       }
 
       return(
@@ -48,14 +63,17 @@ const CommentArticle = (props) => {
               <img src={profilePicture}></img>
               <div>
                 <button id={_id} onClick={deleteComment}>delete</button>
-                <button id={_id} onClick={'ReComment'}>edit</button>
+                <button onClick={() => setVisible(!visible)}>edit</button>
               </div>
-              <p>{name}</p>
+              <p className="textArticle">{name}</p>
               
               {visible ? 
-              <p>{comment}</p>
+              <p className="textArticle">{comment}</p>
               :
-              <input name="editComment" placeholder={`${comment}`} type="text" /> 
+              <>
+              <input id={_id} name="editComment" type="text" defaultValue={comment} onChange={modifyComment} />
+               <button className="" onClick={updateComment}>send</button>
+              </>
               }
               </>
               )}

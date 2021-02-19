@@ -133,8 +133,29 @@ const articleController = {
         })
       }
   },
-  editComment:(req, res) => {
-    console.log(req.body)
+  editComment: async (req, res) => {
+    try {
+      console.log(req.body)
+      const { commentId, artId, editComment } = req.body
+      const response = await Article.findOneAndUpdate(
+        { _id: artId, 'comments._id': commentId },
+        {
+          $set: {
+            'comments.$.comment': editComment
+          }
+        },
+        { new: true }
+      )
+      res.json({
+        success: true,
+        response
+      })
+    } catch (error) {
+      res.json({
+        success: false,
+        error
+      })
+    }
   }
 } 
  
