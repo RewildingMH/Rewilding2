@@ -1,5 +1,6 @@
 const initialState = {
-  allPetitions: []
+  allPetitions: [],
+  lastPetitions: []
 }
 
 
@@ -8,7 +9,8 @@ export const petitionsReducer = (state = initialState, action) => {
     case 'ALL_PETITIONS':
       return {
         ...state,
-        allPetitions: action.payload
+        allPetitions: action.payload,
+        lastPetitions: action.payload.slice(action.payload.length -3, action.payload.length)
       }
     case 'UPDATE_PETITION':
       return {
