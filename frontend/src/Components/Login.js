@@ -1,32 +1,31 @@
 import GoogleLogin from 'react-google-login';
-import {Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
 import authActions from "../redux/actions/authActions"
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 
 
-const Login=(props)=>{
-    useEffect(()=>{
-        
+const Login = (props) => {
+    useEffect(() => {
+
     })
     const responseGoogle = async (response) => {
-       const respuesta = await props.loginWithGoogle(response.profileObj)      
-      }
+        const respuesta = await props.loginWithGoogle(response.profileObj)
+    }
     //Usuario a loguearse
     var [loginUser, setLoginUser] = useState({
-        username:"",
-        password:"",
+        username: "",
+        password: "",
     })
     //Errores
     const [errores, setErrores] = useState([])
     //capturo valores de los inputs
     const handleChange = (e) => {
         const { name, value } = e.target
-        setLoginUser({ ...loginUser,[name]: value })
-      }
+        setLoginUser({ ...loginUser, [name]: value })
+    }
     //Funcion para confirmar el login
-    const  sendUser= async e =>{
-        e.preventDefault()       
+    const sendUser = async e => {
+        e.preventDefault()
         if (loginUser.username === '' || loginUser.password === '') {
             alert('all fields are required!')
             return false
@@ -35,12 +34,15 @@ const Login=(props)=>{
         const respuesta = await props.loginUser(loginUser)
         if (respuesta && !respuesta.success) {
             setErrores([respuesta.mensaje])
-        } 
+        }
     }
-    
-    return(
+    const forgotPassword = e => {
+        alert('forgotPassword')
+    }
+
+    return (
         <div className="loginDiv">
-            <h1>Login</h1>
+            <h1>LOGIN</h1>
             <GoogleLogin
                 className="login_input justify-content-center"
                 clientId="466964485297-vadqpskqigjmjlh81uijpggpiaalluu2.apps.googleusercontent.com"
@@ -50,21 +52,22 @@ const Login=(props)=>{
                 cookiePolicy={'single_host_origin'}
             />
             <div className="separator-line">
-                <span>Or</span> 
-                <span className="line mx-auto"></span> 
+                <span>Or</span>
+                <span className="line mx-auto"></span>
             </div>
             <input type="text" autoComplete="nope" placeholder="Your email address" className="admin_input" name="username"
-            onChange={(e)=>handleChange(e)}/>
+                onChange={(e) => handleChange(e)} />
             <input type="password" placeholder="Password" className="admin_input" name="password"
-            onChange={(e)=>handleChange(e)} />
- 
-            <Button variant="secondary" className="admin_input mx-auto mt-4" type="submit" onClick={sendUser} >
+                onChange={(e) => handleChange(e)} />
+            <p onClick={forgotPassword} className="forgotPass">I forgot my password</p>
+
+            <button onClick={sendUser} className="btnLog">
                 Login
-            </Button>
+            </button>
             <p>* By entering with Google you are agreeing to receive offers by email</p>
             <div className="separator-line">
                 <span>You do not have an account?</span>
-                <span className="line mx-auto"></span> 
+                <span className="line mx-auto"></span>
             </div>
         </div>
     )
@@ -78,4 +81,4 @@ const mapDispatchToProps = {
     loginWithGoogle: authActions.loginWithGoogle,
     loginUser: authActions.loginUser,
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Login) 
+export default connect(mapStateToProps, mapDispatchToProps)(Login) 
