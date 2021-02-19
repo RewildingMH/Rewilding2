@@ -1,5 +1,6 @@
 import React from 'react'
 import { BsPen } from "react-icons/bs";
+import { ProgressBar } from 'react-bootstrap';
 
 const LastPetitions = (props) => {
     console.log(props)
@@ -26,12 +27,17 @@ const LastPetitions = (props) => {
             alt="petition-pic"
             />
             <div className="lastPetitionsInfo">
-                <div className="d-flex justify-content-around"> 
-                    <h5 className="lastPetitionsTitle">{title.toUpperCase().slice(0, 20)+"..."}</h5>
-                    <p>Objetive: {goal} signs. <BsPen/></p>
+                <div className="userInfo">
+                    <h6 className="petitionCreatedBy"><span>Petition created by: </span>{author[0].name}</h6>
+                    <img
+                        className="lastPetitionUserImg"
+                        src={author[0].profilePicture}
+                        alt="petition-pic"
+                        />
                 </div>
-                <h6>{votes.length}</h6>
-                <p>{author[0].name}</p>
+                <h5 className="lastPetitionsTitle">{title.toUpperCase()}</h5>
+                <ProgressBar striped variant="success" animated now={45} />
+                <h6 className="peopleSign"><span>{votes.length} people have signed</span> a goal {goal} signs <BsPen/></h6>
             </div>
         </div>
     )
