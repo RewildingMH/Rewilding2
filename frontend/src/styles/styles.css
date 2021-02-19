@@ -24,7 +24,7 @@ h2 {
 .navBar {
   width: 100%;
   position: fixed;
-  padding: 2vh;
+  padding: 1vh;
   display: flex;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.281);
@@ -51,12 +51,25 @@ h2 {
   border-bottom: 2px solid green;
 }
 
-#dropdown-basic {
-  margin-bottom: 1vh;
-  background-color: rgba(51, 102, 40, 0.335);
+.userHeaderNamendLogOut {
+  display: flex;
+  justify-content: center;
+}
+.userHeaderNamendLogOut p{
   color: rgb(255, 255, 255);
-  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
-  border-radius: 0.5vw;
+}
+
+.userHeaderNamendLogOut p:hover {
+  border: none;
+}
+
+.logOut {
+  margin-top: 1.5vh;
+  position: relative;
+  right: 20%;
+  color:brown;
+  cursor: pointer;
+  font-size: 3vh;
 }
 
 .mainListDiv {
@@ -108,6 +121,10 @@ nav a {
   margin-bottom: 1vh;
   margin-right: 1vw;
 }
+.userHeaderLink h6 {
+  margin-left: 1vw;
+  margin-top: 1vh;
+}
 
 .userHeaderName {
   text-decoration: none;
@@ -151,7 +168,7 @@ nav a {
 }
 
 .affix {
-  padding: 0.5vh;
+  padding: 1vh;
   background-color: #3e4444;
   transition: 0.8s;
 }
@@ -183,12 +200,12 @@ nav a {
 }
 
 .containerHome {
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
 }
 
 .distanceDiv {
@@ -225,18 +242,20 @@ nav a {
 
 .divBlog {
   width: 100%;
-  /* height: 100%; */
-  background-color: #3e4444;
+  height: 100vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .lastArticlesCard {
+  margin-top: 2vh;
   display: flex;
   align-items: flex-end;
-  width: 20%;
-  height: 70%;
+  width: 20vw;
+  height: 70vh;
+  min-width: auto;
+  min-height: auto;
   margin-left: 1vw;
   margin-bottom: 1vh;
   background-repeat: no-repeat;
@@ -244,33 +263,34 @@ nav a {
   background-position:center;
   border-radius: 1vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+  transition: background-position 20s; 
 }
+
+.lastArticlesCard:hover {
+  background-position: top left;
+}
+
 .lastArticlesCreated, .lastPetitionsCreated {
-  background-color: #3e4444;
   width: 100%;
   display: flex;
   justify-content: center;
   padding-top: 3vw;
-  color: white;
-}
-.lastArticlesCard {
-  transition: .5s;
-}
-.lastArticlesCard:hover{
-  transform: translateY(-5px);
-  box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.164);
+  color: black;
+  margin-bottom: 5vh;
 }
 
 .lastArticleTitle {
   color: white;
-  background-color: rgba(0, 0, 0, 0.466);
+  background-color: rgba(0, 0, 0, 0.801);
   font-size: large;
+  margin-top: 1vh;
+  margin-bottom: 0px !important;
   padding: 3vh;
   transition: .5s;
 }
 
 .lastArticleTitle:hover {
-  color: #405d27;
+  color: #c1946a;
   transition: .5s;
 }
 
@@ -279,6 +299,7 @@ nav a {
   font-size: medium;
 }
 .lastArticlesInfo {
+  border-radius: 0vh 0vw 1vw 1vw;
   display: flex;
   justify-content: space-around;
   color: grey;
@@ -288,6 +309,8 @@ nav a {
 
 .lastArticlesInfo p { 
   margin-top: 2vh;
+  color: white;
+  margin-left: 10vw;
 }
 
 .lastArticlesInfo span {
@@ -296,8 +319,8 @@ nav a {
 }
 
 .articleDate {
-  position: relative;
-  left: 3%;
+  position: static;
+  margin-left: 1vw;
   color: white;
 }
 
@@ -306,11 +329,38 @@ nav a {
 }
 
 .lastPetitionsContainer {
-  width: 30%;
+  display: flex;
+  width: 50%;
   height: 20%;
-  background-size: cover;
+  background-size: 30%;
+  background-repeat: no-repeat;
   border-radius: 1vw;
   color: white;
+  margin: 1vh;
+  background-color: #3e4444;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+}
+
+.lastPetitionImg {
+  width: 40%;
+  height: 100%;
+  border-radius: 1vw 0vw 0vw 1vw;
+}
+
+.lastPetitionsInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5vw;
+}
+
+.lastPetitionsTitle {
+  margin-right: 2vw;
+}
+
+.white {
+  height: 10vh;
+  width: 100%;
 }
 /* login */
 
@@ -649,9 +699,12 @@ h6 {
 .profilebanner {
   width: 100%;
   height: 50vh;
-  background-image: url("https://static-cdn.jtvnw.net/jtv_user_pictures/d4b87868-5886-48ef-a934-0eab66b2894b-profile_banner-480.png");
+  background-image: url("https://i.pinimg.com/originals/d0/e0/e5/d0e0e5db4caa18860d28456cacce86c8.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: flex-end;
 }
 
@@ -687,10 +740,10 @@ h6 {
 }
 
 .profileInfoImg {
-  width: 20vh;
-  height: 20vh;
-  border-radius: 15vh;
+  width: 25vh;
+  height: 25vh;
   margin-top: 2vw;
+  border: white solid 3px;
   margin-right: 15vw;
   display: flex;
   align-items: flex-end;
@@ -846,21 +899,54 @@ textarea {
   border-radius: 15px;
 }
 .bg-green{
-  background-color: #83b74b59;
+  background-color: #83b74b;
 }
 .categoryBlog {
-  color: white;
+  color: #405d27;
+  font-weight: 700;
+
 }
+
 .tituloBlog {
-  color: white;
+  color: black;
   font-weight: 700;
   width: 70%;
+  text-align: left;
 }
 .tituloBlog:hover {
-  color: thistle;
+  transform: scale(1.02);
 }
+.descripcionBlog{
+  color: #3e4444;
+  text-align: justify;
+}
+.scale-img{
+  background-size: contain;
+  background-position: center;
+}
+.scale-img:hover{
+  background-size: cover;
+  background-position: top;
+  transform: scale(1.03);
+  transition: 1s;
 
-
+}
+.bannerLatest {
+  width: 100%;
+  height: 10%;
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 3vh;
+}
+.articlesList {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 /* article style */
 .textArticle {
   color: whitesmoke;
@@ -940,7 +1026,7 @@ textarea {
   bottom: 15px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #c194a6;
+  border-top-color: #c1946a;
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
 }

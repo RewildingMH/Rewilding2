@@ -4,7 +4,8 @@ import Posts from "../Components/Posts";
 import petitionsActions from "../redux/actions/petitionsActions";
 import articleActions from "../redux/actions/articleActions";
 import { Link } from "react-router-dom";
-import communityPic from "../assets/communityImg.png"
+import communityPic from "../assets/communityImg.png";
+import "../styles/community.css";
 
 const Community = (props) => {
   const [popular, setPopular] = useState([]); // Estado para guardar las peticiones más populares
@@ -22,24 +23,35 @@ const Community = (props) => {
   }, []);
 
   return (
-    <>
-      <div className="communityBanner" style={{backgroundImage: `url(${communityPic})`, backgroundPosition: "center", backgroundSize: "cover"}}></div>
-      <div className="comunityContainer">
+    <div className="communityContainer">
+      <div
+        className="communityBanner"
+        style={{
+          backgroundImage: `url(${communityPic})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      ></div>
+      <div className="communityContainerBelow">
         <div className="comunityEntry align-items-start">
           <div
-            className="col-2 card"
+            className="col-2 card popularPetitions"
             style={{ display: "flex", flexDirection: "column" }}
           >
             <h3>Popular Petitions</h3>
             {popular.slice(0, 3).map(({ title, picture, desc, _id }) => (
-              <Link to={`/petitions/${_id}`}>
+              <Link
+                className="popularPetitionCard"
+                to={`/petitions/${_id}`}
+                style={{ textDecoration: "none" }}
+              >
                 <div className="card">
                   <div
                     className="communityImg card-img-top"
                     style={{ backgroundImage: `url(${picture})` }}
                   ></div>
-                  <h5 className="card-title">{title}</h5>
-                  <p className="card-text">
+                  <h5 className="card-title cardTitle">{title}</h5>
+                  <p className="card-text cardText">
                     {desc.length > 70 ? desc.slice(0, 70) + "..." : desc}
                   </p>
                 </div>
@@ -70,7 +82,7 @@ const Community = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 // *Se aplica el metodo slice para obtener solo 3 de todas las peticiones/articulos

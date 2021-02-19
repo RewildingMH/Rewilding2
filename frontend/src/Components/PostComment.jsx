@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import postActions from "../redux/actions/postActions";
+import "../styles/community.css";
+import { AiFillHeart, AiOutlineHeart, AiOutlineSend } from "react-icons/ai";
 
 const PostComment = ({
   comment,
@@ -68,48 +70,68 @@ const PostComment = ({
   };
 
   return (
-    <div>
-      <div style={{ display: "flex" }}>
-        <div className="col-12 flex-1">
-          <div style={{ display: "flex" }}>
+    <div className="singleCommentContainer">
+      <div className="singleComment">
+        <div className="commentCredentials">
+          <div
+            style={{
+              backgroundImage: `url(${profilePicture})`,
+            }}
+            className="commentUserPic"
+          ></div>
+          <p className="commentUsername">{name}:</p>
+        </div>
+
+        {visible ? (
+          <>
+            <input
+              type="text"
+              name="newCommentEdit"
+              placeholder={comment}
+              onChange={captureNewComment}
+            />
             <div
+              className="sendComment"
               style={{
-                backgroundImage: `url(${profilePicture})`,
-                width: "20px",
-                height: "20px",
-                backgroundSize: "cover",
-                marginRight: "5vw",
+                display: "flex",
+                alignItems: "center",
+                fontSize: "21px",
+                padding: "0 0.3rem",
               }}
-            ></div>
-
-            {visible ? (
-              <>
-                <input
-                  type="text"
-                  name="newCommentEdit"
-                  placeholder={comment}
-                  onChange={captureNewComment}
-                />
-                <button onClick={editComment}>SEND</button>
-              </>
-            ) : (
-              <div>
-                <p>{name}</p>
-                <p>{comment}</p>
-              </div>
-            )}
+            >
+              <AiOutlineSend
+                onClick={editComment}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+          </>
+        ) : (
+          <div className="commentComment">
+            <p>{comment}</p>
           </div>
+        )}
+      </div>
 
-          <p>LIKES: {likes.length}</p>
-          {loggedUser ? (
-            likes.find((like) => like.id === loggedUser.userId) ? (
-              <button onClick={dislikeComment}>DISLIKE COMMENT♥</button>
-            ) : (
-              <button onClick={likeComment}>LIKE COMMENT♥</button>
-            )
+      <div className="postLikeInteraction">
+        {loggedUser ? (
+          likes.find((like) => like.id === loggedUser.userId) ? (
+            <div className="commentLike">
+              <AiFillHeart onClick={dislikeComment} />
+              {likes.length}
+            </div>
           ) : (
-            <button> LIKE COMMENT♥</button>
-          )}
+            <div className="commentLike">
+              <AiOutlineHeart onClick={likeComment} />
+              {likes.length}
+            </div>
+          )
+        ) : (
+          <div className="commentLike">
+            <AiOutlineHeart />
+            {likes.length}
+          </div>
+        )}
+        <div className="commentMod">
           {loggedUser && loggedUser.userId === userId && (
             <>
               <button onClick={deleteComment}>DELETE</button>

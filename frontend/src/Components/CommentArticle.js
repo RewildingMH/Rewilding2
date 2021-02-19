@@ -24,7 +24,7 @@ const CommentArticle = (props) => {
         e.preventDefault()
         props.commentArticle(comment)
       }
-     console.log(props)
+
       const deleteComment = (e) => {
         e.preventDefault()
         props.deleteComment({
@@ -87,9 +87,9 @@ const CommentArticle = (props) => {
 }
 
 const mapStateToProps = state => {
-    return {
-        loggedUser: state.authR.loggedUser
-    }
+  return {
+    loggedUser: state.authR.loggedUser
+  }
 }
 
 const mapDispatchToProps = {
