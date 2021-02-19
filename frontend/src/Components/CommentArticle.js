@@ -5,7 +5,9 @@ import { IconContext } from "react-icons"
 import { BiPaperPlane, BiTrash, BiEdit, BiBlock } from 'react-icons/bi'
 
 const CommentArticle = (props) => {
-  const [comment, setComment] = useState({});
+    const [comment, setComment] = useState({});
+    const [reComment, setReComment] = useState({})
+    const [visible, setVisible] = useState(true)
 
     const readInput = (e) => {
         const name = e.target.name;
@@ -25,32 +27,63 @@ const CommentArticle = (props) => {
 
       const deleteComment = (e) => {
         e.preventDefault()
-        props.deleteArticle({
+        props.deleteComment({
           artId: props.article._id,
           token: props.loggedUser.token,
           commentId: e.target.id
         })
       }
-  return (
-    <>
-      <div>
-        {props.articlecomment.map(({ comment, profilePicture, name, _id }) =>
-          <>
-            <img src={profilePicture}></img>
-            <p>{name}</p>
-            <p>{comment}</p>
+
+      const modifyComment = (e) => {
+        const name = e.target.name
+        const newComment = e.target.value
+        setReComment({
+          ...reComment,
+          commentId: e.target.id,
+          artId: props.article._id,
+          token: props.loggedUser.token,
+          [name]: newComment
+        })
+      }
+
+      const updateComment = async (e) => {
+        e.preventDefault()
+        if(reComment.editComment === undefined){
+          setVisible(!visible)
+          return false
+        }
+        await props.editComment(reComment)
+      }
+
+      return(
+            <>
             <div>
-              <button id={_id} onClick={deleteComment}>delete</button>
+              {props.articlecomment.map(({comment, profilePicture, name, _id}) => 
+              <>
+              <img src={profilePicture}></img>
+              <div>
+                <button id={_id} onClick={deleteComment}>delete</button>
+                <button onClick={() => setVisible(!visible)}>edit</button>
+              </div>
+              <p className="textArticle">{name}</p>
+              
+              {visible ? 
+              <p className="textArticle">{comment}</p>
+              :
+              <>
+              <input id={_id} name="editComment" type="text" defaultValue={comment} onChange={modifyComment} />
+               <button className="" onClick={updateComment}>send</button>
+              </>
+              }
+              </>
+              )}
             </div>
-          </>
-        )}
-      </div>
-      <div>
-        <input type="text" name="comment" placeholder="New Comment" onChange={readInput} />
-        <button onClick={sendComment}>Submit</button>
-      </div>
-    </>
-  )
+            <div>
+                <input type="text" name="comment" placeholder="Enter comment..." onChange={readInput}/>
+                <button onClick={sendComment}>Submit</button>
+            </div>
+            </>
+            )
 }
 
 const mapStateToProps = state => {
@@ -60,8 +93,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  commentArticle: articleActions.commentArticle,
-  deleteArticle: articleActions.deleteArticle
+    commentArticle: articleActions.commentArticle,
+    deleteComment: articleActions.deleteComment,
+    editComment: articleActions.editComment
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentArticle)

@@ -1019,11 +1019,34 @@ textarea {
   color: whitesmoke;
 }
 .titleArticle{
-  color:whitesmoke;
+  padding-top: 3vh;
+  color: whitesmoke;
   text-align:center;
 }
+.infoText{
+  display:flex;
+  padding: 1vh;
+}
+
+.articleContainer{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+}
+
+.bottomArticle{
+  display:flex;
+  justify-items: center;
+  color: whitesmoke
+}
+
+.containerPic{
+  display:flex;
+  justify-content: center;
+}
 .picArticle{
-  width: 50vw
+  width: 55vw
 }
 
 /* Loader */

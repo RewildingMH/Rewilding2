@@ -106,13 +106,13 @@ const articleController = {
   },
   deleteComment: async(req, res) =>{
     try {
-    const { artId, idComment } = req.body
+    const { artId, commentId } = req.params
       const response = await Article.findOneAndUpdate(
         { _id: artId },
         {
           $pull: {
             comments: {
-              _id: idComment
+              _id: commentId
             }
           }
         },
@@ -128,6 +128,30 @@ const articleController = {
           error
         })
       }
+  },
+  editComment: async (req, res) => {
+    try {
+      console.log(req.body)
+      const { commentId, artId, editComment } = req.body
+      const response = await Article.findOneAndUpdate(
+        { _id: artId, 'comments._id': commentId },
+        {
+          $set: {
+            'comments.$.comment': editComment
+          }
+        },
+        { new: true }
+      )
+      res.json({
+        success: true,
+        response
+      })
+    } catch (error) {
+      res.json({
+        success: false,
+        error
+      })
+    }
   }
 } 
  
