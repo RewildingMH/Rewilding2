@@ -38,19 +38,6 @@ const Header = (props) => {
                     <p>Hi! {props.loggedUser.name}</p>
                     <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
                 </div>
-
-                
-
-                {/* <Dropdown className="drop">
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        {props.loggedUser.name}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu className="dropMenu">
-                        <Dropdown.Item ><Link to={`/profile/${props.loggedUser.userId}`} className="profileDrop">Profile</Link></Dropdown.Item>
-                        <Dropdown.Item >Upgrades</Dropdown.Item>
-                        <Dropdown.Item onClick={() => props.logoutUser()} className="logOutDrop">Log Out</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown> */}
             </>
         } else {
             var links =
@@ -61,16 +48,6 @@ const Header = (props) => {
                     <NavLink to="/" className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                     </NavLink>
-                    {/* <Dropdown className="drop">
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            {props.loggedUser.name}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu className="dropMenu">
-                            <Dropdown.Item ><Link to={`/profile/${props.loggedUser.userId}`} className="profileDrop">Profile</Link></Dropdown.Item>
-                            <Dropdown.Item >Upgrades</Dropdown.Item>
-                            <Dropdown.Item onClick={() => props.logoutUser()} className="logOutDrop">Log Out</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown> */}
                 </>
         }
 
