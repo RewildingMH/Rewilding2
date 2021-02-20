@@ -163,6 +163,7 @@ const Post = ({
       e.preventDefault();
       newComment(comment);
       setComment({});
+      setVisibleComment(true);
       successToast.fire({
         icon: "success",
         title: "Comment posted",
