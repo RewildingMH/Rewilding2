@@ -100,9 +100,11 @@ const CreatePetition = (props) => {
           backgroundPosition: "center",
         }}
       ></div>
-      <div className="createPetitionContainer col-8 container mt-4">
+      <div className="createPetitionContainer container mt-4">
         <h2 className="text-center" style={{ paddingTop: "2vh" }}>CREATE PETITION</h2>
-        <div className="backgroundCard">
+        <div className="row d-flex justify-content-center">
+          <div className="col-6">
+          <div className="backgroundCard">
           <div>
             <div className="createPetitionInput1nd2">
               <h5 className="text-center">
@@ -183,6 +185,11 @@ const CreatePetition = (props) => {
         <div className="createPetitionButton d-flex justify-content-center">
           <button onClick={sendPetition}>Send Petition</button>
         </div>
+      
+      
+          </div>
+        </div>
+     
       </div>
       <div className="white"></div>
     </>

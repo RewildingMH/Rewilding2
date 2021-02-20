@@ -21,6 +21,14 @@ h2 {
 }
 /* header */
 
+/* .headerLogondSlogan{
+  display: flex;
+}
+.headerLogondSlogan h6 {
+  margin-left: 1vw;
+  margin-top: 2.1vh;
+  color: white;
+} */
 .navBar {
   width: 100%;
   position: fixed;
@@ -277,6 +285,12 @@ nav a {
   margin-bottom: 5vh;
 }
 
+.lastArticlesCreated h2,
+.lastPetitionsCreated h2 {
+  border-bottom: 2px solid black;
+}
+
+
 .lastArticleTitle {
   color: white;
   background-color: rgba(0, 0, 0, 0.801);
@@ -330,13 +344,11 @@ nav a {
 
 .lastPetitionsContainer {
   display: flex;
-  min-width: 50%; 
-  min-height: 25%;
   background-size: 30%;
   background-repeat: no-repeat;
   border-radius: 1vw;
   color: white;
-  margin: 1vh;
+  margin-bottom: 5vh;
   background-image: url("https://image.freepik.com/foto-gratis/hojas-color-verde-oscuro-jardin-textura-hoja-verde-esmeralda-naturaleza-fondo-abstracto-bosque-tropical-encima-vista-hojas-color-verde-oscuro-patron-natural_33867-1475.jpg");
   background-size: cover;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
@@ -348,33 +360,35 @@ nav a {
   border-radius: 1vw 0vw 0vw 1vw;
 }
 .lastPetitionImgPetitionCard {
-  min-width: 40%;
-  width: 40%;
-  min-height: 40vh;
-  height: 40vh;
+  width: 30vw;
+  height: 35vh;
   border-radius: 1vw 0vw 0vw 1vw;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .lastPetitionsInfo {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 100%;
+  width: 50vw;
   padding: 1vw;
   background-color: rgba(0, 0, 0, 0.555);
-  border-radius: 1vw;
+  border-radius: 0vw 1vw 1vw 0vw;
 }
 .userInfo {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
-.userInfo img {
-  max-width: 4vw;
-  max-height: 8vh;
-  width: 4vw;
-  height: 8vh;
-  border-radius: 2vw;
+.petitionCreatedImg {
+  width: 5vw;
+  height: 10vh;
+  border-radius: 3vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+  background-size: cover;
 }
 .petitionCreatedBy span {
   color: #c1946a;
@@ -391,6 +405,13 @@ nav a {
 .lastPetitionsTitle {
   margin-right: 2vw;
   text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+}
+
+.petitionsPageTitle {
+  margin-top: 2vh;
+  margin-bottom: 5vh;
+  color: black;
+  border-bottom: 2px solid black;
 }
 
 .white {
@@ -645,10 +666,10 @@ nav a {
 
 .petitionContainer {
   width: 100%;
-  /* height: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .petitionImg {
@@ -1640,5 +1661,159 @@ textarea {
     -webkit-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+/* Media Queries */ 
+
+@media (max-width: 800px) {
+  .mainTitle {
+    font-size: 8vh;
+    color: white;
+    font-weight: bold;
+    border-radius: 1vw;
+    background-color: rgba(0, 0, 0, 0.582);
+    padding: 2vw;
+  }
+  .sloganBanner h2{
+    margin-left: 20vw;
+    color: white;
+  }
+  .containerMain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: 195%;
+  }
+
+  
+@keyframes movement {
+  from {
+    background-position: center;
+  }
+  to {
+    background-position: center;
+  }
+}
+  .lastPetitionsContainer {
+    flex-direction: column;
+  }
+  .lastPetitionImgPetitionCard {
+    width: 50vw;
+    height: 35vh;
+    border-radius: 1vw 1vw 0vw 0vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .lastPetitionsInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 50vw;
+    padding: 1vw;
+    background-color: rgba(0, 0, 0, 0.555);
+    border-radius: 1vw;
+    padding: 3.1vw;
+  }
+
+  .userInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+  }
+  .petitionCreatedImg {
+    margin-left: 18vw;
+    width:  7vw;
+    height: 5.5vh;
+    border-radius: 3vw;
+    background-size: cover;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+  }
+  
+}
+
+@media (max-width: 500px) {
+  .mainTitle {
+    font-size: 5vh;
+    color: white;
+    font-weight: bold;
+    border-radius: 1vw;
+    background-color: rgba(0, 0, 0, 0.582);
+    padding: 2vw;
+  }
+  .sloganBanner h2{
+    margin-left: 10vw;
+    color: white;
+  }
+  .containerBanner{
+    text-align: center;
+  }
+  .containerMain {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  from {
+    background-position: center;
+  }
+  to {
+    background-position: center;
+  }
+  .lastPetitionsContainer {
+    flex-direction: column;
+    height: 60vh;
+  }
+  .lastPetitionImgPetitionCard {
+    width: 80vw;
+    height: 35vh;
+    border-radius: 1vw 1vw 0vw 0vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .lastPetitionsInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80vw;
+    padding: 1vw;
+    background-color: rgba(0, 0, 0, 0.555);
+    border-radius: 1vw;
+    padding: 3.1vw;
+  }
+
+  .lastPetitionsInfo p {
+    display: none;
+  }
+
+  .userInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+  }
+  .petitionCreatedImg {
+    margin-right: 15vw;
+    width:  13vw;
+    height: 7vh;
+    border-radius: 15vw;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
   }
 }
