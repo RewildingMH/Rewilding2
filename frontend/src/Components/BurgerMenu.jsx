@@ -1,69 +1,87 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { slide as Menu } from "react-burger-menu";
 import "../styles/burgerMenu.css";
 import {
-  FaHome,
-  FaInfoCircle,
-  FaEnvelope,
-  FaUserCircle,
-  FaCity,
-} from "react-icons/fa";
+  AiFillHome,
+  AiFillRead,
+  AiFillLayout,
+  AiFillSmile,
+  AiFillProfile,
+  AiFillSetting,
+} from "react-icons/ai";
+
 import { NavLink } from "react-router-dom";
 
-class BurgerMenu extends React.Component {
-  showSettings(event) {
-    event.preventDefault();
-  }
+const BurgerMenu = (props) => {
+  const [menuOpenState, setMenuOpenState] = useState(false);
 
-  render() {
-    return (
-      <Menu width="250px" right>
-        <div className="sideBarTitle">
-          <h2>Menu</h2>
+  const closeMenu = () => {};
+
+  return (
+    <Menu isOpen={menuOpenState} right>
+      <div className="sideBarTitle">
+        <h2>Menu</h2>
+      </div>
+      <NavLink to="/">
+        <div
+          id="home"
+          className="menu-item"
+          href="/"
+          onClick={() => closeMenu()}
+        >
+          <div className="iconMenu">
+            <AiFillHome />
+          </div>
+          <div className="optionMenu">Home</div>
         </div>
-        <NavLink to="/">
-          <div id="home" className="menu-item" href="/">
-            <div className="iconMenu">
-              <FaHome />
-            </div>
-            <div className="optionMenu">Home</div>
+      </NavLink>
+      <NavLink to="/blog" onClick={closeMenu}>
+        <div id="blog" className="menu-item" href="/">
+          <div className="iconMenu">
+            <AiFillRead />
           </div>
-        </NavLink>
-        <NavLink to="/cities">
-          <div id="cities" className="menu-item">
-            <div className="iconMenu">
-              <FaCity />
-            </div>
-            <div className="optionMenu">Cities</div>
+          <div className="optionMenu">Blog</div>
+        </div>
+      </NavLink>
+      <NavLink to="/community" onClick={closeMenu}>
+        <div id="community" className="menu-item" href="/">
+          <div className="iconMenu">
+            <AiFillLayout />
           </div>
-        </NavLink>
-        <NavLink to="/about">
-          <div id="about" className="menu-item" href="/about">
-            <div className="iconMenu">
-              <FaInfoCircle />
-            </div>
-            <div className="optionMenu">About</div>
+          <div className="optionMenu">Community</div>
+        </div>
+      </NavLink>
+      <NavLink to="/petitions" onClick={closeMenu}>
+        <div id="petitions" className="menu-item" href="/">
+          <div className="iconMenu">
+            <AiFillSmile />
           </div>
-        </NavLink>
-        <NavLink to="/contact">
-          <div id="contact" className="menu-item">
-            <div className="iconMenu">
-              <FaEnvelope />
-            </div>
-            <div className="optionMenu">Contact</div>
+          <div className="optionMenu">Petitions</div>
+        </div>
+      </NavLink>
+      <NavLink to="/createPetition" onClick={closeMenu}>
+        <div id="createPetition" className="menu-item" href="/">
+          <div className="iconMenu">
+            <AiFillProfile />
           </div>
-        </NavLink>
-        <NavLink to="/login">
-          <div id="contact" className="menu-item">
-            <div className="iconMenu">
-              <FaUserCircle />
-            </div>
-            <div className="optionMenu">Log In</div>
+          <div className="optionMenu">Create a petition</div>
+        </div>
+      </NavLink>
+      <NavLink
+        to={`/profile/${
+          props.props.loggedUser ? props.props.loggedUser.userId : ""
+        }`}
+        onClick={closeMenu}
+      >
+        <div id="profile" className="menu-item" href="/">
+          <div className="iconMenu">
+            <AiFillSetting />
           </div>
-        </NavLink>
-      </Menu>
-    );
-  }
-}
+          <div className="optionMenu">Profile</div>
+        </div>
+      </NavLink>
+    </Menu>
+  );
+};
 
 export default BurgerMenu;
