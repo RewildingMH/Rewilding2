@@ -52,39 +52,6 @@ const CommentArticle = (props) => {
   )
 }
 
-
-
-          // <div className="commentsMapContainer">
-          //   <div className="commentsMap">
-          //     {post.comments.length ? (
-          //       post.comments.map(
-          //         ({ comment, name, profilePicture, _id, userId }) => (
-          //           <artComment
-          //             key={_id}
-          //             comment={comment}
-          //             name={name}
-          //             profilePicture={profilePicture}
-          //             commentId={_id}
-          //             artId={props.artcle._id}
-          //             userId={userId}
-          //           />
-          //         )
-          //       )
-          //     ) : (
-          //       <div className="noComments">
-          //         <div
-          //           style={{
-          //             backgroundImage: `url(${noCommentsPlaceholder})`,
-          //           }}
-          //           className="noCommentsPlaceholder"
-          //         ></div>
-          //         <span>No comments yet!</span>
-          //       </div>
-          //     )}
-          //   </div>
-          // </div>
-
-
 const mapStateToProps = state => {
   return {
     loggedUser: state.authR.loggedUser

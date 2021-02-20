@@ -46,13 +46,13 @@ const Article = (props) =>{
                         <p className="authorArticleName">{`Author: ${article.author[0].name}.`}</p>
                         <p className="articleVisits">{`Visits: ${article.visits}`}</p>
                       </div>
-                      <a href="boxId"><BiComment className="commentIconArticle" /></a>
+                      <BiComment className="commentIconArticle" />
                     </div>
                   </div>
                 </div>
                 <div className="articleDescription">
                   <p className="textArticleDescription">{article.descripcion}</p>
-                  <div id="#boxId" className="commentArticleContainerMain my-4">
+                  <div className="commentArticleContainerMain my-4">
                   <div>
                     <CommentArticle article={article} articlecomment={article.comments}/>
                   </div>
