@@ -38,23 +38,27 @@ const Community = (props) => {
             className="col-2 card popularPetitions"
             style={{ display: "flex", flexDirection: "column" }}
           >
-            <h3>Popular Petitions</h3>
-            {popular.slice(0, 3).map(({ title, picture, desc, _id }) => (
-              <Link
-                className="popularPetitionCard"
-                to={`/petitions/${_id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <div className="card">
-                  <div
-                    className="communityImg card-img-top"
-                    style={{ backgroundImage: `url(${picture})` }}
-                  >
-                    <h5 className="cardTitle">{title}</h5>
+            <div className="sideCardsTitle">
+              <h3>Popular Petitions</h3>
+            </div>
+            <div className="sideCardsContainer">
+              {popular.slice(0, 3).map(({ title, picture, _id }) => (
+                <Link
+                  className="popularPetitionCard"
+                  to={`/petitions/${_id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <div className="card">
+                    <div
+                      className="communityImg card-img-top"
+                      style={{ backgroundImage: `url(${picture})` }}
+                    >
+                      <h5 className="cardTitle">{title}</h5>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
           <div className="col-8 d-flex justify-content-center allPostsContainerContainer">
             <div className="w-100 allPostsContainer">
@@ -69,26 +73,39 @@ const Community = (props) => {
               justifyContent: "flex-start",
             }}
           >
-            <h3>Latest Blog Entries</h3>
-            {props.articles
-              .slice(props.articles.length - 3, props.articles.length)
-              .map(({ title, picture, descripcion, _id }) => (
-                <Link
-                  className="popularPetitionCard"
-                  to={`/article/${_id}`}
-                  style={{
-                    textDecoration: "none",
-                  }}
-                >
-                  <div className="card">
-                    <div
-                      className="communityImg card-img-top"
-                      style={{ backgroundImage: `url(${picture})` }}
-                    ></div>
-                    <h5 className="card-title cardTitle">{title}</h5>
-                  </div>
-                </Link>
-              ))}
+            <div className="sideCardsTitle">
+              <h3>Latest Blog Entries</h3>
+            </div>
+            <div className="sideCardsContainer">
+              {props.articles
+                .slice(props.articles.length - 3, props.articles.length)
+                .map(({ title, picture, _id }) => (
+                  <Link
+                    className="popularPetitionCard"
+                    to={`/article/${_id}`}
+                    style={{
+                      textDecoration: "none",
+                    }}
+                  >
+                    <div className="card">
+                      <div
+                        className="communityImg card-img-top"
+                        style={{ backgroundImage: `url(${picture})` }}
+                      >
+                        <h5 className="card-title cardTitle">
+                          {title.length > 30
+                            ? title
+                                .split(" ")
+                                .slice(0, 5)
+                                .join()
+                                .replace(/,/g, " ") + "..."
+                            : title}
+                        </h5>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+            </div>
           </div>
         </div>
       </div>

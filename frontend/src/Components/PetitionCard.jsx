@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import petitionsActions from "../redux/actions/petitionsActions";
 import { connect } from "react-redux";
 import { BsPen } from "react-icons/bs";
-import { ProgressBar } from 'react-bootstrap';
+import { ProgressBar } from "react-bootstrap";
 
 //COMPONENTE QUE RECIBE DE SU PADRE TODAS LAS PETICIONES MAPEADAS Y LAS RENDERIZA
 const PetitionCard = (props) => {
@@ -13,62 +13,71 @@ const PetitionCard = (props) => {
     props.addVisit(id);
   };
   const {
-    author, 
-    createdAt, 
-    desc, 
-    destination, 
-    goal, 
-    limitDate, 
-    picture, 
+    author,
+    createdAt,
+    desc,
+    destination,
+    goal,
+    limitDate,
+    picture,
     reasons,
-    signatures, 
-    title, 
-    updatedAt, 
-    visits, 
-    votes
-} = props.petition
+    signatures,
+    title,
+    updatedAt,
+    visits,
+    votes,
+  } = props.petition;
   return (
-    <Link to={`/petitions/${props.petition._id}`} onClick={addVisit} className="text-decoration-none">
-       <div className="container">
-            <div className="lastPetitionsContainer">
-                <img
-                className="lastPetitionImgPetitionCard"
-                src={picture}
+    <Link
+      to={`/petitions/${props.petition._id}`}
+      onClick={addVisit}
+      className="text-decoration-none"
+    >
+      <div className="container">
+        <div className="lastPetitionsContainer">
+          <img
+            className="lastPetitionImgPetitionCard"
+            src={picture}
+            alt="petition-pic"
+          />
+          <div className="lastPetitionsInfo">
+            <div className="userInfo">
+              <h6 className="petitionCreatedBy">
+                <span>Petition created by: </span>
+                {author[0].name}
+              </h6>
+              <img
+                className="lastPetitionUserImg"
+                src={author[0].profilePicture}
                 alt="petition-pic"
-                />
-                <div className="lastPetitionsInfo">
-                    <div className="userInfo">
-                        <h6 className="petitionCreatedBy"><span>Petition created by: </span>{author[0].name}</h6>
-                        <img
-                            className="lastPetitionUserImg"
-                            src={author[0].profilePicture}
-                            alt="petition-pic"
-                            />
-                    </div>
-                    <h5 className="lastPetitionsTitle">{title.toUpperCase()}</h5>
-                    <ProgressBar striped variant="success" animated now={45} />
-                    <h6 className="peopleSign"><span>{votes.length} people have signed</span> a goal {goal} signs <BsPen/></h6>
-                    <div>
-        <p>
-          {props.petition.desc.length > 300
-            ? props.petition.desc.slice(0, 300) + "..."
-            : props.petition.desc}
-        </p>
-        {/* CONDICIÓN QUE RENDERIZA CUÁNTAS PERSONAS FIRMARON ESA PETICIÓN */}
-        <p>
-          {props.petition.signatures.length
-            ? props.petition.signatures.length === 1
-              ? props.petition.signatures.length +
-                " person has already signed this petition"
-              : props.petition.signatures.length +
-                " persons have already signed this petition"
-            : "No one has signed this petition yet"}
-        </p>
-      </div>
-                </div>
+              />
             </div>
+            <h5 className="lastPetitionsTitle">{title.toUpperCase()}</h5>
+            <ProgressBar striped variant="success" animated now={45} />
+            <h6 className="peopleSign">
+              <span>{votes.length} people have signed</span> a goal {goal} signs{" "}
+              <BsPen />
+            </h6>
+            <div>
+              <p>
+                {props.petition.desc.length > 300
+                  ? props.petition.desc.slice(0, 300) + "..."
+                  : props.petition.desc}
+              </p>
+              {/* CONDICIÓN QUE RENDERIZA CUÁNTAS PERSONAS FIRMARON ESA PETICIÓN */}
+              <p>
+                {props.petition.signatures.length
+                  ? props.petition.signatures.length === 1
+                    ? props.petition.signatures.length +
+                      " person has already signed this petition"
+                    : props.petition.signatures.length +
+                      " persons have already signed this petition"
+                  : "No one has signed this petition yet"}
+              </p>
+            </div>
+          </div>
         </div>
-    
+      </div>
     </Link>
   );
 };

@@ -1,15 +1,15 @@
 import axios from 'axios'
 import { API } from '../../Components/Api'
-import  Swal  from 'sweetalert2';
+import Swal from 'sweetalert2';
 //ACTIONS QUE RECIBE TODAS LAS ACCIONES RELACIONADAS A LAS PETICIONES
 const petitionsActions = {
   //PIDE TODAS LAS PETICIONES AL SERVIDOR
   getPetitions: () => {
     return async (dispatch, getState) => {
-      try{
+      try {
         const response = await axios.get(`${API}/petitions`)
         dispatch({ type: 'ALL_PETITIONS', payload: response.data.response })
-      }catch(error){
+      } catch (error) {
         Swal.fire(error)
       }
     }
@@ -17,40 +17,40 @@ const petitionsActions = {
   //CADA VEZ QUE EL USUARIO ENTRA A UNA PETICIÓN, AGREGA UNA VISITA
   addVisit: (petId) => {
     return async (dispatch, getState) => {
-      try{
+      try {
         const response = await axios.post(`${API}/petitions/visits`, { petId })
         dispatch({ type: 'ADD_PETITIONS', payload: response.data.response })
-      }catch(error){
+      } catch (error) {
         Swal.fire(error)
       }
-     
+
     }
   },
   //FIRMA UNA PETICIÓN (PUEDE TENER COMENTARIO O NO Y NO SE PUEDE FIRMAR DOS VECES, PERO SI COMENTAR)
   signPetition: userSign => {
-    try{
+    try {
       return async (dispatch, getState) => {
-      const response = await axios.post(`${API}/signPetition`, { userSign },
-        {
-          headers: {
-            Authorization: `Bearer ${userSign.token}`,
-          },
-        }
-      )
+        const response = await axios.post(`${API}/signPetition`, { userSign },
+          {
+            headers: {
+              Authorization: `Bearer ${userSign.token}`,
+            },
+          }
+        )
 
-      dispatch({
-        type: 'UPDATE_PETITION',
-        payload: response.data.response
-      })
-    }
-    }catch(error){
+        dispatch({
+          type: 'UPDATE_PETITION',
+          payload: response.data.response
+        })
+      }
+    } catch (error) {
       Swal.fire(error)
     }
-    
+
   },
   //AGREGA UNA PETICIÓN, QUE DEBE SER ACEPTADA POR UN ADMINISTRADOR
   addPetition: (petition, file) => {
-    try{
+    try {
       const {
         limitDate,//LÍMITE DE TIEMPO PARA FIRMAR
         description,
@@ -79,9 +79,9 @@ const petitionsActions = {
           type: 'SEND_PETITION',
           payload: response.data.response
         })
-    }
-    
-    }catch(error){
+      }
+
+    } catch (error) {
       Swal.fire(error)
     }
   },

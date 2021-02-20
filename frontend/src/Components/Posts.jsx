@@ -100,6 +100,24 @@ const Posts = (props) => {
   // Funcion para validar y llamar a la action que añade un posteo nuevo
   const sendPost = (e) => {
     e.preventDefault();
+    if (!props.loggedUser) {
+      Swal.fire({
+        title: "Oops!",
+        text: "You must be logged in to post!",
+        icon: "warning",
+        confirmButtonColor: "#c1866a",
+        confirmButtonText: "Log me in!",
+        background: "#4b98b7",
+        iconColor: "white",
+        backdrop: "rgba(80, 80, 80, 0.3)",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/login");
+        }
+      });
+      e.target.value = "";
+      return;
+    }
     if (!newPost.text) {
       errorAlert(
         "error",
@@ -188,7 +206,17 @@ const Posts = (props) => {
             </>
           )}
 
-          <Button onClick={sendPost}>Publish</Button>
+          <Button
+            onClick={sendPost}
+            color="success"
+            style={{
+              padding: " 0.2rem 3rem",
+              fontSize: "27px",
+              fontWeight: "500",
+            }}
+          >
+            Publish
+          </Button>
         </div>
       </div>
       {posts &&
