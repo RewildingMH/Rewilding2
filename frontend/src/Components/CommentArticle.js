@@ -1,8 +1,6 @@
 import { connect } from "react-redux"
 import articleActions from "../redux/actions/articleActions"
 import { useState, useEffect } from "react"
-import { IconContext } from "react-icons"
-import { BiPaperPlane, BiTrash, BiEdit, BiBlock } from 'react-icons/bi'
 
 const CommentArticle = (props) => {
     const [comment, setComment] = useState({});
@@ -56,33 +54,31 @@ const CommentArticle = (props) => {
       }
 
       return(
-            <>
             <div>
-              {props.articlecomment.map(({comment, profilePicture, name, _id}) => 
-              <>
-              <img src={profilePicture}></img>
               <div>
-                <button id={_id} onClick={deleteComment}>delete</button>
-                <button onClick={() => setVisible(!visible)}>edit</button>
+                {props.articlecomment.map(({comment, profilePicture, name, _id}) => 
+                <>
+                <img src={profilePicture}></img>
+                <div>
+                  <button id={_id} onClick={deleteComment}>delete</button>
+                  <button onClick={() => setVisible(!visible)}>edit</button>
+                </div>
+                <p className="textArticle">{name}</p>
+                
+                {visible ? 
+                <p className="textArticle">{comment}</p>
+                :
+                <>
+                <input id={_id} name="editComment" type="text" defaultValue={comment} onChange={modifyComment} />
+                <button className="" onClick={updateComment}>send</button>
+                </>
+                }
+                </>
+                )}
+                  <input type="text" name="comment" placeholder="Enter comment..." onChange={readInput}/>
+                  <button onClick={sendComment}>Submit</button>
               </div>
-              <p className="textArticle">{name}</p>
-              
-              {visible ? 
-              <p className="textArticle">{comment}</p>
-              :
-              <>
-              <input id={_id} name="editComment" type="text" defaultValue={comment} onChange={modifyComment} />
-               <button className="" onClick={updateComment}>send</button>
-              </>
-              }
-              </>
-              )}
             </div>
-            <div>
-                <input type="text" name="comment" placeholder="Enter comment..." onChange={readInput}/>
-                <button onClick={sendComment}>Submit</button>
-            </div>
-            </>
             )
 }
 

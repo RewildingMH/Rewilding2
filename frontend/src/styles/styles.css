@@ -1017,15 +1017,18 @@ textarea {
 /* article style */
 .textArticle {
   color: whitesmoke;
+  padding-left: 0.3vw;
+  padding-top: 1vw;
 }
 .titleArticle{
   padding-top: 3vh;
   color: whitesmoke;
   text-align:center;
 }
-.infoText{
+
+.columnArticlePic{
   display:flex;
-  padding: 1vh;
+  justify-content: center;
 }
 
 .articleContainer{
@@ -1041,12 +1044,20 @@ textarea {
   color: whitesmoke
 }
 
-.containerPic{
+.containerArticlePic{
   display:flex;
   justify-content: center;
+  flex-direction: column;
 }
 .picArticle{
-  width: 55vw
+  width: 60vw
+}
+
+.textArticleDescription{
+  color: whitesmoke;
+  width: 80vw;
+  padding-left: 7vw;
+  padding-top: 1vh;
 }
 
 /* Loader */
