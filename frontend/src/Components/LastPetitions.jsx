@@ -3,7 +3,6 @@ import { BsPen } from "react-icons/bs";
 import { ProgressBar } from 'react-bootstrap';
 
 const LastPetitions = (props) => {
-    console.log(props)
     const {
         author, 
         createdAt, 

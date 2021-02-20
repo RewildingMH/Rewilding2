@@ -1,8 +1,6 @@
 import { connect } from "react-redux"
 import articleActions from "../redux/actions/articleActions"
 import { useState, useEffect } from "react"
-import { IconContext } from "react-icons"
-import { BiPaperPlane, BiTrash, BiEdit, BiBlock } from 'react-icons/bi'
 import ArtComment from "./ArtComment"
 
 const CommentArticle = (props) => {

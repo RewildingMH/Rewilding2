@@ -17,16 +17,15 @@ const userController = {
             let error = [{ path: ['usernameExist'] }]
             res.json({ success: false, errores: error })
         }
-        file.mv(path.join(__dirname, '../frontend/public/assets/profilePictures/' + file.name), error => {
+        file.mv(path.join(__dirname, '../frontend/public/assets/profilePictures/' + file.md5), error => {
             if (error) {
-
                 return res.json({ response: error })
             }
         }
         )
         if (errores.length === 0) {
             const passwordHasheado = bcryptjs.hashSync(password, 10)
-            const profilePictureUbicacion = `/assets/profilePictures/${file.name}`
+            const profilePictureUbicacion = `/assets/profilePictures/${file.md5}`
             var newUser = new User({
                 name, lastName, username, profilePicture: profilePictureUbicacion, password: passwordHasheado, rol: "personal account"
             })
