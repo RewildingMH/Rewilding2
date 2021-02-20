@@ -404,8 +404,7 @@ nav a {
   width: 100%;
   height: 15vh;
   color: aliceblue;
-  background-color: #405d27;
-
+  background-color: #256728;
 }
 
 /* login */
@@ -635,13 +634,12 @@ h6 {
   align-items: center;
 }
 
-/* input 1 & 2 */
+/* inputs */
 
-.createPetitionInput1nd2 {
+.createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
   width: 40vw;
-  height: 25vh;
+  height: 20vh;
   border-radius: 2vh;
-  padding: 3vh 2vw;
 }
 
 .createPetitionInput1nd2 input {
@@ -661,15 +659,6 @@ h6 {
   border-radius: 1vw;
   transition: 0.5s;
   color: rgb(0, 0, 0);
-}
-
-/* input 3 */
-
-.createPetitionInput3 {
-  width: 40vw;
-  height: 25vh;
-  border-radius: 2vh;
-  padding: 3vh 2vw;
 }
 
 .createPetitionInput3 textarea {
@@ -693,15 +682,6 @@ h6 {
   color: rgb(0, 0, 0);
 }
 
-/* input 4 */
-
-.createPetitionInput4 {
-  width: 40vw;
-  height: 25vh;
-  border-radius: 2vh;
-  padding: 3vh 2vw;
-}
-
 .createPetitionInput4 input {
   margin-top: 1vh;
   box-shadow: 2px 2px 5px #999;
@@ -721,14 +701,6 @@ h6 {
   color: rgb(0, 0, 0);
 }
 
-/*input 5 */
-
-.createPetitionInput5 {
-  width: 40vw;
-  height: 25vh;
-  border-radius: 2vh;
-  padding: 3vh 2vw;
-}
 
 .createPetitionInput5 input {
   margin-top: 1vh;
@@ -756,7 +728,6 @@ h6 {
   width: 40vw;
   height: 45vh;
   border-radius: 2vh;
-  padding: 3vh 2vw;
 }
 
 .createPetitionUploadFile {
@@ -764,6 +735,12 @@ h6 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.createPetitionUploadFile label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-pic-profile-submit {
@@ -795,6 +772,254 @@ h6 {
 
 .createPetitionButton button:hover {
   background-color: black;
+}
+
+/* @media (max-width:320px) {
+  .createPetitionBanner {
+    height: 25vh;
+    background-position: -90px !important;
+  }
+  .createPetitionContainer {
+    width: 100% !important;
+  }
+  .backgroundCard {
+    width: 100%;
+  }
+
+  .backgroundCard div {
+    width: 100%;
+  }
+
+  .backgroundCard p {
+    margin:0%;
+  }
+
+  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
+    width: 80%;
+    height: 13vh;
+    border-radius: 2vh;
+  }
+  .createPetitionInput3 textarea {
+    height: 6vh;
+  }
+
+  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
+    height: 5vh;
+  }
+
+  .createPetitionInput4 {
+    margin-top: 2vh;
+  }
+
+  .createPetitionInput5 input {
+    margin-left: 10vw;
+    width: 70vw;
+  }
+  
+  .createPetitionButton {
+    margin-top: -4vh;
+  }
+
+  .lastDiv {
+    height: 35vh;
+  }
+} */
+
+@media (max-width:425px) {
+  .createPetitionBanner {
+    height: 25vh;
+    background-position: -90px !important;
+  }
+  /* .createPetitionContainer {
+    width: 100% !important;
+  }
+  .backgroundCard {
+    width: 100%;
+  }
+
+  .backgroundCard div {
+    width: 100%;
+  }
+
+  .backgroundCard p {
+    margin:0%;
+  }
+
+  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
+    width: 80%;
+    height: 13vh;
+    border-radius: 2vh;
+  }
+  .createPetitionInput3 textarea {
+    height: 6vh;
+  }
+
+  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
+    height: 5vh;
+  }
+
+  .createPetitionInput4 {
+    margin-top: 2vh;
+  }
+
+  .createPetitionInput5 input {
+    margin-left: 10vw;
+    width: 70vw;
+  }
+  
+  .lastDiv {
+    height: 35vh;
+  } */
+.createPetitionButton {
+    margin-top: 10vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .createPetitionBanner {
+    height: 25vh;
+    background-position: -90px;
+  }
+  .createPetitionContainer {
+    width: 100%;
+  }
+  .backgroundCard {
+    width: 100%;
+  }
+
+  .backgroundCard div {
+    width: 100%;
+  }
+
+  .backgroundCard p {
+    margin:0%;
+  }
+  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
+    width: 80%;
+    height: 13vh;
+    border-radius: 2vh;
+  }
+  .createPetitionInput3 textarea {
+    height: 6vh;
+  }
+
+  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
+    height: 5vh;
+  }
+
+  .createPetitionInput4 {
+    margin-top: 2vh;
+  }
+
+  .createPetitionInput5 input {
+    margin-left: 10vw;
+    width: 70vw;
+  }
+
+  .lastDiv {
+    height: 35vh;
+  }
+}
+
+@media(max-width:1024px) {
+  .createPetitionBanner {
+    height: 50vh;
+    background-position: -100px !important;
+  }
+  .createPetitionContainer {
+    width: 100% !important;
+  }
+  .backgroundCard {
+    width: 100%;
+  }
+
+  .backgroundCard div {
+    width: 100%;
+  }
+
+  .backgroundCard p {
+    margin:0%;
+  }
+  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
+    width: 80%;
+    height: 13vh;
+    border-radius: 2vh;
+  }
+  .createPetitionInput3 textarea {
+    height: 6vh;
+  }
+
+  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
+    height: 5vh;
+  }
+
+  .createPetitionInput4 {
+    margin-top: 2vh;
+  }
+
+  .createPetitionInput5 input {
+    margin-left: 10vw;
+    width: 70vw;
+  }
+
+  .lastDiv {
+    height: 35vh;
+  }
+
+  .createPetitionButton {
+    margin-top: 2vh;
+  }
+}
+
+@media (max-width:1440px) {
+  .createPetitionBanner {
+    height: 60vh;
+    background-position: -10vh !important;
+  }
+  .createPetitionContainer {
+    width: 100% !important;
+  }
+  .backgroundCard {
+    width: 100%;
+  }
+
+  .backgroundCard div {
+    width: 100%;
+  }
+
+  .backgroundCard p {
+    margin:0%;
+  }
+  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
+    width: 80%;
+    height: 13vh;
+    border-radius: 2vh;
+  }
+  .createPetitionInput3 textarea {
+    height: 6vh;
+  }
+
+  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
+    height: 5vh;
+  }
+
+  .createPetitionInput4 {
+    margin-top: 2vh;
+  }
+
+  .createPetitionInput5 input {
+    margin-left: 10vw;
+    width: 70vw;
+  }
+
+  .lastDiv {
+    height: 35vh;
+  }
+
+  .createPetitionButton {
+    margin-top: 2vh;
+  }
+
 }
 
 /* Admin Blog */

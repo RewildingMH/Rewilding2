@@ -10,7 +10,7 @@ const CreatePetition = (props) => {
   //VARIABLE DE ESTADO QUE CAPTURA LOS VALORES INGRESADOS EN LOS CAMPOS
   const [newPetition, setNewPetition] = useState({});
   //VARIABLE DE ESTADO QUE PREVISUALIZA LA FOTO QUE VA A ENVIAR QUIEN REALICE LA NUEVA PETICIÓN
-  const [pathImage, setPathImage] = useState("/assets/fileImage.jpg");
+  const [pathImage, setPathImage] = useState("/assets/upload.png");
   const [file, setFile] = useState();
 
   //ALERTAS LINDAS
@@ -75,8 +75,8 @@ const CreatePetition = (props) => {
           backgroundPosition: "center",
         }}
       ></div>
-      <div className="createPetitionContainer col-6 container mt-4">
-        <h2 className="text-center" style={{paddingTop: "2vh"}}>CREATE PETITION</h2>
+      <div className="createPetitionContainer col-8 container mt-4">
+        <h2 className="text-center" style={{ paddingTop: "2vh" }}>CREATE PETITION</h2>
         <div className="backgroundCard">
           <div>
             <div className="createPetitionInput1nd2">
@@ -123,7 +123,7 @@ const CreatePetition = (props) => {
               />
             </div>
           </div>
-          <div>
+          <div className="lastDiv">
             <div className="createPetitionInput5">
               <h5 className="text-center">Choose a goal for your petition</h5>
               <p className="text-center">Signature limit</p>
@@ -136,7 +136,7 @@ const CreatePetition = (props) => {
               <p className="text-center">Make it a high res one</p>
               <div className="createPetitionUploadFile">
                 <label htmlFor="inputUpload">
-                  <img
+                  <img style={{margin:"0"}}
                     className="img-fluid profile-pic-profile-submit"
                     src={pathImage}
                     alt="petition-pic"
