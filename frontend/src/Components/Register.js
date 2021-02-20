@@ -67,10 +67,11 @@ const Register = (props) => {
         e.preventDefault()
         if (newUser.name === '' || newUser.lastName === '' || newUser.username === ''
             || newUser.password === '') {
-            alert("Fill in all fields")
+            errorAlert("error","Fill in all fields")
             return false
         } else if (file === undefined) {
-            alert("Select a Profile Picture")
+            errorAlert("error","Select a Profile Picture")
+ 
             return false
         }
         setErrores([])

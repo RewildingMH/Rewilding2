@@ -23,10 +23,8 @@ const Profile = (props) => {
         setPreloader(false)
      }
     
-
     return (
         <>
-        
         {preloader?
       <div className="preloader">
         <div className="loader"></div>
@@ -42,14 +40,30 @@ const Profile = (props) => {
         </div>
         <div className="container mt-5 p-5" >
             <div className="row p-5">
-                <div className="lastArticlesCreated">
-                    <h2>Posts</h2>
+                {postsProfile.length > 0 ? 
+                    <>
+                    <div className="lastArticlesCreated">
+                        <h2>Posts</h2>
+                    </div>
+                    {postsProfile.map(post => <div className="col-12 text-center"><PostsProfile post={post} /></div>)}
+                    </>
+                    :
+                    <div className="lastArticlesCreated">
+                        <h2>Not Posts</h2>
+                    </div>
+                }
+                {petitionsProfile.length > 0 ? 
+                    <>
+                    <div className="lastArticlesCreated">
+                        <h2>Petitions</h2>
+                    </div>
+                    {petitionsProfile.map(petition => <div className="col-12 text-center"><ProfilePetitions petition={petition} /></div>)}
+                    </>
+                    :
+                    <div className="lastArticlesCreated">
+                    <h2>Not Petitions</h2>
                 </div>
-                {postsProfile.map(post => <div className="col-12 text-center"><PostsProfile post={post} /></div>)}
-                <div className="lastArticlesCreated">
-                    <h2>Petitions</h2>
-                </div>
-                {petitionsProfile.map(petition => <div className="col-12 text-center"><ProfilePetitions petition={petition} /></div>)}
+            }   
             </div>
         </div>
         </>} 

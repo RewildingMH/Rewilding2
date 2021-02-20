@@ -19,7 +19,8 @@ require('../config/passport')
 
 //Sign Up Sign with Google Sign In 
 router.route('/user/signup')
-  .post(validator.validNewAccount, userController.signUp)
+//validator.validNewAccount,
+  .post( userController.signUp)
 router.route('/user/sign_google')
   .post(userController.signGoogle)
 

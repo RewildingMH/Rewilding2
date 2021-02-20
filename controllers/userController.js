@@ -7,6 +7,7 @@ const path = require('path')
 
 const userController = {
     signUp: async (req, res) => {
+        console.log(req.body, req.files)
         try{
             
         const errores = []
@@ -17,7 +18,7 @@ const userController = {
             let error = [{ path: ['usernameExist'] }]
             res.json({ success: false, errores: error })
         }
-        file.mv(path.join(__dirname, '../frontend/public/assets/profilePictures/' + file.md5), error => {
+        file.mv(path.join(__dirname,`../frontend/public/assets/profilePictures/${file.md5}.jpg`), error => {
             if (error) {
                 return res.json({ response: error })
             }
@@ -25,7 +26,7 @@ const userController = {
         )
         if (errores.length === 0) {
             const passwordHasheado = bcryptjs.hashSync(password, 10)
-            const profilePictureUbicacion = `/assets/profilePictures/${file.md5}`
+            const profilePictureUbicacion = `/assets/profilePictures/${file.md5}.jpg`
             var newUser = new User({
                 name, lastName, username, profilePicture: profilePictureUbicacion, password: passwordHasheado, rol: "personal account"
             })
