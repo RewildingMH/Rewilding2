@@ -1,85 +1,47 @@
 import { connect } from "react-redux"
 import articleActions from "../redux/actions/articleActions"
 import { useState, useEffect } from "react"
+import ArtComment from "./ArtComment"
 
 const CommentArticle = (props) => {
-    const [comment, setComment] = useState({});
-    const [reComment, setReComment] = useState({})
-    const [visible, setVisible] = useState(true)
+  const [comment, setComment] = useState({});
+  const [articlesComment, setArticlesComment] = useState([])
 
-    const readInput = (e) => {
-        const name = e.target.name;
-        const newComment = e.target.value;
-        setComment({
-          ...comment,
-          artId: props.article._id,
-          token: props.loggedUser.token,
-          [name]: newComment,
-        })
-      }
-      
-      const sendComment = (e) => {
-        e.preventDefault()
-        props.commentArticle(comment)
-      }
+  const commentArt = props.articlecomment
 
-      const deleteComment = (e) => {
-        e.preventDefault()
-        props.deleteComment({
-          artId: props.article._id,
-          token: props.loggedUser.token,
-          commentId: e.target.id
-        })
-      }
+  useEffect(() => {
+    setArticlesComment(commentArt)
+  }, [commentArt])
 
-      const modifyComment = (e) => {
-        const name = e.target.name
-        const newComment = e.target.value
-        setReComment({
-          ...reComment,
-          commentId: e.target.id,
-          artId: props.article._id,
-          token: props.loggedUser.token,
-          [name]: newComment
-        })
-      }
+  const readInput = (e) => {
+    const name = e.target.name;
+    const newComment = e.target.value;
+    setComment({
+      ...comment,
+      artId: props.article._id,
+      token: props.loggedUser.token,
+      [name]: newComment,
+    })
+  }
 
-      const updateComment = async (e) => {
-        e.preventDefault()
-        if(reComment.editComment === undefined){
-          setVisible(!visible)
-          return false
-        }
-        await props.editComment(reComment)
-      }
+  const sendComment = (e) => {
+    e.preventDefault()
+    props.commentArticle(comment)
+  }
 
-      return(
-            <div>
-              <div>
-                {props.articlecomment.map(({comment, profilePicture, name, _id}) => 
-                <>
-                <img src={profilePicture}></img>
-                <div>
-                  <button id={_id} onClick={deleteComment}>delete</button>
-                  <button onClick={() => setVisible(!visible)}>edit</button>
-                </div>
-                <p className="textArticle">{name}</p>
-                
-                {visible ? 
-                <p className="textArticle">{comment}</p>
-                :
-                <>
-                <input id={_id} name="editComment" type="text" defaultValue={comment} onChange={modifyComment} />
-                <button className="" onClick={updateComment}>send</button>
-                </>
-                }
-                </>
-                )}
-                  <input type="text" name="comment" placeholder="Enter comment..." onChange={readInput}/>
-                  <button onClick={sendComment}>Submit</button>
-              </div>
-            </div>
-            )
+  return (
+    <>
+      <div>
+        {articlesComment.map(({ comment, profilePicture, name, _id, userId }) =>
+          <ArtComment comment={comment} profilePicture={profilePicture} name={name} artId={props.article._id} commentId={_id} userId={userId} loggedUser={props.loggedUser} />
+        )}
+      </div>
+      <div>
+        <input type="text" name="comment" placeholder="Enter comment..." onChange={readInput} disabled={!props.loggedUser ? true : false} />
+        <button onClick={props.loggedUser ? sendComment : () => alert("logueate")}>Submit</button>
+      </div>
+    </>
+  )
 }
 
 const mapStateToProps = state => {
@@ -89,9 +51,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    commentArticle: articleActions.commentArticle,
-    deleteComment: articleActions.deleteComment,
-    editComment: articleActions.editComment
+  commentArticle: articleActions.commentArticle,
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentArticle)

@@ -1,18 +1,25 @@
 .popularPetitions {
   display: flex;
   justify-content: center;
-  padding: 2.3rem 1rem;
+  background-color: #007233 !important;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287) !important;
 }
 
 .popularPetitions > h3 {
   text-align: center;
   white-space: nowrap;
   font-size: 1.7vw;
+  background-color: #007233;
+  color: white;
+  padding: 1rem;
 }
 
 .communityImg {
   border-radius: 0;
   height: 20rem;
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
 }
 
 .communityContainerBelow {
@@ -20,15 +27,21 @@
 }
 
 .popularPetitionCard {
-  padding: 0.3rem;
-  height: 25rem;
-  display: flex;
   margin-top: 3rem;
+  margin: 3rem 1rem;
 }
 
 .cardTitle {
   text-transform: uppercase;
-  padding: 0 0.3rem;
+  background-color: rgba(64, 93, 39, 0.5);
+  color: white;
+  padding: 2rem 0.3rem;
+  margin: 0;
+  width: 100%;
+}
+
+.cardTitle:hover {
+  text-decoration: underline;
 }
 
 .cardText {
@@ -43,12 +56,14 @@
   padding: 1rem 0.3rem;
   outline: none;
   border-left: none;
+  border-top-right-radius: 12px;
 }
 
 .profilePictureOnPostContainer {
   border: 1px solid grey;
   border-right: none;
   padding: 0.3rem;
+  border-top-left-radius: 12px;
 }
 
 .profilePictureOnPost {
@@ -67,6 +82,8 @@
   height: 6rem;
   margin-bottom: 5rem;
   padding: 0 0.3rem;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .inputPostContainer {
@@ -81,63 +98,92 @@
 .postPicturePreview {
   height: 87% !important;
   width: 12rem !important;
-  border: 5px solid black;
+  border: 1px solid black;
   border-radius: 12px;
 }
 
 .postContainer {
   border: 1px solid grey;
   margin: 3rem 5rem;
+  border-radius: 12px;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.postPicture {
+  border: 1px solid black;
+  border-left: none;
+  border-right: none;
 }
 
 .postHeader {
   display: flex;
-  margin: 0 1rem;
-  border-bottom: 1px solid grey;
+  background-color: #3e4444;
+  color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  justify-content: space-between;
 }
 
 .userCredentialsOnPost {
   display: flex;
   align-items: center;
-  padding: 0.3rem 0rem 0.3rem 1rem;
+  padding: 1rem 0rem 0.3rem 1rem;
   margin: 0 1rem;
   width: 50%;
 }
 
-.userCredentialsOnPost > .profilePictureOnPost {
+a > .profilePictureOnPost {
   margin-right: 1rem;
   border: 1px solid grey;
 }
 
-.postDate {
-  width: 50%;
+.nameAndDate {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 1rem;
-  font-style: italic;
+  flex-direction: column;
+  white-space: nowrap;
+  text-transform: capitalize;
 }
 
-.postPicture {
-  padding: 3rem 3rem 1rem 3rem;
+.postUsernameContainer > a > h5 {
+  font-size: 27px;
+}
+
+.postUsernameContainer > a > h5:hover {
+  text-decoration: underline;
+}
+
+.postDate {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-style: italic;
+  cursor: default;
+}
+
+.postDate > h4 {
+  font-size: 18px;
+}
+
+.postPictureContainer {
+  padding: 0rem 0rem 1rem 0rem;
 }
 
 .postTextContainer {
-  padding: 3rem 3rem;
+  padding: 2rem 3rem 0rem 3rem;
 }
 
 .userInteractionsOnPost {
   padding: 0.3rem 1rem;
   margin: 0 1rem;
-  border-top: 1px solid grey;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .likeContainer {
   display: flex;
   align-items: center;
-  font-size: 21px;
+  font-size: 36px;
   height: 3rem;
 }
 
@@ -145,6 +191,13 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: 0.2s ease;
+  color: white;
+}
+
+.dispatchLike:active {
+  transform: scale(1.5);
+  color: white;
 }
 
 .inputContainer {
@@ -177,13 +230,14 @@
 
 .singleComment {
   display: flex;
+  padding: 1rem 1rem 0 1rem;
 }
 
 .commentCredentials {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 7.5rem;
+  width: 10rem;
 }
 
 .commentUserPic {
@@ -196,8 +250,9 @@
 }
 
 .commentUsername {
-  font-size: 21px;
+  font-size: 24px;
   font-weight: 500;
+  padding-left: 1rem;
 }
 
 .commentComment {
@@ -208,19 +263,24 @@
   font-size: 21px;
 }
 
+.commentComment > p {
+  padding-left: 3rem;
+}
+
 .commentLike {
   display: flex;
   align-items: center;
   padding: 0 1rem;
+  font-size: 24px;
 }
 
 .postLikeInteraction {
   display: flex;
   justify-content: space-between;
-  margin: 0 1rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid lightgray;
-  padding-bottom: 1rem;
+  padding: 1rem 0;
+  padding-left: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 .commentMod {
@@ -231,14 +291,18 @@
 }
 
 .commentSectionTitle {
-  padding: 0 1rem;
+  padding: 0rem 0 0rem 1rem;
   display: flex;
   align-items: center;
   height: 4rem;
   font-size: 32px;
   margin: 0 1rem;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid black;
   margin-bottom: 1rem;
+}
+
+.commentSectionTitle > p {
+  margin: 0;
 }
 
 .noComments {
@@ -262,4 +326,171 @@
 
 nav {
   z-index: 3 !important;
+}
+
+.aiIcon {
+  cursor: pointer;
+  font-size: 32px;
+  transition: all 0.2s ease;
+}
+
+.aiIcon.delete:hover {
+  color: red;
+  transform: scale(1.1);
+}
+
+.aiIcon.edit:hover {
+  color: green;
+  transform: scale(1.1);
+}
+
+.aiIcon.upload {
+  margin-right: 1rem;
+}
+
+.editCommentInput {
+  border: none;
+  font-size: 21px;
+  display: flex;
+  margin-top: -1rem;
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+.editCommentInput::placeholder {
+  font-size: 21px;
+}
+
+.viewMoreContainer {
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
+  padding: 1rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: flex;
+  padding: 6px 12px;
+  cursor: pointer;
+  align-items: center;
+  font-size: 18px;
+}
+
+.custom-file-upload.comment {
+  color: black;
+  border: none;
+}
+
+.custom-file-upload-post {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aiIcon.upload:hover {
+  transform: scale(1.1);
+}
+
+.imagePreviewContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.editPictureOnPost {
+  border: 1px solid black;
+  margin: 1rem;
+}
+
+.postInputEdit {
+  width: 50rem;
+  margin: 0 1rem;
+  padding-left: 1rem;
+}
+
+.colorButtonsEditPost {
+  display: flex;
+  padding: 0 0.3rem;
+}
+
+.commentsMapContainer {
+  background-color: #3e4444;
+  color: white;
+}
+
+.viewMoreContainer {
+  background-color: #3e4444;
+  color: white;
+}
+
+.inputContainer {
+  background-color: #3e4444;
+  color: white;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.newCommentEdit {
+  background-color: #3e4444 !important;
+  padding: 1rem !important;
+}
+
+.editTextCommentContainer {
+  display: flex;
+  width: 100%;
+  margin-left: 1rem;
+}
+
+.editCommentInput {
+  margin-top: 0.1rem;
+  width: 100%;
+}
+
+.singleCommentContainer {
+  border-top: 1px solid black;
+  margin: 0 3rem;
+}
+
+.likesHeaderContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .popularPetitions {
+    display: none !important;
+  }
+  .comunityEntry {
+    box-shadow: none;
+  }
+  .inputPostContainer {
+    width: 100%;
+  }
+  .inputPostContainerContainer {
+    padding: 0 !important;
+  }
+  .comunityEntry > * {
+    padding: 0 !important;
+    margin: 0;
+    width: 100%;
+  }
+  .comunityEntry {
+    width: 100%;
+  }
+  .allPostsContainer {
+    padding: 0 !important;
+  }
+  .inputPostContainer {
+    margin: 0;
+  }
+  .postContainer {
+    margin: 3rem 0;
+  }
+  .allPostsContainerContainer {
+    width: 100% !important;
+  }
 }

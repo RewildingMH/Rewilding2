@@ -6,6 +6,9 @@ import Compressor from "compressorjs";
 import Swal from "sweetalert2";
 import "../styles/community.css";
 import { AiFillHeart, AiOutlineHeart, AiOutlineSend } from "react-icons/ai";
+import { Button } from "reactstrap";
+import { BsFillImageFill } from "react-icons/bs";
+import { Link, useHistory } from "react-router-dom";
 
 const Post = ({
   post,
@@ -21,6 +24,7 @@ const Post = ({
   const [visible, setVisible] = useState(false);
   const [pathImage, setPathImage] = useState("/assets/fileImage.jpg");
   const [file, setFile] = useState();
+  const [visibleComment, setVisibleComment] = useState(false);
 
   const errorAlert = (type, title, text) => {
     Swal.fire({
@@ -30,6 +34,8 @@ const Post = ({
       confirmButtonText: "Ok",
     });
   };
+
+  const history = useHistory();
 
   const successToast = Swal.mixin({
     toast: true,
@@ -46,17 +52,33 @@ const Post = ({
   const captureChange = (e) => {
     const name = e.target.name;
     const newComment = e.target.value;
-    setComment({
-      ...comment,
-      postId: post._id,
-      token: loggedUser.token,
-      [name]: newComment,
-    });
+    if (!loggedUser) {
+      Swal.fire({
+        title: "Oops!",
+        text: "You must be logged in to comment on this post!",
+        icon: "warning",
+        confirmButtonColor: "#c1866a",
+        confirmButtonText: "Log me in!",
+        background: "#4b98b7",
+        iconColor: "white",
+        backdrop: "rgba(80, 80, 80, 0.3)",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/login");
+        }
+      });
+      e.target.value = "";
+    } else {
+      setComment({
+        ...comment,
+        postId: post._id,
+        token: loggedUser.token,
+        [name]: newComment,
+      });
+    }
   };
 
   const oneDate = post.createdAt;
-
-  console.log(post);
 
   const onFileChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -106,20 +128,47 @@ const Post = ({
     removePost({ token: loggedUser.token, postId: post._id });
     successToast.fire({
       icon: "success",
-      title: "Post deleted successfully",
+      title: "Post deleted!",
     });
     setVisible(!visible);
   };
+
   const sendPostModification = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     submitPostModification(postModification, file);
     setPostModification({});
     setVisible(!visible);
+    successToast.fire({
+      icon: "success",
+      title: "Post modified!",
+    });
   };
 
   const sendComment = (e) => {
-    e.preventDefault();
-    newComment(comment);
+    if (loggedUser) {
+      e.preventDefault();
+      newComment(comment);
+      successToast.fire({
+        icon: "success",
+        title: "Comment posted",
+      });
+    } else {
+      Swal.fire({
+        title: "Oops!",
+        text: "You must be logged in to comment on this post!",
+        icon: "warning",
+        confirmButtonColor: "#c1866a",
+        confirmButtonText: "Log me in!",
+        background: "#4b98b7",
+        iconColor: "white",
+        backdrop: "rgba(80, 80, 80, 0.3)",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/login");
+        }
+      });
+    }
   };
 
   const likePost = (e) => {
@@ -144,33 +193,100 @@ const Post = ({
     <div className="postContainer">
       <div className="postHeader">
         <div className="userCredentialsOnPost">
-          <div
-            style={{
-              width: "50px",
-              height: "50px",
-              backgroundImage: `url(${post.userPic})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            className="profilePictureOnPost"
-          ></div>
-          <h5 className="postUsername">{post.username}</h5>
+          <Link
+            to={`profile/${post.userId}`}
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            <div
+              style={{
+                width: "50px",
+                height: "50px",
+                backgroundImage: `url(${post.userPic})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              className="profilePictureOnPost"
+            ></div>
+          </Link>
+          <div className="nameAndDate">
+            <div className="postUsernameContainer">
+              <Link
+                to={`profile/${post.userId}`}
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                <h5 className="postUsername">{post.username}</h5>
+              </Link>
+            </div>
+            <div className="postDate">
+              <h4>{oneDate && oneDate.slice(0, 10)}</h4>
+            </div>
+          </div>
         </div>
-        <div className="postDate">
-          <h4>{oneDate && oneDate.slice(0, 10)}</h4>
+        <div className="likesHeaderContainer">
+          {loggedUser ? (
+            post.likes.find((like) => like._id === loggedUser.userId) ? (
+              <div className="likeContainer">
+                <div
+                  className="dispatchLike"
+                  onClick={dislikePost}
+                  id={post._id}
+                >
+                  <AiFillHeart
+                    style={{ color: "darkred", cursor: "pointer" }}
+                  />
+                  {post.likes.length}
+                </div>
+              </div>
+            ) : (
+              <div className="likeContainer">
+                <div className="dispatchLike" onClick={likePost} id={post._id}>
+                  <AiOutlineHeart
+                    className="aiIcon like"
+                    style={{ color: "darkred", cursor: "pointer" }}
+                  />
+                  {post.likes.length}
+                </div>
+              </div>
+            )
+          ) : (
+            <div className="likeContainer">
+              <AiOutlineHeart
+                onClick={() =>
+                  Swal.fire({
+                    title: "Oops!",
+                    text: "You must be logged in to sign this petition!",
+                    icon: "warning",
+                    confirmButtonColor: "#c1866a",
+                    confirmButtonText: "Log me in!",
+                    background: "#4b98b7",
+                    iconColor: "white",
+                    backdrop: "rgba(80, 80, 80, 0.3)",
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      history.push("/login");
+                    }
+                  })
+                }
+                style={{ color: "darkred", cursor: "pointer" }}
+                className="aiIcon like"
+              />
+              {post.likes.length}
+            </div>
+          )}
         </div>
       </div>
 
       {post.picture && (
-        <div className="d-flex justify-content-center postPicture">
+        <div className="d-flex justify-content-center postPictureContainer">
           <div
             style={{
               backgroundImage: `url(${post.picture})`,
-              width: "40rem",
-              height: "20rem",
+              width: "100%",
+              height: "30rem",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
+            className="postPicture"
           ></div>
         </div>
       )}
@@ -180,82 +296,103 @@ const Post = ({
       </div>
 
       <div className="userInteractionsOnPost">
-        {loggedUser ? (
-          post.likes.find((like) => like._id === loggedUser.userId) ? (
-            <div className="likeContainer">
-              <div className="dispatchLike" onClick={dislikePost} id={post._id}>
-                <AiFillHeart style={{ color: "darkred", cursor: "pointer" }} />
-                {post.likes.length}
-              </div>
-            </div>
-          ) : (
-            <div className="likeContainer">
-              <div className="dispatchLike" onClick={likePost} id={post._id}>
-                <AiOutlineHeart
-                  style={{ color: "darkred", cursor: "pointer" }}
-                />
-                {post.likes.length}
-              </div>
-            </div>
-          )
-        ) : (
-          <div className="likeContainer">
-            <AiOutlineHeart
-              onClick={() => errorAlert("error", "must be logged in")}
-              style={{ color: "darkred", cursor: "pointer" }}
-            />
-            {post.likes.length}
-          </div>
-        )}
-        {loggedUser && loggedUser.userId === post.userId && (
-          <button onClick={() => setVisible(!visible)}>EDIT</button>
-        )}
         {visible && (
           <>
             <input
               type="text"
               name="editPost"
               onChange={capturePostModification}
+              class="postInputEdit"
+              placeholder={post.text.slice(0, 30) + "..."}
             ></input>
-            <input type="file" name="fileEdit" onChange={onFileChange} />
-            <img src={pathImage} alt="modification" />
-            <button onClick={sendPostModification}>SEND</button>
-            <button onClick={deletePost}>DELETE POST</button>
+            <input
+              type="file"
+              id="file-upload-post"
+              name="fileEdit"
+              onChange={onFileChange}
+            />
+            <label for="file-upload-post" class="custom-file-upload-post">
+              <BsFillImageFill class="aiIcon upload" />
+            </label>
+            <div className="colorButtonsEditPost">
+              <Button
+                onClick={deletePost}
+                color="danger"
+                style={{ margin: "0 0.3rem" }}
+              >
+                DELETE
+              </Button>
+              <Button
+                onClick={sendPostModification}
+                color="success"
+                style={{ margin: "0 0.3rem" }}
+              >
+                CONFIRM
+              </Button>
+            </div>
           </>
         )}
+        {loggedUser && loggedUser.userId === post.userId && (
+          <Button onClick={() => setVisible(!visible)}> EDIT</Button>
+        )}
       </div>
+      {visible && (
+        <div className="imagePreviewContainer">
+          <div
+            style={{
+              width: "50rem",
+              height: "30rem",
+              backgroundImage: `url(${pathImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            className="editPictureOnPost"
+          ></div>
+        </div>
+      )}
 
       <div className="commentsContainer">
         <div className="commentSectionTitle">
           <p>Comments</p>
         </div>
-        <div className="commentsMap">
-          {post.comments.length ? (
-            post.comments.map(
-              ({ comment, name, profilePicture, likes, _id, userId }) => (
-                <PostComment
-                  key={_id}
-                  comment={comment}
-                  name={name}
-                  profilePicture={profilePicture}
-                  likes={likes}
-                  idComment={_id}
-                  postId={post._id}
-                  userId={userId}
-                />
-              )
-            )
-          ) : (
-            <div className="noComments">
-              <div
-                style={{
-                  backgroundImage: `url(${noCommentsPlaceholder})`,
-                }}
-                className="noCommentsPlaceholder"
-              ></div>
-              <span>No comments yet!</span>
+
+        {visibleComment && (
+          <div className="commentsMapContainer">
+            <div className="commentsMap">
+              {post.comments.length ? (
+                post.comments.map(
+                  ({ comment, name, profilePicture, likes, _id, userId }) => (
+                    <PostComment
+                      key={_id}
+                      comment={comment}
+                      name={name}
+                      profilePicture={profilePicture}
+                      likes={likes}
+                      idComment={_id}
+                      postId={post._id}
+                      userId={userId}
+                    />
+                  )
+                )
+              ) : (
+                <div className="noComments">
+                  <div
+                    style={{
+                      backgroundImage: `url(${noCommentsPlaceholder})`,
+                    }}
+                    className="noCommentsPlaceholder"
+                  ></div>
+                  <span>No comments yet!</span>
+                </div>
+              )}
             </div>
-          )}
+          </div>
+        )}
+        <div className="viewMoreContainer">
+          <span
+            onClick={() => setVisibleComment(!visibleComment)}
+            style={{ cursor: "pointer" }}
+          >{`View${visibleComment ? " less" : " more"}`}</span>
         </div>
         <div className="inputContainer">
           <input

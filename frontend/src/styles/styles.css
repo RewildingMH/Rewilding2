@@ -55,7 +55,7 @@ h2 {
   display: flex;
   justify-content: center;
 }
-.userHeaderNamendLogOut p{
+.userHeaderNamendLogOut p {
   color: rgb(255, 255, 255);
 }
 
@@ -67,7 +67,7 @@ h2 {
   margin-top: 1.5vh;
   position: relative;
   right: 20%;
-  color:brown;
+  color: brown;
   cursor: pointer;
   font-size: 3vh;
 }
@@ -200,7 +200,6 @@ nav a {
 }
 
 .containerHome {
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -220,7 +219,7 @@ nav a {
   width: 100%;
   height: 10%;
   padding: 1vw;
-  background-color:  #405d27;
+  background-color: #405d27;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -229,15 +228,15 @@ nav a {
 }
 
 .containerPetBanner {
-    width: 100%;
-    height: 10vh;
-    background-color: rgb(98, 76, 27);
-    margin-top: 1vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: ivory;
-    font-size: 3vh;
+  width: 100%;
+  height: 10vh;
+  background-color: rgb(98, 76, 27);
+  margin-top: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ivory;
+  font-size: 3vh;
 }
 
 .divBlog {
@@ -252,7 +251,7 @@ nav a {
   margin-top: 2vh;
   display: flex;
   align-items: flex-end;
-  width: 20vw;
+  width: 300px;
   height: 70vh;
   min-width: auto;
   min-height: auto;
@@ -260,17 +259,18 @@ nav a {
   margin-bottom: 1vh;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position:center;
+  background-position: center;
   border-radius: 1vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
-  transition: background-position 20s; 
+  transition: background-position 20s;
 }
 
 .lastArticlesCard:hover {
   background-position: top left;
 }
 
-.lastArticlesCreated, .lastPetitionsCreated {
+.lastArticlesCreated,
+.lastPetitionsCreated {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -286,12 +286,14 @@ nav a {
   margin-top: 1vh;
   margin-bottom: 0px !important;
   padding: 3vh;
-  transition: .5s;
+  transition: 0.5s;
+  min-height: 10rem;
+  font-size: 24px;
 }
 
 .lastArticleTitle:hover {
   color: #c1946a;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .lastArticleDesc {
@@ -307,14 +309,14 @@ nav a {
   align-items: center;
 }
 
-.lastArticlesInfo p { 
+.lastArticlesInfo p {
   margin-top: 2vh;
   color: white;
   margin-left: 10vw;
 }
 
 .lastArticlesInfo span {
-  color: #405d27;
+  color: #75a146;
   font-weight: bold;
 }
 
@@ -330,14 +332,15 @@ nav a {
 
 .lastPetitionsContainer {
   display: flex;
-  width: 50%;
-  height: 20%;
+  /* width: 50%; */
+  /* height: 25%; */
   background-size: 30%;
   background-repeat: no-repeat;
   border-radius: 1vw;
   color: white;
   margin: 1vh;
-  background-color: #3e4444;
+  background-image: url("https://image.freepik.com/foto-gratis/hojas-color-verde-oscuro-jardin-textura-hoja-verde-esmeralda-naturaleza-fondo-abstracto-bosque-tropical-encima-vista-hojas-color-verde-oscuro-patron-natural_33867-1475.jpg");
+  background-size: cover;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
 }
 
@@ -350,12 +353,37 @@ nav a {
 .lastPetitionsInfo {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-left: 5vw;
+  justify-content: space-around;
+  width: 100%;
+  padding: 1vw;
+  background-color: rgba(0, 0, 0, 0.555);
+  border-radius: 1vw;
+}
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+}
+.userInfo img {
+  width: 2.5vw;
+  height: 5vh;
+  border-radius: 15vw;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+}
+.petitionCreatedBy span {
+  color: #c1946a;
+}
+
+.peopleSign {
+  font-weight: lighter;
+}
+.peopleSign span {
+  font-weight: bold;
+  color: #75a146;
 }
 
 .lastPetitionsTitle {
   margin-right: 2vw;
+  text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
 }
 
 .white {
@@ -367,10 +395,10 @@ nav a {
 
 .footerDiv {
   width: 100%;
-  height: 20vh;
-  background-color: rgba(0, 0, 0, 0.116);
+  height: 15vh;
+  color: aliceblue;
+  background-color: #405d27;
 }
-
 
 /* login */
 
@@ -395,10 +423,13 @@ nav a {
 }
 
 
-.container {
+.containerLog {
   background-color: rgba(0, 0, 0, 0.116);
   border-radius: 2vh;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container a {
@@ -419,10 +450,25 @@ nav a {
   border-radius: 20px;
 }
 
-.loginDiv input {
-  margin-top: 2vh;
+.containerLog input {
   width: 20vw;
   outline: none;
+  margin-top: 1vh;
+  box-shadow: 2px 2px 5px #999;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.123);
+  border: none;
+  outline: none;
+  border-bottom: 0.5vh solid green;
+  width: 100%;
+  height: 7vh;
+  padding: 1vw;
+  font-size: 1vw;
+  text-align: center;
+  border-radius: 1vw;
+  transition: 0.5s;
+  color: rgb(0, 0, 0);
 }
 
 .loginDiv h1 {
@@ -458,32 +504,32 @@ nav a {
 /* Petitions */
 
 .allPetitions {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80vw;
 }
 
 .allPetitions a {
-    background-color: rgba(0, 0, 0, 0.116);
-    border-radius: 2vh;
-    width: 80%;
-    height: 20vh;
-    text-decoration: none;
-    color: rgb(58, 37, 37);
-    box-shadow: -10px 10px 8px rgb(56, 42, 42);
-    display: flex;
-    margin-bottom: 5vh;
-    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+  background-color: rgba(0, 0, 0, 0.116);
+  border-radius: 2vh;
+  width: 80%;
+  height: 20vh;
+  text-decoration: none;
+  color: rgb(58, 37, 37);
+  box-shadow: -10px 10px 8px rgb(56, 42, 42);
+  display: flex;
+  margin-bottom: 5vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
 
 .petitionContainer {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .petitionImg {
@@ -494,15 +540,70 @@ nav a {
 }
 
 .titlePetition {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+}
+
+.petitionIndiv {
+  background-color: rgba(0, 0, 0, 0.116);
+  border-radius: 2vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+  margin: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
+}
+
+.description {
+  background-color: rgba(4, 97, 50, 0.822);
+  color: aliceblue;
+  margin-top: 2vh;
+  padding:2vh;
+  width: 85%;
+  border-radius: 2vh;
+}
+
+.inputPetitions {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.inputPetitions input {
+  width: 60%;
+  outline: none;
+}
+
+.userPicPetitions {
+  border-radius: 80%;
+}
+
+.returnPet{
+  color: brown;
+  text-decoration: none;
+}
+
+.btnPetition {
+  border-radius: 0.5vw;
+  color: rgba(255, 255, 255, 0.692);
+  transition: 0.3s;
+  background-color: rgba(0, 0, 0, 0.65);
+  border: none;
+  border-bottom: 2px solid green;
+  padding: 0.8vw 2vw;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
+.btnPetition:hover {
+  background-color: black;
 }
 
 /* Create Petition */
 
 .createPetitionBanner {
-    width: 100%;
-    height: 70vh;
+  width: 100%;
+  height: 70vh;
 }
 
 /* .createPetitionContainer {
@@ -703,11 +804,12 @@ h6 {
 }
 
 /* Blog */
-.bannerBlog {
+
+.portadaBlog {
   width: 100%;
   height: 70vh;
-  background-image: url("https://www.siliconweek.com/wp-content/uploads/2017/09/para-portada-post.jpg");
 }
+
 
 /* Community */
 
@@ -771,18 +873,10 @@ h6 {
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-end;
 }
 
-.profilebanner button {
-  margin-right: 3vw;
-  margin-bottom: 2vh;
-  border-radius: 2vw;
-  width: 5vw;
-  height: 3vh;
-  font-size: 10px;
-}
 
 .profileDrop {
   text-decoration: none;
@@ -805,19 +899,29 @@ h6 {
   background-color: rgba(0, 0, 0, 0.082);
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
 }
-
+.lastPetitionsContainerProfile {
+  display: flex;
+  background-size: 30%;
+  background-repeat: no-repeat;
+  border-radius: 1vw;
+  color: white;
+  margin: 1vh;
+  background-image: url('https://image.freepik.com/foto-gratis/hojas-color-verde-oscuro-jardin-textura-hoja-verde-esmeralda-naturaleza-fondo-abstracto-bosque-tropical-encima-vista-hojas-color-verde-oscuro-patron-natural_33867-1475.jpg');
+  background-size: cover;
+  box-shadow: 2px 2px 2px rgb(14 14 14 / 29%);
+}
 .profileInfoImg {
   width: 25vh;
   height: 25vh;
-  margin-top: 2vw;
-  border: white solid 3px;
-  margin-right: 15vw;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+.margin-negativo{
+  margin-bottom: -20vh;
 }
 
 .profileInfoImg button {
@@ -912,7 +1016,7 @@ textarea {
   resize: none !important;
 }
 /* blog stiles */
-.portadaContainer{
+.portadaContainer {
   padding-top: 13vh;
 }
 .containerMain {
@@ -926,7 +1030,7 @@ textarea {
   background-size: 120%;
   animation: movement 30s infinite linear alternate;
 }
-.portadaBlog::before{
+.portadaArticle::before{
   content: "";
   position: absolute;
   z-index: -1;
@@ -934,24 +1038,24 @@ textarea {
   bottom: 0;
   left: 0;
   right: 0;
-  background: url('../assets/blog_portada.jpg');
+  background: url("../assets/blog_portada.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 1;
 }
 
-.portadaBlog {
+.portadaArticle {
   width: 100%;
   height: 90vh;
   display: flex;
   justify-content: center;
   padding: 15% 10% 10% 10%;
   position: relative;
-  z-index: -1; 
+  z-index: -1;
 }
 
-.portadaBanner{
+.portadaBanner {
   height: auto;
   width: 60vw;
   background-color: rgba(0, 0, 0, 0.7);
@@ -965,13 +1069,9 @@ textarea {
   padding: 2vw;
   border-radius: 15px;
 }
-.bg-green{
-  background-color: #83b74b;
-}
 .categoryBlog {
   color: #405d27;
   font-weight: 700;
-
 }
 
 .tituloBlog {
@@ -983,20 +1083,19 @@ textarea {
 .tituloBlog:hover {
   transform: scale(1.02);
 }
-.descripcionBlog{
+.descripcionBlog {
   color: #3e4444;
   text-align: justify;
 }
-.scale-img{
+.scale-img {
   background-size: contain;
   background-position: center;
 }
-.scale-img:hover{
+.scale-img:hover {
   background-size: cover;
   background-position: top;
   transform: scale(1.03);
   transition: 1s;
-
 }
 .bannerLatest {
   width: 100%;
@@ -1020,10 +1119,10 @@ textarea {
   padding-left: 0.3vw;
   padding-top: 1vw;
 }
-.titleArticle{
+.titleArticle {
   padding-top: 3vh;
   color: whitesmoke;
-  text-align:center;
+  text-align: center;
 }
 
 .columnArticlePic{
@@ -1031,17 +1130,17 @@ textarea {
   justify-content: center;
 }
 
-.articleContainer{
-  display:flex;
+.articleContainer {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   justify-items: center;
 }
 
-.bottomArticle{
-  display:flex;
+.bottomArticle {
+  display: flex;
   justify-items: center;
-  color: whitesmoke
+  color: whitesmoke;
 }
 
 .containerArticlePic{

@@ -49,35 +49,45 @@ const Community = (props) => {
                   <div
                     className="communityImg card-img-top"
                     style={{ backgroundImage: `url(${picture})` }}
-                  ></div>
-                  <h5 className="card-title cardTitle">{title}</h5>
-                  <p className="card-text cardText">
-                    {desc.length > 70 ? desc.slice(0, 70) + "..." : desc}
-                  </p>
+                  >
+                    <h5 className="cardTitle">{title}</h5>
+                  </div>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="col-8 d-flex justify-content-center">
-            <div className="w-100 px-5">
+          <div className="col-8 d-flex justify-content-center allPostsContainerContainer">
+            <div className="w-100 allPostsContainer">
               <Posts />
             </div>
           </div>
-          <div className="col-2 card">
+          <div
+            className="col-2 card popularPetitions"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+            }}
+          >
             <h3>Latest Blog Entries</h3>
-
             {props.articles
               .slice(props.articles.length - 3, props.articles.length)
-              .map(({ title, picture }) => (
-                <>
-                  <div className="communityInfo">
+              .map(({ title, picture, descripcion, _id }) => (
+                <Link
+                  className="popularPetitionCard"
+                  to={`/article/${_id}`}
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <div className="card">
                     <div
-                      className="communityImg"
+                      className="communityImg card-img-top"
                       style={{ backgroundImage: `url(${picture})` }}
                     ></div>
-                    <p>{title}</p>
+                    <h5 className="card-title cardTitle">{title}</h5>
                   </div>
-                </>
+                </Link>
               ))}
           </div>
         </div>
@@ -103,3 +113,17 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Community);
+
+// {props.articles
+//               .slice(props.articles.length - 3, props.articles.length)
+//               .map(({ title, picture }) => (
+//                 <>
+//                   <div className="communityInfo">
+//                     <div
+//                       className="communityImg"
+//                       style={{ backgroundImage: `url(${picture})` }}
+//                     ></div>
+//                     <p>{title}</p>
+//                   </div>
+//                 </>
+//               ))}

@@ -5,7 +5,6 @@ import CommentArticle from './CommentArticle'
 const Article = (props) =>{
     const [preloader, setPreloader]= useState(false)
     const [article, setArticle] = useState({});
-    const [visible, setVisible] = useState(false)
     
     const id = props.match.params.id
     const {allArticles} = props
@@ -17,7 +16,7 @@ const Article = (props) =>{
 
   return (
     <>
-    <div className="portadaBlog">
+    <div className="portadaArticle">
     <div className="portadaBanner">
         <h3>
           At Rewilding there is a great job behind each campaign and we want to share it with you through this space.

@@ -12,9 +12,11 @@ import BlogPage from './Pages/BlogPage.jsx'
 import Petition from './Components/Petition.jsx';
 import Community from './Pages/Community'
 import Header from './Components/Header';
+import Footer from './Components/Footer'
 import Article from './Components/Article'
 import Profile from './Components/Profile.jsx'
 import ScrollToTop from './Components/ScrollTop'
+import MailValidate  from './Components/MailValidate';
 
 const App = (props) => {
 
@@ -62,6 +64,7 @@ const App = (props) => {
         <Route path="/petitions/:id" component={Petition} />
         <Route path="/community" component={Community} />
         <Route path="/profile/:id" component={Profile}/> 
+        <Route path="/password" component={MailValidate} />
         <Redirect to="/" />
       </Switch>
     );
@@ -74,6 +77,7 @@ const App = (props) => {
         <ScrollToTop>
           <Header />
           {routes}
+          <Footer/>
         </ScrollToTop>  
       </Router>
     </>
