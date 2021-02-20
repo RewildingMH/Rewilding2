@@ -18,7 +18,7 @@ const Profile = (props) => {
     console.log(postsProfile)
     return (
         <>
-        <div className="profilebanner">
+        <div className="profilebanner mb-5">
             <div className="container d-flex flex-column align-items-center margin-negativo">
                 <div className="profileInfoImg rounded-circle" style={{backgroundImage: `url(${profilePicture})`}}>
                     
@@ -28,10 +28,13 @@ const Profile = (props) => {
 
         </div>
        
-        <div className="profileContainer container">
-            <div className="petandblogs">
-                {postsProfile.map(post => <div><PostsProfile post={post} /></div>)}
-                {petitionsProfile.map(petition => <div className="petitionsContent"><ProfilePetitions petition={petition} /></div>)}
+        <div className="container mt-5 p-5" >
+            <div className="row p-5">
+                {postsProfile.map(post => <div className="col-12 text-center"><PostsProfile post={post} /></div>)}
+                <div className="lastArticlesCreated">
+                    <h2>Petitions</h2>
+                </div>
+                {petitionsProfile.map(petition => <div className="col-12 text-center"><ProfilePetitions petition={petition} /></div>)}
             </div>
         </div> 
         </>
