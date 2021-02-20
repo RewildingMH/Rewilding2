@@ -78,7 +78,7 @@ const Register = (props) => {
         if (respuesta && !respuesta.success) {
             setErrores(respuesta.errores)
         } else {
-            alert("You have Registered in Mytinerary")
+            alert("You have Registered in Rewilding!")
         }
     }
 
@@ -128,7 +128,7 @@ const Register = (props) => {
 
                     })}
                 </div>
-                <input type="password" placeholder="Password for Mytinerary" name="password"
+                <input type="password" placeholder="Password for Rewilding" name="password"
                     onChange={(e) => handleChange(e)} className="admin_input" required />
                 <div className="d-flex justify-content-center">
                     <p>The password must be 6-8 characters long.</p>
