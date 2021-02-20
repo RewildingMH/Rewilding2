@@ -6,10 +6,12 @@ import Swal from "sweetalert2";
 import "../styles/community.css";
 import { Button } from "reactstrap";
 import { BsFillImageFill } from "react-icons/bs";
+import { MdCancel } from "react-icons/md";
+import { Link, useHistory } from "react-router-dom";
 
 const Posts = (props) => {
   const [newPost, setNewPost] = useState({});
-  const [pathImage, setPathImage] = useState("/assets/avatar.png");
+  const [pathImage, setPathImage] = useState("");
   const [file, setFile] = useState();
   const [posts, setPosts] = useState([]);
 
@@ -35,15 +37,35 @@ const Posts = (props) => {
     setPosts(allPosts);
   }, [allPosts]);
 
+  const history = useHistory();
+
   // Funcion para capturar un posteo nuevo.
   const captureNewPost = (e) => {
     const field = e.target.name;
     const value = e.target.value;
-    setNewPost({
-      ...newPost,
-      [field]: value,
-      token: props.loggedUser.token,
-    });
+    if (!props.loggedUser) {
+      Swal.fire({
+        title: "Oops!",
+        text: "You must be logged in to post!",
+        icon: "warning",
+        confirmButtonColor: "#c1866a",
+        confirmButtonText: "Log me in!",
+        background: "#4b98b7",
+        iconColor: "white",
+        backdrop: "rgba(80, 80, 80, 0.3)",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/login");
+        }
+      });
+      e.target.value = "";
+    } else {
+      setNewPost({
+        ...newPost,
+        [field]: value,
+        token: props.loggedUser.token,
+      });
+    }
   };
 
   // Funcion para capturar una subida de archivo de imagen
@@ -104,23 +126,34 @@ const Posts = (props) => {
     }
   };
 
+  const resetFile = () => {
+    setPathImage("");
+    setFile("");
+  };
+
   return (
-    <div>
+    <div className="inputPostContainerContainer">
       <div className="inputPostContainer">
         <div className="postsTextArea">
           <div className="profilePictureOnPostContainer">
-            <div
-              style={{
-                width: "50px",
-                height: "50px",
-                backgroundImage: `url(${
-                  props.loggedUser ? props.loggedUser.profilePicture : ""
-                })`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-              className="profilePictureOnPost"
-            ></div>
+            <Link
+              to={`/profile/${props.loggedUser ? props.loggedUser.userId : ""}`}
+            >
+              <div
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  backgroundImage: `url(${
+                    props.loggedUser
+                      ? props.loggedUser.profilePicture
+                      : "/assets/profilePictures/panda-avatar.jpg"
+                  })`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                className="profilePictureOnPost"
+              ></div>
+            </Link>
           </div>
           <textarea
             name="text"
@@ -129,7 +162,7 @@ const Posts = (props) => {
             } ?`}
             onChange={captureNewPost}
             id="postText"
-            className="w-100"
+            className="w-100 textareaPost"
           />
         </div>
         <div className="filesPost">
@@ -137,22 +170,33 @@ const Posts = (props) => {
             <BsFillImageFill class="aiIcon upload" /> Upload Picture
           </label>
           <input id="file-upload" type="file" onChange={onFileChange} />
-          <div
-            style={{
-              backgroundImage: `url(${pathImage})`,
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-            }}
-            className="postPicturePreview"
-          ></div>
+          {pathImage === "" ? null : (
+            <>
+              <div
+                style={{
+                  backgroundImage: `url(${pathImage})`,
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+                className="postPicturePreview"
+              ></div>
+              <MdCancel
+                onClick={() => resetFile()}
+                style={{ color: "red", fontSize: "21px", cursor: "pointer" }}
+              />
+            </>
+          )}
+
           <Button onClick={sendPost}>Publish</Button>
         </div>
       </div>
       {posts &&
-        posts.map((post) => {
-          return <Post post={post} />;
-        })}
+        posts
+          .map((post) => {
+            return <Post post={post} />;
+          })
+          .reverse()}
     </div>
   );
 };

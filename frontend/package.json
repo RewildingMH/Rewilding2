@@ -12,6 +12,7 @@
     "get-google-fonts": "^1.2.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
+    "react-burger-menu": "^3.0.3",
     "react-dom": "^17.0.1",
     "react-google-login": "^5.2.2",
     "react-icons": "^4.2.0",

@@ -8,6 +8,7 @@ import "../styles/community.css";
 import { AiFillHeart, AiOutlineHeart, AiOutlineSend } from "react-icons/ai";
 import { Button } from "reactstrap";
 import { BsFillImageFill } from "react-icons/bs";
+import { Link, useHistory } from "react-router-dom";
 
 const Post = ({
   post,
@@ -34,6 +35,8 @@ const Post = ({
     });
   };
 
+  const history = useHistory();
+
   const successToast = Swal.mixin({
     toast: true,
     position: "bottom-end",
@@ -49,12 +52,30 @@ const Post = ({
   const captureChange = (e) => {
     const name = e.target.name;
     const newComment = e.target.value;
-    setComment({
-      ...comment,
-      postId: post._id,
-      token: loggedUser.token,
-      [name]: newComment,
-    });
+    if (!loggedUser) {
+      Swal.fire({
+        title: "Oops!",
+        text: "You must be logged in to comment on this post!",
+        icon: "warning",
+        confirmButtonColor: "#c1866a",
+        confirmButtonText: "Log me in!",
+        background: "#4b98b7",
+        iconColor: "white",
+        backdrop: "rgba(80, 80, 80, 0.3)",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/login");
+        }
+      });
+      e.target.value = "";
+    } else {
+      setComment({
+        ...comment,
+        postId: post._id,
+        token: loggedUser.token,
+        [name]: newComment,
+      });
+    }
   };
 
   const oneDate = post.createdAt;
@@ -125,12 +146,29 @@ const Post = ({
   };
 
   const sendComment = (e) => {
-    e.preventDefault();
-    newComment(comment);
-    successToast.fire({
-      icon: "success",
-      title: "Comment posted",
-    });
+    if (loggedUser) {
+      e.preventDefault();
+      newComment(comment);
+      successToast.fire({
+        icon: "success",
+        title: "Comment posted",
+      });
+    } else {
+      Swal.fire({
+        title: "Oops!",
+        text: "You must be logged in to comment on this post!",
+        icon: "warning",
+        confirmButtonColor: "#c1866a",
+        confirmButtonText: "Log me in!",
+        background: "#4b98b7",
+        iconColor: "white",
+        backdrop: "rgba(80, 80, 80, 0.3)",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/login");
+        }
+      });
+    }
   };
 
   const likePost = (e) => {
@@ -155,19 +193,29 @@ const Post = ({
     <div className="postContainer">
       <div className="postHeader">
         <div className="userCredentialsOnPost">
-          <div
-            style={{
-              width: "50px",
-              height: "50px",
-              backgroundImage: `url(${post.userPic})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            className="profilePictureOnPost"
-          ></div>
+          <Link
+            to={`profile/${post.userId}`}
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            <div
+              style={{
+                width: "50px",
+                height: "50px",
+                backgroundImage: `url(${post.userPic})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              className="profilePictureOnPost"
+            ></div>
+          </Link>
           <div className="nameAndDate">
             <div className="postUsernameContainer">
-              <h5 className="postUsername">{post.username}</h5>
+              <Link
+                to={`profile/${post.userId}`}
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                <h5 className="postUsername">{post.username}</h5>
+              </Link>
             </div>
             <div className="postDate">
               <h4>{oneDate && oneDate.slice(0, 10)}</h4>
@@ -193,6 +241,7 @@ const Post = ({
               <div className="likeContainer">
                 <div className="dispatchLike" onClick={likePost} id={post._id}>
                   <AiOutlineHeart
+                    className="aiIcon like"
                     style={{ color: "darkred", cursor: "pointer" }}
                   />
                   {post.likes.length}
@@ -202,8 +251,24 @@ const Post = ({
           ) : (
             <div className="likeContainer">
               <AiOutlineHeart
-                onClick={() => errorAlert("error", "must be logged in")}
+                onClick={() =>
+                  Swal.fire({
+                    title: "Oops!",
+                    text: "You must be logged in to sign this petition!",
+                    icon: "warning",
+                    confirmButtonColor: "#c1866a",
+                    confirmButtonText: "Log me in!",
+                    background: "#4b98b7",
+                    iconColor: "white",
+                    backdrop: "rgba(80, 80, 80, 0.3)",
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      history.push("/login");
+                    }
+                  })
+                }
                 style={{ color: "darkred", cursor: "pointer" }}
+                className="aiIcon like"
               />
               {post.likes.length}
             </div>

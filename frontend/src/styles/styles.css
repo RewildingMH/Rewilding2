@@ -287,6 +287,8 @@ nav a {
   margin-bottom: 0px !important;
   padding: 3vh;
   transition: 0.5s;
+  min-height: 10rem;
+  font-size: 24px;
 }
 
 .lastArticleTitle:hover {

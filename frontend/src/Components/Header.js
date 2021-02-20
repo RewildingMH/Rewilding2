@@ -6,6 +6,7 @@ import logo from '../assets/logoNuevo.png'
 import { Dropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AiOutlineLogout } from "react-icons/ai";
+import BurgerMenu from "./BurgerMenu";
 
 
 
@@ -36,7 +37,7 @@ const Header = (props) => {
                 </NavLink>
                 <div className="userHeaderNamendLogOut">
                     <p>Hi! {props.loggedUser.name}</p>
-                    <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
+                    <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()} />
                 </div>
             </>
         } else {
@@ -50,7 +51,7 @@ const Header = (props) => {
                     </NavLink>
                     <div className="userHeaderNamendLogOut">
                         <p>Hi! {props.loggedUser.name}</p>
-                        <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
+                        <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()} />
                     </div>
                 </>
         }
@@ -78,6 +79,7 @@ const Header = (props) => {
                         <p>PETITIONS</p>
                     </NavLink>
                     {links}
+                    {/* <BurgerMenu /> */}
                 </div>
             </nav>
         </>
