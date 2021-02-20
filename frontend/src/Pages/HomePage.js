@@ -6,6 +6,7 @@ import articleActions from '../redux/actions/articleActions'
 import LastArticles from '../Components/LastArticles'
 import petitionsActions from '../redux/actions/petitionsActions'
 import LastPetitions from '../Components/LastPetitions'
+import Footer from '../Components/Footer'
 
 const HomePage = (props) => {
 

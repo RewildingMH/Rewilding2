@@ -10,7 +10,7 @@ const CreatePetition = (props) => {
   //VARIABLE DE ESTADO QUE CAPTURA LOS VALORES INGRESADOS EN LOS CAMPOS
   const [newPetition, setNewPetition] = useState({});
   //VARIABLE DE ESTADO QUE PREVISUALIZA LA FOTO QUE VA A ENVIAR QUIEN REALICE LA NUEVA PETICIÓN
-  const [pathImage, setPathImage] = useState("/assets/fileImage.jpg");
+  const [pathImage, setPathImage] = useState("/assets/upload.png");
   const [file, setFile] = useState();
 
   //ALERTAS LINDAS
@@ -22,6 +22,8 @@ const CreatePetition = (props) => {
       confirmButtonText: "Ok",
     });
   };
+  const hoy = new Date()
+  hoy.setHours(0,0,0,0)
 
   //FUNCION QUE CAPTURA LOS VALORES DE LOS INPUTS CON LOS DATOS A ENVIAR
   const captureNewPetition = (e) => {
@@ -61,6 +63,29 @@ const CreatePetition = (props) => {
   //ENVÍA LA PETITION Y REDIRIGE AL COMPONTENTE "PETITIONS"
   const sendPetition = (e) => {
     e.preventDefault();
+    //VALIDACIÓN PARA QUE TODOS LOS CAMPOS ESTÉN COMPLETOS
+    if(newPetition.length === undefined && file === undefined){
+      errorAlert("error","todos los campos son obligatorios" )
+      return false
+    }
+    if(!newPetition.goal || !newPetition.description || !newPetition.destination || !newPetition.limitDate || !newPetition.title){
+      errorAlert("error","todos los campos son obligatorios" )
+      return false
+    }
+    if(newPetition.goal < 10){
+      errorAlert("error","La meta de firmas debe ser mayor a 10" )
+      return false
+    }
+
+    const fechaInput = newPetition.limitDate
+    const fecha = new Date(fechaInput)
+    fecha.setHours(0,0,0,0)
+
+    if(hoy.getTime() + 2500000000 > fecha.getTime() ){
+      errorAlert("error","La fecha no deberá ser menor a 30 días desde su momento de creación")
+      return false
+    }
+    
     props.addPetition(newPetition, file);
     props.history.push("/petitions");
   };
@@ -75,8 +100,8 @@ const CreatePetition = (props) => {
           backgroundPosition: "center",
         }}
       ></div>
-      <div className="createPetitionContainer col-6 container mt-4">
-        <h2 className="text-center" style={{paddingTop: "2vh"}}>CREATE PETITION</h2>
+      <div className="createPetitionContainer col-8 container mt-4">
+        <h2 className="text-center" style={{ paddingTop: "2vh" }}>CREATE PETITION</h2>
         <div className="backgroundCard">
           <div>
             <div className="createPetitionInput1nd2">
@@ -123,11 +148,11 @@ const CreatePetition = (props) => {
               />
             </div>
           </div>
-          <div>
+          <div className="lastDiv">
             <div className="createPetitionInput5">
               <h5 className="text-center">Choose a goal for your petition</h5>
               <p className="text-center">Signature limit</p>
-              <input name="goal" type="number" onChange={captureNewPetition} />
+              <input placeholder="10" minLength="2" min="10" name="goal" type="number" onChange={captureNewPetition} />
             </div>
             <div className="createPetitionInput6">
               <h5 className="text-center">
@@ -136,7 +161,7 @@ const CreatePetition = (props) => {
               <p className="text-center">Make it a high res one</p>
               <div className="createPetitionUploadFile">
                 <label htmlFor="inputUpload">
-                  <img
+                  <img style={{margin:"0"}}
                     className="img-fluid profile-pic-profile-submit"
                     src={pathImage}
                     alt="petition-pic"

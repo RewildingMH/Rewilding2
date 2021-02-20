@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 import articleActions from "../redux/actions/articleActions"
 import { useState, useEffect } from "react"
-import ArtComment from "./ArtComment"
+import ArtComment from './ArtComment'
 
 const CommentArticle = (props) => {
   const [comment, setComment] = useState({});

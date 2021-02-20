@@ -5,18 +5,19 @@ import  Swal  from 'sweetalert2';
 const authActions = {
     newUser: (newUser, file) => {
         return async (dispatch, getState) => {
+            console.log(newUser, file)
             try{
                 const form = new FormData()
                 form.append('name',newUser.name)
                 form.append('lastName',newUser.lastName)
                 form.append('username',newUser.username)
                 form.append('password',newUser.password)
-                form.append('profilePicture', file.name)
-                form.append('file', file)
+                form.append('file', file.result)
                 const respuesta = await axios.post(`${API}/user/signup`, form, {headers:{'Content-Type':'multipart/formdata'}})
                 if (!respuesta.data.success) {
                     return respuesta.data
                 }
+                console.log(respuesta)
                 dispatch({type: 'LOG_USER', payload: respuesta.data})
             }catch(error){
                 Swal.fire(error)
