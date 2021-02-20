@@ -1,0 +1,133 @@
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #d66ba0;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: red;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #d66ba0;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  font-size: 1.15em;
+  display: flex;
+  justify-content: center;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #e5a9a9;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  width: 100%;
+  color: #af4d98;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 0 0 0;
+  background-color: antiquewhite;
+}
+
+/* Individual item */
+.bm-item {
+  text-align: center;
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Pacifico", cursive;
+  color: black;
+  outline: none;
+  font-size: 32px;
+  margin-left: 1rem;
+  background-color: antiquewhite;
+}
+
+.bm-item:hover {
+  text-decoration: none;
+  color: #af4d98;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+p {
+  display: flex !important;
+  align-items: center !important;
+  cursor: pointer;
+}
+
+.sideBarTitle {
+  margin: 0;
+  display: flex !important;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  margin-bottom: 1rem;
+}
+
+.sideBarTitle:hover {
+  color: black;
+  cursor: default;
+}
+
+.menu-item {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  background-color: antiquewhite;
+}
+
+.menu-item:hover {
+  color: #af4d98;
+}
+
+.optionMenu {
+  margin-left: 4rem;
+  display: flex;
+  align-items: flex-end;
+  white-space: nowrap;
+}
+
+.iconMenu {
+  display: flex;
+}
+
+nav > a {
+  color: black !important;
+}

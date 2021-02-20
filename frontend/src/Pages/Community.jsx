@@ -49,14 +49,15 @@ const Community = (props) => {
                   <div
                     className="communityImg card-img-top"
                     style={{ backgroundImage: `url(${picture})` }}
-                  ></div>
-                  <h5 className="card-title cardTitle">{title}</h5>
+                  >
+                    <h5 className="cardTitle">{title}</h5>
+                  </div>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="col-8 d-flex justify-content-center">
-            <div className="w-100 px-5">
+          <div className="col-8 d-flex justify-content-center allPostsContainerContainer">
+            <div className="w-100 allPostsContainer">
               <Posts />
             </div>
           </div>
