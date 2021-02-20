@@ -38,7 +38,7 @@ const BlogPage = (props) => {
             <div className="row">
               <div className="col-12">
                 <div className="row">
-                  <div className="col-7 bg-light p-4 d-flex justify-content-center ">
+                  <div className="col-7 bg-greenLight p-4 d-flex justify-content-center ">
                     <div>
                       <p className="categoryBlog">{props.articlePort[0].createdAt.slice(0, 10)} | {props.articlePort[0].articleCategory}</p>
                       <Link to={`/article/${props.articlePort[0]._id}`} className="text-decoration-none ">
@@ -61,7 +61,7 @@ const BlogPage = (props) => {
                       <img src={props.articlePortMini[0].picture} className="img-fluid scale-img" />
                     </Link>
                   </div>
-                  <div className="col-7 bg-light p-4 d-flex justify-content-center ">
+                  <div className="col-7 bg-greenLight p-4 d-flex justify-content-center ">
                     <div>
                       <p className="categoryBlog">{props.articlePortMini[0].createdAt.slice(0, 10)} | {props.articlePortMini[0].articleCategory}</p>
                       <Link to={`/article/${props.articlePortMini[0]._id}`} className="text-decoration-none ">

@@ -349,6 +349,11 @@ nav a {
   height: 100%;
   border-radius: 1vw 0vw 0vw 1vw;
 }
+.lastPetitionImgPetitionCard {
+  width: 40%;
+  height: 40vh;
+  border-radius: 1vw 0vw 0vw 1vw;
+}
 
 .lastPetitionsInfo {
   display: flex;
@@ -1073,7 +1078,9 @@ textarea {
   color: #405d27;
   font-weight: 700;
 }
-
+.bg-greenLight{
+  background-color: #405d272a;
+}
 .tituloBlog {
   color: black;
   font-weight: 700;
