@@ -34,10 +34,10 @@ const Header = (props) => {
                 <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                     <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                 </NavLink>
-                <div className="userHeaderNamendLogOut">
+                <NavLink to={`/profile/${props.loggedUser.userId}`}  className="userHeaderNamendLogOut">
                     <p>Hi! {props.loggedUser.name}</p>
                     <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
-                </div>
+                </NavLink>
             </>
         } else {
             var links =
@@ -48,10 +48,10 @@ const Header = (props) => {
                     <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                     </NavLink>
-                    <div className="userHeaderNamendLogOut">
+                    <NavLink to={`/profile/${props.loggedUser.userId}`}  className="userHeaderNamendLogOut">
                         <p>Hi! {props.loggedUser.name}</p>
                         <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
-                    </div>
+                    </NavLink>
                 </>
         }
 

@@ -17,7 +17,7 @@ const Article = (props) =>{
 
   return (
     <>
-    <div className="portadaBlog">
+    <div className="portadaArticle">
     <div className="portadaBanner">
         <h3>
           At Rewilding there is a great job behind each campaign and we want to share it with you through this space.
