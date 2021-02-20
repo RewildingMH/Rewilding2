@@ -11,11 +11,11 @@ import BurgerMenu from "./BurgerMenu";
 
 
 const Header = (props) => {
-    // window.onscroll = () => {
-    //     window.scrollY > 300 ?
-    //         document.querySelector('.navBar').classList.add('affix') :
-    //         document.querySelector('.navBar').classList.remove('affix')
-    // }; 
+    window.onscroll = () => {
+        window.scrollY > 300 ?
+            document.querySelector('.navBar').classList.add('affix') :
+            document.querySelector('.navBar').classList.remove('affix')
+    };
 
     if (props.loggedUser === null) {
         var links = <>
@@ -35,10 +35,10 @@ const Header = (props) => {
                 <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                     <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                 </NavLink>
-                <div className="userHeaderNamendLogOut">
+                <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderNamendLogOut">
                     <p>Hi! {props.loggedUser.name}</p>
                     <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()} />
-                </div>
+                </NavLink>
             </>
         } else {
             var links =
@@ -49,10 +49,10 @@ const Header = (props) => {
                     <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                     </NavLink>
-                    <div className="userHeaderNamendLogOut">
+                    <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderNamendLogOut">
                         <p>Hi! {props.loggedUser.name}</p>
                         <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()} />
-                    </div>
+                    </NavLink>
                 </>
         }
 

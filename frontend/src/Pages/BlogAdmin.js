@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import articleActions from '../redux/actions/articleActions'
 import BlogArticle from '../Components/BlogArticle'
 import Table from 'react-bootstrap/Table'
+import banner from '../assets/rewildingBanner.png'
 
 const BlogAdmin = (props) => {
     const [article, setArticle] = useState({
@@ -50,7 +51,7 @@ const BlogAdmin = (props) => {
 //estilo linea 66 de prueba(el div).
   return (
     <>
-    <div className="communityBanner"></div>
+    <div className="communityBanner" style={{ backgroundImage: `url(${banner})`, backgroundPosition: "center", backgroundSize: "cover" }}></div>
       <div>
         <h2>Blog agregar articulo</h2>
         <input type="text" onChange={readInput} name="title"placeholder="Put your title for this article"/>

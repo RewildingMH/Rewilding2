@@ -1,5 +1,7 @@
 const initialState = {
-    loggedUser: null
+    loggedUser: null,
+    countries: [],
+    oneUser: {}
 }
 
 export function authReducer(state = initialState, action) {
@@ -21,6 +23,16 @@ export function authReducer(state = initialState, action) {
                 ...state,
                 loggedUser: null
             }
+        case 'GET_COUNTRIES':
+            return {
+                ...state,
+                countries: action.payload.data
+            }
+        case 'PASSWORD':
+            return{
+                ...state,
+                oneUser: action.payload
+            }    
         default:
             return state
     }
