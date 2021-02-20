@@ -11,11 +11,11 @@ import BurgerMenu from "./BurgerMenu";
 
 
 const Header = (props) => {
-    window.onscroll = () => {
-        window.scrollY > 300 ?
-            document.querySelector('.navBar').classList.add('affix') :
-            document.querySelector('.navBar').classList.remove('affix')
-    };
+    // window.onscroll = () => {
+    //     window.scrollY > 300 ?
+    //         document.querySelector('.navBar').classList.add('affix') :
+    //         document.querySelector('.navBar').classList.remove('affix')
+    // };
 
     if (props.loggedUser === null) {
         var links = <>
