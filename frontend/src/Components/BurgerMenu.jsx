@@ -13,22 +13,19 @@ import {
 import { NavLink } from "react-router-dom";
 
 const BurgerMenu = (props) => {
-  const [menuOpenState, setMenuOpenState] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const closeMenu = () => {};
+  const closeMenu = () => {
+    setOpen(!open);
+  };
 
   return (
-    <Menu isOpen={menuOpenState} right>
+    <Menu isOpen={open} right>
       <div className="sideBarTitle">
         <h2>Menu</h2>
       </div>
-      <NavLink to="/">
-        <div
-          id="home"
-          className="menu-item"
-          href="/"
-          onClick={() => closeMenu()}
-        >
+      <NavLink to="/" onClick={closeMenu}>
+        <div id="home" className="menu-item" href="/">
           <div className="iconMenu">
             <AiFillHome />
           </div>
