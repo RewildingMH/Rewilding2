@@ -4,6 +4,8 @@ import articleActions from '../redux/actions/articleActions'
 import BlogArticle from '../Components/BlogArticle'
 import Table from 'react-bootstrap/Table'
 import banner from '../assets/rewildingBanner.png'
+import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 
 const BlogAdmin = (props) => {
     const [article, setArticle] = useState({
@@ -52,30 +54,37 @@ const BlogAdmin = (props) => {
   return (
     <>
     <div className="communityBanner" style={{ backgroundImage: `url(${banner})`, backgroundPosition: "center", backgroundSize: "cover" }}></div>
-      <div>
-        <h2>Blog agregar articulo</h2>
-        <input type="text" onChange={readInput} name="title"placeholder="Put your title for this article"/>
+      <div className="bg-dark topSectionAdmin">
+        <div className="sectionAdminBlog">
+          <h2 className="whiteAdminText">Blog add Articles</h2>
+        </div>
+        <div className="positionArticleAdmin">
+          <input className="adminInputs" type="text" onChange={readInput} name="title"placeholder="Put your title for this article"/>
+        </div>
         <label htmlFor="signature-pic" className="label_input_file" >
             <div className="d-flex flex-column align-items-center">
-              <p>Select your picture</p> 
-                <img className="" src={pathImage} alt="logo"/>
+              <p className="whiteAdminText">Select your picture</p> 
+              <img className="" src={pathImage} alt="logo"/>
             </div>
         </label>
-        <select name="articleCategory" onChange={readInput} >
-          <option value="" selected>Select a Category</option>
-            {props.articleCategories.map((category, index) => {
-                                    return <option key={index} value={category}>{category}</option>
-                                })}
-        </select>
-        
+        <div className="positionArticleAdmin">
+          <select name="articleCategory" onChange={readInput} >
+            <option value="" selected hidden>Select a Category</option>
+              {props.articleCategories.map((category, index) => {
+                                      return <option key={index} value={category}>{category}</option>
+                                  })}
+          </select>
+        </div>
             <input type="file" id="signature-pic" className="admin_input input-file"
             name="file" onChange={onFileChange} required/>
-            <div style={{display: 'flex'}}>
+            <div className="positionArticleAdmin">
             <textarea name="descripcion" onChange={readInput} cols="55" rows="12" placeholder="Write something in this article" required  />
             </div>
-        <button onClick={sendArticle}>Submit</button>
+            <div className="positionArticleAdmin">
+              <button className="adminButton" onClick={sendArticle}>Submit</button>
+            </div>
       </div>
-      <h1>Editar y borrar articulos</h1>
+      <h1>Edit and delete articles</h1>
       <div classname="container">
         <Table striped bordered hover>
           <thead>

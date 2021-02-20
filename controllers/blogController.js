@@ -3,6 +3,7 @@ const path= require('path')
 
 const articleController = { 
   addArticle: async (req, res) => {
+    console.log(req.body)
     const { title,descripcion, articleCategory } = req.body
     const { name, profilePicture, _id } = req.user
     const file =req.files.file
