@@ -12,6 +12,7 @@ import BlogPage from './Pages/BlogPage.jsx'
 import Petition from './Components/Petition.jsx';
 import Community from './Pages/Community'
 import Header from './Components/Header';
+import Footer from './Components/Footer'
 import Article from './Components/Article'
 import Profile from './Components/Profile.jsx'
 import ScrollToTop from './Components/ScrollTop'
@@ -76,6 +77,7 @@ const App = (props) => {
         <ScrollToTop>
           <Header />
           {routes}
+          <Footer/>
         </ScrollToTop>  
       </Router>
     </>

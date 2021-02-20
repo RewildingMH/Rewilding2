@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import articleActions from '../redux/actions/articleActions'
 import {Link} from 'react-router-dom'
 import LastArticles from '../Components/LastArticles'
+import bannerBlog from '../assets/bannerBlog.png'
 
 
 
@@ -25,15 +26,12 @@ const BlogPage = (props) => {
       </div>
     :
       <>
-        <div className="portadaBlog">
-          <div className="portadaBanner">
+        <div className="portadaBlog" style={{ backgroundImage: `url(${bannerBlog})`, backgroundPosition: "center", backgroundSize: "cover" }}>
+          {/* <div className="portadaBanner">
             <h3>
               At Rewilding there is a great job behind each campaign and we want to share it with you through this space.
             </h3>
-          </div>
-        </div>
-        <div className="containerBanner">
-          <h2>CONTRIBUTE ON CAUSES BY SIGNING PETITIONS, WE NEED YOU TO BE PART.</h2>
+          </div> */}
         </div>
         <div className="container-fluid mt-3">
           <div className="container" >
