@@ -26,7 +26,7 @@ const Register = (props) => {
         setNewUser({ ...newUser, [name]: value })
     }
 
-    const [pathImage, setPathImage] = useState('/assets/avatar.png')
+    const [pathImage, setPathImage] = useState('/assets/user.png')
     const [file, setFile] = useState()
     //Funcion para previsualizar imagenes
     
@@ -79,7 +79,7 @@ const Register = (props) => {
         if (respuesta && !respuesta.success) {
             setErrores(respuesta.errores)
         } else {
-            alert("You have Registered in Rewilding!")
+            errorAlert("success","You have Registered in Rewilding!")
         }
     }
 
@@ -141,10 +141,10 @@ const Register = (props) => {
                         }
                     })}
                 </div>
-                <label htmlFor="profile-pic" className="label_input_file" >
-                    <div className="d-flex flex-column align-items-center">
+                <label htmlFor="profile-pic" className="label_input_file">
+                    <div className="d-flex flex-column align-items-center" style={{display:"flex", alignItems:"center"}}>
                         <p>Select your Profile picture</p>
-                        <img className="img-fluid profile-pic-register" src={pathImage} alt="profile-pic" />
+                        <img className="img-fluid profile-pic-register" src={pathImage} alt="profile-pic" style={{width:"20vw"}}/>
                     </div>
                 </label>
                 <input type="file" id="profile-pic" className="admin_input input-file"
