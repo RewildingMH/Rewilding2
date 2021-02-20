@@ -6,7 +6,6 @@ import CommentArticle from './CommentArticle'
 const Article = (props) =>{
     const [preloader, setPreloader]= useState(false)
     const [article, setArticle] = useState({});
-    const [visible, setVisible] = useState(false)
     
     const id = props.match.params.id
     const {allArticles} = props
@@ -48,8 +47,8 @@ const Article = (props) =>{
                 
                 {/* {visible ? <p>hola</p> : <p>chau</p>} */}
               </div>
-              <p className="textArticle">{`${article.descripcion.slice(0, 700)}...`}</p>
-                <button onClick={() => setVisible(!visible)}>Read more...</button>
+              <p className="textArticle">{`${article.descripcion}`}</p>
+              <hr style={{color: 'white'}}></hr>
               <CommentArticle article={article} articlecomment={article.comments}/>
             </div>
             </div>

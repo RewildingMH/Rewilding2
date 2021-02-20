@@ -7,7 +7,8 @@ const path = require('path')
 
 const userController = {
     signUp: async (req, res) => {
-
+        try{
+            
         const errores = []
         const { name, lastName, username, password} = req.body
         const file = req.files.file
@@ -43,9 +44,14 @@ const userController = {
                 userId: newUserSaved._id
             }
         })
+        }catch(error){
+            res.json({success: false, error})
+        }
+
     },
     signGoogle: async (req, res) => {
-        const { givenName, familyName, email, googleId, imageUrl } = req.body
+        try{
+            const { givenName, familyName, email, googleId, imageUrl } = req.body
         const userExists = await User.findOne({ username: email })
         if (userExists) {
             var token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
@@ -78,9 +84,13 @@ const userController = {
                 }
             })
         }
+        }catch(error){
+            res.json({success: false, error})
+        }
 
     },
     signIn: async (req, res) => {
+       try{
         const { username, password } = req.body
         const userExists = await User.findOne({ username: username })
         if (!userExists) {
@@ -102,8 +112,12 @@ const userController = {
                     userId: userExists._id
                 }
             })
+       }catch(error){
+           res.json({success: false, error})
+       }
     },
     logFromLS: (req, res) => {
+      try{
         res.json({
             success: true, response: {
                 token: req.body.token,
@@ -115,6 +129,9 @@ const userController = {
 
             }
         })
+      }catch(error){
+          res.json({success: false, error})
+      }
     },
     likeReason: async (req, res) => {
 

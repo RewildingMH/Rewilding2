@@ -163,7 +163,7 @@ const postController = {
             $set: { text: editPost }
           },
           { new: true })
-        //SI EL EDIT ES SOLO CON FOTOP, ENTRA ACÁ
+        //SI EL EDIT ES SOLO CON FOTO, ENTRA ACÁ
       } else if (req.files && editPost === "undefined") {
         var modifiedPost = await Post.findOneAndUpdate({ _id: postId },
           {
