@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import articleActions from '../redux/actions/articleActions'
 import CommentArticle from './CommentArticle'
 
 const Article = (props) =>{
     const [preloader, setPreloader]= useState(false)
     const [article, setArticle] = useState({});
-    const [visible, setVisible] = useState(false)
     
     const id = props.match.params.id
     const {allArticles} = props
@@ -29,29 +27,29 @@ const Article = (props) =>{
         article.map(article =>
           <div>
             <div className="containerBanner">
-              <h2>Articles</h2>
+              <h2>Investigations of the animal world</h2>
             </div>
             <div className="container-fluid bg-dark">
-            <div className="container articleContainer">
-              <div className="titleArticle">
-                <h2>{article.title}</h2>
+              <div className="container articleContainer">
+                <div className="titleArticle">
+                  <h1>{article.title}</h1>
+                </div>
+                <div className="columnArticlePic">
+                  <div className="containerArticlePic">
+                    <p className="categoryBlog text-white">{article.createdAt.slice(0, 10)} | {article.articleCategory}</p>
+                    <img src={article.picture} className="picArticle"></img>
+                    <div className="bottomArticle">
+                      <img src={article.author[0].profilePicture} style={{margin:'1vh', width:'40px'}}></img>
+                      <p className="textArticle">{`Author: ${article.author[0].name}. |`}</p>
+                      <p className="textArticle">{` Created At: ${article.createdAt.slice(0, 10)} `}</p>
+                    </div>
+                  </div>
+                </div>
+                  <p className="textArticleDescription">{article.descripcion}</p>
+                  <div>
+                    <CommentArticle article={article} articlecomment={article.comments}/>
+                  </div>
               </div>
-              <div className="infoText">
-                <p className="categoryBlog">{article.createdAt.slice(0, 10)} | {article.articleCategory}</p>
-              </div>
-              <div className="containerPic"><img src={article.picture} className="picArticle"></img></div>
-              {/* <div style={{backgroundImage:`url(${props.petition.picture})`}}></div> */}
-              <div className="bottomArticle">
-                <img src={article.author[0].profilePicture} width="40vw"></img>
-                <p className="textArticle">Author: {article.author[0].name}</p>
-                <p className="textArticle">Created At: {article.createdAt.slice(0, 10)}</p>
-                
-                {/* {visible ? <p>hola</p> : <p>chau</p>} */}
-              </div>
-              <p className="textArticle">{`${article.descripcion.slice(0, 700)}...`}</p>
-                <button onClick={() => setVisible(!visible)}>Read more...</button>
-              <CommentArticle article={article} articlecomment={article.comments}/>
-            </div>
             </div>
           </div>
         )
