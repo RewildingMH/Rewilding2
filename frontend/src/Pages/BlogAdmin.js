@@ -4,9 +4,8 @@ import articleActions from '../redux/actions/articleActions'
 import BlogArticle from '../Components/BlogArticle'
 import Table from 'react-bootstrap/Table'
 import banner from '../assets/rewildingBanner.png'
-import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-
-
+import Compressor from "compressorjs";
+import Swal from "sweetalert2";
 const BlogAdmin = (props) => {
     const [article, setArticle] = useState({
       title: "",
@@ -34,22 +33,41 @@ const BlogAdmin = (props) => {
     //recordatorio: cambiar pic de pathImage por defecto linea 32.
     const [pathImage, setPathImage]= useState('/assets/losago.png')
     const [file, setFile] = useState()
+    //Funcion ara mandar un mensaje de error
+    
+  const errorAlert = (type, title, text) => {
+    Swal.fire({
+      icon: type,
+      title: title,
+      text: text,
+      confirmButtonText: "Ok",
+    });
+  };
     //Funcion para previsualizar imagenes
-    const onFileChange= e =>{
-        if(e.target.files && e.target.files.length > 0){
-            const file = e.target.files[0]
-            if(file.type.includes('image')){
-                const reader = new FileReader()
-                reader.readAsDataURL(file)
-                reader.onload= function load(){
-                    setPathImage(reader.result)
-                }
-                setFile(file)
-            }else{
-                console.log('Something went wrong')
-            }
+    const onFileChange = (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        const file = e.target.files[0];
+        if (file.type.includes("image")) {
+          const compressedFile = new Compressor(file, {
+            quality: 0.5,
+            success(result) {
+              const reader = new FileReader();
+              reader.readAsDataURL(result);
+              reader.onload = function load() {
+                setPathImage(reader.result);
+              };
+            },
+          });
+          setFile(compressedFile);
+        } else {
+          errorAlert(
+            "error",
+            "Something went wrong!",
+            "Files must be of an image type"
+          );
         }
-    }
+      }
+    };
 //estilo linea 66 de prueba(el div).
   return (
     <>

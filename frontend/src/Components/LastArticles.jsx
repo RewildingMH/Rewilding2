@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import articleActions from "../redux/actions/articleActions";
+
 
 const LastArticles = (props) => {
   const {
@@ -15,15 +18,22 @@ const LastArticles = (props) => {
     visits,
     _id,
   } = props.lastArticle;
+
+
+const addVisit = e => {  
+  props.sendAddVisit(e.target.id)
+}
+
   return (
-    <Link
-      to={`/article/${_id}`}
+    <Link onClick={addVisit}
+      to={`/article/${_id}`} id={_id}
       className="lastArticlesCard text-decoration-none"
       style={{
         backgroundImage: `url(${picture})`,
       }}
+      
     >
-      <div style={{ width: "100%" }}>
+      <div  style={{ width: "100%" }}>
         <p className="articleDate">
           {createdAt.slice(0, 10)} | {articleCategory}
         </p>
@@ -39,4 +49,8 @@ const LastArticles = (props) => {
   );
 };
 
-export default LastArticles;
+
+const mapDispatchToProps = {
+  sendAddVisit: articleActions.addVisit}
+
+export default connect(null, mapDispatchToProps)(LastArticles);

@@ -47,7 +47,7 @@ const Header = (props) => {
                         <p>CREATE PETITION</p>
                     </NavLink>
                     <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
-                        <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
+                        <img src={props.loggedUser.profilePicture} alt="profile" className="userImg rounded-circle" />
                     </NavLink>
                     <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderNamendLogOut">
                         <p>Hi! {props.loggedUser.name}</p>
@@ -79,9 +79,9 @@ const Header = (props) => {
                         <p>PETITIONS</p>
                     </NavLink>
                     {links}
-                    {/* <BurgerMenu /> */}
                 </div>
             </nav>
+            <BurgerMenu props={props} />
         </>
     )
 

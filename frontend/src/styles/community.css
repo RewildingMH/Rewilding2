@@ -1,29 +1,49 @@
 .popularPetitions {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #007233 !important;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287) !important;
+  min-height: 115rem !important;
+  align-items: flex-start;
+  border-radius: 21px !important;
 }
 
-.popularPetitions > h3 {
+.sideCardsTitle > h3 {
   text-align: center;
-  white-space: nowrap;
   font-size: 1.7vw;
   background-color: #007233;
   color: white;
   padding: 1rem;
+  font-size: 36px;
+  cursor: default;
+  border-radius: 21px;
+}
+
+.sideCardsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100rem !important;
+  min-height: 100rem !important;
+  justify-content: space-around;
 }
 
 .communityImg {
   border-radius: 0;
-  height: 20rem;
+  height: 100%;
   display: flex;
   align-items: flex-end;
   margin: 0;
+  border-radius: 12px !important;
 }
 
 .communityContainerBelow {
   padding: 0 1rem;
+}
+
+.card {
+  height: 25em !important;
+  border: none !important;
+  border-radius: 21px !important;
 }
 
 .popularPetitionCard {
@@ -36,12 +56,15 @@
   background-color: rgba(64, 93, 39, 0.5);
   color: white;
   padding: 2rem 0.3rem;
-  margin: 0;
+  margin: 0 !important;
   width: 100%;
+  transition: 0.2s ease;
+  font-size: 27px;
 }
 
 .cardTitle:hover {
-  text-decoration: underline;
+  color: #c1946a;
+  text-shadow: 0px 0px 2px white;
 }
 
 .cardText {
@@ -50,20 +73,24 @@
 
 .postsTextArea {
   height: 10rem;
+  height: 7rem;
 }
 
 .postsTextArea > textarea {
-  padding: 1rem 0.3rem;
+  padding: 1.3rem 1rem 1rem 1rem;
   outline: none;
   border-left: none;
   border-top-right-radius: 12px;
+  overflow-y: hidden;
+  height: 7rem;
 }
 
 .profilePictureOnPostContainer {
   border: 1px solid grey;
   border-right: none;
-  padding: 0.3rem;
+  padding: 1rem 0 0 1rem;
   border-top-left-radius: 12px;
+  height: 7rem;
 }
 
 .profilePictureOnPost {
@@ -84,6 +111,10 @@
   padding: 0 0.3rem;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
+}
+
+.custom-file-upload > .aiIcon:hover {
+  transform: none !important;
 }
 
 .inputPostContainer {
@@ -264,7 +295,7 @@ a > .profilePictureOnPost {
 }
 
 .commentComment > p {
-  padding-left: 3rem;
+  padding-left: 1rem;
 }
 
 .commentLike {
@@ -272,12 +303,18 @@ a > .profilePictureOnPost {
   align-items: center;
   padding: 0 1rem;
   font-size: 24px;
+  transition: 0.2s ease;
+}
+
+.commentLike:active {
+  transform: scale(1.5);
+  color: white;
 }
 
 .postLikeInteraction {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 0rem 0 1rem 0;
   padding-left: 2rem;
   display: flex;
   align-items: center;
@@ -355,6 +392,7 @@ nav {
   margin-top: -1rem;
   outline: none;
   border-bottom: 1px solid black;
+  padding: 1rem;
 }
 
 .editCommentInput::placeholder {
@@ -449,9 +487,15 @@ input[type="file"] {
   width: 100%;
 }
 
+.commentsMap {
+  padding: 1rem 0;
+}
+
 .singleCommentContainer {
   border-top: 1px solid black;
-  margin: 0 3rem;
+  margin: 1rem 3rem;
+  background-color: grey;
+  border-radius: 21px;
 }
 
 .likesHeaderContainer {
@@ -492,5 +536,76 @@ input[type="file"] {
   }
   .allPostsContainerContainer {
     width: 100% !important;
+  }
+  .postPictureContainer {
+    height: 9rem;
+  }
+  .postPicture {
+    height: 10rem !important;
+  }
+
+  .postUsername {
+    font-size: 21px !important;
+  }
+
+  .likeContainer {
+    font-size: 18px;
+  }
+
+  .aiIcon.like {
+    font-size: 28px !important;
+  }
+
+  .commentSectionTitle {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 0.3rem;
+    border-bottom: none;
+  }
+
+  .commentSectionTitle > p {
+    font-size: 18px;
+  }
+
+  .noComments {
+    padding: 1rem;
+  }
+
+  .noComments > span {
+    font-size: 18px;
+  }
+
+  .noCommentsPlaceholder {
+    height: 5rem;
+  }
+  .custom-file-upload {
+    width: 8rem;
+    height: 5rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 4rem;
+    padding: 0;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
+
+  .aiIcon.upload {
+    font-size: 32px !important;
+  }
+
+  .btn.btn-success {
+    padding: 1.15rem 2rem !important;
+    font-size: 18px !important;
+  }
+
+  .postPicturePreview {
+    width: 5rem !important;
+    height: 4rem !important;
+  }
+  .commentComment {
+    padding: 0 !important;
+  }
+  .commentComment > p {
+    padding: 0 0 0 1rem;
   }
 }

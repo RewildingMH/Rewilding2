@@ -99,7 +99,7 @@ const Petition = (props) => {
             >
             </div>
             <div className="description">{petition[0].desc}</div>
-            <p>
+            <div>
               {petition[0].signatures.length >= petition[0].goal ? (
                 <div>
                   <p>probando</p>
@@ -110,7 +110,7 @@ const Petition = (props) => {
                     petition[0].signatures.length + " persons have "
                   )}
             already signed this petition
-          </p>
+          </div>
 
             {petition[0].signatures.length < petition[0].goal && (
               <div className="inputPetitions">
