@@ -9,7 +9,7 @@ const authActions = {
             form.append('username',newUser.username)
             form.append('password',newUser.password)
             form.append('profilePicture', file.name)
-            form.append('file', file)
+            form.append('file', file.result)
             const respuesta = await axios.post('http://localhost:4000/api/user/signup', form, {headers:{'Content-Type':'multipart/formdata'}})
             if (!respuesta.data.success) {
                 return respuesta.data

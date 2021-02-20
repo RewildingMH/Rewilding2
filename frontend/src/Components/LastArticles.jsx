@@ -3,15 +3,10 @@ import {Link} from 'react-router-dom'
 
 const LastArticles = (props) => {
     const { articleCategory, 
-            articleLikes, 
             author, 
-            comments, 
             createdAt, 
-            descripcion, 
             picture, 
             title, 
-            updatedAt, 
-            visits, 
             _id} = props.lastArticle
     return (
         <Link to={`/article/${_id}`} className="lastArticlesCard text-decoration-none" style={{
