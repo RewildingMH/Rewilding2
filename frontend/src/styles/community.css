@@ -302,6 +302,15 @@ a > .profilePictureOnPost {
 
 .commentComment > p {
   padding-left: 1rem;
+  cursor: default;
+}
+
+.usernameCommentLink {
+  transition: 0.2s ease;
+}
+
+.usernameCommentLink:hover {
+  color: #82b74b !important;
 }
 
 .commentLike {
@@ -349,7 +358,7 @@ a > .profilePictureOnPost {
 }
 
 .noComments {
-  padding: 3rem 0;
+  padding: 2rem 0;
   font-size: 21px;
   display: flex;
   flex-direction: column;
@@ -364,7 +373,7 @@ a > .profilePictureOnPost {
 }
 
 .noCommentsYet {
-  text-decoration: wavy !important;
+  text-decoration: none !important;
 }
 
 .noCommentsPlaceholder {
@@ -405,8 +414,8 @@ nav {
   display: flex;
   margin-top: -1rem;
   outline: none;
-  border-bottom: 1px solid black;
   padding: 1rem;
+  border-radius: 12px;
 }
 
 .editCommentInput::placeholder {
@@ -508,10 +517,10 @@ input[type="file"] {
 }
 
 .singleCommentContainer {
-  border-top: 1px solid black;
   margin: 1rem 3rem;
   background-color: grey;
   border-radius: 21px;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287) !important;
 }
 
 .likesHeaderContainer {

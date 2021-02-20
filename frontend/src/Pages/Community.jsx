@@ -44,6 +44,7 @@ const Community = (props) => {
             <div className="sideCardsContainer">
               {popular.slice(0, 3).map(({ title, picture, _id }) => (
                 <Link
+                  key={_id}
                   className="popularPetitionCard"
                   to={`/petitions/${_id}`}
                   style={{ textDecoration: "none" }}
@@ -85,6 +86,7 @@ const Community = (props) => {
                 .slice(props.articles.length - 3, props.articles.length)
                 .map(({ title, picture, _id }) => (
                   <Link
+                    key={_id}
                     className="popularPetitionCard"
                     to={`/article/${_id}`}
                     style={{
@@ -138,17 +140,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Community);
-
-// {props.articles
-//               .slice(props.articles.length - 3, props.articles.length)
-//               .map(({ title, picture }) => (
-//                 <>
-//                   <div className="communityInfo">
-//                     <div
-//                       className="communityImg"
-//                       style={{ backgroundImage: `url(${picture})` }}
-//                     ></div>
-//                     <p>{title}</p>
-//                   </div>
-//                 </>
-//               ))}

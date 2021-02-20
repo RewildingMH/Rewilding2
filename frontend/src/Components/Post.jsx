@@ -316,7 +316,7 @@ const Post = ({
               type="text"
               name="editPost"
               onChange={capturePostModification}
-              class="postInputEdit"
+              className="postInputEdit"
               placeholder={post.text.slice(0, 30) + "..."}
               autoComplete="off"
             ></input>
@@ -326,8 +326,11 @@ const Post = ({
               name="fileEdit"
               onChange={onFileChange}
             />
-            <label for="file-upload-post" class="custom-file-upload-post">
-              <BsFillImageFill class="aiIcon upload" />
+            <label
+              htmlFor="file-upload-post"
+              className="custom-file-upload-post"
+            >
+              <BsFillImageFill className="aiIcon upload" />
             </label>
             <div className="colorButtonsEditPost">
               <Button
@@ -374,21 +377,20 @@ const Post = ({
         {visibleComment && (
           <div className="commentsMapContainer">
             <div className="commentsMap">
-              {post.comments.length &&
-                post.comments.map(
-                  ({ comment, name, profilePicture, likes, _id, userId }) => (
-                    <PostComment
-                      key={_id}
-                      comment={comment}
-                      name={name}
-                      profilePicture={profilePicture}
-                      likes={likes}
-                      idComment={_id}
-                      postId={post._id}
-                      userId={userId}
-                    />
-                  )
-                )}
+              {post.comments.map(
+                ({ comment, name, profilePicture, likes, _id, userId }) => (
+                  <PostComment
+                    key={_id}
+                    comment={comment}
+                    name={name}
+                    profilePicture={profilePicture}
+                    likes={likes}
+                    idComment={_id}
+                    postId={post._id}
+                    userId={userId}
+                  />
+                )
+              )}
             </div>
           </div>
         )}
@@ -402,7 +404,10 @@ const Post = ({
                   }}
                   className="noCommentsPlaceholder"
                 ></div>
-                <span class="noCommentsYet" style={{ textDecoration: "none" }}>
+                <span
+                  className="noCommentsYet"
+                  style={{ textDecoration: "none" }}
+                >
                   No comments yet!
                 </span>
               </div>
@@ -424,16 +429,17 @@ const Post = ({
             onChange={captureChange}
             autoComplete="off"
             disabled={loggedUser ? false : true}
-            class="commentInput"
+            className="commentInput"
             value={
               !comment.comment || comment.comment === "" ? "" : comment.comment
             }
           />
-          <div className="sendButton">
-            <AiOutlineSend
-              onClick={sendComment}
-              style={{ cursor: "pointer" }}
-            />
+          <div
+            className="sendButton"
+            onClick={sendComment}
+            style={{ cursor: "pointer" }}
+          >
+            <AiOutlineSend style={{ cursor: "pointer" }} />
           </div>
         </div>
       </div>
