@@ -184,8 +184,8 @@ const Posts = (props) => {
           />
         </div>
         <div className="filesPost">
-          <label for="file-upload" class="custom-file-upload">
-            <BsFillImageFill class="aiIcon upload" /> Upload Picture
+          <label htmlFor="file-upload" className="custom-file-upload">
+            <BsFillImageFill className="aiIcon upload" /> Upload Picture
           </label>
           <input id="file-upload" type="file" onChange={onFileChange} />
           {pathImage === "" ? null : (
@@ -222,7 +222,7 @@ const Posts = (props) => {
       {posts &&
         posts
           .map((post) => {
-            return <Post post={post} />;
+            return <Post key={post._id} post={post} />;
           })
           .reverse()}
     </div>

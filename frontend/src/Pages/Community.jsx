@@ -58,6 +58,7 @@ const Community = (props) => {
             <div className="sideCardsContainer">
               {popular.slice(0, 3).map(({ title, picture, _id }) => (
                 <Link
+                  key={_id}
                   className="popularPetitionCard"
                   to={`/petitions/${_id}`}
                   style={{ textDecoration: "none" }}
@@ -65,7 +66,11 @@ const Community = (props) => {
                   <div className="card">
                     <div
                       className="communityImg card-img-top"
-                      style={{ backgroundImage: `url(${picture})` }}
+                      style={{
+                        backgroundImage: `url(${picture})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
                     >
                       <h5 className="cardTitle">{title}</h5>
                     </div>
@@ -95,6 +100,7 @@ const Community = (props) => {
                 .slice(props.articles.length - 3, props.articles.length)
                 .map(({ title, picture, _id }) => (
                   <Link
+                    key={_id}
                     className="popularPetitionCard"
                     to={`/article/${_id}`}
                     style={{
@@ -104,7 +110,11 @@ const Community = (props) => {
                     <div className="card">
                       <div
                         className="communityImg card-img-top"
-                        style={{ backgroundImage: `url(${picture})` }}
+                        style={{
+                          backgroundImage: `url(${picture})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
                       >
                         <h5 className="card-title cardTitle">
                           {title.length > 30
@@ -145,17 +155,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Community);
-
-// {props.articles
-//               .slice(props.articles.length - 3, props.articles.length)
-//               .map(({ title, picture }) => (
-//                 <>
-//                   <div className="communityInfo">
-//                     <div
-//                       className="communityImg"
-//                       style={{ backgroundImage: `url(${picture})` }}
-//                     ></div>
-//                     <p>{title}</p>
-//                   </div>
-//                 </>
-//               ))}
