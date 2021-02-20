@@ -36,6 +36,7 @@ router.route('/signPetition')
   .post(passport.authenticate('jwt', { session: false }), petitionController.signPetition)
 //Blog
 router.route('/blog')
+  .post(passport.authenticate('jwt', { session: false }), blogController.addArticle)
   .get(blogController.getArticles)
   .put(blogController.editArticle)
 router.route('/blog/delete')

@@ -3,10 +3,13 @@ const path= require('path')
 
 const articleController = { 
   addArticle: async (req, res) => {
+    console.log(req.files)
+    console.log(req.body)
+    console.log(req.user)
     const { title,descripcion, articleCategory } = req.body
     const { name, profilePicture, _id } = req.user
     const file =req.files.file
-    const articlePictureUbicacion= `/assets/articlePics/${file.name}`
+    const articlePictureUbicacion= `/assets/articlePics/${file.md5}.jpg`
     const articleSave = new Article({
       title,
       descripcion,
@@ -18,7 +21,7 @@ const articleController = {
         idUser: _id
       },
     })
-   file.mv(path.join(__dirname, '../frontend/public/assets/articlePics/'+ file.name), error=>{
+   file.mv(path.join(__dirname, `../frontend/public/assets/articlePics/${file.md5}.jpg`), error=>{
      if(error){
          return res.json({response:error})
      }})

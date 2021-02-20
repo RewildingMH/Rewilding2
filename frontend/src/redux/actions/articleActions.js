@@ -11,7 +11,7 @@ const articleActions = {
             form.append('title',newArticle.title)
             form.append('descripcion',newArticle.descripcion)
             form.append('articleCategory',newArticle.articleCategory)
-            form.append('file', file)
+            form.append('file', file.result)
             const respuesta = await axios.post(`${API}/blog`, form, {
                  headers:{
                      'Authorization': `Bearer ${token}`,
@@ -20,7 +20,8 @@ const articleActions = {
              if (!respuesta.data.success) {
                  return respuesta.data
              }
-            dispatch({type: 'ADD_ARTICLE', payload: respuesta.data})
+            dispatch({type: 'ADD_ARTICLE', payload: respuesta.data.response})
+            console.log(respuesta)
         }catch(error){
           Swal.fire(error)
         }
