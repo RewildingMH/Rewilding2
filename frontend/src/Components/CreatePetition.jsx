@@ -100,98 +100,89 @@ const CreatePetition = (props) => {
           backgroundPosition: "center",
         }}
       ></div>
-      <div className="createPetitionContainer container mt-4">
-        <h2 className="text-center" style={{ paddingTop: "2vh" }}>CREATE PETITION</h2>
-        <div className="row d-flex justify-content-center">
-          <div className="col-6">
-          <div className="backgroundCard">
-          <div>
-            <div className="createPetitionInput1nd2">
-              <h5 className="text-center">
+
+      {/* Formulario */}
+      <div className="container my-4 ">
+        <div className="row">
+          <div className="col col-sm-8 col-md-6 col-lg-6 mx-auto">
+            <h2 className="text-center" style={{ paddingTop: "2vh" }}>CREATE PETITION</h2>
+            <div className="createPetition text-center">
+              <h5>
                 Write down the title of your petition
               </h5>
-              <p className="text-center">It should be something meaningful</p>
+              <span className="h6">It should be something meaningful</span>
               <input
+                autoComplete="off"
                 name="title"
                 type="text"
                 placeholder="What are you looking to achieve?"
                 onChange={captureNewPetition}
               />
             </div>
-            <div className="createPetitionInput1nd2">
-              <h5 className="text-center">Who is it for?</h5>
-              <p className="text-center">Who can change this?</p>
+            <div className="createPetition text-center">
+              <h5>Who is it for?</h5>
+              <span className="h6">Who can change this?</span>
               <input
+                autoComplete="off"
                 name="destination"
                 type="text"
                 placeholder="Destination of your petition"
                 onChange={captureNewPetition}
               />
             </div>
-          </div>
-          <div>
-            <div className="createPetitionInput3">
-              <h5 className="text-center">Explain why you want to change it</h5>
-              <p className="text-center">It should be something meaningful</p>
-              <textarea
-                name="description"
-                onChange={captureNewPetition}
-              ></textarea>
-            </div>
-            <div className="createPetitionInput4">
-              <h5 className="text-center">
+            <div className="createPetition text-center">
+              <h5>
                 Choose a limit date for your petition
               </h5>
-              <p className="text-center">Final date</p>
+              <span className="h6">Final date</span>
               <input
                 name="limitDate"
                 type="date"
                 onChange={captureNewPetition}
               />
-            </div>
-          </div>
-          <div className="lastDiv">
-            <div className="createPetitionInput5">
-              <h5 className="text-center">Choose a goal for your petition</h5>
-              <p className="text-center">Signature limit</p>
+            </div>                  
+            <div className="createPetition text-center">
+              <h5>Choose a goal for your petition</h5>
+              <span className="h6">Signature limit</span>
               <input placeholder="10" minLength="2" min="10" name="goal" type="number" onChange={captureNewPetition} />
             </div>
-            <div className="createPetitionInput6">
-              <h5 className="text-center">
+            <div className="createPetition text-center">
+              <h5>Explain why you want to change it</h5>
+              <span className="h6">It should be something meaningful</span>
+              <textarea 
+                name="description"
+                onChange={captureNewPetition}
+              ></textarea>
+            </div> 
+            <div className="createPetition text-center">
+              <h5>
                 Upload a picture for your petition
               </h5>
-              <p className="text-center">Make it a high res one</p>
-              <div className="createPetitionUploadFile">
-                <label htmlFor="inputUpload">
-                  <img style={{margin:"0"}}
-                    className="img-fluid profile-pic-profile-submit"
-                    src={pathImage}
-                    alt="petition-pic"
-                  />
-                  <h6 className="text-center">
-                    Click in the reference image to upload your picture!
-                  </h6>
-                </label>
-                <input
-                  id="inputUpload"
-                  name="picture"
-                  type="file"
-                  onChange={onFileChange}
+              <span className="h6">Make it a high res one</span>
+              <label htmlFor="inputUpload">
+                <img style={{margin:"0"}}
+                  className="img-fluid profile-pic-profile-submit"
+                  src={pathImage}
+                  alt="petition-pic"
                 />
-              </div>
+                <h6 className="my-3">
+                  Click in the reference image to upload your picture!
+                </h6>
+              </label>
+              <input
+                id="inputUpload"
+                name="picture"
+                type="file"
+                onChange={onFileChange}
+              />
             </div>
-          </div>
-        </div>
-        <div className="createPetitionButton d-flex justify-content-center">
+            <div className="createPetitionButton d-flex justify-content-center my-3">
           <button onClick={sendPetition}>Send Petition</button>
         </div>
-      
-      
           </div>
         </div>
-     
       </div>
-      <div className="white"></div>
+      
     </>
   );
 };
