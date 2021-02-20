@@ -425,6 +425,9 @@ nav a {
   background-color: rgba(0, 0, 0, 0.116);
   border-radius: 2vh;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container a {
@@ -445,10 +448,25 @@ nav a {
   border-radius: 20px;
 }
 
-.loginDiv input {
-  margin-top: 2vh;
+.containerLog input {
   width: 20vw;
   outline: none;
+  margin-top: 1vh;
+  box-shadow: 2px 2px 5px #999;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.123);
+  border: none;
+  outline: none;
+  border-bottom: 0.5vh solid green;
+  width: 100%;
+  height: 7vh;
+  padding: 1vw;
+  font-size: 1vw;
+  text-align: center;
+  border-radius: 1vw;
+  transition: 0.5s;
+  color: rgb(0, 0, 0);
 }
 
 .loginDiv h1 {
@@ -522,6 +540,61 @@ nav a {
 .titlePetition {
   display: flex;
   justify-content: center;
+}
+
+.petitionIndiv {
+  background-color: rgba(0, 0, 0, 0.116);
+  border-radius: 2vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+  margin: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
+}
+
+.description {
+  background-color: rgba(4, 97, 50, 0.822);
+  color: aliceblue;
+  margin-top: 2vh;
+  padding:2vh;
+  width: 85%;
+  border-radius: 2vh;
+}
+
+.inputPetitions {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.inputPetitions input {
+  width: 60%;
+  outline: none;
+}
+
+.userPicPetitions {
+  border-radius: 80%;
+}
+
+.returnPet{
+  color: brown;
+  text-decoration: none;
+}
+
+.btnPetition {
+  border-radius: 0.5vw;
+  color: rgba(255, 255, 255, 0.692);
+  transition: 0.3s;
+  background-color: rgba(0, 0, 0, 0.65);
+  border: none;
+  border-bottom: 2px solid green;
+  padding: 0.8vw 2vw;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
+.btnPetition:hover {
+  background-color: black;
 }
 
 /* Create Petition */

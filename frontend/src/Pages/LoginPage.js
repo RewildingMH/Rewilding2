@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Login from '../Components/Login'
 import Register from '../Components/Register'
 import bannerLogIn from "../assets/bannerLog.png"
-
+import { FaArrowCircleLeft } from 'react-icons/fa';
 
 const LoginPage = () => {
     const [show, setShow] = useState(true);
@@ -33,9 +33,7 @@ const LoginPage = () => {
                         <p className="h6">By registering you are accepting our Terms and Conditions and our Privacy Policies</p>
                     </div>
                 </div>
-
-                <Link to="/"><p style={{ width: "10vw", display: "inline" }}>Return to home</p></Link>
-
+                <Link to="/" style={{marginBottom:"2vh"}}><FaArrowCircleLeft></FaArrowCircleLeft></Link>
             </div>
             <div className="white">
             </div>
