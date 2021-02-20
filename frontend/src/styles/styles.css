@@ -375,7 +375,7 @@ nav a {
   width: 50vw;
   padding: 1vw;
   background-color: rgba(0, 0, 0, 0.555);
-  border-radius: 1vw;
+  border-radius: 0vw 1vw 1vw 0vw;
 }
 .userInfo {
   display: flex;
