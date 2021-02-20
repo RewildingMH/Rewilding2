@@ -374,7 +374,7 @@ const Post = ({
         {visibleComment && (
           <div className="commentsMapContainer">
             <div className="commentsMap">
-              {post.comments.length ? (
+              {post.comments.length &&
                 post.comments.map(
                   ({ comment, name, profilePicture, likes, _id, userId }) => (
                     <PostComment
@@ -388,28 +388,32 @@ const Post = ({
                       userId={userId}
                     />
                   )
-                )
-              ) : (
-                <div className="noComments">
-                  <div
-                    style={{
-                      backgroundImage: `url(${noCommentsPlaceholder})`,
-                    }}
-                    className="noCommentsPlaceholder"
-                  ></div>
-                  <span>No comments yet!</span>
-                </div>
-              )}
+                )}
             </div>
           </div>
         )}
         <div className="viewMoreContainer">
-          <span
-            onClick={() => setVisibleComment(!visibleComment)}
-            style={{ cursor: "pointer" }}
-          >
-            {console.log(post.comments)}
-            {`View${visibleComment ? " less" : " more"}`}
+          <span>
+            {!post.comments.length ? (
+              <div className="noComments">
+                <div
+                  style={{
+                    backgroundImage: `url(${noCommentsPlaceholder})`,
+                  }}
+                  className="noCommentsPlaceholder"
+                ></div>
+                <span class="noCommentsYet" style={{ textDecoration: "none" }}>
+                  No comments yet!
+                </span>
+              </div>
+            ) : (
+              <span
+                onClick={() => setVisibleComment(!visibleComment)}
+                style={{ cursor: "pointer" }}
+              >
+                {`View${visibleComment ? " less" : " more"}`}
+              </span>
+            )}
           </span>
         </div>
         <div className="inputContainer">
