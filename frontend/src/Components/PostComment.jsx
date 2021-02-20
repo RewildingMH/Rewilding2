@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import postActions from "../redux/actions/postActions";
 import "../styles/community.css";
-import { AiFillHeart, AiOutlineHeart, AiOutlineSend } from "react-icons/ai";
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  AiOutlineSend,
+  AiFillDelete,
+  AiTwotoneEdit,
+} from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const PostComment = ({
   comment,
@@ -20,6 +27,18 @@ const PostComment = ({
 }) => {
   const [visible, setVisible] = useState(false);
   const [newComment, setNewComment] = useState({});
+
+  const successToast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
 
   const likeComment = (e) => {
     e.preventDefault();
@@ -45,6 +64,10 @@ const PostComment = ({
       idComment,
       token: loggedUser.token,
     });
+    successToast.fire({
+      icon: "success",
+      title: "Comment deleted!",
+    });
   };
 
   const mostrarInput = (e) => {
@@ -67,6 +90,10 @@ const PostComment = ({
   const editComment = (e) => {
     setVisible(!visible);
     editCommentPost(newComment);
+    successToast.fire({
+      icon: "success",
+      title: "Comment modified!",
+    });
   };
 
   return (
@@ -83,12 +110,13 @@ const PostComment = ({
         </div>
 
         {visible ? (
-          <>
+          <div className="editTextCommentContainer">
             <input
               type="text"
               name="newCommentEdit"
               placeholder={comment}
               onChange={captureNewComment}
+              className="editCommentInput"
             />
             <div
               className="sendComment"
@@ -104,7 +132,7 @@ const PostComment = ({
                 style={{ cursor: "pointer" }}
               />
             </div>
-          </>
+          </div>
         ) : (
           <div className="commentComment">
             <p>{comment}</p>
@@ -116,26 +144,32 @@ const PostComment = ({
         {loggedUser ? (
           likes.find((like) => like.id === loggedUser.userId) ? (
             <div className="commentLike">
-              <AiFillHeart onClick={dislikeComment} />
+              <AiFillHeart
+                onClick={dislikeComment}
+                style={{ color: "darkred", cursor: "pointer" }}
+              />
               {likes.length}
             </div>
           ) : (
             <div className="commentLike">
-              <AiOutlineHeart onClick={likeComment} />
+              <AiOutlineHeart
+                onClick={likeComment}
+                style={{ color: "darkred", cursor: "pointer" }}
+              />
               {likes.length}
             </div>
           )
         ) : (
           <div className="commentLike">
-            <AiOutlineHeart />
+            <AiOutlineHeart style={{ color: "darkred", cursor: "pointer" }} />
             {likes.length}
           </div>
         )}
         <div className="commentMod">
           {loggedUser && loggedUser.userId === userId && (
             <>
-              <button onClick={deleteComment}>DELETE</button>
-              <button onClick={mostrarInput}>EDIT</button>
+              <AiFillDelete className="aiIcon delete" onClick={deleteComment} />
+              <AiTwotoneEdit className="aiIcon edit" onClick={mostrarInput} />
             </>
           )}
         </div>
