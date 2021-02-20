@@ -22,7 +22,7 @@ const Post = ({
   const [comment, setComment] = useState({});
   const [postModification, setPostModification] = useState({});
   const [visible, setVisible] = useState(false);
-  const [pathImage, setPathImage] = useState("/assets/fileImage.jpg");
+  const [pathImage, setPathImage] = useState("");
   const [file, setFile] = useState();
   const [visibleComment, setVisibleComment] = useState(false);
 
@@ -290,7 +290,6 @@ const Post = ({
           )}
         </div>
       </div>
-
       {post.picture && (
         <div className="d-flex justify-content-center postPictureContainer">
           <div
@@ -355,13 +354,13 @@ const Post = ({
           <Button onClick={() => setVisible(!visible)}> EDIT</Button>
         )}
       </div>
-      {visible && (
+      {file && visible && (
         <div className="imagePreviewContainer">
           <div
             style={{
               width: "50rem",
               height: "30rem",
-              backgroundImage: `url(${post.picture})`,
+              backgroundImage: `url(${pathImage})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
