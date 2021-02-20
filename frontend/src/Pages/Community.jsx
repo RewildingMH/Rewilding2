@@ -8,22 +8,36 @@ import communityPic from "../assets/communityImg.png";
 import "../styles/community.css";
 
 const Community = (props) => {
+  const [preloader, setPreloader]= useState(true)
   const [popular, setPopular] = useState([]); // Estado para guardar las peticiones más populares
   const { allPetitions } = props; // Destructuración
 
   // Ordena las peticiones por visitas, de mayor a menor
+ 
+  useEffect(() => {
+    fetch()
+  }, []);
+
   useEffect(() => {
     setPopular(allPetitions.sort((a, b) => b.visits - a.visits));
   }, [allPetitions]);
 
+  async function fetch () {
+    await props.getArticles()
+    await props.getPetitions();
+    setPreloader(false)
+ }
+
   // Llama a todas las peticiones y todos los articulos cuando se monta el componente
-  useEffect(() => {
-    props.getPetitions();
-    props.getArticles();
-  }, []);
+  
 
   return (
-    <div className="communityContainer">
+    <>
+    { preloader ? 
+      <div className="preloader">
+        <div className="loader"></div>
+      </div> : 
+      <div className="communityContainer">
       <div
         className="communityBanner"
         style={{
@@ -92,7 +106,8 @@ const Community = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </div> }
+    </>
   );
 };
 // *Se aplica el metodo slice para obtener solo 3 de todas las peticiones/articulos

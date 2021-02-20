@@ -188,7 +188,7 @@ const postActions = {
     try{
       const { idComment, postId, token } = ids
       return async (dispatch, getState) => {
-        const response = await axios.delete(`${API}posts/dislikeComments/${idComment}/${postId}`,
+        const response = await axios.delete(`${API}/posts/dislikeComments/${idComment}/${postId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
