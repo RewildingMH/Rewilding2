@@ -2,9 +2,9 @@
 .bm-burger-button {
   position: fixed;
   width: 36px;
-  height: 30px;
-  right: 36px;
-  top: 36px;
+  height: 36px;
+  right: 3vw;
+  top: 2vh;
 }
 
 /* Color/shape of burger icon bars */
@@ -151,6 +151,9 @@ nav > a {
     width: 5rem;
   }
   .logoDiv {
-    width: 5rem;
+    margin-left: 1vw;
+    margin-bottom: 1vh;
+    width: rem;
+    height: 3rem;
   }
 }
