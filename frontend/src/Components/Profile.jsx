@@ -15,19 +15,15 @@ const Profile = (props) => {
         setPostsProfile(props.posts.filter(post => post.userId === props.match.params.id))
     }, [props.match.params.id])
 
-
     return (
         <>
         <div className="profilebanner mb-5">
             <div className="container d-flex flex-column align-items-center margin-negativo">
                 <div className="profileInfoImg rounded-circle" style={{backgroundImage: `url(${profilePicture})`}}>
-                    
                 </div>
                 <div className="h1">{name} {lastName}</div>
             </div>
-
         </div>
-       
         <div className="container mt-5 p-5" >
             <div className="row p-5">
                 {postsProfile.map(post => <div className="col-12 text-center"><PostsProfile post={post} /></div>)}

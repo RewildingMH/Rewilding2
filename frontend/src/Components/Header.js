@@ -79,9 +79,9 @@ const Header = (props) => {
                         <p>PETITIONS</p>
                     </NavLink>
                     {links}
-                    {/* <BurgerMenu /> */}
                 </div>
             </nav>
+            <BurgerMenu props={props} />
         </>
     )
 
