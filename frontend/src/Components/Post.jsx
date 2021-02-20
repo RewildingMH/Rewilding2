@@ -147,7 +147,7 @@ const Post = ({
 
   const sendComment = (e) => {
     if (loggedUser) {
-      if (comment.comment.trim() === "") {
+      if (!comment.comment || comment.comment.trim() === "") {
         Swal.fire({
           title: "Oops!",
           text: "Comment can't be empty!",
@@ -162,6 +162,7 @@ const Post = ({
       }
       e.preventDefault();
       newComment(comment);
+      setComment({});
       successToast.fire({
         icon: "success",
         title: "Comment posted",
@@ -406,7 +407,10 @@ const Post = ({
           <span
             onClick={() => setVisibleComment(!visibleComment)}
             style={{ cursor: "pointer" }}
-          >{`View${visibleComment ? " less" : " more"}`}</span>
+          >
+            {console.log(post.comments)}
+            {`View${visibleComment ? " less" : " more"}`}
+          </span>
         </div>
         <div className="inputContainer">
           <input
@@ -415,6 +419,11 @@ const Post = ({
             placeholder="Enter comment..."
             onChange={captureChange}
             autoComplete="off"
+            disabled={loggedUser ? false : true}
+            class="commentInput"
+            value={
+              !comment.comment || comment.comment === "" ? "" : comment.comment
+            }
           />
           <div className="sendButton">
             <AiOutlineSend

@@ -51,7 +51,11 @@ const Community = (props) => {
                   <div className="card">
                     <div
                       className="communityImg card-img-top"
-                      style={{ backgroundImage: `url(${picture})` }}
+                      style={{
+                        backgroundImage: `url(${picture})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
                     >
                       <h5 className="cardTitle">{title}</h5>
                     </div>
@@ -90,7 +94,11 @@ const Community = (props) => {
                     <div className="card">
                       <div
                         className="communityImg card-img-top"
-                        style={{ backgroundImage: `url(${picture})` }}
+                        style={{
+                          backgroundImage: `url(${picture})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
                       >
                         <h5 className="card-title cardTitle">
                           {title.length > 30
