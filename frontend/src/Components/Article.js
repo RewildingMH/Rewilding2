@@ -44,17 +44,21 @@ const Article = (props) =>{
                       <div className="authorAlignArticle">
                         <img src={article.author[0].profilePicture} className="authorArticlePicture rounded-circle"></img>
                         <p className="authorArticleName">{`Author: ${article.author[0].name}.`}</p>
+                        <p className="articleVisits">{`Visits: ${article.visits}`}</p>
                       </div>
-                      <BiComment className="commentIconArticle" href='boxId' />
+                      <a href="boxId"><BiComment className="commentIconArticle" /></a>
                     </div>
                   </div>
                 </div>
                 <div className="articleDescription">
                   <p className="textArticleDescription">{article.descripcion}</p>
+                  <div id="#boxId" className="commentArticleContainerMain my-4">
+                  <div>
+                    <CommentArticle article={article} articlecomment={article.comments}/>
+                  </div>
                 </div>
-                <div id='boxId'>
-                  <CommentArticle article={article} articlecomment={article.comments}/>
                 </div>
+                
               </div>
             </div>
           </div>

@@ -1204,6 +1204,13 @@ textarea {
   padding-bottom: 1vh;
 }
 
+.articleVisits{
+  margin-top: 3.5vh;
+  margin-left: 1vw;
+  color: whitesmoke;
+  text-align: center;
+}
+
 .authorArticlePicture{
   margin-left: 0.5vw;
   padding: 1vh;
@@ -1223,12 +1230,54 @@ textarea {
   padding-top: 3vh;
   width: 100%;
   display: flex;
-  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
 }
 
 .textArticleDescription{
   width: 60vw;
   color: whitesmoke;
+}
+
+.commentArticleContainerMain{
+  width: 60vw;
+  border-radius: 2vw;
+}
+
+.commentsMapArticleContainer{
+  background-color: #3e4444;
+  color: white;
+  border-radius: 2vw;
+}
+
+.centerArticleImage{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.textArticleComment{
+  color: black;
+  margin-top: 3.4vh;
+  width: 30vw;
+}
+
+.articleCommentContainer{
+  background: rgba(201, 192, 192, 0.781);
+  border-radius: 1vh;
+  width: 40vw;
+  height: 13vh;
+  margin-top: 0.4vh;
+}
+
+.nameArticleComment{
+  padding-left: 2.5vw;
+  padding-top: 1vh;
+  height: 3vh;
+}
+
+.commentArticleIcons{
+  margin-top: 1vh;
 }
 
 /* Loader */
