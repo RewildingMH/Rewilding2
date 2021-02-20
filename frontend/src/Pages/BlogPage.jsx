@@ -18,6 +18,9 @@ const BlogPage = (props) => {
     setPreloader(false)
  }
 
+const addVisit = e => {
+  props.sendAddVisit(e.target.id)
+}
   return (
     <>
     {preloader?
@@ -41,15 +44,15 @@ const BlogPage = (props) => {
                   <div className="col-7 bg-light p-4 d-flex justify-content-center ">
                     <div>
                       <p className="categoryBlog">{props.articlePort[0].createdAt.slice(0, 10)} | {props.articlePort[0].articleCategory}</p>
-                      <Link to={`/article/${props.articlePort[0]._id}`} className="text-decoration-none ">
-                        <p className="h1 tituloBlog">{props.articlePort[0].title}</p>
+                      <Link to={`/article/${props.articlePort[0]._id}`} className="text-decoration-none"  onClick={addVisit}>
+                        <p id={props.articlePort[0]._id} className="h1 tituloBlog">{props.articlePort[0].title}</p>
                         <p className="descripcionBlog">{props.articlePort[0].descripcion.slice(0, 170)+"..."}</p>
                       </Link>
                     </div>
                   </div>
                   <div className="col-5 d-flex align-items-center">
-                    <Link to={`/article/${props.articlePort[0]._id}`} className="text-decoration-none ">
-                      <img src={props.articlePort[0].picture} className="img-fluid scale-img" />
+                    <Link to={`/article/${props.articlePort[0]._id}`} className="text-decoration-none"  onClick={addVisit}>
+                      <img id={props.articlePort[0]._id} src={props.articlePort[0].picture} className="img-fluid scale-img" />
                     </Link>
                   </div>
                 </div>
@@ -57,15 +60,15 @@ const BlogPage = (props) => {
               <div className="col-12 mt-3">
                 <div className="row">
                   <div className="col-5 d-flex align-items-center">
-                    <Link to={`/article/${props.articlePortMini[0]._id}`} className="text-decoration-none ">
-                      <img src={props.articlePortMini[0].picture} className="img-fluid scale-img" />
+                    <Link to={`/article/${props.articlePortMini[0]._id}`}  className="text-decoration-none" onClick={addVisit}>
+                      <img id={props.articlePortMini[0]._id} src={props.articlePortMini[0].picture} className="img-fluid scale-img" />
                     </Link>
                   </div>
                   <div className="col-7 bg-light p-4 d-flex justify-content-center ">
                     <div>
                       <p className="categoryBlog">{props.articlePortMini[0].createdAt.slice(0, 10)} | {props.articlePortMini[0].articleCategory}</p>
-                      <Link to={`/article/${props.articlePortMini[0]._id}`} className="text-decoration-none ">
-                        <p className="h1 tituloBlog">{props.articlePortMini[0].title}</p>
+                      <Link to={`/article/${props.articlePortMini[0]._id}`} className="text-decoration-none"  onClick={addVisit}>
+                        <p id={props.articlePortMini[0]._id} className="h1 tituloBlog">{props.articlePortMini[0].title}</p>
                         <p className="descripcionBlog">{props.articlePortMini[0].descripcion.slice(0, 170)+"..."}</p>
                       </Link>
                     </div>
@@ -78,8 +81,7 @@ const BlogPage = (props) => {
                     <h2>Last Articles Created</h2>
                 </div>
           <div className="container">
-              <div className="row">
-                
+              <div className="row">     
                 <div className="articlesList">
                     {props.articlesList.map(lastArticle => <LastArticles key={lastArticle._id} lastArticle={lastArticle}/>)}  
                 </div>
@@ -102,6 +104,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getArticles: articleActions.getArticles,
+  sendAddVisit: articleActions.addVisit
 }
 
 

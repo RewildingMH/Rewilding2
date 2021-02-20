@@ -105,7 +105,18 @@ const articleActions = {
           }
          
         }
-      }
+      },
+      addVisit: (artId) => {
+        return async (dispatch, getState) => {
+          try{
+            const response = await axios.post(`${API}/articles/visits`, { artId })
+            dispatch({ type: 'ADD_BLOG', payload: response.data.response })
+          }catch(error){
+            Swal.fire(error)
+          }
+         
+        }
+      },
 }
 
 export default articleActions

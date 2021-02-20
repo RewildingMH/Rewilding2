@@ -150,7 +150,33 @@ const articleController = {
         error
       })
     }
+  },
+  addVisit: async (req, res) => {
+    console.log(req.body.artId)
+    try {
+      const response = await Article.findOneAndUpdate(
+        { _id: req.body.artId },
+        {
+          $inc: {
+            visits: 1
+          },
+        },
+        { new: true }
+      )
+      console.log(response)
+      res.json({
+        success: true,
+        response,
+      })
+    } catch (error) {
+      console.log(error)
+      res.json({
+        success: false,
+        error
+      })
+    }
   }
+  
 } 
  
 

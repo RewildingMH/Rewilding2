@@ -15,7 +15,7 @@ const Profile = (props) => {
         setPostsProfile(props.posts.filter(post => post.userId === props.match.params.id))
     }, [props.match.params.id])
 
-    console.log(postsProfile)
+
     return (
         <>
         <div className="profilebanner mb-5">
