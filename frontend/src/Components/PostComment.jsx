@@ -117,6 +117,7 @@ const PostComment = ({
               placeholder={comment}
               onChange={captureNewComment}
               className="editCommentInput"
+              autoComplete="off"
             />
             <div
               className="sendComment"

@@ -4,6 +4,7 @@ import  Swal  from 'sweetalert2';
 
 const articleActions = {
     newArticle: (newArticle, file, token) => {
+      console.log(newArticle)
         return async (dispatch, getState) => {
           try{
             const form = new FormData()

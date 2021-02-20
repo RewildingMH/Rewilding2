@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { API } from '../../Components/Api'
-import Swal  from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 const postActions = {
   // Añadir posteo
   addPost: (post, file) => {
-    try{
+    try {
       const {
         text, // Texto del posteo
         token
@@ -26,31 +26,31 @@ const postActions = {
           type: 'ADD_POST', // el caso
           payload: response.data.response // y recibe la payload que obtiene luego de pegarle al endpoint
         })
-  
+
       }
-    }catch(error){
+    } catch (error) {
       Swal.fire(error)
     }
-    
+
   },
   // Traer todos los posteos
   getPosts: () => {
     return async (dispatch, getState) => {
-      try{
+      try {
         const response = await axios.get(`${API}/posts`)
         dispatch({
           type: 'GET_POSTS',
           payload: response.data.response
         })
-      }catch(error){
+      } catch (error) {
         Swal.fire(error)
       }
-     
+
     }
   },
   // Modificar un posteo
   submitPostModification: (newPost) => {
-    try{
+    try {
       const {
         postId, // ID del posteo
         editPost, // Texto modificado
@@ -75,14 +75,14 @@ const postActions = {
           payload: response.data.response
         })
       }
-    }catch(error){
+    } catch (error) {
       Swal.fire(error)
     }
-    
+
   },
   // Enviar un nuevo comentario
   newComment: newComment => {
-    try{
+    try {
       const {
         postId, // ID del posteo
         comment, // Comentario
@@ -100,13 +100,13 @@ const postActions = {
           payload: response.data.response
         })
       }
-    }catch(error){
+    } catch (error) {
       Swal.fire(error)
-    } 
+    }
   },
   // Likear un posteo
   sendLikePost: likePost => {
-    try{
+    try {
       const {
         postId, // ID del posteo
         token
@@ -123,13 +123,13 @@ const postActions = {
           payload: response.data.response
         })
       }
-    }catch(error){
+    } catch (error) {
       Swal.fire(error)
     }
   },
   // Dislikear un posteo
   sendDislikePost: (dislikePost) => {
-    try{
+    try {
       const { postId, token } = dislikePost
       return async (dispatch, getState) => {
         const response = await axios.delete(`${API}/posts/dislike/${postId}`,
@@ -143,13 +143,13 @@ const postActions = {
           payload: response.data.response
         })
       }
-    }catch(error){
+    } catch (error) {
       Swal.fire(error)
     }
   },
   // Eliminar un posteo
   removePost: remove => {
-    try{
+    try {
       const { postId, token } = remove
       return async (dispatch, getState) => {
         const response = await axios.delete(`${API}/posts/${postId}`,
@@ -161,13 +161,13 @@ const postActions = {
         )
         dispatch({ type: 'GET_POSTS', payload: response.data.response })
       }
-    }catch(error){
+    } catch (error) {
       Swal.fire(error)
-    }  
+    }
   },
   // Likear un comentario de un posteo
   likeCommentPost: (ids) => {
-    try{
+    try {
       const { idComment, postId, token } = ids
       return async (dispatch, getState) => {
         const response = await axios.post(`${API}/posts/likeComments`, { idComment, postId },
@@ -178,17 +178,17 @@ const postActions = {
           })
         dispatch({ type: 'UPDATE_POST', payload: response.data.response })
       }
-    }catch(error){
+    } catch (error) {
       Swal.fire(error)
     }
-    
+
   },
   // Dislikear un comentario de un posteo
   dislikeCommentPost: (ids) => {
-    try{
+    try {
       const { idComment, postId, token } = ids
       return async (dispatch, getState) => {
-        const response = await axios.delete(`${API}posts/dislikeComments/${idComment}/${postId}`,
+        const response = await axios.delete(`${API}/posts/dislikeComments/${idComment}/${postId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -196,14 +196,14 @@ const postActions = {
           })
         dispatch({ type: 'UPDATE_POST', payload: response.data.response })
       }
-    }catch(error){
+    } catch (error) {
       Swal.fire(error)
     }
-  
+
   },
   // Eliminar un comentario
   deleteCommentPost: commentDelete => {
-    try{
+    try {
       const { postId, idComment, token } = commentDelete
       return async (dispatch, getState) => {
         const response = await axios.delete(`${API}/posts/comments/${postId}/${idComment}`, {
@@ -213,13 +213,13 @@ const postActions = {
         })
         dispatch({ type: 'UPDATE_POST', payload: response.data.response })
       }
-    }catch(error){
+    } catch (error) {
       Swal.fire(error)
-    }  
+    }
   },
   // Editar un comentario
   editCommentPost: (modifiedComment) => {
-    try{
+    try {
       const { idComment, postId, newCommentEdit, token } = modifiedComment
       return async (dispatch, getState) => {
         const response = await axios.put(`${API}/posts/comments`, { idComment, postId, newCommentEdit },
@@ -230,10 +230,10 @@ const postActions = {
           })
         dispatch({ type: 'UPDATE_POST', payload: response.data.response })
       }
-    }catch(error){
+    } catch (error) {
       Swal.fire(error)
     }
-    }  
+  }
 }
 
 export default postActions

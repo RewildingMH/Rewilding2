@@ -804,6 +804,38 @@ h6 {
   height: 100%;
 }
 
+.topSectionAdmin{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
+.whiteAdminText{
+  padding: 1vh;
+  color: whitesmoke;
+}
+
+.adminInputs{
+  width: 20vw;
+}
+
+.adminButton{
+  width: 6vw;
+}
+
+.positionArticleAdmin{
+  padding: 1vh;
+  display: flex;
+  justify-content: center;
+}
+
+.sectionAdminBlog{
+  display: flex;
+  justify-content: center;
+}
+
 .adminBanner {
   width: 100%;
   height: 70vh;
@@ -1128,9 +1160,17 @@ textarea {
   color: whitesmoke;
   padding-left: 0.3vw;
   padding-top: 1vw;
+  font-size: 3vh;
 }
 .titleArticle {
   padding-top: 3vh;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.authorArticleName{
+  margin-top: 3.5vh;
+  margin-left: 1vw;
   color: whitesmoke;
   text-align: center;
 }
@@ -1147,10 +1187,13 @@ textarea {
   justify-items: center;
 }
 
-.bottomArticle {
+.authorContainerArticle {
   display: flex;
-  justify-items: center;
+  justify-content: space-between;
   color: whitesmoke;
+  margin-top: 1vh;
+  border-top: 1px solid rgb(68, 59, 59);
+  border-bottom: 1px solid rgb(68, 59, 59);
 }
 
 .containerArticlePic{
@@ -1159,14 +1202,35 @@ textarea {
   flex-direction: column;
 }
 .picArticle{
-  width: 60vw
+  width: 60vw;
+  padding-bottom: 1vh;
+}
+
+.authorArticlePicture{
+  margin-left: 0.5vw;
+  padding: 1vh;
+  width: 55px;
+}
+
+.commentIconArticle{
+  width: 2.7vw;
+  height: 10vh;
+}
+
+.authorAlignArticle{
+  display: flex;
+}
+
+.articleDescription{
+  padding-top: 3vh;
+  width: 100%;
+  display: flex;
+  justify-content: center; 
 }
 
 .textArticleDescription{
+  width: 60vw;
   color: whitesmoke;
-  width: 80vw;
-  padding-left: 7vw;
-  padding-top: 1vh;
 }
 
 /* Loader */

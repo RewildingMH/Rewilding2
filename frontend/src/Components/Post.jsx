@@ -147,6 +147,19 @@ const Post = ({
 
   const sendComment = (e) => {
     if (loggedUser) {
+      if (comment.comment.trim() === "") {
+        Swal.fire({
+          title: "Oops!",
+          text: "Comment can't be empty!",
+          icon: "error",
+          confirmButtonColor: "#c1866a",
+          confirmButtonText: "Ok!",
+          background: "#4b98b7",
+          iconColor: "#ec8787",
+          backdrop: "rgba(80, 80, 80, 0.3)",
+        });
+        return;
+      }
       e.preventDefault();
       newComment(comment);
       successToast.fire({
@@ -254,7 +267,7 @@ const Post = ({
                 onClick={() =>
                   Swal.fire({
                     title: "Oops!",
-                    text: "You must be logged in to sign this petition!",
+                    text: "You must be logged in!",
                     icon: "warning",
                     confirmButtonColor: "#c1866a",
                     confirmButtonText: "Log me in!",
@@ -304,6 +317,7 @@ const Post = ({
               onChange={capturePostModification}
               class="postInputEdit"
               placeholder={post.text.slice(0, 30) + "..."}
+              autoComplete="off"
             ></input>
             <input
               type="file"
@@ -342,7 +356,7 @@ const Post = ({
             style={{
               width: "50rem",
               height: "30rem",
-              backgroundImage: `url(${pathImage})`,
+              backgroundImage: `url(${post.picture})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -400,6 +414,7 @@ const Post = ({
             type="text"
             placeholder="Enter comment..."
             onChange={captureChange}
+            autoComplete="off"
           />
           <div className="sendButton">
             <AiOutlineSend
