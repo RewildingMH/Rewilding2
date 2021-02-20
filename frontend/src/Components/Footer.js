@@ -1,8 +1,7 @@
 const Footer = () => {
     return (
-        <div className="footerDiv sticky-bottom">
+        <div className="footerDiv">
             <p>©Rewilding International 2021</p>
-
         </div>
      
  )

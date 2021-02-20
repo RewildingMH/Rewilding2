@@ -2,17 +2,20 @@ import React, {useEffect, useState} from 'react'
 import { connect } from "react-redux";
 import profileActions from '../redux/actions/profileActions';
 import petitionsActions from './../redux/actions/petitionsActions';
-import { ProfilePetitios } from './ProfilePetitios';
+import { PostsProfile } from './PostsProfile';
+import { ProfilePetitions } from './ProfilePetitions';
 const Profile = (props) => {
     const [petitionsProfile, setPetitionsProfile ] = useState([])
-    const {lastName, name, profilePicture, username} = props.profileUser 
+    const [postsProfile, setPostsProfile] = useState([])
+    const {lastName, name, profilePicture} = props.profileUser 
     useEffect(() => {
         props.getUsersById(props.match.params.id)
         props.getPetitions()
         setPetitionsProfile(props.petitions.filter(petition => petition.author[0].idUser === props.match.params.id))
+        setPostsProfile(props.posts.filter(post => post.userId === props.match.params.id))
     }, [props.match.params.id])
 
-    console.log(petitionsProfile)
+    console.log(postsProfile)
     return (
         <>
         <div className="profilebanner">
@@ -24,8 +27,12 @@ const Profile = (props) => {
             </div>
 
         </div>
-        <div className="container">               
-            {petitionsProfile.map(petition => <div className="petitionsContent"><ProfilePetitios petition={petition} /></div>)}
+       
+        <div className="profileContainer container">
+            <div className="petandblogs">
+                {postsProfile.map(post => <div><PostsProfile post={post} /></div>)}
+                {petitionsProfile.map(petition => <div className="petitionsContent"><ProfilePetitions petition={petition} /></div>)}
+            </div>
         </div> 
         </>
     )
@@ -34,7 +41,8 @@ const Profile = (props) => {
 const mapStateToProps = (state) => {
     return {
         profileUser: state.profileR.profileUser,
-        petitions: state.petitionsR.allPetitions
+        petitions: state.petitionsR.allPetitions,
+        posts: state.postR.allPosts
         };
     };
 
