@@ -16,7 +16,6 @@ const captureEmail = (e) => {
         {...email,
         [name]: value})
 }
-console.log(user)
 const sendEmail = e => {
     e.preventDefault()
     props.recoverPassword(email)

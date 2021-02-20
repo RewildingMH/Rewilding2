@@ -39,6 +39,7 @@ router.route('/blog')
   .put(blogController.editArticle)
 router.route('/blog/delete')
   .put(blogController.deleteArticle)
+  router.route('/articles/visits').post(blogController.addVisit)
 router.route('/article/comment')
   .post(passport.authenticate('jwt', { session: false }), blogController.commentArticle)
   .put(blogController.editComment)
@@ -46,7 +47,7 @@ router.route('/article/comment/:artId/:commentId')
   .delete(blogController.deleteComment)
 router.route('/petitions/delete/:reasonId/:petId')
   .delete(passport.authenticate('jwt', { session: false }), userController.deleteReason)
-
+//POSTEOS Y PETICIONES
 router.route('/petitions/modifyReason')
   .put(passport.authenticate('jwt', { session: false }), userController.modifyReason)
 
