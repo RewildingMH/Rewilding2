@@ -11,11 +11,9 @@ const postController = {
 
       if (req.files) {
         var file = req.files.file
-        console.log(req.files)
 
         file.mv(path.join(__dirname, '../frontend/public/assets/postsPictures/' + file.md5), error => {
           if (error) {
-            console.log(error)
             return res.json({ response: error })
           }
         })
@@ -133,10 +131,7 @@ const postController = {
         success: true,
         response
       })
-
-
     } catch (error) {
-      console.log(error)
       res.json({
         success: false,
         error
@@ -163,7 +158,7 @@ const postController = {
             $set: { text: editPost }
           },
           { new: true })
-        //SI EL EDIT ES SOLO CON FOTOP, ENTRA ACÁ
+        //SI EL EDIT ES SOLO CON FOTO, ENTRA ACÁ
       } else if (req.files && editPost === "undefined") {
         var modifiedPost = await Post.findOneAndUpdate({ _id: postId },
           {
@@ -183,7 +178,6 @@ const postController = {
         response: modifiedPost
       })
     } catch (error) {
-      console.log(error)
       res.json({
         success: true,
         error
@@ -201,7 +195,6 @@ const postController = {
         response
       })
     } catch (error) {
-      console.log(error)
       res.json({
         success: false,
         error

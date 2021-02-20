@@ -2,6 +2,8 @@ import GoogleLogin from 'react-google-login'
 import { connect } from 'react-redux'
 import authActions from "../redux/actions/authActions"
 import { useEffect, useState } from 'react'
+import Compressor from "compressorjs";
+import Swal from "sweetalert2";
 
 const Register = (props) => {
     const responseGoogle = (response) => {
@@ -27,22 +29,39 @@ const Register = (props) => {
     const [pathImage, setPathImage] = useState('/assets/avatar.png')
     const [file, setFile] = useState()
     //Funcion para previsualizar imagenes
-    const onFileChange = e => {
+    
+  const errorAlert = (type, title, text) => {
+    Swal.fire({
+      icon: type,
+      title: title,
+      text: text,
+      confirmButtonText: "Ok",
+    });
+  };
+    const onFileChange = (e) => {
         if (e.target.files && e.target.files.length > 0) {
-            const file = e.target.files[0]
-            if (file.type.includes('image')) {
-                const reader = new FileReader()
-                reader.readAsDataURL(file)
-
+          const file = e.target.files[0];
+          if (file.type.includes("image")) {
+            const compressedFile = new Compressor(file, {
+              quality: 0.5,
+              success(result) {
+                const reader = new FileReader();
+                reader.readAsDataURL(result);
                 reader.onload = function load() {
-                    setPathImage(reader.result)
-                }
-                setFile(file)
-            } else {
-                console.log('Something went wrong')
-            }
+                  setPathImage(reader.result);
+                };
+              },
+            });
+            setFile(compressedFile);
+          } else {
+            errorAlert(
+              "error",
+              "Something went wrong!",
+              "Files must be of an image type"
+            );
+          }
         }
-    }
+      };
     //Funcion para enviar la informacion del formulario de registro a la db
     const sendUser = async e => {
         e.preventDefault()
@@ -59,7 +78,7 @@ const Register = (props) => {
         if (respuesta && !respuesta.success) {
             setErrores(respuesta.errores)
         } else {
-            alert("You have Registered in Mytinerary")
+            alert("You have Registered in Rewilding!")
         }
     }
 
@@ -109,7 +128,7 @@ const Register = (props) => {
 
                     })}
                 </div>
-                <input type="password" placeholder="Password for Mytinerary" name="password"
+                <input type="password" placeholder="Password for Rewilding" name="password"
                     onChange={(e) => handleChange(e)} className="admin_input" required />
                 <div className="d-flex justify-content-center">
                     <p>The password must be 6-8 characters long.</p>

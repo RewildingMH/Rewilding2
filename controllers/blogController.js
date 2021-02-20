@@ -20,7 +20,6 @@ const articleController = {
     })
    file.mv(path.join(__dirname, '../frontend/public/assets/articlePics/'+ file.name), error=>{
      if(error){
-         console.log(error)
          return res.json({response:error})
      }})
    articleSave.save()
@@ -83,12 +82,13 @@ const articleController = {
       try{
       const {comment, artId} = req.body
       const {profilePicture, name} = req.user
+      const userId = req.user._id
       
      const response = await Article.findOneAndUpdate(
         {_id: artId}, 
         {
         $push:{
-          comments:{ profilePicture, comment, name}
+          comments:{ profilePicture, comment, name, userId}
         }
       },
         {new:true}
@@ -117,7 +117,6 @@ const articleController = {
           }
         },
         { new: true })
-        console.log(response)
         res.json({
           success: true,
           response
@@ -130,8 +129,7 @@ const articleController = {
       }
   },
   editComment: async (req, res) => {
-    try {
-      console.log(req.body)
+    try {   
       const { commentId, artId, editComment } = req.body
       const response = await Article.findOneAndUpdate(
         { _id: artId, 'comments._id': commentId },
@@ -152,7 +150,33 @@ const articleController = {
         error
       })
     }
+  },
+  addVisit: async (req, res) => {
+    console.log(req.body.artId)
+    try {
+      const response = await Article.findOneAndUpdate(
+        { _id: req.body.artId },
+        {
+          $inc: {
+            visits: 1
+          },
+        },
+        { new: true }
+      )
+      console.log(response)
+      res.json({
+        success: true,
+        response,
+      })
+    } catch (error) {
+      console.log(error)
+      res.json({
+        success: false,
+        error
+      })
+    }
   }
+  
 } 
  
 

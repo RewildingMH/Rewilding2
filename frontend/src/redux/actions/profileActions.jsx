@@ -1,14 +1,20 @@
 import axios from 'axios'
+import { API } from './../../Components/Api';
+import  {Swal}  from 'sweetalert2';
 
 const profileActions = {
 
     getUsersById: (id) => {
         return async (dispatch, getState) => {
-        const response = await axios.get(`http://localhost:4000/api/profile/${id}`)
-        dispatch({
-            type: 'GET_PROFILE',
-            payload: response.data.response
-        })
+            try{
+                const response = await axios.get(`${API}/profile/${id}`)
+                dispatch({
+                    type: 'GET_PROFILE',
+                    payload: response.data.response
+                })
+            }catch(error){
+                Swal.fire(error)
+            }    
         }
     },
 

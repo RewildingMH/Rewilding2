@@ -7,7 +7,8 @@ const path = require('path')
 
 const userController = {
     signUp: async (req, res) => {
-
+        try{
+            
         const errores = []
         const { name, lastName, username, password} = req.body
         const file = req.files.file
@@ -16,16 +17,15 @@ const userController = {
             let error = [{ path: ['usernameExist'] }]
             res.json({ success: false, errores: error })
         }
-        file.mv(path.join(__dirname, '../frontend/public/assets/profilePictures/' + file.name), error => {
+        file.mv(path.join(__dirname, '../frontend/public/assets/profilePictures/' + file.md5), error => {
             if (error) {
-
                 return res.json({ response: error })
             }
         }
         )
         if (errores.length === 0) {
             const passwordHasheado = bcryptjs.hashSync(password, 10)
-            const profilePictureUbicacion = `/assets/profilePictures/${file.name}`
+            const profilePictureUbicacion = `/assets/profilePictures/${file.md5}`
             var newUser = new User({
                 name, lastName, username, profilePicture: profilePictureUbicacion, password: passwordHasheado, rol: "personal account"
             })
@@ -43,9 +43,14 @@ const userController = {
                 userId: newUserSaved._id
             }
         })
+        }catch(error){
+            res.json({success: false, error})
+        }
+
     },
     signGoogle: async (req, res) => {
-        const { givenName, familyName, email, googleId, imageUrl } = req.body
+        try{
+            const { givenName, familyName, email, googleId, imageUrl } = req.body
         const userExists = await User.findOne({ username: email })
         if (userExists) {
             var token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
@@ -78,9 +83,13 @@ const userController = {
                 }
             })
         }
+        }catch(error){
+            res.json({success: false, error})
+        }
 
     },
     signIn: async (req, res) => {
+       try{
         const { username, password } = req.body
         const userExists = await User.findOne({ username: username })
         if (!userExists) {
@@ -102,8 +111,12 @@ const userController = {
                     userId: userExists._id
                 }
             })
+       }catch(error){
+           res.json({success: false, error})
+       }
     },
     logFromLS: (req, res) => {
+      try{
         res.json({
             success: true, response: {
                 token: req.body.token,
@@ -115,6 +128,9 @@ const userController = {
 
             }
         })
+      }catch(error){
+          res.json({success: false, error})
+      }
     },
     likeReason: async (req, res) => {
 

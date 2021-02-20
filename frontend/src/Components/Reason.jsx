@@ -76,7 +76,7 @@ const Reason = ({
               width: "100px",
               height: "100px",
             }}
-          ></div>
+          className="userPicPetitions"></div>
           <h5>{name}</h5>
           {visible ? (
             <>

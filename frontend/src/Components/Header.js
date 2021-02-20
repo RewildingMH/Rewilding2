@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import React, { useState } from 'react'
 import authActions from '../redux/actions/authActions'
 import logo from '../assets/logoNuevo.png'
-import { Dropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { AiOutlineLogout } from "react-icons/ai";
+import { GoSignOut } from "react-icons/go";
+import BurgerMenu from "./BurgerMenu";
+import { Nav } from "react-bootstrap";
 
 
 
@@ -33,11 +34,12 @@ const Header = (props) => {
                 </NavLink>
                 <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                     <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
+                    <h6>Hi! {props.loggedUser.name}</h6>
                 </NavLink>
-                <div className="userHeaderNamendLogOut">
-                    <p>Hi! {props.loggedUser.name}</p>
-                    <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
-                </div>
+                <NavLink to="/"> 
+                    <GoSignOut className="logOut" onClick={() => props.logoutUser()} />
+                </NavLink>
+                
             </>
         } else {
             var links =
@@ -47,11 +49,11 @@ const Header = (props) => {
                     </NavLink>
                     <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
+                        <h6>Hi! {props.loggedUser.name}</h6>
                     </NavLink>
-                    <div className="userHeaderNamendLogOut">
-                        <p>Hi! {props.loggedUser.name}</p>
-                        <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()}/>
-                    </div>
+                    <NavLink to="/"> 
+                        <GoSignOut className="logOut" onClick={() => props.logoutUser()} />
+                    </NavLink>
                 </>
         }
 
@@ -80,6 +82,7 @@ const Header = (props) => {
                     {links}
                 </div>
             </nav>
+            <BurgerMenu props={props} />
         </>
     )
 

@@ -4,6 +4,8 @@ import petitionsActions from "../redux/actions/petitionsActions";
 import Reasons from "./Reasons";
 import Swal from "sweetalert2";
 import banner from "../assets/bannerPetitionInd.png"
+import { Link } from "react-router-dom";
+import { FaArrowCircleLeft } from 'react-icons/fa';
 
 const Petition = (props) => {
   const id = props.match.params.id; // id en la ruta del navegador
@@ -83,43 +85,48 @@ const Petition = (props) => {
               backgroundPosition: "center",
             }}
           ></div>
-          <h2>Petition: {petition[0].title}</h2>
+          <div className="petitionIndiv">
+            <h1>{petition[0].title}</h1>
 
-          <div
-            style={{
-              backgroundImage: `url(${petition[0].picture})`,
-              width: "80vw",
-              height: "50vh",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          ></div>
-          <div>{petition[0].desc}</div>
-          <p>
-            {petition[0].signatures.length >= petition[0].goal ? (
-              <div>
-                <p>probando</p>
-              </div>
-            ) : petition[0].signatures.length === 1 ? (
-              petition[0].signatures.length + " person has "
-            ) : (
-                  petition[0].signatures.length + " persons have "
-                )}
+            <div
+              style={{
+                backgroundImage: `url(${petition[0].picture})`,
+                width: "60vw",
+                height: "50vh",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+            </div>
+            <div className="description">{petition[0].desc}</div>
+            <div>
+              {petition[0].signatures.length >= petition[0].goal ? (
+                <div>
+                  <p>probando</p>
+                </div>
+              ) : petition[0].signatures.length === 1 ? (
+                petition[0].signatures.length + " person has "
+              ) : (
+                    petition[0].signatures.length + " persons have "
+                  )}
             already signed this petition
-          </p>
+          </div>
 
-          {petition[0].signatures.length < petition[0].goal && (
-            <>
-              <input
-                type="text"
-                onChange={readInput}
-                placeholder="I'm signing because ... (optional) "
-              />
-              <button onClick={signPetition}>Sign petition</button>
-            </>
-          )}
-          <h4>Signatures</h4>
-          <Reasons reasons={petition[0].reasons} petId={petition[0]._id} />
+            {petition[0].signatures.length < petition[0].goal && (
+              <div className="inputPetitions">
+                <input
+                  type="text"
+                  onChange={readInput}
+                  placeholder="I'm signing because ... (optional) "
+                />
+                <button onClick={signPetition} className="btnPetition">Sign petition</button>
+              </div>
+            )}
+            <h4>Signs</h4>
+            <Reasons reasons={petition[0].reasons} petId={petition[0]._id} />
+          </div>
+          <Link to="/petitions" className="returnPet"><FaArrowCircleLeft></FaArrowCircleLeft><p>Return to Petitions</p></Link>
+
         </>
       )}
     </div>

@@ -8,12 +8,15 @@ const postController = require('../controllers/postController')
 const petitionController = require('../controllers/petitionController')
 const blogController = require('../controllers/blogController')
 const profileController = require('../controllers/profileController')
+const emailController = require('../controllers/emailController')
+
 //middleware
 const validator = require('../controllers/validator')
 const passport = require('passport')
 require('../config/passport')
 
 //Routes
+
 //Sign Up Sign with Google Sign In 
 router.route('/user/signup')
   .post(validator.validNewAccount, userController.signUp)
@@ -36,6 +39,7 @@ router.route('/blog')
   .put(blogController.editArticle)
 router.route('/blog/delete')
   .put(blogController.deleteArticle)
+  router.route('/articles/visits').post(blogController.addVisit)
 router.route('/article/comment')
   .post(passport.authenticate('jwt', { session: false }), blogController.commentArticle)
   .put(blogController.editComment)
@@ -43,7 +47,7 @@ router.route('/article/comment/:artId/:commentId')
   .delete(blogController.deleteComment)
 router.route('/petitions/delete/:reasonId/:petId')
   .delete(passport.authenticate('jwt', { session: false }), userController.deleteReason)
-
+//POSTEOS Y PETICIONES
 router.route('/petitions/modifyReason')
   .put(passport.authenticate('jwt', { session: false }), userController.modifyReason)
 
@@ -71,6 +75,9 @@ router.route('/posts/comments/:postId/:idComment').delete(passport.authenticate(
 
 /* Routes Profile */ 
 router.route('/profile/:id').get(profileController.getUserId)
+
+router.route('/password/').post(emailController.recoverPasword)
+
 
 module.exports = router
 
