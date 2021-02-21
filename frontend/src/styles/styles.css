@@ -600,20 +600,147 @@ nav a {
 .footerDiv {
   width: 100%;
   height: 15vh;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
   color: aliceblue;
-  background-color: #256728;
+  background-color: rgb(46, 46, 46);
+}
+ .logoRew {
+   margin-left: 15vw;
+ }
+
+.findUs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.findUs ul {
+  margin-top: 3vh;
+}
+
+.findUs a {
+  text-decoration: none;
+  color: aliceblue;
+}
+.findUs a:hover {
+  color: #c1946a;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  height: 4vh;
+  width: 20vw;
+  justify-content: space-evenly;
+}
+
+.social img {
+  width: 2vw;
+}
+
+@media (max-width:425px) {
+  .footerDiv {
+    height: 11vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .social {
+    height: 2vh;
+  }
+  .findUs {
+    width: 100%
+  }
+  .findUs ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .social img {
+    width: 4vw;
+  }
+  .logoRew {
+    margin-bottom: 1vh;
+  }
+}
+
+@media(max-width:770px) {
+  .footerDiv {
+    height: 11vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .social {
+    height: 2vh;
+  }
+  .findUs {
+    width: 100%
+  }
+  .findUs ul {
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .social img {
+    width: 4vw;
+  }
+  .logoRew {
+    margin-bottom: 1vh;
+  }
+}
+@media(max-width:1024px) {
+  .footerDiv {
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .social {
+    height: 2vh;
+  }
+  .findUs {
+    width: 100%
+  }
+  .findUs ul {
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .social img {
+    width: 4vw;
+  }
+  .logoRew {
+    margin-bottom: 1vh;
+  }
+}
+
+@media(max-width:1440px) {
+  .footerDiv {
+    height: 10vh;
+  }
+  .findUs li {
+    margin-bottom: 1vh;
+  }
 }
 
 /* login */
+
+.logInBanner {
+  width: 100%;
+  height: 70vh;
+}
 
 .loginDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 70vh;
   width: 100%;
   margin-top: 5vh;
+  margin-bottom: -5vh;
 }
 
 .textMail {
@@ -651,7 +778,16 @@ nav a {
   background-color: #4c6b2b;
   color: rgb(253, 248, 241);
   border: none;
-  border-radius: 20px;
+  transition: 0.3s;
+  border-radius: 10px;
+  margin: 2vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
+.btnLog:hover {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-weight: bold;
 }
 
 .containerLog input {
@@ -675,6 +811,10 @@ nav a {
   color: rgb(0, 0, 0);
 }
 
+.login_input {
+  width: 25vw;
+}
+
 .loginDiv h1 {
   margin-bottom: 3vh;
 }
@@ -693,6 +833,9 @@ nav a {
 
 .registerDiv {
   margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .registerDiv input {
@@ -703,6 +846,96 @@ nav a {
 
 .registerDiv h1 {
   margin-bottom: 3vh;
+}
+
+.btnReg {
+  width: 10vw;
+  height: 5vh;
+  background-color: #1a1a1a;
+  color: rgb(253, 248, 241);
+  border: none;
+  transition: 0.3s;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
+.btnReg:hover {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+@media(max-width:425px) {
+  .logInBanner {
+    height: 30vh !important;
+  }
+  .containerLog {
+    width: 95% !important;
+  }
+
+  .loginDiv h1 {
+    margin-top: -25vh;
+  }
+
+  .containerLog input {
+    width: 80%;
+    height: 5vh;
+  }
+
+  .containerLog .col-8 {
+    width: 100% !important;
+  }
+
+  .login_input {
+    width: 50vw;
+    margin-bottom: 1vh;
+  }
+
+  .btnReg, .btnLog {
+    width: 30vw;
+  }
+
+  .textLog p {
+    width: 100%;
+  }
+}
+
+@media(max-width: 1024px) {
+  .logInBanner {
+    height: 50vh;
+  }
+  .containerLog {
+    width: 95% !important;
+  }
+
+  .containerLog .col-8 {
+    width: 100% !important;
+  }
+
+  .loginDiv h1 {
+    margin-top: -25vh;
+  }
+  .containerLog input {
+    width: 100%;
+    height: 5vh;
+  }
+  .login_input {
+    width: 50vw;
+    margin-bottom: 1vh;
+  }
+  .btnReg, .btnLog {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 1800px) {
+  .containerLog .col-8 {
+    width: 100% !important;
+  }
+  .containerLog input {
+    width: 100%;
+    height: 5vh;
+  }
 }
 
 /* Petitions */
@@ -804,11 +1037,6 @@ nav a {
   height: 70vh;
 }
 
-/* .createPetitionContainer {
-  width: 100%;
-  height: 100%;
-} */
-
 .createPetitionContainer p {
   color: green;
   text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.109);
@@ -827,38 +1055,17 @@ h6 {
 
 /* inputs */
 
-.createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-  width: 40vw;
+.createPetition{
+  width: auto;
   height: 20vh;
   border-radius: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.createPetitionInput1nd2 input {
-  margin-top: 1vh;
+.createPetition input {
   box-shadow: 2px 2px 5px #999;
-  display: flex;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.123);
-  border: none;
-  outline: none;
-  border-bottom: 0.5vh solid green;
-  width: 100%;
-  height: 7vh;
-  padding: 1vw;
-  font-size: 1vw;
-  text-align: center;
-  border-radius: 1vw;
-  transition: 0.5s;
-  color: rgb(0, 0, 0);
-}
-
-.createPetitionInput3 textarea {
-  width: 100%;
-  resize: none;
-  margin-top: 1vh;
-  box-shadow: 2px 2px 5px #999;
-  display: flex;
-  justify-content: center;
   background: rgba(0, 0, 0, 0.123);
   border: none;
   outline: none;
@@ -866,72 +1073,27 @@ h6 {
   width: 100%;
   height: 10vh;
   padding: 1vw;
-  font-size: 1vw;
+  font-size: 15px;
   text-align: center;
   border-radius: 1vw;
   transition: 0.5s;
   color: rgb(0, 0, 0);
 }
 
-.createPetitionInput4 input {
-  margin-top: 1vh;
+.createPetition textarea {
+  resize: none;
   box-shadow: 2px 2px 5px #999;
-  display: flex;
-  justify-content: center;
   background: rgba(0, 0, 0, 0.123);
   border: none;
   outline: none;
   border-bottom: 0.5vh solid green;
+  padding: 1vw;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 1vw;
+  transition: 0.5s;
+  color: rgb(0, 0, 0);
   width: 100%;
-  height: 7vh;
-  padding: 1vw;
-  font-size: 1vw;
-  text-align: center;
-  border-radius: 1vw;
-  transition: 0.5s;
-  color: rgb(0, 0, 0);
-}
-
-
-.createPetitionInput5 input {
-  margin-top: 1vh;
-  margin-left: 9vw;
-  box-shadow: 2px 2px 5px #999;
-  display: flex;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.123);
-  border: none;
-  outline: none;
-  border-bottom: 0.5vh solid green;
-  width: 50%;
-  height: 7vh;
-  padding: 1vw;
-  font-size: 1vw;
-  text-align: center;
-  border-radius: 1vw;
-  transition: 0.5s;
-  color: rgb(0, 0, 0);
-}
-
-/* input 6 */
-
-.createPetitionInput6 {
-  width: 40vw;
-  height: 45vh;
-  border-radius: 2vh;
-}
-
-.createPetitionUploadFile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.createPetitionUploadFile label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .profile-pic-profile-submit {
@@ -958,109 +1120,19 @@ h6 {
   border-bottom: 2px solid green;
   padding: 0.8vw 2vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
-  margin-bottom: 5vw;
+
 }
 
 .createPetitionButton button:hover {
   background-color: black;
 }
 
-/* @media (max-width:320px) {
-  .createPetitionBanner {
-    height: 25vh;
-    background-position: -90px !important;
-  }
-  .createPetitionContainer {
-    width: 100% !important;
-  }
-  .backgroundCard {
-    width: 100%;
-  }
-
-  .backgroundCard div {
-    width: 100%;
-  }
-
-  .backgroundCard p {
-    margin:0%;
-  }
-
-  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-    width: 80%;
-    height: 13vh;
-    border-radius: 2vh;
-  }
-  .createPetitionInput3 textarea {
-    height: 6vh;
-  }
-
-  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
-    height: 5vh;
-  }
-
-  .createPetitionInput4 {
-    margin-top: 2vh;
-  }
-
-  .createPetitionInput5 input {
-    margin-left: 10vw;
-    width: 70vw;
-  }
-  
-  .createPetitionButton {
-    margin-top: -4vh;
-  }
-
-  .lastDiv {
-    height: 35vh;
-  }
-} */
-
 @media (max-width:425px) {
   .createPetitionBanner {
     height: 25vh;
     background-position: -90px !important;
   }
-  /* .createPetitionContainer {
-    width: 100% !important;
-  }
-  .backgroundCard {
-    width: 100%;
-  }
-
-  .backgroundCard div {
-    width: 100%;
-  }
-
-  .backgroundCard p {
-    margin:0%;
-  }
-
-  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-    width: 80%;
-    height: 13vh;
-    border-radius: 2vh;
-  }
-  .createPetitionInput3 textarea {
-    height: 6vh;
-  }
-
-  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
-    height: 5vh;
-  }
-
-  .createPetitionInput4 {
-    margin-top: 2vh;
-  }
-
-  .createPetitionInput5 input {
-    margin-left: 10vw;
-    width: 70vw;
-  }
-  
-  .lastDiv {
-    height: 35vh;
-  } */
+ 
 .createPetitionButton {
     margin-top: 10vh;
   }
@@ -1071,9 +1143,7 @@ h6 {
     height: 25vh;
     background-position: -90px;
   }
-  .createPetitionContainer {
-    width: 100%;
-  }
+  
   .backgroundCard {
     width: 100%;
   }
@@ -1086,8 +1156,7 @@ h6 {
     margin:0%;
   }
   .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-    width: 80%;
-    height: 13vh;
+  
     border-radius: 2vh;
   }
   .createPetitionInput3 textarea {
@@ -1098,13 +1167,8 @@ h6 {
     height: 5vh;
   }
 
-  .createPetitionInput4 {
-    margin-top: 2vh;
-  }
-
   .createPetitionInput5 input {
     margin-left: 10vw;
-    width: 70vw;
   }
 
   .lastDiv {
@@ -1120,42 +1184,7 @@ h6 {
   .createPetitionContainer {
     width: 100% !important;
   }
-  .backgroundCard {
-    width: 100%;
-  }
-
-  .backgroundCard div {
-    width: 100%;
-  }
-
-  .backgroundCard p {
-    margin:0%;
-  }
-  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-    width: 80%;
-    height: 13vh;
-    border-radius: 2vh;
-  }
-  .createPetitionInput3 textarea {
-    height: 6vh;
-  }
-
-  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
-    height: 5vh;
-  }
-
-  .createPetitionInput4 {
-    margin-top: 2vh;
-  }
-
-  .createPetitionInput5 input {
-    margin-left: 10vw;
-    width: 70vw;
-  }
-
-  .lastDiv {
-    height: 35vh;
-  }
+  
 
   .createPetitionButton {
     margin-top: 2vh;
@@ -1170,44 +1199,7 @@ h6 {
   .createPetitionContainer {
     width: 100% !important;
   }
-  .backgroundCard {
-    width: 100%;
-  }
-
-  .backgroundCard div {
-    width: 100%;
-  }
-
-  .backgroundCard p {
-    margin:0%;
-  }
-  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-    width: 80%;
-    height: 13vh;
-    border-radius: 2vh;
-  }
-  .createPetitionInput3 textarea {
-    height: 6vh;
-  }
-
-  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
-    height: 5vh;
-  }
-
-  .createPetitionInput4 {
-    margin-top: 2vh;
-  }
-
-  .createPetitionInput5 input {
-    margin-left: 10vw;
-    width: 70vw;
-  }
-
-  .lastDiv {
-    height: 35vh;
-  }
-
-  .createPetitionButton {
+   .createPetitionButton {
     margin-top: 2vh;
   }
 

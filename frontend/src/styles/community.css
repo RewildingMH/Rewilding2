@@ -34,6 +34,7 @@
   align-items: flex-end;
   margin: 0;
   border-radius: 12px !important;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287) !important;
 }
 
 .communityContainerBelow {
@@ -72,7 +73,6 @@
 }
 
 .postsTextArea {
-  height: 10rem;
   height: 7rem;
 }
 
@@ -108,9 +108,13 @@
   border-top: none;
   height: 6rem;
   margin-bottom: 5rem;
-  padding: 0 0.3rem;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
+  background-color: #3e4444;
+}
+
+.custom-file-upload > .aiIcon {
+  color: white;
 }
 
 .custom-file-upload > .aiIcon:hover {
@@ -119,6 +123,8 @@
 
 .inputPostContainer {
   margin: 0 5rem;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287) !important;
+  border-radius: 21px;
 }
 
 .filesPost > img {
@@ -296,6 +302,15 @@ a > .profilePictureOnPost {
 
 .commentComment > p {
   padding-left: 1rem;
+  cursor: default;
+}
+
+.usernameCommentLink {
+  transition: 0.2s ease;
+}
+
+.usernameCommentLink:hover {
+  color: #82b74b !important;
 }
 
 .commentLike {
@@ -343,7 +358,7 @@ a > .profilePictureOnPost {
 }
 
 .noComments {
-  padding: 3rem 0;
+  padding: 2rem 0;
   font-size: 21px;
   display: flex;
   flex-direction: column;
@@ -351,6 +366,14 @@ a > .profilePictureOnPost {
   align-items: center;
   color: gray;
   font-style: italic;
+}
+
+.noComments > span {
+  text-decoration: none;
+}
+
+.noCommentsYet {
+  text-decoration: none !important;
 }
 
 .noCommentsPlaceholder {
@@ -391,8 +414,8 @@ nav {
   display: flex;
   margin-top: -1rem;
   outline: none;
-  border-bottom: 1px solid black;
   padding: 1rem;
+  border-radius: 12px;
 }
 
 .editCommentInput::placeholder {
@@ -416,6 +439,8 @@ input[type="file"] {
   cursor: pointer;
   align-items: center;
   font-size: 18px;
+  color: white;
+  font-weight: 500;
 }
 
 .custom-file-upload.comment {
@@ -492,10 +517,10 @@ input[type="file"] {
 }
 
 .singleCommentContainer {
-  border-top: 1px solid black;
   margin: 1rem 3rem;
   background-color: grey;
   border-radius: 21px;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287) !important;
 }
 
 .likesHeaderContainer {
