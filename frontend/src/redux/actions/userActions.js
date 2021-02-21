@@ -47,6 +47,7 @@ const userActions = {
   },
   // Borrar una razon de firma
   deleteReason: (deleteReason) => {
+    console.log(deleteReason)
     try{
       const {
         petId, // ID de la peticion

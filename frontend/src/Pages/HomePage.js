@@ -6,7 +6,6 @@ import articleActions from '../redux/actions/articleActions'
 import LastArticles from '../Components/LastArticles'
 import petitionsActions from '../redux/actions/petitionsActions'
 import LastPetitions from '../Components/LastPetitions'
-import Footer from '../Components/Footer'
 
 const HomePage = (props) => {
 
@@ -25,11 +24,11 @@ const HomePage = (props) => {
                     <h2>Last Articles Created</h2>
                 </div>
                 <div className="divBlog">
-                    {props.lastArticles.map(lastArticle => <LastArticles key={lastArticle._id} lastArticle={lastArticle} />)}
+                    {props.lastArticles.map(lastArticle => <LastArticles key={lastArticle._id} lastArticle={lastArticle} />).reverse()}
                     <div className="lastPetitionsCreated">
                         <h2>Last Petitions Created</h2>
                     </div>
-                    {props.lastPetitions.map(lastPetition => <LastPetitions key={lastPetition._id} lastPetition={lastPetition} />)}
+                    {props.lastPetitions.map(lastPetition => <LastPetitions key={lastPetition._id} lastPetition={lastPetition} />).reverse()}
                     <div className="white">
                     </div>
                 </div>

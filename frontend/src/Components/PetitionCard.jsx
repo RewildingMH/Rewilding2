@@ -54,18 +54,19 @@ const PetitionCard = (props) => {
                 <div className="lastPetitionsInfo">
                     <div className="userInfo">
                         <h6 className="petitionCreatedBy"><span>Petition created by: </span>{author[0].name}</h6>
-                        <img
-                            src={author[0].profilePicture}
-                            alt="petition-pic"
-                            />
+                        <div className="petitionCreatedImg" style={
+                              {
+                                  backgroundImage: `url(${author[0].profilePicture})`
+                              }
+                        }></div>
                     </div>
                     <h5 className="lastPetitionsTitle">{title.toUpperCase()}</h5>
                     <p>
-                      {props.petition.desc.length > 300
-                        ? props.petition.desc.slice(0, 300) + "..."
+                      {props.petition.desc.length > 100
+                        ? props.petition.desc.slice(0, 70) + "..."
                         : props.petition.desc}
                     </p>
-                    <ProgressBar striped variant="success" animated now={45} />
+                    <ProgressBar striped variant="success" animated now={45} className="progressBar"/>
                     <h6 className="peopleSign"><span>
                                   {props.petition.signatures.length
                         ? props.petition.signatures.length === 1
@@ -75,8 +76,6 @@ const PetitionCard = (props) => {
                             " persons have already signed this petition"
                         : "No one has signed this petition yet"}</span> a goal {goal} signs <BsPen/>
                     </h6>
-                    <div>
-          </div>
                 </div>
             </div>
           </div>
