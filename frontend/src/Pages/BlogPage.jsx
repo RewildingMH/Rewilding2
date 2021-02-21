@@ -88,7 +88,6 @@ const addVisit = e => {
               </div>
             </div>
         </div>
-
       </>}
     </>
   )

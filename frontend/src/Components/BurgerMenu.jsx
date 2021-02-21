@@ -92,19 +92,6 @@ const BurgerMenu = (props) => {
           <div className="optionMenu">Create a petition</div>
         </div>
       </NavLink>
-      {/* <NavLink
-        to={`/profile/${
-          props.props.loggedUser ? props.props.loggedUser.userId : ""
-        }`}
-        onClick={closeMenu}
-      >
-        <div id="profile" className="menu-item" href="/">
-          <div className="iconMenu">
-            <AiFillSetting />
-          </div>
-          <div className="optionMenu">Profile</div>
-        </div>
-      </NavLink> */}
       <div className="menu-item">
           <div className="iconMenu">
 
