@@ -64,7 +64,6 @@ const BlogArticle = (props) => {
                         </IconContext.Provider>
                     </td>
                 </tr>
-                    
                 </>
                 : 
                 <tr>
