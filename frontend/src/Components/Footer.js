@@ -19,7 +19,7 @@ const Footer = () => {
                 </ul>
                 </div>
                 
-                <div className="logoRew"><img src={logo}></img></div>
+                <div className="logoRew"><img src={logo} style={{width:"4vw"}}></img></div>
                 <div className="findUs">
                     <div><span>FIND US:</span></div>
                     <div className="social">
