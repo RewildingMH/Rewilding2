@@ -9,28 +9,27 @@ import "../styles/community.css";
 import Footer from '../Components/Footer'
 
 const Community = (props) => {
-  const [preloader, setPreloader]= useState(true)
+  const [preloader, setPreloader] = useState(true);
   const [popular, setPopular] = useState([]); // Estado para guardar las peticiones más populares
   const { allPetitions } = props; // Destructuración
 
   // Ordena las peticiones por visitas, de mayor a menor
- 
+
   useEffect(() => {
-    fetch()
+    fetch();
   }, []);
 
   useEffect(() => {
     setPopular(allPetitions.sort((a, b) => b.visits - a.visits));
   }, [allPetitions]);
 
-  async function fetch () {
-    await props.getArticles()
+  async function fetch() {
+    await props.getArticles();
     await props.getPetitions();
-    setPreloader(false)
- }
+    setPreloader(false);
+  }
 
   // Llama a todas las peticiones y todos los articulos cuando se monta el componente
-  
 
   return (
     <>
@@ -87,50 +86,103 @@ const Community = (props) => {
             </div>
           </div>
           <div
-            className="col-2 card popularPetitions"
+            className="communityBanner"
             style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
+              backgroundImage: `url(${communityPic})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
             }}
-          >
-            <div className="sideCardsTitle">
-              <h3>Latest Blog Entries</h3>
-            </div>
-            <div className="sideCardsContainer">
-              {props.articles
-                .slice(props.articles.length - 3, props.articles.length)
-                .map(({ title, picture, _id }) => (
-                  <Link
-                    key={_id}
-                    className="popularPetitionCard"
-                    to={`/article/${_id}`}
-                    style={{
-                      textDecoration: "none",
-                    }}
-                  >
-                    <div className="card">
-                      <div
-                        className="communityImg card-img-top"
+          ></div>
+          <div className="communityContainerBelow">
+            <div className="comunityEntry align-items-start">
+              <div
+                className="col-2 card popularPetitions"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <div className="sideCardsTitle">
+                  <h3>Popular Petitions</h3>
+                </div>
+                <div className="sideCardsContainer">
+                  {popular.slice(0, 3).map(({ title, picture, _id }) => (
+                    <Link
+                      key={_id}
+                      className="popularPetitionCard"
+                      to={`/petitions/${_id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <div className="card">
+                        <div
+                          className="communityImg card-img-top"
+                          style={{
+                            backgroundImage: `url(${picture})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                          }}
+                        >
+                          <h5 className="cardTitle">{title}</h5>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div className="col-8 d-flex justify-content-center allPostsContainerContainer">
+                <div className="w-100 allPostsContainer">
+                  <Posts />
+                </div>
+              </div>
+              <div
+                className="col-2 card popularPetitions"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                }}
+              >
+                <div className="sideCardsTitle">
+                  <h3>Latest Blog Entries</h3>
+                </div>
+                <div className="sideCardsContainer">
+                  {props.articles
+                    .slice(props.articles.length - 3, props.articles.length)
+                    .map(({ title, picture, _id }) => (
+                      <Link
+                        key={_id}
+                        className="popularPetitionCard"
+                        to={`/article/${_id}`}
                         style={{
-                          backgroundImage: `url(${picture})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
+                          textDecoration: "none",
                         }}
                       >
-                        <h5 className="card-title cardTitle">
-                          {title.length > 30
-                            ? title
-                                .split(" ")
-                                .slice(0, 5)
-                                .join()
-                                .replace(/,/g, " ") + "..."
-                            : title}
-                        </h5>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
+                        <div className="card">
+                          <div
+                            className="communityImg card-img-top"
+                            style={{
+                              backgroundImage: `url(${picture})`,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                            }}
+                          >
+                            <h5 className="card-title cardTitle">
+                              {title.length > 30
+                                ? title
+                                    .split(" ")
+                                    .slice(0, 5)
+                                    .join()
+                                    .replace(/,/g, " ") + "..."
+                                : title}
+                            </h5>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
