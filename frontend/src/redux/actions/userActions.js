@@ -25,6 +25,7 @@ const userActions = {
   },
   // Dislikear una razon de firma
   dislikeReason: (dislikeds) => {
+    console.log(dislikeds)
     try{
       const {
         petId, // ID de la peticion

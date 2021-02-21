@@ -92,7 +92,7 @@ const BurgerMenu = (props) => {
           <div className="optionMenu">Create a petition</div>
         </div>
       </NavLink>
-      <NavLink
+      {/* <NavLink
         to={`/profile/${
           props.props.loggedUser ? props.props.loggedUser.userId : ""
         }`}
@@ -104,7 +104,7 @@ const BurgerMenu = (props) => {
           </div>
           <div className="optionMenu">Profile</div>
         </div>
-      </NavLink>
+      </NavLink> */}
       <div className="menu-item">
           <div className="iconMenu">
 
