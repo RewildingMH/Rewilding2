@@ -80,7 +80,7 @@ const Petition = (props) => {
       {petition.length && (
         <>
           <div
-            className="createPetitionBanner"
+            className="petitionIndBanner"
             style={{
               backgroundImage: `url(${banner})`,
               backgroundSize: "cover",
