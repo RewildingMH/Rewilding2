@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const http = require('http')
+//const http = require('http')
 const cors = require('cors')
 require('dotenv').config()
 require('./config/database')
@@ -12,7 +12,7 @@ const app = express()
 
 //Me traduce las peticiones de json a objeto para poder cargarlos a la database
 app.use(express.json())
-app.use(cors({credentials: true, origin: true}))
+app.use(cors())
 app.use(fileUpload())
 app.use('/api', router)
 
