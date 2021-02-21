@@ -46,7 +46,7 @@ const Article = (props) =>{
                         <p className="authorArticleName">{`Author: ${article.author[0].name}.`}</p>
                         <p className="articleVisits">{`Visits: ${article.visits}`}</p>
                       </div>
-                      <BiComment className="commentIconArticle" />
+                        <BiComment className="commentIconArticle" />
                     </div>
                   </div>
                 </div>
