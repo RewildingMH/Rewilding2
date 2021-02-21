@@ -80,7 +80,6 @@ const Article = (props) => {
         )
       }
       <Footer />
-
     </>
   )
 }

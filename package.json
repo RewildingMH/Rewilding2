@@ -5,8 +5,14 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
+    "start": "node server.js",
+    "dev": "nodemon ./server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+=======
     "start": "node ./server.js",
     "dev": "nodemon ./server.js"
+>>>>>>> 9ee1ac8e07a0619df6cb64037460fb711800164c
   },
   "author": "Grupo D",
   "license": "ISC",
@@ -20,8 +26,18 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.16",
     "nodemailer": "^6.4.18",
+<<<<<<< HEAD
+    "nodemailer-smtp-transport": "^2.7.4",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+=======
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0"
+>>>>>>> 9ee1ac8e07a0619df6cb64037460fb711800164c
   }
 }

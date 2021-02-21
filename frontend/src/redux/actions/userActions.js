@@ -55,7 +55,6 @@ const userActions = {
         id, // ID de la razon
         token
       } = deleteReason
-      console.log(id)
       return async (dispatch, getState) => {
         const response = await axios.delete(`${API}/petitions/delete/${id}/${petId}`,
           {

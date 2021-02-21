@@ -19,7 +19,6 @@ import ScrollToTop from './Components/ScrollTop'
 import MailValidate  from './Components/MailValidate';
 
 const App = (props) => {
-
   const [reload, setReload] = useState(false)
   if (props.loggedUser) {
     if (props.loggedUser.rol === "admin") {
@@ -77,7 +76,6 @@ const App = (props) => {
         <ScrollToTop>
           <Header />
           {routes}
-          {/* <Footer/> */}
         </ScrollToTop>  
       </Router>
     </>
