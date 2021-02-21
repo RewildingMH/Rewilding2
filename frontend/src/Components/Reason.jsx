@@ -27,9 +27,9 @@ const Reason = ({
   const [visible, setVisible] = useState(false);
 
   const dislike = (e) => {
-    const id = e.target.id;
+    console.log(_id)
     dislikeReason({
-      id,
+      id: _id,
       petId,
       token: loggedUser.token,
     });
