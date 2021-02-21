@@ -1,0 +1,91 @@
+.goalReachedContainer {
+  border: 3px solid white;
+  margin: 10rem;
+  padding: 3rem;
+  border-radius: 21px;
+}
+
+.goalReachedContainer > h2 {
+  margin-bottom: 1rem;
+  font-size: 48px;
+}
+
+.goalReachedContainer > span {
+  font-size: 21px;
+}
+
+.signaturesTitle {
+  display: flex;
+  justify-content: center;
+}
+
+.signaturesTitle > h4 {
+  font-size: 36px;
+  color: white;
+}
+
+.petInfoCtn {
+  width: 100%;
+  background-color: #3e4444;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 24px;
+  color: white;
+  padding: 1rem;
+}
+
+.petInfoCtn > span {
+  width: 100%;
+  padding: 0 0 1rem 1rem;
+  border-bottom: 2px solid darkgrey;
+}
+
+.descCtn {
+  display: flex;
+}
+
+.description {
+  padding: 0;
+  display: flex;
+  justify-items: flex-start;
+  padding: 7rem 10rem;
+  font-size: 24px;
+}
+
+.goToPetitions {
+  width: 100%;
+  margin: 3rem 0;
+}
+
+.returnPet {
+  display: flex;
+  width: 22rem;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 32px;
+  color: white;
+  background-color: #405d27;
+  height: 5rem;
+  border-radius: 21px;
+  box-shadow: 2px 2px 2px rgb(14, 14, 14, 27%);
+  transition: 0.2s ease;
+}
+
+.returnPet:hover {
+  color: burlywood;
+}
+
+.returnPet > p {
+  margin-bottom: 0.5rem;
+}
+
+.comentaryReasonBox > span {
+  padding: 3rem 0;
+  color: grey;
+}
+
+@media (max-width: 1024px) {
+  .goalReachedContainer {
+    margin: 1rem;
+  }
+}

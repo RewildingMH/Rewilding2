@@ -45,7 +45,7 @@ const Login = (props) => {
             <h1>LOGIN</h1>
             <GoogleLogin
                 className="login_input justify-content-center"
-                clientId="70385013439-d765viglf0jv9tq89u53csihoja864u0.apps.googleusercontent.com"
+                clientId="466964485297-vadqpskqigjmjlh81uijpggpiaalluu2.apps.googleusercontent.com"
                 buttonText="Login with Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}

@@ -21,7 +21,7 @@ const articleController = {
         idUser: _id
       },
     })
-   file.mv(path.join(__dirname, `../frontend/public/assets/articlePics/${file.md5}.jpg`), error=>{
+   file.mv(path.join(__dirname, `../client/build/assets/articlePics/${file.md5}.jpg`), error=>{
      if(error){
          return res.json({response:error})
      }})

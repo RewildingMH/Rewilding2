@@ -4,6 +4,7 @@ import petitionsActions from "../redux/actions/petitionsActions";
 import Compressor from "compressorjs";
 import Swal from "sweetalert2";
 import createPetBanner from "../assets/createPetitionImg.png";
+import Footer from './Footer'
 
 //COMPONENTE PARA ENVIAR UNA NUEVA PETICIÓN
 const CreatePetition = (props) => {
@@ -22,7 +23,6 @@ const CreatePetition = (props) => {
       confirmButtonText: "Ok",
     });
   };
-  //CAPTURA LA FECHA DEL DÍA PARA COMPARAR CON LA FECHA INGRESADA
   const hoy = new Date()
   hoy.setHours(0,0,0,0)
 
@@ -107,7 +107,7 @@ const CreatePetition = (props) => {
         <div className="row">
           <div className="col col-sm-8 col-md-6 col-lg-6 mx-auto">
             <h2 className="text-center" style={{ paddingTop: "2vh" }}>CREATE PETITION</h2>
-            <div className="createPetition text-center">
+            <div className="createPetition text-center mt-4">
               <h5>
                 Write down the title of your petition
               </h5>
@@ -120,7 +120,7 @@ const CreatePetition = (props) => {
                 onChange={captureNewPetition}
               />
             </div>
-            <div className="createPetition text-center">
+            <div className="createPetition text-center mt-4">
               <h5>Who is it for?</h5>
               <span className="h6">Who can change this?</span>
               <input
@@ -131,7 +131,7 @@ const CreatePetition = (props) => {
                 onChange={captureNewPetition}
               />
             </div>
-            <div className="createPetition text-center">
+            <div className="createPetition text-center mt-4">
               <h5>
                 Choose a limit date for your petition
               </h5>
@@ -142,12 +142,12 @@ const CreatePetition = (props) => {
                 onChange={captureNewPetition}
               />
             </div>                  
-            <div className="createPetition text-center">
+            <div className="createPetition text-center mt-4">
               <h5>Choose a goal for your petition</h5>
               <span className="h6">Signature limit</span>
               <input placeholder="10" minLength="2" min="10" name="goal" type="number" onChange={captureNewPetition} />
             </div>
-            <div className="createPetition text-center">
+            <div className="createPetition text-center mt-4">
               <h5>Explain why you want to change it</h5>
               <span className="h6">It should be something meaningful</span>
               <textarea 
@@ -155,11 +155,12 @@ const CreatePetition = (props) => {
                 onChange={captureNewPetition}
               ></textarea>
             </div> 
-            <div className="createPetition text-center">
+            <div className="createPetition text-center mt-4">
+
               <h5>
                 Upload a picture for your petition
               </h5>
-              <span className="h6">Make it a high res one</span>
+              <span className="h6 mb-5">Make it a high res one</span>
               <label htmlFor="inputUpload">
                 <img style={{margin:"0"}}
                   className="img-fluid profile-pic-profile-submit"
@@ -177,13 +178,13 @@ const CreatePetition = (props) => {
                 onChange={onFileChange}
               />
             </div>
-            <div className="createPetitionButton d-flex justify-content-center my-3">
-          <button onClick={sendPetition}>Send Petition</button>
-        </div>
+            <div className="createPetitionButton d-flex justify-content-center my-4">
+                <button onClick={sendPetition}>Send Petition</button>
+            </div>
           </div>
         </div>
       </div>
-      
+      <Footer/>
     </>
   );
 };

@@ -1,0 +1,83 @@
+import React, { useState } from 'react'
+import { connect } from 'react-redux';
+import articleActions from '../redux/actions/articleActions';
+import { AiFillDelete, AiTwotoneEdit, AiOutlineSend } from "react-icons/ai";
+
+const ArtComment = ({ comment, profilePicture, name, artId, commentId, userId, loggedUser, editComment, deleteComment }) => {
+
+  const [visible, setVisible] = useState(false)
+  const [reComment, setReComment] = useState({})
+
+  const modifyComment = (e) => {
+    const name = e.target.name
+    const newComment = e.target.value
+    setReComment({
+      ...reComment,
+      commentId,
+      artId,
+      token: loggedUser.token,
+      [name]: newComment
+    })
+  }
+  const sendDeleteComment = (e) => {
+    e.preventDefault()
+    deleteComment({
+      artId,
+      token: loggedUser.token,
+      commentId,
+    })
+  }
+
+  const updateComment = async (e) => {
+    e.preventDefault()
+    if (reComment.editComment === undefined) {
+      setVisible(!visible)
+      return false
+    }
+    await editComment(reComment)
+    setVisible(!visible)
+  }
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-2 text-center articleCommentProfile">
+          <div className="rounded-circle centerArticleImage mx-1" style={{ backgroundImage: `url(${profilePicture})`, width: '5vw', height: '5vw' }}></div>
+          <p className="nameArticleComment">{name}</p>
+        </div>
+        <div className="col-9 d-flex artCont">
+          <div className="artCommentsContainer">
+            {!visible ?
+              <div className="articleCommentContainer p-1 px-2">
+                <p className="textArticleComment">{comment}</p>
+              </div>
+              :
+              <div className="editArticleCommentContainer">
+                <input name="editComment" type="text" className="editArticleComment" defaultValue={comment} onChange={modifyComment} />
+                <AiOutlineSend
+                  onClick={updateComment}
+                  style={{ cursor: "pointer", height: '5vh', width: '2vw', marginTop: '4vh' }}
+                />
+              </div>
+            }
+          </div>
+          <div>
+            {loggedUser && loggedUser.userId === userId && !visible &&
+              <div className="commentArticleIcons">
+                <AiFillDelete className="aiIcon delete" onClick={sendDeleteComment} />
+                <AiTwotoneEdit className="aiIcon edit" onClick={() => setVisible(!visible)} />
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+const mapDispatchToProps = {
+  deleteComment: articleActions.deleteComment,
+  editComment: articleActions.editComment
+}
+
+export default connect(null, mapDispatchToProps)(ArtComment)
