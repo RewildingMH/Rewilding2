@@ -111,16 +111,7 @@ const Petition = (props) => {
             <div className="signaturesPetitionInd">
               <h6>
                 {petition[0].signatures.length >= petition[0].goal ? (
-                  <div className="goalNoticeContainer">
-                    <div className="goalNotice">
-                      <h3 className="goalReached">
-                        THIS PETITION HAS REACHED ITS GOAL !
-                      </h3>
-                    </div>
-                    <div className="goalNotice subTitleGoal">
-                      <h5>Thanks for sharing</h5>
-                    </div>
-                  </div>
+                  <div></div>
                 ) : petition[0].signatures.length === 1 ? (
                   petition[0].signatures.length + " person has "
                 ) : (
