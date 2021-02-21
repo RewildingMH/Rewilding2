@@ -1,8 +1,8 @@
 import { connect } from "react-redux"
 import articleActions from "../redux/actions/articleActions"
 import { useState, useEffect } from "react"
-import ArtComment from "./artComment"
-import {AiOutlineSend} from "react-icons/ai";
+import ArtComment from "./ArtComment"
+import { AiOutlineSend } from "react-icons/ai";
 
 const CommentArticle = (props) => {
   const [comment, setComment] = useState({});
@@ -34,12 +34,12 @@ const CommentArticle = (props) => {
     <>
       <div className="commentsMapArticleContainer p-3">
         <div className="commentsMap">
-        {articlesComment.map(({ comment, profilePicture, name, _id, userId }) =>
-          <ArtComment comment={comment} profilePicture={profilePicture} name={name} artId={props.article._id} commentId={_id} userId={userId} loggedUser={props.loggedUser} />
-        )}
-      </div>
-      <div className="inputContainer">
-        <input className="inputContainer" type="text" autoComplete="off" name="comment" placeholder="Enter comment..." onChange={readInput} disabled={!props.loggedUser ? true : false} />
+          {articlesComment.map(({ comment, profilePicture, name, _id, userId }) =>
+            <ArtComment comment={comment} profilePicture={profilePicture} name={name} artId={props.article._id} commentId={_id} userId={userId} loggedUser={props.loggedUser} />
+          )}
+        </div>
+        <div className="inputContainer">
+          <input className="inputContainer" type="text" autoComplete="off" name="comment" placeholder="Enter comment..." onChange={readInput} disabled={!props.loggedUser ? true : false} />
           <div className="sendButton">
             <AiOutlineSend
               onClick={props.loggedUser ? sendComment : () => alert("Log in...")}
