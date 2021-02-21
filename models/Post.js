@@ -2,11 +2,11 @@ const { string } = require('joi')
 const mongoose = require('mongoose')
 
 const postSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  userPic: { type: String, required: true },
-  userId: { type: String, required: true },
+  username: { type: String},
+  userPic: { type: String},
+  userId: { type: String},
   picture: String,
-  text: { type: String, required: true },
+  text: { type: String},
   likes: { type: Array, default: [] },
   comments: [{ name: String, profilePicture: String, comment: String, likes: Array, userId: String }],
 }, { timestamps: true })
