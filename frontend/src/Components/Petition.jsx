@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import petitionsActions from "../redux/actions/petitionsActions";
 import Reasons from "./Reasons";
 import Swal from "sweetalert2";
-import banner from "../assets/bannerPetitionInd.png"
+import banner from "../assets/bannerPetitionInd.png";
 import { Link } from "react-router-dom";
-import { FaArrowCircleLeft } from 'react-icons/fa';
+import { FaArrowCircleLeft } from "react-icons/fa";
 import { AiFillHeart, AiOutlineHeart, AiOutlineSend } from "react-icons/ai";
-
+import "../styles/petition.css";
 
 const Petition = (props) => {
   const id = props.match.params.id; // id en la ruta del navegador
@@ -33,24 +33,24 @@ const Petition = (props) => {
     const reason = e.target.value;
     props.loggedUser
       ? setSignature({
-        reason: reason.trim(),
-        petId: id,
-        token: props.loggedUser.token,
-      })
+          reason: reason.trim(),
+          petId: id,
+          token: props.loggedUser.token,
+        })
       : Swal.fire({
-        title: "Oops!",
-        text: "You must be logged in to sign this petition!",
-        icon: "warning",
-        confirmButtonColor: "#c1946a",
-        confirmButtonText: "Log me in!",
-        background: "#82b74b",
-        iconColor: "white",
-        backdrop: "rgba(64, 93, 39, 0.3)",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          props.history.push("/login");
-        }
-      });
+          title: "Oops!",
+          text: "You must be logged in to sign this petition!",
+          icon: "warning",
+          confirmButtonColor: "#c1946a",
+          confirmButtonText: "Log me in!",
+          background: "#82b74b",
+          iconColor: "white",
+          backdrop: "rgba(64, 93, 39, 0.3)",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            props.history.push("/login");
+          }
+        });
   };
 
   // Funcion que referencia a la action con el objeto de la firma
@@ -74,7 +74,6 @@ const Petition = (props) => {
       });
     }
   };
-  console.log(petition)
   return (
     <div>
       {petition.length && (
@@ -87,56 +86,77 @@ const Petition = (props) => {
               backgroundPosition: "center",
             }}
           ></div>
-          <h1 className="indPetitionTitle"><span>Petition To: {petition[0].title}</span></h1>
+          <h1 className="indPetitionTitle">
+            <span>Petition To: {petition[0].title}</span>
+          </h1>
           <div className="singlePetitionContainer">
             <div className="petitionHeader">
-              <div className="petitionHeaderImg" style={{
-                backgroundImage: `url(${petition[0].author[0].profilePicture})`
-              }}>
-              </div>
-              <h6 className="petitionHeaderAuthor">Petition Created By: {petition[0].author[0].name}</h6>
+              <div
+                className="petitionHeaderImg"
+                style={{
+                  backgroundImage: `url(${petition[0].author[0].profilePicture})`,
+                }}
+              ></div>
+              <h6 className="petitionHeaderAuthor">
+                Petition Created By: {petition[0].author[0].name}
+              </h6>
             </div>
-            <div className="singlePetitionImg"
+            <div
+              className="singlePetitionImg"
               style={{
                 backgroundImage: `url(${petition[0].picture})`,
               }}
-            >
-            </div> 
+            ></div>
             <div className="description">{petition[0].desc}</div>
             <div className="signaturesPetitionInd">
               <h6>
-                  {petition[0].signatures.length >= petition[0].goal ? (
-                    <div>
-                      <p></p>
+                {petition[0].signatures.length >= petition[0].goal ? (
+                  <div className="goalNoticeContainer">
+                    <div className="goalNotice">
+                      <h3 className="goalReached">
+                        THIS PETITION HAS REACHED ITS GOAL !
+                      </h3>
                     </div>
-                  ) : petition[0].signatures.length === 1 ? (
-                    petition[0].signatures.length + " person has "
-                  ) : (
-                        petition[0].signatures.length + " persons have "
-                      )}
-                <span>already signed this petition </span>
+                    <div className="goalNotice subTitleGoal">
+                      <h5>Thanks for sharing</h5>
+                    </div>
+                  </div>
+                ) : petition[0].signatures.length === 1 ? (
+                  petition[0].signatures.length + " person has "
+                ) : (
+                  petition[0].signatures.length + " persons have "
+                )}
+                <span>already signed this petition</span>
               </h6>
-          </div>
-          <h4 className="py-1">Signs</h4>
-          <div className="reasonsPetitionContainer reasonsPetition">
-            {petition[0].signatures.length < petition[0].goal && (
+            </div>
+            <h4 className="py-1">Signs</h4>
+            <div className="reasonsPetitionContainer reasonsPetition">
+              {petition[0].signatures.length < petition[0].goal && (
                 <div className="inputPetitions">
                   <input
                     type="text"
                     onChange={readInput}
                     placeholder="I'm signing because ... (optional) "
                   />
-                  <p onClick={signPetition} className="sendPetition"><AiOutlineSend/></p>
+                  <p onClick={signPetition} className="sendPetition">
+                    <AiOutlineSend />
+                  </p>
                 </div>
               )}
-              
+
               <div className="comentaryReasonBox">
-                  <Reasons reasons={petition[0].reasons} petId={petition[0]._id} />
-                </div>
+                <Reasons
+                  reasons={petition[0].reasons}
+                  petId={petition[0]._id}
+                />
               </div>
+            </div>
           </div>
           <div className="goToPetitions">
-            <Link to="/petitions" className="returnPet"><FaArrowCircleLeft></FaArrowCircleLeft><p>Return to Petitions</p></Link>
+            <Link to="/petitions" className="returnPet">
+              <FaArrowCircleLeft></FaArrowCircleLeft>
+              <p>Return to Petitions</p>
+            </Link>
           </div>
         </>
       )}
