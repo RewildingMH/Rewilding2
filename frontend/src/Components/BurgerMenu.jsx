@@ -37,6 +37,18 @@ const BurgerMenu = (props) => {
                     </NavLink>
                 </>
   }
+  if (props.props.loggedUser === null) {
+    var login = <>
+                  <NavLink to="/login" onClick={closeMenu}>
+                      <div id="login" className="menu-item" href="/">
+                        <div className="iconMenu">
+                          <GoSignIn />
+                        </div>
+                        <div className="optionMenu">Login</div>
+                      </div>
+                  </NavLink>
+                </>
+  }
 
   return (
     <Menu isOpen={open} right>
@@ -44,14 +56,7 @@ const BurgerMenu = (props) => {
         <h2>Menu</h2>
       </div>
       {links}
-      <NavLink to="/login" onClick={closeMenu}>
-        <div id="login" className="menu-item" href="/">
-          <div className="iconMenu">
-            <GoSignIn />
-          </div>
-          <div className="optionMenu">Login</div>
-        </div>
-      </NavLink>
+      {login}
       <NavLink to="/" onClick={closeMenu}>
         <div id="home" className="menu-item" href="/">
           <div className="iconMenu">

@@ -83,3 +83,9 @@
   padding: 3rem 0;
   color: grey;
 }
+
+@media (max-width: 1024px) {
+  .goalReachedContainer {
+    margin: 1rem;
+  }
+}

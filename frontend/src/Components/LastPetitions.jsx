@@ -21,8 +21,8 @@ const LastPetitions = (props) => {
   } = props.lastPetition;
   return (
     /*  <Link to="/petitions" style={{
-            textDecoration: "none"
-        }}> */
+                textDecoration: "none"
+            }}> */
     <div className="container">
       <div className="lastPetitionsContainer">
         <div

@@ -39,6 +39,9 @@ h2 {
   background-color: rgba(0, 0, 0, 0.281);
   transition: 1s;
 }
+.createPetitionP {
+  white-space: nowrap;
+}
 
 .pages {
   display: flex;
@@ -287,6 +290,7 @@ nav a {
 
 .lastArticlesCreated h2,
 .lastPetitionsCreated h2 {
+  margin-top: 5vh;
   border-bottom: 2px solid black;
 }
 
@@ -373,7 +377,7 @@ nav a {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 50vw;
+  width: 55vw;
   padding: 1vw;
   background-color: rgba(0, 0, 0, 0.555);
   border-radius: 0vw 1vw 1vw 0vw;
@@ -518,7 +522,6 @@ nav a {
   width: 50%;
   height: 7vh;
   padding: 1vw;
-  font-size: 1vw;
   text-align: center;
   border-radius: 1vw;
   transition: 0.5s;
@@ -552,7 +555,12 @@ nav a {
   padding-bottom: 1vh;
 }
 
+.containerCommentIconArticle {
+  display: flex;
+}
+
 .SingleIconContainer {
+  padding-left: 0.8vw;
   margin-top: 1.5vh;
 }
 
@@ -1102,11 +1110,15 @@ h6 {
 
 .createPetition {
   width: auto;
-  height: 20vh;
   border-radius: 2vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.createPetition span {
+  color: green;
+  text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.26);
 }
 
 .createPetition input {
@@ -1589,15 +1601,17 @@ textarea {
   font-weight: 700;
 }
 .bg-greenLight {
-  background-color: #405d272a;
+  background-color: #405d271f;
 }
 .tituloBlog {
   color: black;
   font-weight: 700;
   width: 70%;
   text-align: left;
+  transition: 0.3s;
 }
 .tituloBlog:hover {
+  transition: 0.3s;
   transform: scale(1.02);
 }
 .descripcionBlog {
@@ -1645,9 +1659,28 @@ textarea {
 
 .authorArticleName {
   margin-top: 3.5vh;
+  font-size: large;
   margin-left: 1vw;
-  color: whitesmoke;
+  color: green;
   text-align: center;
+}
+
+.iconArticle {
+  display: flex;
+  margin-top: 3vh;
+  margin-right: 2vw;
+}
+
+.iconArticle p {
+  font-size: large;
+  margin-bottom: 2vw;
+}
+
+.authorArticleName span {
+  margin-left: 1vh;
+  margin-right: 1vw;
+  font-weight: bold;
+  color: white;
 }
 
 .columnArticlePic {
@@ -1682,16 +1715,20 @@ textarea {
 }
 
 .articleVisits {
-  margin-top: 3.5vh;
-  margin-left: 1vw;
+  margin-top: 2vh;
   color: whitesmoke;
   text-align: center;
+  padding-right: 1vw;
+  padding-left: 0.5vw;
 }
 
 .authorArticlePicture {
+  margin-top: 2vh;
   margin-left: 0.5vw;
   padding: 1vh;
-  width: 55px;
+  width: 100px;
+  height: 100px;
+  border-radius: 75px;
 }
 
 .articleCommentProfile {
@@ -1704,6 +1741,13 @@ textarea {
 .commentIconArticle {
   width: 2.7vw;
   height: 10vh;
+  color: rgba(252, 186, 4, 0.705);
+}
+
+.viewIconArticle {
+  width: 2.7vw;
+  height: 10vh;
+  color: rgba(252, 186, 4, 0.705);
 }
 
 .authorAlignArticle {
@@ -1857,6 +1901,16 @@ textarea {
 /* Media Queries */
 
 @media (max-width: 1440px) {
+  .headerLogondSlogan {
+    display: flex;
+    width: 30vw;
+  }
+  .headerLogondSlogan h6 {
+    white-space: nowrap;
+  }
+  .lastArticlesCreated h2 {
+    margin-top: 10vh;
+  }
   .containerMain {
     width: 100%;
     height: 100%;
@@ -1873,6 +1927,9 @@ textarea {
     border-radius: 80px;
     margin-top: -2.4vw;
     box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
+  }
+  .lastPetitionsInfo {
+    width: 56vw;
   }
 }
 @media (max-width: 800px) {
@@ -1917,7 +1974,7 @@ textarea {
     flex-direction: column;
   }
   .lastPetitionImgPetitionCard {
-    width: 50vw;
+    width: 100%;
     height: 35vh;
     border-radius: 1vw 1vw 0vw 0vw;
     background-position: center;
@@ -1929,13 +1986,15 @@ textarea {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 50vw;
+    width: 100%;
     padding: 1vw;
     background-color: rgba(0, 0, 0, 0.555);
     border-radius: 1vw;
     padding: 3.1vw;
   }
-
+  .lastArticlesCreated h2 {
+    margin-top: 15vh;
+  }
   .userInfo {
     display: flex;
     flex-direction: row;
@@ -1946,7 +2005,7 @@ textarea {
   .petitionCreatedImg {
     margin-left: 18vw;
     width: 65px;
-    height: 50px;
+    height: 65px;
     border-radius: 50px;
     background-position: center;
     background-size: cover;
@@ -1970,6 +2029,15 @@ textarea {
 }
 
 @media (max-width: 500px) {
+  .containerCommentIconArticle {
+    flex-direction: column;
+  }
+  .lastArticlesCreated h2 {
+    margin-top: 15vh;
+  }
+  .p-5 {
+    padding: 1rem !important;
+  }
   .headerLogondSlogan h6 {
     display: none;
   }
@@ -2006,6 +2074,7 @@ textarea {
   }
   .lastPetitionsContainer {
     flex-direction: column;
+    width: 80vw;
     height: 60vh;
   }
   .lastPetitionImgPetitionCard {

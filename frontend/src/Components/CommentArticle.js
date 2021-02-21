@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 
 
+
 const CommentArticle = (props) => {
   const [comment, setComment] = useState({});
   const [articlesComment, setArticlesComment] = useState([])

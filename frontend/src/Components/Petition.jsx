@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { AiFillHeart, AiOutlineHeart, AiOutlineSend } from "react-icons/ai";
 import "../styles/petition.css";
+import Footer from "./Footer";
 
 const Petition = (props) => {
   const id = props.match.params.id; // id en la ruta del navegador
@@ -184,6 +185,7 @@ const Petition = (props) => {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };
