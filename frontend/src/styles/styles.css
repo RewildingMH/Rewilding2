@@ -2074,11 +2074,9 @@ textarea {
   }
   .lastPetitionsContainer {
     flex-direction: column;
-    width: 80vw;
     height: 60vh;
   }
   .lastPetitionImgPetitionCard {
-    width: 80vw;
     height: 35vh;
     border-radius: 1vw 1vw 0vw 0vw;
     background-position: center;
@@ -2090,7 +2088,6 @@ textarea {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 80vw;
     padding: 1vw;
     background-color: rgba(0, 0, 0, 0.555);
     border-radius: 1vw;
