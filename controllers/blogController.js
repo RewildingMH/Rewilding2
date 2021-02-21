@@ -18,6 +18,7 @@ const articleController = {
         idUser: _id
       },
     })
+<<<<<<< HEAD
     file.mv(path.join(__dirname, `../frontend/public/assets/articlePics/${file.md5}.jpg`), error => {
       if (error) {
         return res.json({ response: error })
@@ -30,6 +31,19 @@ const articleController = {
       .catch(error => {
         return res.json({ success: false, error })
       })
+=======
+   file.mv(path.join(__dirname, `../client/build/assets/articlePics/${file.md5}.jpg`), error=>{
+     if(error){
+         return res.json({response:error})
+     }})
+   articleSave.save()
+     .then(articleSaved => {
+       return res.json({ success: true, response: articleSaved })
+     })
+     .catch(error => {
+       return res.json({ success: false, error })
+     })
+>>>>>>> 977eea768356e719e3d354d9568be221d270ebf1
   },
   getArticles: async (req, res) => {
     try {

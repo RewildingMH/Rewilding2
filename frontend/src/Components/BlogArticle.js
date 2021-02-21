@@ -64,7 +64,6 @@ const BlogArticle = (props) => {
                         </IconContext.Provider>
                     </td>
                 </tr>
-                    
                 </>
                 : 
                 <tr>
@@ -85,7 +84,6 @@ const mapStateToProps = state => {
         articleCategories: state.articleR.articleCategories
     }
   }
-
   
 const mapDispatchToProps = {
     editArticle: articleActions.editArticle,

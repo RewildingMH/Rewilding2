@@ -7,7 +7,50 @@ const path = require('path')
 
 const userController = {
     signUp: async (req, res) => {
+<<<<<<< HEAD
         try {
+=======
+        console.log(req.body, req.files)
+        try{
+            
+        const errores = []
+        const { name, lastName, username, password} = req.body
+        const file = req.files.file
+        const userExists = await User.findOne({ username: username })
+        if (userExists) {
+            let error = [{ path: ['usernameExist'] }]
+            res.json({ success: false, errores: error })
+        }
+        file.mv(path.join(__dirname,`../client/build/assets/profilePictures/${file.md5}.jpg`), error => {
+            if (error) {
+                return res.json({ response: error })
+            }
+        }
+        )
+        if (errores.length === 0) {
+            const passwordHasheado = bcryptjs.hashSync(password, 10)
+            const profilePictureUbicacion = `/assets/profilePictures/${file.md5}.jpg`
+            var newUser = new User({
+                name, lastName, username, profilePicture: profilePictureUbicacion, password: passwordHasheado, rol: "personal account"
+            })
+            var newUserSaved = await newUser.save()
+            var token = jwt.sign({ ...newUserSaved }, process.env.SECRET_KEY, {})
+        }
+        return res.json({
+            success: errores.length === 0 ? true : false,
+            response: {
+                token,
+                name: newUserSaved.name,
+                profilePicture: newUserSaved.profilePicture,
+                username: newUserSaved.username,
+                rol: newUserSaved.rol,
+                userId: newUserSaved._id
+            }
+        })
+        }catch(error){
+            res.json({success: false, error})
+        }
+>>>>>>> 977eea768356e719e3d354d9568be221d270ebf1
 
             const errores = []
             const { name, lastName, username, password } = req.body
