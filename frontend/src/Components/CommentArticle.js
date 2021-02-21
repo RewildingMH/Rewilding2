@@ -2,7 +2,10 @@ import { connect } from "react-redux"
 import articleActions from "../redux/actions/articleActions"
 import { useState, useEffect } from "react"
 import ArtComment from "./ArtComment"
-import {AiOutlineSend} from "react-icons/ai";
+import { AiOutlineSend } from "react-icons/ai";
+import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
+
 
 
 const CommentArticle = (props) => {
@@ -10,6 +13,8 @@ const CommentArticle = (props) => {
   const [articlesComment, setArticlesComment] = useState([])
 
   const commentArt = props.articlecomment
+  const history = useHistory();
+
 
   useEffect(() => {
     setArticlesComment(commentArt)
@@ -27,25 +32,67 @@ const CommentArticle = (props) => {
   }
 
   const sendComment = (e) => {
-    e.preventDefault()
-    props.commentArticle(comment)
+    if (!props.loggedUser) {
+      Swal.fire({
+        title: "Oops!",
+        text: "You must be logged in to comment on this post!",
+        icon: "warning",
+        confirmButtonColor: "#c1866a",
+        confirmButtonText: "Log me in!",
+        background: "#4b98b7",
+        iconColor: "white",
+        backdrop: "rgba(80, 80, 80, 0.3)",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/login");
+        }
+      })
+    } else if (!comment.comment) {
+      Swal.fire({
+        title: "Oops!",
+        text: "Comment must not be empty!",
+        icon: "warning",
+        background: "#4b98b7",
+        iconColor: "white",
+        backdrop: "rgba(80, 80, 80, 0.3)",
+      })
+    } else {
+      setComment({})
+      e.preventDefault()
+      props.commentArticle(comment)
+    }
+
+  }
+
+  const mustLogin = () => {
+    Swal.fire({
+      title: "Oops!",
+      text: "You must be logged in to comment on this post!",
+      icon: "warning",
+      confirmButtonColor: "#c1866a",
+      confirmButtonText: "Log me in!",
+      background: "#4b98b7",
+      iconColor: "white",
+      backdrop: "rgba(80, 80, 80, 0.3)",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        history.push("/login");
+      }
+    })
   }
 
   return (
     <>
       <div className="commentsMapArticleContainer p-3">
         <div className="commentsMap">
-        {articlesComment.map(({ comment, profilePicture, name, _id, userId }) =>
-          <ArtComment comment={comment} profilePicture={profilePicture} name={name} artId={props.article._id} commentId={_id} userId={userId} loggedUser={props.loggedUser} />
-        )}
-      </div>
-      <div className="inputContainer">
-        <input className="inputContainer" type="text" autoComplete="off" name="comment" placeholder="Enter comment..." onChange={readInput} disabled={!props.loggedUser ? true : false} />
-          <div className="sendButton">
-            <AiOutlineSend
-              onClick={props.loggedUser ? sendComment : () => alert("Log in...")}
-              style={{ cursor: "pointer" }}
-            />
+          {articlesComment.map(({ comment, profilePicture, name, _id, userId }) =>
+            <ArtComment comment={comment} profilePicture={profilePicture} name={name} artId={props.article._id} commentId={_id} userId={userId} loggedUser={props.loggedUser} />
+          )}
+        </div>
+        <div className="inputContainer">
+          <input type="text" autoComplete="off" name="comment" placeholder="Enter comment..." value={comment.comment ? comment.comment : ""} onChange={readInput} disabled={!props.loggedUser ? true : false} />
+          <div className="sendButton" onClick={props.loggedUser ? sendComment : () => mustLogin()} style={{ cursor: "pointer" }}>
+            <AiOutlineSend />
           </div>
         </div>
       </div>

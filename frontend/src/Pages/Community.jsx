@@ -6,7 +6,7 @@ import articleActions from "../redux/actions/articleActions";
 import { Link } from "react-router-dom";
 import communityPic from "../assets/communityImg.png";
 import "../styles/community.css";
-import Footer from '../Components/Footer'
+import Footer from "../Components/Footer";
 
 const Community = (props) => {
   const [preloader, setPreloader] = useState(true);
@@ -33,131 +33,41 @@ const Community = (props) => {
 
   return (
     <>
-    { preloader ? 
-      <div className="preloader">
-        <div className="loader"></div>
-      </div> : 
-      <>
-      <div className="communityContainer">
-      <div
-        className="communityBanner"
-        style={{
-          backgroundImage: `url(${communityPic})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
-      ></div>
-      <div className="communityContainerBelow my-5">
-        <div className="comunityEntry align-items-start">
-          <div
-            className="col-2 card popularPetitions"
-            style={{ display: "flex", flexDirection: "column" }}
-          >
-            <div className="sideCardsTitle">
-              <h3>Popular Petitions</h3>
-            </div>
-            <div className="sideCardsContainer">
-              {popular.slice(0, 3).map(({ title, picture, _id }) => (
-                <Link
-                  key={_id}
-                  className="popularPetitionCard"
-                  to={`/petitions/${_id}`}
-                  style={{ textDecoration: "none" }}
+      {preloader ? (
+        <div className="preloader">
+          <div className="loader"></div>
+        </div>
+      ) : (
+        <>
+          <div className="communityContainer">
+            <div
+              className="communityBanner"
+              style={{
+                backgroundImage: `url(${communityPic})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+              }}
+            ></div>
+            <div className="communityContainerBelow">
+              <div className="comunityEntry align-items-start">
+                <div
+                  className="col-2 card popularPetitions"
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
                 >
-                  <div className="card">
-                    <div
-                      className="communityImg card-img-top"
-                      style={{
-                        backgroundImage: `url(${picture})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    >
-                      <h5 className="cardTitle">{title}</h5>
-                    </div>
+                  <div className="sideCardsTitle">
+                    <h3>Popular Petitions</h3>
                   </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="col-8 d-flex justify-content-center allPostsContainerContainer">
-            <div className="w-100 allPostsContainer">
-              <Posts />
-            </div>
-          </div>
-          <div
-            className="communityBanner"
-            style={{
-              backgroundImage: `url(${communityPic})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-          ></div>
-          <div className="communityContainerBelow">
-            <div className="comunityEntry align-items-start">
-              <div
-                className="col-2 card popularPetitions"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <div className="sideCardsTitle">
-                  <h3>Popular Petitions</h3>
-                </div>
-                <div className="sideCardsContainer">
-                  {popular.slice(0, 3).map(({ title, picture, _id }) => (
-                    <Link
-                      key={_id}
-                      className="popularPetitionCard"
-                      to={`/petitions/${_id}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <div className="card">
-                        <div
-                          className="communityImg card-img-top"
-                          style={{
-                            backgroundImage: `url(${picture})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                          }}
-                        >
-                          <h5 className="cardTitle">{title}</h5>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-              <div className="col-8 d-flex justify-content-center allPostsContainerContainer">
-                <div className="w-100 allPostsContainer">
-                  <Posts />
-                </div>
-              </div>
-              <div
-                className="col-2 card popularPetitions"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                }}
-              >
-                <div className="sideCardsTitle">
-                  <h3>Latest Blog Entries</h3>
-                </div>
-                <div className="sideCardsContainer">
-                  {props.articles
-                    .slice(props.articles.length - 3, props.articles.length)
-                    .map(({ title, picture, _id }) => (
+                  <div className="sideCardsContainer">
+                    {popular.slice(0, 3).map(({ title, picture, _id }) => (
                       <Link
                         key={_id}
                         className="popularPetitionCard"
-                        to={`/article/${_id}`}
-                        style={{
-                          textDecoration: "none",
-                        }}
+                        to={`/petitions/${_id}`}
+                        style={{ textDecoration: "none" }}
                       >
                         <div className="card">
                           <div
@@ -168,28 +78,72 @@ const Community = (props) => {
                               backgroundPosition: "center",
                             }}
                           >
-                            <h5 className="card-title cardTitle">
-                              {title.length > 30
-                                ? title
-                                    .split(" ")
-                                    .slice(0, 5)
-                                    .join()
-                                    .replace(/,/g, " ") + "..."
-                                : title}
-                            </h5>
+                            <h5 className="cardTitle">{title}</h5>
                           </div>
                         </div>
                       </Link>
                     ))}
+                  </div>
+                </div>
+                <div className="col-8 d-flex justify-content-center allPostsContainerContainer">
+                  <div className="w-100 allPostsContainer">
+                    <Posts />
+                  </div>
+                </div>
+                <div
+                  className="col-2 card popularPetitions"
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                  }}
+                >
+                  <div className="sideCardsTitle">
+                    <h3>Latest Blog Entries</h3>
+                  </div>
+                  <div className="sideCardsContainer">
+                    {props.articles
+                      .slice(props.articles.length - 3, props.articles.length)
+                      .map(({ title, picture, _id }) => (
+                        <Link
+                          key={_id}
+                          className="popularPetitionCard"
+                          to={`/article/${_id}`}
+                          style={{
+                            textDecoration: "none",
+                          }}
+                        >
+                          <div className="card">
+                            <div
+                              className="communityImg card-img-top"
+                              style={{
+                                backgroundImage: `url(${picture})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                              }}
+                            >
+                              <h5 className="card-title cardTitle">
+                                {title.length > 30
+                                  ? title
+                                      .split(" ")
+                                      .slice(0, 5)
+                                      .join()
+                                      .replace(/,/g, " ") + "..."
+                                  : title}
+                              </h5>
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <Footer/>
-    </> }
+          <Footer />
+        </>
+      )}
     </>
   );
 };

@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import userActions from "../redux/actions/userActions";
-import { AiFillHeart, AiOutlineHeart,AiFillDelete,AiFillEdit} from "react-icons/ai";
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  AiFillDelete,
+  AiFillEdit,
+} from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Reason = ({
   reasons,
@@ -35,7 +41,6 @@ const Reason = ({
   };
 
   const removeReason = (e) => {
-    const id = e.target.id;
     deleteReason({
       id: _id,
       petId,
@@ -71,20 +76,29 @@ const Reason = ({
     <div className="reasonInd">
       {reason.length > 0 && (
         <div className="boxStyleCommentContainer">
-          <div className="d-flex p-3">
-              <div
-                style={{
-                  backgroundImage: `url(${profilePicture})`,
-                  width: "60px",
-                  height: "60px",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover"
-                }}
-              className="userPicPetitions">
-              </div>
-              <h4 className="signPetitionName">{name}</h4>
-              {visible ? ( //modificar comentario
-                <>
+          <div className="d-flex p-3 align-items-center flex-column">
+            <h4 className="signPetitionName">
+              <Link
+                className="linkToProfilePetCom"
+                to={`/profile/${reasons.userId}`}
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                <div
+                  style={{
+                    backgroundImage: `url(${profilePicture})`,
+                    width: "60px",
+                    height: "60px",
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                  }}
+                  className="userPicPetitions"
+                ></div>
+                {name}:
+              </Link>
+            </h4>
+            {visible ? ( //modificar comentario
+              <>
+                <div className="editBlogReasonInput">
                   <input
                     id={_id}
                     name="modification"
@@ -93,33 +107,57 @@ const Reason = ({
                     placeholder={reason}
                     className="inputEditReason"
                   />
-                  <button onClick={sendModification}>SEND</button>
-                </>
-              ) : (
-                <p className="text-break reasonComment">{reason}</p>
-                
-              )}
+                </div>
+                <button onClick={sendModification}>SEND</button>
+              </>
+            ) : (
+              <p className="text-break reasonComment">{reason}</p>
+            )}
           </div>
           <div className="boxIconPetitionContainer">
             {loggedUser ? (
               likes.find((like) => like.id === loggedUser.userId) ? (
                 <div>
-                  <AiFillHeart className="likesReasonPetition" onClick={dislike} id={_id}/>{likes.length}
+                  <AiFillHeart
+                    className="likesReasonPetition"
+                    onClick={dislike}
+                    id={_id}
+                  />
+                  {likes.length}
                 </div>
               ) : (
-                <div >
-                  <AiOutlineHeart className="likesReasonPetition" onClick={like} id={_id}/>{likes.length}
+                <div>
+                  <AiOutlineHeart
+                    className="likesReasonPetition"
+                    onClick={like}
+                    id={_id}
+                  />
+                  {likes.length}
                 </div>
               )
             ) : (
-              <div className="SingleIconContainer"><AiFillHeart id={_id}/>{likes.length}</div>
+              <div className="SingleIconContainer">
+                <AiFillHeart id={_id} />
+                {likes.length}
+              </div>
             )}
 
             {loggedUser && loggedUser.userId === userId && (
-              <>  
-                  
-                <div className="SingleIconContainer"><AiFillDelete id={_id} onClick={removeReason}/></div>
-                <div className="SingleIconContainer" onClick={changeReason}><AiFillEdit/></div>
+              <>
+                <div className="SingleIconContainer">
+                  <AiFillDelete
+                    id={_id}
+                    onClick={removeReason}
+                    className="iconTrash"
+                  />
+                </div>
+                <div
+                  className="SingleIconContainer"
+                  onClick={changeReason}
+                  className="iconEdit"
+                >
+                  <AiFillEdit />
+                </div>
               </>
             )}
           </div>
