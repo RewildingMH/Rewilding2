@@ -64,7 +64,6 @@ const Article = (props) => {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>

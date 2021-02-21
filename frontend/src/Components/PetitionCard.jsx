@@ -68,6 +68,13 @@ const PetitionCard = (props) => {
               max={goal}
               className="progressBar"
             />
+            {signatures.length === goal ? (
+              <div className="completedCardCtn">
+                <h5 className="cardGoalReached">COMPLETED</h5>
+              </div>
+            ) : (
+              ""
+            )}
             <h6 className="peopleSign">
               <span>
                 {props.petition.signatures.length
