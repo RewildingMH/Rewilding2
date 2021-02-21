@@ -85,7 +85,7 @@ const PetitionCard = (props) => {
                       " persons have already signed this petition"
                   : "No one has signed this petition yet"}
               </span>{" "}
-              a goal {goal} signs <BsPen />
+              for a goal of {goal} signs <BsPen />
             </h6>
           </div>
         </div>

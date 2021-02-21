@@ -48,33 +48,32 @@ const userController = {
             res.json({success: false, error})
         }
 
-    },
-    signGoogle: async (req, res) => {
-        try{
-            const { givenName, familyName, email, googleId, imageUrl } = req.body
-        const userExists = await User.findOne({ username: email })
-        if (userExists) {
-            var token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
-            return res.json({
-                success: true, response: {
-                    success: true,
-                    token,
-                    name: userExists.name,
-                    profilePicture: userExists.profilePicture,
-                    username: userExists.username,
-                    rol: userExists.rol,
-                    userId: userExists._id
+            const errores = []
+            const { name, lastName, username, password } = req.body
+            const file = req.files.file
+            const userExists = await User.findOne({ username: username })
+            if (userExists) {
+                let error = [{ path: ['usernameExist'] }]
+                res.json({ success: false, errores: error })
+            }
+            file.mv(path.join(__dirname, `../frontend/public/assets/profilePictures/${file.md5}.jpg`), error => {
+                if (error) {
+                    return res.json({ response: error })
                 }
-            })
-        } else {
-            var newUser = new User({
-                name: givenName, lastName: familyName, username: email, profilePicture: imageUrl, googleId, rol: "personal account"
-            })
-            var newUserSaved = await newUser.save()
-            var token = jwt.sign({ ...newUserSaved }, process.env.SECRET_KEY, {})
+            }
+            )
+            if (errores.length === 0) {
+                const passwordHasheado = bcryptjs.hashSync(password, 10)
+                const profilePictureUbicacion = `/assets/profilePictures/${file.md5}.jpg`
+                var newUser = new User({
+                    name, lastName, username, profilePicture: profilePictureUbicacion, password: passwordHasheado, rol: "personal account"
+                })
+                var newUserSaved = await newUser.save()
+                var token = jwt.sign({ ...newUserSaved }, process.env.SECRET_KEY, {})
+            }
             return res.json({
-                success: true, response: {
-                    success: true,
+                success: errores.length === 0 ? true : false,
+                response: {
                     token,
                     name: newUserSaved.name,
                     profilePicture: newUserSaved.profilePicture,
@@ -83,55 +82,94 @@ const userController = {
                     userId: newUserSaved._id
                 }
             })
+        } catch (error) {
+            res.json({ success: false, error })
         }
-        }catch(error){
-            res.json({success: false, error})
+
+    },
+    signGoogle: async (req, res) => {
+        try {
+            const { givenName, familyName, email, googleId, imageUrl } = req.body
+            const userExists = await User.findOne({ username: email })
+            if (userExists) {
+                var token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
+                return res.json({
+                    success: true, response: {
+                        success: true,
+                        token,
+                        name: userExists.name,
+                        profilePicture: userExists.profilePicture,
+                        username: userExists.username,
+                        rol: userExists.rol,
+                        userId: userExists._id
+                    }
+                })
+            } else {
+                var newUser = new User({
+                    name: givenName, lastName: familyName, username: email, profilePicture: imageUrl, googleId, rol: "personal account"
+                })
+                var newUserSaved = await newUser.save()
+                var token = jwt.sign({ ...newUserSaved }, process.env.SECRET_KEY, {})
+                return res.json({
+                    success: true, response: {
+                        success: true,
+                        token,
+                        name: newUserSaved.name,
+                        profilePicture: newUserSaved.profilePicture,
+                        username: newUserSaved.username,
+                        rol: newUserSaved.rol,
+                        userId: newUserSaved._id
+                    }
+                })
+            }
+        } catch (error) {
+            res.json({ success: false, error })
         }
 
     },
     signIn: async (req, res) => {
-       try{
-        const { username, password } = req.body
-        const userExists = await User.findOne({ username: username })
-        if (!userExists) {
-            return res.json({ success: false, mensaje: 'Incorrect username and / or password.' })
+        try {
+            const { username, password } = req.body
+            const userExists = await User.findOne({ username: username })
+            if (!userExists) {
+                return res.json({ success: false, mensaje: 'Incorrect username and / or password.' })
+            }
+            const passwordMatches = bcryptjs.compareSync(password, userExists.password)
+            if (!passwordMatches) {
+                return res.json({ success: false, mensaje: 'Incorrect username and / or password.' })
+            }
+            var token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
+            return res.json(
+                {
+                    success: true, response: {
+                        token,
+                        name: userExists.name,
+                        profilePicture: userExists.profilePicture,
+                        username: userExists.username,
+                        rol: userExists.rol,
+                        userId: userExists._id
+                    }
+                })
+        } catch (error) {
+            res.json({ success: false, error })
         }
-        const passwordMatches = bcryptjs.compareSync(password, userExists.password)
-        if (!passwordMatches) {
-            return res.json({ success: false, mensaje: 'Incorrect username and / or password.' })
-        }
-        var token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
-        return res.json(
-            {
-                success: true, response: {
-                    token,
-                    name: userExists.name,
-                    profilePicture: userExists.profilePicture,
-                    username: userExists.username,
-                    rol: userExists.rol,
-                    userId: userExists._id
-                }
-            })
-       }catch(error){
-           res.json({success: false, error})
-       }
     },
     logFromLS: (req, res) => {
-      try{
-        res.json({
-            success: true, response: {
-                token: req.body.token,
-                name: req.user.name,
-                profilePicture: req.user.profilePicture,
-                username: req.user.username,
-                rol: req.user.rol,
-                userId: req.user._id
+        try {
+            res.json({
+                success: true, response: {
+                    token: req.body.token,
+                    name: req.user.name,
+                    profilePicture: req.user.profilePicture,
+                    username: req.user.username,
+                    rol: req.user.rol,
+                    userId: req.user._id
 
-            }
-        })
-      }catch(error){
-          res.json({success: false, error})
-      }
+                }
+            })
+        } catch (error) {
+            res.json({ success: false, error })
+        }
     },
     likeReason: async (req, res) => {
 

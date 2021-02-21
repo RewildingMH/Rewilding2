@@ -15,7 +15,6 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const BurgerMenu = (props) => {
-  console.log(props.props);
   const [open, setOpen] = useState(false);
 
   const closeMenu = () => {
