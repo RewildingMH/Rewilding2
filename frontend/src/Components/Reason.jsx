@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import userActions from "../redux/actions/userActions";
+import { AiFillHeart, AiOutlineHeart,AiFillDelete,AiFillEdit} from "react-icons/ai";
 
 const Reason = ({
   reasons,
@@ -49,6 +50,7 @@ const Reason = ({
     const newComment = e.target.value;
     setEdit({
       ...edit,
+      userId,
       id,
       petId,
       token: loggedUser.token,
@@ -67,54 +69,61 @@ const Reason = ({
     setVisible(!visible);
   };
   return (
-    <div>
+    <div className="reasonInd">
       {reason.length > 0 && (
-        <div style={{ display: "flex" }}>
-          <div
-            style={{
-              backgroundImage: `url(${profilePicture})`,
-              width: "100px",
-              height: "100px",
-            }}
-          className="userPicPetitions"></div>
-          <h5>{name}</h5>
-          {visible ? (
-            <>
-              <input
-                id={_id}
-                name="modification"
-                type="text"
-                onChange={captureChange}
-                placeholder={reason}
-              />
-              <button onClick={sendModification}>SEND</button>
-            </>
-          ) : (
-            <p>{reason}</p>
-          )}
-
-          {loggedUser ? (
-            likes.find((like) => like.id === loggedUser.userId) ? (
-              <button onClick={dislike} id={_id}>
-                DISLIKE♥{likes.length}
-              </button>
+        <div clasName="boxStyleCommentContainer">
+        <div style={{display:'flex'}}>
+            <div
+              style={{
+                backgroundImage: `url(${profilePicture})`,
+                width: "60px",
+                height: "60px",
+                backgroundPosition: "center",
+                backgroundSize: "cover"
+              }}
+            className="userPicPetitions">
+            </div>
+            <h4 className="signPetitionName">{name} Said:</h4>
+            {visible ? ( //modificar comentario
+              <>
+                <input
+                  id={_id}
+                  name="modification"
+                  type="text"
+                  onChange={captureChange}
+                  placeholder={reason}
+                  className="inputEditReason"
+                />
+                <button onClick={sendModification}>SEND</button>
+              </>
             ) : (
-              <button onClick={like} id={_id}>
-                LIKE♥{likes.length}
-              </button>
-            )
-          ) : (
-            <button id={_id}>LIKE♥{likes.length}</button>
-          )}
+              <p className="reasonComment">{reason}</p>
+              
+            )}
+          </div>
+          <div style={{display:'flex'}}>
+            {loggedUser ? (
+              likes.find((like) => like.id === loggedUser.userId) ? (
+                <div>
+                  <AiFillHeart className="likesReason" onClick={dislike} id={_id}/>{likes.length}
+                </div>
+              ) : (
+                <div>
+                  <AiOutlineHeart className="likesReason" onClick={like} id={_id}/>{likes.length}
+                </div>
+              )
+            ) : (
+              <div ><AiFillHeart id={_id}/>{likes.length}</div>
+            )}
 
-          {loggedUser && loggedUser.userId === userId && (
-            <>
-              <button onClick={removeReason} id={_id}>
-                DELETE
-              </button>
-              <button onClick={changeReason}>EDIT</button>
-            </>
-          )}
+            {loggedUser && loggedUser.userId === userId && (
+              <>  
+                  
+                <div><AiFillDelete id={_id} onClick={removeReason}/></div>
+                <div onClick={changeReason}><AiFillEdit/></div>
+              </>
+            )}
+          </div>
         </div>
       )}
     </div>

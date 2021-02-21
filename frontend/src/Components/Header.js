@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import React, { useState } from 'react'
 import authActions from '../redux/actions/authActions'
 import logo from '../assets/logoNuevo.png'
-import { Dropdown } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { AiOutlineLogout } from "react-icons/ai";
+import { GoSignOut } from "react-icons/go";
 import BurgerMenu from "./BurgerMenu";
+import { Nav } from "react-bootstrap";
 
 
 
@@ -15,7 +15,7 @@ const Header = (props) => {
         window.scrollY > 300 ?
             document.querySelector('.navBar').classList.add('affix') :
             document.querySelector('.navBar').classList.remove('affix')
-    };
+    }; 
 
     if (props.loggedUser === null) {
         var links = <>
@@ -34,11 +34,12 @@ const Header = (props) => {
                 </NavLink>
                 <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                     <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
+                    <h6>Hi! {props.loggedUser.name}</h6>
                 </NavLink>
-                <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderNamendLogOut">
-                    <p>Hi! {props.loggedUser.name}</p>
-                    <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()} />
+                <NavLink to="/"> 
+                    <GoSignOut className="logOut" onClick={() => props.logoutUser()} />
                 </NavLink>
+                
             </>
         } else {
             var links =
@@ -47,11 +48,11 @@ const Header = (props) => {
                         <p>CREATE PETITION</p>
                     </NavLink>
                     <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
-                        <img src={props.loggedUser.profilePicture} alt="profile" className="userImg rounded-circle" />
+                        <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
+                        <h6>Hi! {props.loggedUser.name}</h6>
                     </NavLink>
-                    <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderNamendLogOut">
-                        <p>Hi! {props.loggedUser.name}</p>
-                        <AiOutlineLogout className="logOut" onClick={() => props.logoutUser()} />
+                    <NavLink to="/"> 
+                        <GoSignOut className="logOut" onClick={() => props.logoutUser()} />
                     </NavLink>
                 </>
         }
@@ -61,8 +62,9 @@ const Header = (props) => {
         <>
             <nav className="navBar">
                 <div className="logo">
-                    <NavLink to="/">
+                    <NavLink to="/" /* className="headerLogondSlogan" */>
                         <div style={{ backgroundImage: `url(${logo})` }} className="logoDiv"></div>
+                        {/* <h6>R E W I L D I N G </h6> */}
                     </NavLink>
                 </div>
                 <div className="pages">

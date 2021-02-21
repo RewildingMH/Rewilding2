@@ -19,7 +19,8 @@ require('../config/passport')
 
 //Sign Up Sign with Google Sign In 
 router.route('/user/signup')
-  .post(validator.validNewAccount, userController.signUp)
+//validator.validNewAccount,
+  .post( userController.signUp)
 router.route('/user/sign_google')
   .post(userController.signGoogle)
 
@@ -35,6 +36,7 @@ router.route('/signPetition')
   .post(passport.authenticate('jwt', { session: false }), petitionController.signPetition)
 //Blog
 router.route('/blog')
+  .post(passport.authenticate('jwt', { session: false }), blogController.addArticle)
   .get(blogController.getArticles)
   .put(blogController.editArticle)
 router.route('/blog/delete')

@@ -2,9 +2,9 @@
 .bm-burger-button {
   position: fixed;
   width: 36px;
-  height: 30px;
-  right: 36px;
-  top: 36px;
+  height: 36px;
+  right: 3vw;
+  top: 2vh;
 }
 
 /* Color/shape of burger icon bars */
@@ -85,6 +85,23 @@ p {
   align-items: center !important;
   cursor: pointer;
 }
+.userLinkBurger {
+  margin-top: 2vh;
+  margin-bottom: 1vh;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  display: flex;
+}
+
+.userLinkBurger h6 {
+  margin-left: 1vw;
+  margin-top: 2vh;
+  color: white;
+}
+
+.logOutIconBurger{
+  margin-left: 1.3vw;
+}
 
 .sideBarTitle {
   margin: 0;
@@ -151,6 +168,47 @@ nav > a {
     width: 5rem;
   }
   .logoDiv {
-    width: 5rem;
+    margin-left: 1vw;
+    margin-bottom: 1vh;
+    width: rem;
+    height: 3rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .logOutIconBurger{
+    margin-left: 2.5vw;
+  }
+  .userLinkBurger {
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    margin-right: 1vw;
+    margin-left: 2vw;
+    display: flex;
+  }
+  
+  .userLinkBurger h6 {
+    margin-left: 1vw;
+    margin-top: 2vh;
+    color: white;
+  }
+}
+
+@media (max-width: 500px) {
+  .logOutIconBurger{
+    margin-left: 4.7vw;
+  }
+  .userLinkBurger {
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    margin-right: 1vw;
+    margin-left: 3vw;
+    display: flex;
+  }
+  
+  .userLinkBurger h6 {
+    margin-left: 2vw;
+    margin-top: 2vh;
+    color: white;
   }
 }

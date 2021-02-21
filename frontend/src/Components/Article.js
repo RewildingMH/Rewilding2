@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import CommentArticle from './CommentArticle'
+import { BiComment } from "react-icons/bi";
+
 
 const Article = (props) =>{
     const [preloader, setPreloader]= useState(false)
@@ -27,7 +29,7 @@ const Article = (props) =>{
         article.map(article =>
           <div>
             <div className="containerBanner">
-              <h2>Investigations of the animal world</h2>
+              <h2>{article.articleCategory}</h2>
             </div>
             <div className="container-fluid bg-dark">
               <div className="container articleContainer">
@@ -36,19 +38,27 @@ const Article = (props) =>{
                 </div>
                 <div className="columnArticlePic">
                   <div className="containerArticlePic">
-                    <p className="categoryBlog text-white">{article.createdAt.slice(0, 10)} | {article.articleCategory}</p>
+                    <p className="categoryBlog text-white">{article.createdAt.slice(0, 10)}</p>
                     <img src={article.picture} className="picArticle"></img>
-                    <div className="bottomArticle">
-                      <img src={article.author[0].profilePicture} style={{margin:'1vh', width:'40px'}}></img>
-                      <p className="textArticle">{`Author: ${article.author[0].name}. |`}</p>
-                      <p className="textArticle">{` Created At: ${article.createdAt.slice(0, 10)} `}</p>
+                    <div className="authorContainerArticle">
+                      <div className="authorAlignArticle">
+                        <img src={article.author[0].profilePicture} className="authorArticlePicture rounded-circle"></img>
+                        <p className="authorArticleName">{`Author: ${article.author[0].name}.`}</p>
+                        <p className="articleVisits">{`Visits: ${article.visits}`}</p>
+                      </div>
+                        <BiComment className="commentIconArticle" />
                     </div>
                   </div>
                 </div>
+                <div className="articleDescription">
                   <p className="textArticleDescription">{article.descripcion}</p>
+                  <div className="commentArticleContainerMain my-4">
                   <div>
                     <CommentArticle article={article} articlecomment={article.comments}/>
                   </div>
+                </div>
+                </div>
+                
               </div>
             </div>
           </div>

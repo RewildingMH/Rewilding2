@@ -24,11 +24,11 @@ const HomePage = (props) => {
                     <h2>Last Articles Created</h2>
                 </div>
                 <div className="divBlog">
-                    {props.lastArticles.map(lastArticle => <LastArticles key={lastArticle._id} lastArticle={lastArticle} />)}
+                    {props.lastArticles.map(lastArticle => <LastArticles key={lastArticle._id} lastArticle={lastArticle} />).reverse()}
                     <div className="lastPetitionsCreated">
                         <h2>Last Petitions Created</h2>
                     </div>
-                    {props.lastPetitions.map(lastPetition => <LastPetitions key={lastPetition._id} lastPetition={lastPetition} />)}
+                    {props.lastPetitions.map(lastPetition => <LastPetitions key={lastPetition._id} lastPetition={lastPetition} />).reverse()}
                     <div className="white">
                     </div>
                 </div>

@@ -10,6 +10,7 @@ import {
   AiTwotoneEdit,
 } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const PostComment = ({
   comment,
@@ -100,13 +101,19 @@ const PostComment = ({
     <div className="singleCommentContainer">
       <div className="singleComment">
         <div className="commentCredentials">
-          <div
-            style={{
-              backgroundImage: `url(${profilePicture})`,
-            }}
-            className="commentUserPic"
-          ></div>
-          <p className="commentUsername">{name}:</p>
+          <Link
+            to={`/profile/${userId}`}
+            style={{ display: "flex", textDecoration: "none", color: "white" }}
+            className="usernameCommentLink"
+          >
+            <div
+              style={{
+                backgroundImage: `url(${profilePicture})`,
+              }}
+              className="commentUserPic"
+            ></div>
+            <p className="commentUsername">{name}:</p>
+          </Link>
         </div>
 
         {visible ? (
@@ -117,6 +124,7 @@ const PostComment = ({
               placeholder={comment}
               onChange={captureNewComment}
               className="editCommentInput"
+              autoComplete="off"
             />
             <div
               className="sendComment"

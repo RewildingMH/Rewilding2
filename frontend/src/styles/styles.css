@@ -21,6 +21,14 @@ h2 {
 }
 /* header */
 
+/* .headerLogondSlogan{
+  display: flex;
+}
+.headerLogondSlogan h6 {
+  margin-left: 1vw;
+  margin-top: 2.1vh;
+  color: white;
+} */
 .navBar {
   width: 100%;
   position: fixed;
@@ -53,23 +61,16 @@ h2 {
 
 .userHeaderNamendLogOut {
   display: flex;
-  justify-content: center;
-}
-.userHeaderNamendLogOut p {
-  color: rgb(255, 255, 255);
+  justify-content: flex-end;
 }
 
-.userHeaderNamendLogOut p:hover {
-  border: none;
-}
 
 .logOut {
-  margin-top: 1.5vh;
-  position: relative;
-  right: 20%;
+  margin-bottom: 0.5vh;
+  margin-right: 1vw;
   color: brown;
   cursor: pointer;
-  font-size: 3vh;
+  font-size: 3vh; 
 }
 
 .mainListDiv {
@@ -121,10 +122,14 @@ nav a {
 .userHeaderLink {
   margin-bottom: 1vh;
   margin-right: 1vw;
+  display: flex;
 }
 .userHeaderLink h6 {
   margin-left: 1vw;
-  margin-top: 1vh;
+  margin-top: 2vh;
+  text-decoration: none;
+  color: white;
+  text-transform: capitalize; 
 }
 
 .userHeaderName {
@@ -242,7 +247,7 @@ nav a {
 
 .divBlog {
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -280,6 +285,12 @@ nav a {
   margin-bottom: 5vh;
 }
 
+.lastArticlesCreated h2,
+.lastPetitionsCreated h2 {
+  border-bottom: 2px solid black;
+}
+
+
 .lastArticleTitle {
   color: white;
   background-color: rgba(0, 0, 0, 0.801);
@@ -288,7 +299,7 @@ nav a {
   margin-bottom: 0px !important;
   padding: 3vh;
   transition: 0.5s;
-  min-height: 10rem;
+  min-height: 8rem;
   font-size: 24px;
 }
 
@@ -333,13 +344,11 @@ nav a {
 
 .lastPetitionsContainer {
   display: flex;
-  /* width: 50%; */
-  /* height: 25%; */
   background-size: 30%;
   background-repeat: no-repeat;
   border-radius: 1vw;
   color: white;
-  margin: 1vh;
+  margin-bottom: 5vh;
   background-image: url("https://image.freepik.com/foto-gratis/hojas-color-verde-oscuro-jardin-textura-hoja-verde-esmeralda-naturaleza-fondo-abstracto-bosque-tropical-encima-vista-hojas-color-verde-oscuro-patron-natural_33867-1475.jpg");
   background-size: cover;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
@@ -351,29 +360,35 @@ nav a {
   border-radius: 1vw 0vw 0vw 1vw;
 }
 .lastPetitionImgPetitionCard {
-  width: 40%;
-  height: 40vh;
+  width: 30vw;
+  height: 35vh;
   border-radius: 1vw 0vw 0vw 1vw;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .lastPetitionsInfo {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 100%;
+  width: 50vw;
   padding: 1vw;
   background-color: rgba(0, 0, 0, 0.555);
-  border-radius: 1vw;
+  border-radius: 0vw 1vw 1vw 0vw;
 }
 .userInfo {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
-.userInfo img {
-  width: 2.5vw;
-  height: 5vh;
-  border-radius: 15vw;
+.petitionCreatedImg {
+  width: 5vw;
+  height: 10vh;
+  border-radius: 3vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+  background-size: cover;
 }
 .petitionCreatedBy span {
   color: #c1946a;
@@ -390,6 +405,189 @@ nav a {
 .lastPetitionsTitle {
   margin-right: 2vw;
   text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+}
+
+.petitionsPageTitle {
+  margin-top: 2vh;
+  margin-bottom: 5vh;
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+/* Ind Petition */
+
+.singlePetitionContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+}
+.petitionHeaderAuthor{
+  text-transform: capitalize;
+}
+.petitionHeaderImg {
+  width: 5vw;
+  height: 10vh;
+  border-radius: 5vw;
+  margin-top: -5vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
+}
+.petitionHeader {
+  padding: 3vw;
+  width: 80.2vw;
+  height: 10vh;
+  display: flex;
+  background-color: #3e4444;
+  color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  justify-content: space-between;
+}
+.indPetitionTitle {
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 5vh;
+}
+
+.indPetitionTitle span {
+  border-bottom: 1px solid black;
+}
+
+.singlePetitionImg {
+  width: 80.2vw;
+  height: 70vh;
+  background-position: center;
+  background-size: cover;
+}
+
+.description {
+  background-color: #3e4444;
+  color: aliceblue;
+  padding:5vh;
+  width: 80.2vw;
+  
+}
+.signaturesPetitionInd{
+  width: 80.2vw;
+  text-align: center;
+  padding: 1vw;
+  background-color:#3e4444;
+  color: white;
+  border-radius: 0vw 0vw 1vw 1vw;
+}
+.signaturesPetitionInd span {
+  color: #75a146;
+}
+.inputPetitions {
+  width: 80.2vw;
+  display: flex;
+  justify-content: center;
+}
+
+.inputPetitions input {
+  width: 60%;
+  outline: none;
+  margin-top: 3vh;
+  margin-left: 9vw;
+  margin-right: 5vw;
+  box-shadow: 2px 2px 5px #999;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.123);
+  border: none;
+  outline: none;
+  border-bottom: 0.5vh solid green;
+  width: 50%;
+  height: 7vh;
+  padding: 1vw;
+  font-size: 1vw;
+  text-align: center;
+  border-radius: 1vw;
+  transition: 0.5s;
+  color: rgb(0, 0, 0);
+}
+.sendPetition {
+  margin-top: 2.5vh;
+  font-size: 2vw;
+  color: #82b74b;
+  background-color: rgba(0, 0, 0, 0.466);
+  border-radius: 2vw;
+  padding: 1vw;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
+}
+.boxStyleCommentContainer{
+  width: 60vw;
+  justify-items: space-around;
+}
+
+.reasonsPetitionContainer{
+  display:flex;
+  flex-direction: column;
+}
+.comentaryReasonBox{
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+.reasonComment {
+  margin-top: 1vh;
+  font-size: 20px;
+  margin-left: 1vw;
+}
+.inputEditReason {
+  width: 60%;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.123);
+  border: none;
+  outline: none;
+  border-bottom: 0.5vh solid green;
+  width: 50%;
+  height: 7vh;
+  padding: 1vw;
+  font-size: 1vw;
+  text-align: center;
+  border-radius: 1vw;
+  transition: 0.5s;
+  color: rgb(0, 0, 0);
+}
+
+.inputPetitions button {
+  width: 5vw;
+  height: 5vh;
+  margin-top: 4vh;
+}
+.reasonsPetition {
+  width: 80.2vw;
+  display: flex;
+  justify-content: center;
+  background-color:#3e4444;
+  border-radius: 1vw;
+  padding: 2vw;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
+}
+.reasonInd {
+  width: 60vw;
+  display: flex;
+  justify-content: space-between;
+  padding: 2vw;
+  background-color:#ffffff38;
+  border-radius: 2vw;
+  margin-top: 1vh;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
+}
+
+.likesReason {
+  color: red;
+  cursor: pointer;
+}
+
+.goToPetitions {
+  display: flex;
+  justify-content: center;
 }
 
 .white {
@@ -765,10 +963,10 @@ nav a {
 
 .petitionContainer {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .petitionImg {
@@ -794,33 +992,27 @@ nav a {
   padding: 5vh;
 }
 
-.description {
-  background-color: rgba(4, 97, 50, 0.822);
-  color: aliceblue;
-  margin-top: 2vh;
-  padding:2vh;
-  width: 85%;
-  border-radius: 2vh;
-}
-
-.inputPetitions {
-  width: 80%;
-  display: flex;
-  justify-content: center;
-}
-
-.inputPetitions input {
-  width: 60%;
-  outline: none;
-}
 
 .userPicPetitions {
-  border-radius: 80%;
+  border-radius: 50vw;
+  margin-right: 2vw;
+  box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
+}
+
+.signPetitionName {
+  color: black;
+  text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
+  margin-top: 2vh;
 }
 
 .returnPet{
-  color: brown;
+  color: #405d27;
   text-decoration: none;
+  font-size: large;
+}
+
+.returnPet:hover {
+  color: red;
 }
 
 .btnPetition {
@@ -845,11 +1037,6 @@ nav a {
   height: 70vh;
 }
 
-/* .createPetitionContainer {
-  width: 100%;
-  height: 100%;
-} */
-
 .createPetitionContainer p {
   color: green;
   text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.109);
@@ -868,38 +1055,17 @@ h6 {
 
 /* inputs */
 
-.createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-  width: 40vw;
+.createPetition{
+  width: auto;
   height: 20vh;
   border-radius: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.createPetitionInput1nd2 input {
-  margin-top: 1vh;
+.createPetition input {
   box-shadow: 2px 2px 5px #999;
-  display: flex;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.123);
-  border: none;
-  outline: none;
-  border-bottom: 0.5vh solid green;
-  width: 100%;
-  height: 7vh;
-  padding: 1vw;
-  font-size: 1vw;
-  text-align: center;
-  border-radius: 1vw;
-  transition: 0.5s;
-  color: rgb(0, 0, 0);
-}
-
-.createPetitionInput3 textarea {
-  width: 100%;
-  resize: none;
-  margin-top: 1vh;
-  box-shadow: 2px 2px 5px #999;
-  display: flex;
-  justify-content: center;
   background: rgba(0, 0, 0, 0.123);
   border: none;
   outline: none;
@@ -907,72 +1073,27 @@ h6 {
   width: 100%;
   height: 10vh;
   padding: 1vw;
-  font-size: 1vw;
+  font-size: 15px;
   text-align: center;
   border-radius: 1vw;
   transition: 0.5s;
   color: rgb(0, 0, 0);
 }
 
-.createPetitionInput4 input {
-  margin-top: 1vh;
+.createPetition textarea {
+  resize: none;
   box-shadow: 2px 2px 5px #999;
-  display: flex;
-  justify-content: center;
   background: rgba(0, 0, 0, 0.123);
   border: none;
   outline: none;
   border-bottom: 0.5vh solid green;
+  padding: 1vw;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 1vw;
+  transition: 0.5s;
+  color: rgb(0, 0, 0);
   width: 100%;
-  height: 7vh;
-  padding: 1vw;
-  font-size: 1vw;
-  text-align: center;
-  border-radius: 1vw;
-  transition: 0.5s;
-  color: rgb(0, 0, 0);
-}
-
-
-.createPetitionInput5 input {
-  margin-top: 1vh;
-  margin-left: 9vw;
-  box-shadow: 2px 2px 5px #999;
-  display: flex;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.123);
-  border: none;
-  outline: none;
-  border-bottom: 0.5vh solid green;
-  width: 50%;
-  height: 7vh;
-  padding: 1vw;
-  font-size: 1vw;
-  text-align: center;
-  border-radius: 1vw;
-  transition: 0.5s;
-  color: rgb(0, 0, 0);
-}
-
-/* input 6 */
-
-.createPetitionInput6 {
-  width: 40vw;
-  height: 45vh;
-  border-radius: 2vh;
-}
-
-.createPetitionUploadFile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.createPetitionUploadFile label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .profile-pic-profile-submit {
@@ -999,109 +1120,19 @@ h6 {
   border-bottom: 2px solid green;
   padding: 0.8vw 2vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
-  margin-bottom: 5vw;
+
 }
 
 .createPetitionButton button:hover {
   background-color: black;
 }
 
-/* @media (max-width:320px) {
-  .createPetitionBanner {
-    height: 25vh;
-    background-position: -90px !important;
-  }
-  .createPetitionContainer {
-    width: 100% !important;
-  }
-  .backgroundCard {
-    width: 100%;
-  }
-
-  .backgroundCard div {
-    width: 100%;
-  }
-
-  .backgroundCard p {
-    margin:0%;
-  }
-
-  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-    width: 80%;
-    height: 13vh;
-    border-radius: 2vh;
-  }
-  .createPetitionInput3 textarea {
-    height: 6vh;
-  }
-
-  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
-    height: 5vh;
-  }
-
-  .createPetitionInput4 {
-    margin-top: 2vh;
-  }
-
-  .createPetitionInput5 input {
-    margin-left: 10vw;
-    width: 70vw;
-  }
-  
-  .createPetitionButton {
-    margin-top: -4vh;
-  }
-
-  .lastDiv {
-    height: 35vh;
-  }
-} */
-
 @media (max-width:425px) {
   .createPetitionBanner {
     height: 25vh;
     background-position: -90px !important;
   }
-  /* .createPetitionContainer {
-    width: 100% !important;
-  }
-  .backgroundCard {
-    width: 100%;
-  }
-
-  .backgroundCard div {
-    width: 100%;
-  }
-
-  .backgroundCard p {
-    margin:0%;
-  }
-
-  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-    width: 80%;
-    height: 13vh;
-    border-radius: 2vh;
-  }
-  .createPetitionInput3 textarea {
-    height: 6vh;
-  }
-
-  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
-    height: 5vh;
-  }
-
-  .createPetitionInput4 {
-    margin-top: 2vh;
-  }
-
-  .createPetitionInput5 input {
-    margin-left: 10vw;
-    width: 70vw;
-  }
-  
-  .lastDiv {
-    height: 35vh;
-  } */
+ 
 .createPetitionButton {
     margin-top: 10vh;
   }
@@ -1112,9 +1143,7 @@ h6 {
     height: 25vh;
     background-position: -90px;
   }
-  .createPetitionContainer {
-    width: 100%;
-  }
+  
   .backgroundCard {
     width: 100%;
   }
@@ -1127,8 +1156,7 @@ h6 {
     margin:0%;
   }
   .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-    width: 80%;
-    height: 13vh;
+  
     border-radius: 2vh;
   }
   .createPetitionInput3 textarea {
@@ -1139,13 +1167,8 @@ h6 {
     height: 5vh;
   }
 
-  .createPetitionInput4 {
-    margin-top: 2vh;
-  }
-
   .createPetitionInput5 input {
     margin-left: 10vw;
-    width: 70vw;
   }
 
   .lastDiv {
@@ -1161,42 +1184,7 @@ h6 {
   .createPetitionContainer {
     width: 100% !important;
   }
-  .backgroundCard {
-    width: 100%;
-  }
-
-  .backgroundCard div {
-    width: 100%;
-  }
-
-  .backgroundCard p {
-    margin:0%;
-  }
-  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-    width: 80%;
-    height: 13vh;
-    border-radius: 2vh;
-  }
-  .createPetitionInput3 textarea {
-    height: 6vh;
-  }
-
-  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
-    height: 5vh;
-  }
-
-  .createPetitionInput4 {
-    margin-top: 2vh;
-  }
-
-  .createPetitionInput5 input {
-    margin-left: 10vw;
-    width: 70vw;
-  }
-
-  .lastDiv {
-    height: 35vh;
-  }
+  
 
   .createPetitionButton {
     margin-top: 2vh;
@@ -1211,44 +1199,7 @@ h6 {
   .createPetitionContainer {
     width: 100% !important;
   }
-  .backgroundCard {
-    width: 100%;
-  }
-
-  .backgroundCard div {
-    width: 100%;
-  }
-
-  .backgroundCard p {
-    margin:0%;
-  }
-  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-    width: 80%;
-    height: 13vh;
-    border-radius: 2vh;
-  }
-  .createPetitionInput3 textarea {
-    height: 6vh;
-  }
-
-  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
-    height: 5vh;
-  }
-
-  .createPetitionInput4 {
-    margin-top: 2vh;
-  }
-
-  .createPetitionInput5 input {
-    margin-left: 10vw;
-    width: 70vw;
-  }
-
-  .lastDiv {
-    height: 35vh;
-  }
-
-  .createPetitionButton {
+   .createPetitionButton {
     margin-top: 2vh;
   }
 
@@ -1259,6 +1210,38 @@ h6 {
 .adminBlog {
   width: 100%;
   height: 100%;
+}
+
+.topSectionAdmin{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
+.whiteAdminText{
+  padding: 1vh;
+  color: whitesmoke;
+}
+
+.adminInputs{
+  width: 20vw;
+}
+
+.adminButton{
+  width: 6vw;
+}
+
+.positionArticleAdmin{
+  padding: 1vh;
+  display: flex;
+  justify-content: center;
+}
+
+.sectionAdminBlog{
+  display: flex;
+  justify-content: center;
 }
 
 .adminBanner {
@@ -1585,9 +1568,17 @@ textarea {
   color: whitesmoke;
   padding-left: 0.3vw;
   padding-top: 1vw;
+  font-size: 3vh;
 }
 .titleArticle {
   padding-top: 3vh;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.authorArticleName{
+  margin-top: 3.5vh;
+  margin-left: 1vw;
   color: whitesmoke;
   text-align: center;
 }
@@ -1604,10 +1595,13 @@ textarea {
   justify-items: center;
 }
 
-.bottomArticle {
+.authorContainerArticle {
   display: flex;
-  justify-items: center;
+  justify-content: space-between;
   color: whitesmoke;
+  margin-top: 1vh;
+  border-top: 1px solid rgb(68, 59, 59);
+  border-bottom: 1px solid rgb(68, 59, 59);
 }
 
 .containerArticlePic{
@@ -1616,14 +1610,95 @@ textarea {
   flex-direction: column;
 }
 .picArticle{
-  width: 60vw
+  width: 60vw;
+  padding-bottom: 1vh;
+}
+
+.articleVisits{
+  margin-top: 3.5vh;
+  margin-left: 1vw;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.authorArticlePicture{
+  margin-left: 0.5vw;
+  padding: 1vh;
+  width: 55px;
+}
+
+.commentIconArticle{
+  width: 2.7vw;
+  height: 10vh;
+}
+
+.authorAlignArticle{
+  display: flex;
+}
+
+.articleDescription{
+  padding-top: 3vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .textArticleDescription{
+  width: 60vw;
   color: whitesmoke;
-  width: 80vw;
-  padding-left: 7vw;
+}
+
+.commentArticleContainerMain{
+  width: 60vw;
+  border-radius: 2vw;
+}
+
+.commentsMapArticleContainer{
+  background-color: #3e4444;
+  color: white;
+  border-radius: 2vw;
+}
+
+.centerArticleImage{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.textArticleComment{
+  color: black;
+  margin-top: 3.4vh;
+  width: 30vw;
+}
+
+.articleCommentContainer{
+  background: rgba(190, 186, 186, 0.781);
+  border-radius: 1vh;
+  width: 40vw;
+  height: 13vh;
+  margin-top: 0.4vh;
+}
+
+.nameArticleComment{
+  padding-left:1.5vw;
   padding-top: 1vh;
+  height: 3vh;
+}
+
+.commentArticleIcons{
+  margin-top: 1vh;
+}
+
+.editArticleComment{
+  width: 40vw;
+  height: 13vh;
+  border-radius: 1vh;
+  padding: 1vh;
+}
+
+.editArticleCommentContainer{
+  display: flex;
 }
 
 /* Loader */
@@ -1696,5 +1771,159 @@ textarea {
     -webkit-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+/* Media Queries */ 
+
+@media (max-width: 800px) {
+  .mainTitle {
+    font-size: 8vh;
+    color: white;
+    font-weight: bold;
+    border-radius: 1vw;
+    background-color: rgba(0, 0, 0, 0.582);
+    padding: 2vw;
+  }
+  .sloganBanner h2{
+    margin-left: 20vw;
+    color: white;
+  }
+  .containerMain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: 195%;
+  }
+
+  
+@keyframes movement {
+  from {
+    background-position: center;
+  }
+  to {
+    background-position: center;
+  }
+}
+  .lastPetitionsContainer {
+    flex-direction: column;
+  }
+  .lastPetitionImgPetitionCard {
+    width: 50vw;
+    height: 35vh;
+    border-radius: 1vw 1vw 0vw 0vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .lastPetitionsInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 50vw;
+    padding: 1vw;
+    background-color: rgba(0, 0, 0, 0.555);
+    border-radius: 1vw;
+    padding: 3.1vw;
+  }
+
+  .userInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+  }
+  .petitionCreatedImg {
+    margin-left: 18vw;
+    width:  7vw;
+    height: 5.5vh;
+    border-radius: 3vw;
+    background-size: cover;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
+  }
+  
+}
+
+@media (max-width: 500px) {
+  .mainTitle {
+    font-size: 5vh;
+    color: white;
+    font-weight: bold;
+    border-radius: 1vw;
+    background-color: rgba(0, 0, 0, 0.582);
+    padding: 2vw;
+  }
+  .sloganBanner h2{
+    margin-left: 10vw;
+    color: white;
+  }
+  .containerBanner{
+    text-align: center;
+  }
+  .containerMain {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  from {
+    background-position: center;
+  }
+  to {
+    background-position: center;
+  }
+  .lastPetitionsContainer {
+    flex-direction: column;
+    height: 60vh;
+  }
+  .lastPetitionImgPetitionCard {
+    width: 80vw;
+    height: 35vh;
+    border-radius: 1vw 1vw 0vw 0vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .lastPetitionsInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80vw;
+    padding: 1vw;
+    background-color: rgba(0, 0, 0, 0.555);
+    border-radius: 1vw;
+    padding: 3.1vw;
+  }
+
+  .lastPetitionsInfo p {
+    display: none;
+  }
+
+  .userInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+  }
+  .petitionCreatedImg {
+    margin-right: 15vw;
+    width:  13vw;
+    height: 7vh;
+    border-radius: 15vw;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
   }
 }
