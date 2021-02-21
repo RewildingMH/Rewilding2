@@ -4,6 +4,7 @@ import articleActions from '../redux/actions/articleActions'
 import {Link} from 'react-router-dom'
 import LastArticles from '../Components/LastArticles'
 import bannerBlog from '../assets/bannerBlog.png'
+import Footer from '../Components/Footer'
 
 
 
@@ -36,7 +37,7 @@ const addVisit = e => {
             </h3>
           </div> */}
         </div>
-        <div className="container-fluid mt-3">
+        <div className="container-fluid my-5">
           <div className="container" >
             <div className="row">
               <div className="col-12">
@@ -88,8 +89,9 @@ const addVisit = e => {
               </div>
             </div>
         </div>
-
+        <Footer/>
       </>}
+      
     </>
   )
 };

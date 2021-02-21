@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PetitionCard from "../Components/PetitionCard";
 import petitionsActions from './../redux/actions/petitionsActions'
 import petitionsImg from "../assets/petitionsImg.png"
+import Footer from '../Components/Footer'
 
 
 //COMPONENTE QUE LEE LAS PETICIONES REALIZADAS
@@ -32,7 +33,9 @@ const Petitions = (props) => {
         {props.allPetitions.map((petition) => {
           return <PetitionCard key={petition._id} petition={petition} />;
         })}
-      </div></>}
+      </div>
+      <Footer/>
+      </>}
     </>
   );
 };

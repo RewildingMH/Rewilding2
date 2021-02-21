@@ -537,6 +537,10 @@ nav a {
   padding-bottom: 1vh;
 }
 
+.containerCommentIconArticle{
+  display:flex;
+}
+
 .SingleIconContainer{
   padding-left: 0.8vw;
   margin-top: 1.5vh;
@@ -674,6 +678,9 @@ nav a {
 }
 
 @media(max-width:800px) {
+  .authorArticleName {
+    
+  }
   .social img {
     width: 10vw;
     margin: 0 1vw;
@@ -1030,11 +1037,15 @@ h6 {
 
 .createPetition{
   width: auto;
-  height: 20vh;
   border-radius: 2vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.createPetition span {
+    color:green;
+    text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.26);
 }
 
 .createPetition input {
@@ -1093,7 +1104,6 @@ h6 {
   border-bottom: 2px solid green;
   padding: 0.8vw 2vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
-
 }
 
 .createPetitionButton button:hover {
@@ -1495,15 +1505,17 @@ textarea {
   font-weight: 700;
 }
 .bg-greenLight{
-  background-color: #405d272a;
+  background-color: #405d271f;
 }
 .tituloBlog {
   color: black;
   font-weight: 700;
   width: 70%;
   text-align: left;
+  transition: .3s;
 }
 .tituloBlog:hover {
+  transition: .3s;
   transform: scale(1.02);
 }
 .descripcionBlog {
@@ -1551,9 +1563,24 @@ textarea {
 
 .authorArticleName{
   margin-top: 3.5vh;
-  color: #75a146;
+  font-size: large;
+  margin-left: 1vw;
+  color: green;
   text-align: center;
 }
+
+.iconArticle {
+  display: flex;
+  margin-top: 3vh;
+  margin-right: 2vw;
+}
+
+.iconArticle p{
+    font-size: large;
+    margin-bottom: 2vw; 
+}
+
+
 .authorArticleName span {
   margin-left: 1vh;
   margin-right: 1vw;
@@ -1593,27 +1620,32 @@ textarea {
 }
 
 .articleVisits{
-  margin-top: 3.5vh;
-  margin-left: 35vw;
+  margin-top: 2vh;
+  color: whitesmoke;
   text-align: center;
-  color: #75a146;
-  font-weight: bold;
-}
-
-.articleVisits span {
-  color: white;
-  font-weight: bold;
-  margin-right: 1vh;
+  padding-right: 1vw;
+  padding-left: 0.5vw;
 }
 
 .authorArticlePicture{
+  margin-top: 2vh;
   margin-left: 0.5vw;
   padding: 1vh;
+  width: 100px;
+  height: 100px;
+  border-radius: 75px;
 }
 
 .commentIconArticle{
   width: 2.7vw;
   height: 10vh;
+  color: rgba(252, 186, 4, 0.705);
+}
+
+.viewIconArticle{
+  width: 2.7vw;
+  height: 10vh;
+  color: rgba(252, 186, 4, 0.705);
 }
 
 .authorAlignArticle{
@@ -1761,6 +1793,13 @@ textarea {
 /* Media Queries */ 
 
 @media (max-width: 1440px){
+  .headerLogondSlogan{
+    display: flex;
+    width: 30vw;
+  }
+  .headerLogondSlogan h6{
+    white-space: nowrap;
+  }
   .lastArticlesCreated h2 {
     margin-top: 10vh;
   }
@@ -1869,6 +1908,9 @@ textarea {
 }
 
 @media (max-width: 500px) {
+  .containerCommentIconArticle {
+    flex-direction: column;
+  }
   .lastArticlesCreated h2{
     margin-top: 15vh;
   }
