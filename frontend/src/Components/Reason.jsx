@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import userActions from "../redux/actions/userActions";
+import { AiFillHeart, AiOutlineHeart,AiFillDelete,AiFillEdit} from "react-icons/ai";
 
 const Reason = ({
   reasons,
@@ -67,17 +68,19 @@ const Reason = ({
     setVisible(!visible);
   };
   return (
-    <div>
+    <div className="reasonInd">
       {reason.length > 0 && (
         <div style={{ display: "flex" }}>
           <div
             style={{
               backgroundImage: `url(${profilePicture})`,
-              width: "100px",
-              height: "100px",
+              width: "60px",
+              height: "60px",
+              backgroundPosition: "center",
+              backgroundSize: "cover"
             }}
           className="userPicPetitions"></div>
-          <h5>{name}</h5>
+          <h5 className="signPetitionName">{name} Said: </h5>
           {visible ? (
             <>
               <input
@@ -86,33 +89,34 @@ const Reason = ({
                 type="text"
                 onChange={captureChange}
                 placeholder={reason}
+                className="inputEditReason"
               />
               <button onClick={sendModification}>SEND</button>
             </>
           ) : (
-            <p>{reason}</p>
+            <p className="reasonComment">{reason}</p>
           )}
 
           {loggedUser ? (
             likes.find((like) => like.id === loggedUser.userId) ? (
-              <button onClick={dislike} id={_id}>
-                DISLIKE♥{likes.length}
-              </button>
+              <div>
+                <AiFillHeart className="likesReason" onClick={dislike} id={_id}/>{likes.length}
+              </div>
             ) : (
-              <button onClick={like} id={_id}>
-                LIKE♥{likes.length}
-              </button>
+              <div>
+                <AiOutlineHeart className="likesReason" onClick={like} id={_id}/>{likes.length}
+              </div>
             )
           ) : (
-            <button id={_id}>LIKE♥{likes.length}</button>
+            <div ><AiFillHeart id={_id}/>{likes.length}</div>
           )}
 
           {loggedUser && loggedUser.userId === userId && (
             <>
-              <button onClick={removeReason} id={_id}>
-                DELETE
-              </button>
-              <button onClick={changeReason}>EDIT</button>
+              <div onClick={removeReason} id={_id}>
+                <AiFillDelete/>
+              </div>
+              <div onClick={changeReason}><AiFillEdit/></div>
             </>
           )}
         </div>
