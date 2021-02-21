@@ -40,4 +40,4 @@ if(process.env.NODE_ENV === 'production'){
 const port = process.env.PORT
 const host = process.env.HOST || '0.0.0.0'
 
-//servidor.listen(port, host, () => console.log("Sirver on listening on port 4000"))
+app.listen(port, host, () => console.log("Sirver on listening on port 4000"))
