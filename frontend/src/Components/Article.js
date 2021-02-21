@@ -43,14 +43,18 @@ const Article = (props) =>{
                     <img src={article.picture} className="picArticle"></img>
                     <div className="authorContainerArticle">
                       <div className="authorAlignArticle">
-                        <img src={article.author[0].profilePicture} className="authorArticlePicture rounded-circle"></img>
-                        <p className="authorArticleName">{`Author: ${article.author[0].name}.`}</p>
+                        <img src={article.author[0].profilePicture} className="authorArticlePicture"></img>
+                        <p className="authorArticleName"><span>Author: </span>{article.author[0].name}</p>
                       </div>
                         <div className="containerCommentIconArticle">
-                            <AiOutlineEye className="viewIconArticle"/>
-                            <p className="articleVisits text-warning">{`${article.visits}`}</p>
-                            <BiComment className="commentIconArticle" />
-                            <p className="pt-2 px-2 text-warning">{article.comments.length}</p>
+                           <div className="iconArticle">
+                              <AiOutlineEye className="viewIconArticle"/>
+                              <p className="articleVisits text-warning">{`${article.visits}`}</p>
+                           </div>
+                           <div className="iconArticle">
+                              <BiComment className="viewIconArticle" />
+                              <p className="pt-2 px-2 text-warning">{article.comments.length}</p>
+                           </div>
                         </div>
                     </div>
                   </div>

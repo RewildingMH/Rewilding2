@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import ArtComment from "./ArtComment"
 import {AiOutlineSend} from "react-icons/ai";
 
+
 const CommentArticle = (props) => {
   const [comment, setComment] = useState({});
   const [articlesComment, setArticlesComment] = useState([])

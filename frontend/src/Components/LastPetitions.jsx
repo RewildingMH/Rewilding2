@@ -20,9 +20,6 @@ const LastPetitions = (props) => {
         votes
     } = props.lastPetition
     return (
-       /*  <Link to="/petitions" style={{
-            textDecoration: "none"
-        }}> */
             <div className="container">
                 <div className="lastPetitionsContainer">
                     <div className="lastPetitionImgPetitionCard" style={
@@ -53,7 +50,6 @@ const LastPetitions = (props) => {
                     </div>
                 </div>
             </div>
-        /* </Link> */
     )
 }
 
