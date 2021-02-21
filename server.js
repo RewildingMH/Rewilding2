@@ -16,5 +16,7 @@ app.use(fileUpload())
 
 app.use('/api', router)
 
+const port = process.env.PORT
+const host = process.env.HOST || '0.0.0.0'
 
 app.listen(4000, () => console.log("app on listening on port 4000"))
