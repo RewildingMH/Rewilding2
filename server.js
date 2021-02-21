@@ -6,26 +6,38 @@ require('dotenv').config()
 require('./config/database')
 const router = require('./routes')
 const fileUpload = require('express-fileupload')
-//const socketIO = require('socket.io')(server, { origins: '*:*'});
-
 
 const app = express()
 //Middlewares
 
 //Me traduce las peticiones de json a objeto para poder cargarlos a la database
 app.use(express.json())
-app.use(cors())
+app.use(cors({credentials: true, origin: true}))
 app.use(fileUpload())
 app.use('/api', router)
 
+const servidor =  http.createServer(app)
+
+const options = {
+    cors:true,
+    path: "/my-custom-path/"   
+   }
+
+const io = require('socket.io')(servidor, options)
+io.on('connection', socket => {
+    socket.on('conectado', () => {
+        options
+    })
+})
+
 if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/build'))
-    app.use('*', (req, res) => {
-        res.sendFile(path.join(__dirname+'client/build/index.html'))
+    app.use(express.static('/client/build'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname+'/client/build/index.html'))
     } )
 }
 
 const port = process.env.PORT
 const host = process.env.HOST || '0.0.0.0'
 
-app.listen(port, host, () => console.log("app on listening on port 4000"))
+//servidor.listen(port, host, () => console.log("Sirver on listening on port 4000"))
