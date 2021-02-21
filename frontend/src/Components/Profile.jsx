@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import profileActions from "../redux/actions/profileActions";
-import petitionsActions from "./../redux/actions/petitionsActions";
+import petitionsActions from "../redux/actions/petitionsActions";
 import Footer from "./Footer";
 import { PostsProfile } from "./PostsProfile";
 import { ProfilePetitions } from "./ProfilePetitions";
