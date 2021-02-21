@@ -16,19 +16,19 @@ app.use(cors({credentials: true, origin: true}))
 app.use(fileUpload())
 app.use('/api', router)
 
-const servidor =  http.createServer(app)
+// const servidor =  http.createServer(app)
 
-const options = {
-    cors:true,
-    path: "/my-custom-path/"   
-   }
+// const options = {
+//     cors:true,
+//     path: "/my-custom-path/"   
+//    }
 
-const io = require('socket.io')(servidor, options)
-io.on('connection', socket => {
-    socket.on('conectado', () => {
-        options
-    })
-})
+// const io = require('socket.io')(servidor, options)
+// io.on('connection', socket => {
+//     socket.on('conectado', () => {
+//         options
+//     })
+// })
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('/client/build'))
