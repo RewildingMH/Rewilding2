@@ -27,7 +27,7 @@ const Header = (props) => {
         if (props.loggedUser.rol === "admin") {
             var links = <>
                 <NavLink to="/createPetition">
-                    <p>CREATE PETITION</p>
+                    <p className="createPetitionP">CREATE PETITION</p>
                 </NavLink>
                 <NavLink to="/adminBlog">
                     <p>ADMIN BLOG</p>
@@ -64,7 +64,9 @@ const Header = (props) => {
                 <div className="logo">
                     <NavLink to="/"  className="headerLogondSlogan">
                         <div style={{ backgroundImage: `url(${logo})` }} className="logoDiv"></div>
-                        <h6>R E W I L D I N G | A place for the planet</h6> 
+                        <h6><b style={{
+                            color: "#75a146"
+                        }}>R E W I L D I N G</b> | a place for the planet</h6> 
                     </NavLink>
                 </div>
                 <div className="pages">

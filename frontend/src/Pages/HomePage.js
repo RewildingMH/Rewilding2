@@ -7,6 +7,7 @@ import LastArticles from '../Components/LastArticles'
 import petitionsActions from '../redux/actions/petitionsActions'
 import LastPetitions from '../Components/LastPetitions'
 import {Link} from 'react-router-dom'
+import Footer from '../Components/Footer'
 
 const HomePage = (props) => {
 
@@ -36,6 +37,7 @@ const HomePage = (props) => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

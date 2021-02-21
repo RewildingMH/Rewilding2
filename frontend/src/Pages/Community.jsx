@@ -6,6 +6,7 @@ import articleActions from "../redux/actions/articleActions";
 import { Link } from "react-router-dom";
 import communityPic from "../assets/communityImg.png";
 import "../styles/community.css";
+import Footer from '../Components/Footer'
 
 const Community = (props) => {
   const [preloader, setPreloader]= useState(true)
@@ -37,6 +38,7 @@ const Community = (props) => {
       <div className="preloader">
         <div className="loader"></div>
       </div> : 
+      <>
       <div className="communityContainer">
       <div
         className="communityBanner"
@@ -46,7 +48,7 @@ const Community = (props) => {
           backgroundSize: "cover",
         }}
       ></div>
-      <div className="communityContainerBelow">
+      <div className="communityContainerBelow my-5">
         <div className="comunityEntry align-items-start">
           <div
             className="col-2 card popularPetitions"
@@ -133,7 +135,9 @@ const Community = (props) => {
           </div>
         </div>
       </div>
-    </div> }
+    </div>
+    <Footer/>
+    </> }
     </>
   );
 };

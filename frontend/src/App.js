@@ -77,7 +77,7 @@ const App = (props) => {
         <ScrollToTop>
           <Header />
           {routes}
-          <Footer/>
+          {/* <Footer/> */}
         </ScrollToTop>  
       </Router>
     </>
