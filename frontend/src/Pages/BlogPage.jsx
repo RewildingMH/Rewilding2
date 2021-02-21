@@ -41,7 +41,7 @@ const addVisit = e => {
             <div className="row">
               <div className="col-12">
                 <div className="row">
-                  <div className="col-7 bg-greenLight p-4 d-flex justify-content-center ">
+                  <div className="col-sm-12 col-md-6 col-lg-7  bg-greenLight p-4 d-flex justify-content-center ">
                     <div>
                       <p className="categoryBlog">{props.articlePort[0].createdAt.slice(0, 10)} | {props.articlePort[0].articleCategory}</p>
                       <Link to={`/article/${props.articlePort[0]._id}`} className="text-decoration-none"  onClick={addVisit}>
@@ -50,7 +50,7 @@ const addVisit = e => {
                       </Link>
                     </div>
                   </div>
-                  <div className="col-5 d-flex align-items-center">
+                  <div className="col-sm-12 col-md-6 col-lg-5 d-flex align-items-center">
                     <Link to={`/article/${props.articlePort[0]._id}`} className="text-decoration-none"  onClick={addVisit}>
                       <img id={props.articlePort[0]._id} src={props.articlePort[0].picture} className="img-fluid scale-img" />
                     </Link>
@@ -59,12 +59,12 @@ const addVisit = e => {
               </div>
               <div className="col-12 mt-3">
                 <div className="row">
-                  <div className="col-5 d-flex align-items-center">
+                  <div className="col-sm-12 col-md-6 col-lg-5 d-flex align-items-center">
                     <Link to={`/article/${props.articlePortMini[0]._id}`}  className="text-decoration-none" onClick={addVisit}>
                       <img id={props.articlePortMini[0]._id} src={props.articlePortMini[0].picture} className="img-fluid scale-img" />
                     </Link>
                   </div>
-                  <div className="col-7 bg-greenLight p-4 d-flex justify-content-center ">
+                  <div className="col-sm-12 col-md-6 col-lg-7 bg-greenLight p-4 d-flex justify-content-center ">
                     <div>
                       <p className="categoryBlog">{props.articlePortMini[0].createdAt.slice(0, 10)} | {props.articlePortMini[0].articleCategory}</p>
                       <Link to={`/article/${props.articlePortMini[0]._id}`} className="text-decoration-none"  onClick={addVisit}>
