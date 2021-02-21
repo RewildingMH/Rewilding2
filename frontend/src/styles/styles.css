@@ -449,7 +449,6 @@ nav a {
 .petitionHeader {
   padding: 3vw;
   width: 80.2vw;
-  height: 10vh;
   display: flex;
   background-color: #3e4444;
   color: white;
@@ -694,7 +693,6 @@ nav a {
 
 .footerDiv {
   width: 100%;
-  height: 35vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -756,9 +754,7 @@ nav a {
   }
 }
 @media (max-width: 1440px) {
-  .footerDiv {
-    height: 40vh;
-  }
+ 
   .social img {
     width: 5vw;
     margin: 0 1vw;
@@ -1386,7 +1382,6 @@ h6 {
 @media (max-width: 800px) {
   .petitionIndBanner {
     width: 100%;
-    height: 15vh;
   }
 }
 
@@ -1971,6 +1966,7 @@ textarea {
   }
   .lastPetitionsContainer {
     flex-direction: column;
+    width: 60vw;
   }
   .lastPetitionImgPetitionCard {
     width: 100%;
@@ -2028,6 +2024,9 @@ textarea {
 }
 
 @media (max-width: 500px) {
+  .petitionHeaderImg {
+    display: none;
+  }
   .containerCommentIconArticle {
     flex-direction: column;
   }
