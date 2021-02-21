@@ -27,9 +27,9 @@ const Reason = ({
   const [visible, setVisible] = useState(false);
 
   const dislike = (e) => {
-    const id = e.target.id;
+    console.log(_id)
     dislikeReason({
-      id,
+      id: _id,
       petId,
       token: loggedUser.token,
     });
@@ -71,56 +71,56 @@ const Reason = ({
   return (
     <div className="reasonInd">
       {reason.length > 0 && (
-        <div clasName="boxStyleCommentContainer">
-        <div style={{display:'flex'}}>
-            <div
-              style={{
-                backgroundImage: `url(${profilePicture})`,
-                width: "60px",
-                height: "60px",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-              }}
-            className="userPicPetitions">
-            </div>
-            <h4 className="signPetitionName">{name} Said:</h4>
-            {visible ? ( //modificar comentario
-              <>
-                <input
-                  id={_id}
-                  name="modification"
-                  type="text"
-                  onChange={captureChange}
-                  placeholder={reason}
-                  className="inputEditReason"
-                />
-                <button onClick={sendModification}>SEND</button>
-              </>
-            ) : (
-              <p className="reasonComment">{reason}</p>
-              
-            )}
+        <div className="boxStyleCommentContainer">
+          <div className="d-flex p-3">
+              <div
+                style={{
+                  backgroundImage: `url(${profilePicture})`,
+                  width: "60px",
+                  height: "60px",
+                  backgroundPosition: "center",
+                  backgroundSize: "cover"
+                }}
+              className="userPicPetitions">
+              </div>
+              <h4 className="signPetitionName">{name}</h4>
+              {visible ? ( //modificar comentario
+                <>
+                  <input
+                    id={_id}
+                    name="modification"
+                    type="text"
+                    onChange={captureChange}
+                    placeholder={reason}
+                    className="inputEditReason"
+                  />
+                  <button onClick={sendModification}>SEND</button>
+                </>
+              ) : (
+                <p className="text-break reasonComment">{reason}</p>
+                
+              )}
           </div>
-          <div style={{display:'flex'}}>
+          <div className="boxIconPetitionContainer">
             {loggedUser ? (
               likes.find((like) => like.id === loggedUser.userId) ? (
                 <div>
-                  <AiFillHeart className="likesReason" onClick={dislike} id={_id}/>{likes.length}
+                  <AiFillHeart className="likesReasonPetition" onClick={dislike} id={_id}/>{likes.length}
                 </div>
               ) : (
-                <div>
-                  <AiOutlineHeart className="likesReason" onClick={like} id={_id}/>{likes.length}
+                <div >
+                  <AiOutlineHeart className="likesReasonPetition" onClick={like} id={_id}/>{likes.length}
                 </div>
               )
             ) : (
-              <div ><AiFillHeart id={_id}/>{likes.length}</div>
+              <div className="SingleIconContainer"><AiFillHeart id={_id}/>{likes.length}</div>
             )}
 
             {loggedUser && loggedUser.userId === userId && (
               <>  
                   
-                <div><AiFillDelete id={_id} onClick={removeReason}/></div>
-                <div onClick={changeReason}><AiFillEdit/></div>
+                <div className="SingleIconContainer"><AiFillDelete id={_id} onClick={removeReason}/></div>
+                <div className="SingleIconContainer" onClick={changeReason}><AiFillEdit/></div>
               </>
             )}
           </div>

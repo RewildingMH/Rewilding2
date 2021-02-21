@@ -62,9 +62,9 @@ const Header = (props) => {
         <>
             <nav className="navBar">
                 <div className="logo">
-                    <NavLink to="/" /* className="headerLogondSlogan" */>
+                    <NavLink to="/"  className="headerLogondSlogan">
                         <div style={{ backgroundImage: `url(${logo})` }} className="logoDiv"></div>
-                        {/* <h6>R E W I L D I N G </h6> */}
+                        <h6>R E W I L D I N G | A place for the planet</h6> 
                     </NavLink>
                 </div>
                 <div className="pages">

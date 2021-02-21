@@ -21,14 +21,15 @@ h2 {
 }
 /* header */
 
-/* .headerLogondSlogan{
+.headerLogondSlogan{
   display: flex;
+  width: 30vw;
 }
 .headerLogondSlogan h6 {
   margin-left: 1vw;
   margin-top: 2.1vh;
   color: white;
-} */
+}
 .navBar {
   width: 100%;
   position: fixed;
@@ -104,6 +105,7 @@ nav a {
 }
 
 .logoDiv {
+  margin-left: 2vw;
   width: 50px;
   height: 50px;
   background-size: cover;
@@ -292,6 +294,7 @@ nav a {
 
 
 .lastArticleTitle {
+  height: 5vh;
   color: white;
   background-color: rgba(0, 0, 0, 0.801);
   font-size: large;
@@ -328,6 +331,7 @@ nav a {
 }
 
 .lastArticlesInfo span {
+  margin-right: 0.5vw;
   color: #75a146;
   font-weight: bold;
 }
@@ -384,9 +388,9 @@ nav a {
   align-items: center;
 }
 .petitionCreatedImg {
-  width: 5vw;
-  height: 10vh;
-  border-radius: 3vw;
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
   background-size: cover;
 }
@@ -428,10 +432,10 @@ nav a {
   text-transform: capitalize;
 }
 .petitionHeaderImg {
-  width: 5vw;
-  height: 10vh;
-  border-radius: 5vw;
-  margin-top: -5vh;
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  margin-top: -2.7vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
 }
 .petitionHeader {
@@ -518,8 +522,27 @@ nav a {
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
 }
 .boxStyleCommentContainer{
-  width: 60vw;
-  justify-items: space-around;
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.boxIconPetitionContainer{
+  width: 4vw;
+  padding-bottom: 1vh;
+}
+
+.SingleIconContainer{
+  padding-left: 0.8vw;
+  margin-top: 1.5vh;
+}
+
+.likesReasonPetition {
+    color: red;
+    cursor: pointer;
+    width: 33px;
+    height: 25px;
 }
 
 .reasonsPetitionContainer{
@@ -599,129 +622,75 @@ nav a {
 
 .footerDiv {
   width: 100%;
-  height: 15vh;
+  height:35vh;
   display: flex;
-  justify-content:space-around;
+  flex-direction: column;
   align-items: center;
   color: aliceblue;
   background-color: rgb(46, 46, 46);
 }
- .logoRew {
-   margin-left: 15vw;
- }
+.logoRew {
+  margin-top: 2vh;
+}
 
-.findUs {
+.listNav {
+  margin-top: 2vh;
+  width: 50%;
+  height: 5vh;
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
 }
 
-.findUs ul {
-  margin-top: 3vh;
-}
-
-.findUs a {
+.listNav a {
   text-decoration: none;
   color: aliceblue;
 }
-.findUs a:hover {
+
+.listNav a:hover{
+  cursor: pointer;
   color: #c1946a;
 }
 
-.social {
-  display: flex;
-  align-items: center;
-  height: 4vh;
-  width: 20vw;
-  justify-content: space-evenly;
-}
-
 .social img {
-  width: 2vw;
+  width: 1.5vw;
+  margin: 0 2vh;
 }
 
-@media (max-width:425px) {
-  .footerDiv {
-    height: 11vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .social {
-    height: 2vh;
-  }
-  .findUs {
-    width: 100%
-  }
-  .findUs ul {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-  .social img {
-    width: 4vw;
-  }
-  .logoRew {
-    margin-bottom: 1vh;
-  }
+.social {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2vh;
 }
 
-@media(max-width:770px) {
-  .footerDiv {
-    height: 11vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .social {
-    height: 2vh;
-  }
-  .findUs {
-    width: 100%
-  }
-  .findUs ul {
-    width: 100%;
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .social img {
-    width: 4vw;
-  }
-  .logoRew {
-    margin-bottom: 1vh;
-  }
-}
-@media(max-width:1024px) {
-  .footerDiv {
-    height: 10vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .social {
-    height: 2vh;
-  }
-  .findUs {
-    width: 100%
-  }
-  .findUs ul {
-    width: 100%;
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .social img {
-    width: 4vw;
-  }
-  .logoRew {
-    margin-bottom: 1vh;
-  }
+.footerDiv p {
+  margin-top: 2vh;
+  color: #c1946a;
 }
 
+@media(max-width:800px) {
+  .social img {
+    width: 10vw;
+    margin: 0 1vw;
+  }
+  .listNav {
+    margin-top: 2vh;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1vh;
+  }
+}
 @media(max-width:1440px) {
   .footerDiv {
-    height: 10vh;
+    height: 40vh;
   }
-  .findUs li {
-    margin-bottom: 1vh;
+  .social img {
+    width: 5vw;
+    margin: 0 1vw;
   }
 }
 
@@ -1132,7 +1101,7 @@ h6 {
     height: 25vh;
     background-position: -90px !important;
   }
- 
+
 .createPetitionButton {
     margin-top: 10vh;
   }
@@ -1776,7 +1745,32 @@ textarea {
 
 /* Media Queries */ 
 
+@media (max-width: 1440px){
+  .containerMain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: 200%;
+  }
+  .petitionHeaderImg {
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    margin-top: -2.4vw;
+    box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
+  }
+}
 @media (max-width: 800px) {
+  .petitionHeaderImg {
+    margin-top: -2vw;
+  }
+  .headerLogondSlogan h6{
+    display: none;
+  }
   .mainTitle {
     font-size: 8vh;
     color: white;
@@ -1797,7 +1791,7 @@ textarea {
     justify-content: flex-end;
     align-items: center;
     background-repeat: no-repeat;
-    background-size: 195%;
+    background-size: 250%;
   }
 
   
@@ -1841,16 +1835,20 @@ textarea {
   }
   .petitionCreatedImg {
     margin-left: 18vw;
-    width:  7vw;
-    height: 5.5vh;
-    border-radius: 3vw;
+    width:  65px;
+    height: 50px;
+    border-radius: 50px;
+    background-position: center;
     background-size: cover;
     box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
-  }
+  } 
   
 }
 
 @media (max-width: 500px) {
+  .headerLogondSlogan h6{
+    display: none;
+  }
   .mainTitle {
     font-size: 5vh;
     color: white;
@@ -1919,11 +1917,11 @@ textarea {
   }
   .petitionCreatedImg {
     margin-right: 15vw;
-    width:  13vw;
-    height: 7vh;
-    border-radius: 15vw;
+    width:  50px;
+    height: 50px;
+    border-radius: 50px;
     background-size: cover;
     background-position: center;
     box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
-  }
+  } 
 }
