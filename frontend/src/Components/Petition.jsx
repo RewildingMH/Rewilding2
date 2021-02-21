@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import banner from "../assets/bannerPetitionInd.png"
 import { Link } from "react-router-dom";
 import { FaArrowCircleLeft } from 'react-icons/fa';
+import { AiFillHeart, AiOutlineHeart, AiOutlineSend } from "react-icons/ai";
+
 
 const Petition = (props) => {
   const id = props.match.params.id; // id en la ruta del navegador
@@ -72,7 +74,7 @@ const Petition = (props) => {
       });
     }
   };
-
+  console.log(petition)
   return (
     <div>
       {petition.length && (
@@ -85,48 +87,57 @@ const Petition = (props) => {
               backgroundPosition: "center",
             }}
           ></div>
-          <div className="petitionIndiv">
-            <h1>{petition[0].title}</h1>
-
-            <div
+          <h1 className="indPetitionTitle"><span>Petition To: {petition[0].title}</span></h1>
+          <div className="singlePetitionContainer">
+            <div className="petitionHeader">
+              <div className="petitionHeaderImg" style={{
+                backgroundImage: `url(${petition[0].author[0].profilePicture})`
+              }}>
+              </div>
+              <h6 className="petitionHeaderAuthor">Petition Created By: {petition[0].author[0].name}</h6>
+            </div>
+            <div className="singlePetitionImg"
               style={{
                 backgroundImage: `url(${petition[0].picture})`,
-                width: "60vw",
-                height: "50vh",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
               }}
             >
-            </div>
+            </div> 
             <div className="description">{petition[0].desc}</div>
-            <div>
-              {petition[0].signatures.length >= petition[0].goal ? (
-                <div>
-                  <p>probando</p>
-                </div>
-              ) : petition[0].signatures.length === 1 ? (
-                petition[0].signatures.length + " person has "
-              ) : (
-                    petition[0].signatures.length + " persons have "
-                  )}
-            already signed this petition
+            <div className="signaturesPetitionInd">
+              <h6>
+                  {petition[0].signatures.length >= petition[0].goal ? (
+                    <div>
+                      <p></p>
+                    </div>
+                  ) : petition[0].signatures.length === 1 ? (
+                    petition[0].signatures.length + " person has "
+                  ) : (
+                        petition[0].signatures.length + " persons have "
+                      )}
+                <span>already signed this petition </span>
+              </h6>
           </div>
-
+          <h4 className="py-1">Signs</h4>
+          <div className="reasonsPetitionContainer reasonsPetition">
             {petition[0].signatures.length < petition[0].goal && (
-              <div className="inputPetitions">
-                <input
-                  type="text"
-                  onChange={readInput}
-                  placeholder="I'm signing because ... (optional) "
-                />
-                <button onClick={signPetition} className="btnPetition">Sign petition</button>
+                <div className="inputPetitions">
+                  <input
+                    type="text"
+                    onChange={readInput}
+                    placeholder="I'm signing because ... (optional) "
+                  />
+                  <p onClick={signPetition} className="sendPetition"><AiOutlineSend/></p>
+                </div>
+              )}
+              
+              <div className="comentaryReasonBox">
+                  <Reasons reasons={petition[0].reasons} petId={petition[0]._id} />
+                </div>
               </div>
-            )}
-            <h4>Signs</h4>
-            <Reasons reasons={petition[0].reasons} petId={petition[0]._id} />
           </div>
-          <Link to="/petitions" className="returnPet"><FaArrowCircleLeft></FaArrowCircleLeft><p>Return to Petitions</p></Link>
-
+          <div className="goToPetitions">
+            <Link to="/petitions" className="returnPet"><FaArrowCircleLeft></FaArrowCircleLeft><p>Return to Petitions</p></Link>
+          </div>
         </>
       )}
     </div>
