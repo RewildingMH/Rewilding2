@@ -84,7 +84,6 @@ const mapStateToProps = state => {
         articleCategories: state.articleR.articleCategories
     }
   }
-
   
 const mapDispatchToProps = {
     editArticle: articleActions.editArticle,
