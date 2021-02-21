@@ -16,7 +16,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use(fileUpload())
-app.use('/api', router)
+app.use('/', router)
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))

@@ -12,7 +12,7 @@ const postController = {
       if (req.files) {
         var file = req.files.file
 
-        file.mv(path.join(__dirname, '../frontend/public/assets/postsPictures/' + file.md5), error => {
+        file.mv(path.join(__dirname, '../client/build/assets/postsPictures/' + file.md5), error => {
           if (error) {
             return res.json({ response: error })
           }
