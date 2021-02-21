@@ -9,17 +9,17 @@ const emailController = {
             const transporter = nodemailer.createTransport({
                service: "Gmail",
                 auth: {
-                  user: "rewilding.squad@gmail.com", // generated ethereal user
-                  pass: "rewilding2021", // generated ethereal password
+                  user: "lucaasse93267@gmail.com", // generated ethereal user
+                  pass: "12031203l", // generated ethereal password
                 },
             })
             if(response !== null){
-                const info = await transporter.sendMail({
+                const info = transporter.sendMail({
                     from: "REWILDING MINDHUB", // sender address
                     to: response.username, // list of receivers
                     subject: "Hello ✔", // Subject line
-                    text: "Hello world?", // plain text body
-                    html: "<b>Hello world?</b>", // html body
+                    text: "NO QUIERO QUE ME LLEGUE EL HELLO WORD", // plain text body
+                    html: "<img src='https://d1hoh05jeo8jse.cloudfront.net/media/google/gmail-icon.jpg'><strong>test</strong>El nombre es ${nombre} <br />con el correo ${correo} y El mensaje es ${mensaje}, ah y el tema es ${tema}`, // html body"
                   });
                  res.json({
                      success: true,

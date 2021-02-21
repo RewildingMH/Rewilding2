@@ -17,11 +17,11 @@ import Article from './Components/Article'
 import Profile from './Components/Profile.jsx'
 import ScrollToTop from './Components/ScrollTop'
 import MailValidate  from './Components/MailValidate';
-import Socket from './Components/Socket';
+//import Socket from './Components/Socket';
 
 
 const App = (props) => {
-Socket.emit('conectado', "front conectado")
+//Socket.emit('conectado', "front conectado")
   const [reload, setReload] = useState(false)
   if (props.loggedUser) {
     if (props.loggedUser.rol === "admin") {
