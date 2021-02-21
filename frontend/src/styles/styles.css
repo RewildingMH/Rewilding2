@@ -681,10 +681,10 @@ nav a {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size: 1vh;
+
   }
 }
-@media(max-width:1440px) {
+@media(max-width:1440px) {  
   .footerDiv {
     height: 40vh;
   }
