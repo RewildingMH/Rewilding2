@@ -599,129 +599,75 @@ nav a {
 
 .footerDiv {
   width: 100%;
-  height: 15vh;
+  height:35vh;
   display: flex;
-  justify-content:space-around;
+  flex-direction: column;
   align-items: center;
   color: aliceblue;
   background-color: rgb(46, 46, 46);
 }
- .logoRew {
-   margin-left: 5vw;
- }
+.logoRew {
+  margin-top: 2vh;
+}
 
-.findUs {
+.listNav {
+  margin-top: 2vh;
+  width: 50%;
+  height: 5vh;
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
 }
 
-.findUs ul {
-  margin-top: 3vh;
-}
-
-.findUs a {
+.listNav a {
   text-decoration: none;
   color: aliceblue;
 }
-.findUs a:hover {
+
+.listNav a:hover{
+  cursor: pointer;
   color: #c1946a;
 }
 
-.social {
-  display: flex;
-  align-items: center;
-  height: 4vh;
-  width: 20vw;
-  justify-content: space-evenly;
-}
-
 .social img {
-  width: 2vw;
+  width: 1.5vw;
+  margin: 0 2vh;
 }
 
-@media (max-width:425px) {
-  .footerDiv {
-    height: 11vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .social {
-    height: 2vh;
-  }
-  .findUs {
-    width: 100%
-  }
-  .findUs ul {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-  .social img {
-    width: 4vw;
-  }
-  .logoRew {
-    margin-bottom: 1vh;
-  }
+.social {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2vh;
 }
 
-@media(max-width:770px) {
-  .footerDiv {
-    height: 11vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .social {
-    height: 2vh;
-  }
-  .findUs {
-    width: 100%
-  }
-  .findUs ul {
-    width: 100%;
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .social img {
-    width: 4vw;
-  }
-  .logoRew {
-    margin-bottom: 1vh;
-  }
-}
-@media(max-width:1024px) {
-  .footerDiv {
-    height: 10vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .social {
-    height: 2vh;
-  }
-  .findUs {
-    width: 100%
-  }
-  .findUs ul {
-    width: 100%;
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .social img {
-    width: 4vw;
-  }
-  .logoRew {
-    margin-bottom: 1vh;
-  }
+.footerDiv p {
+  margin-top: 2vh;
+  color: #c1946a;
 }
 
+@media(max-width:800px) {
+  .social img {
+    width: 10vw;
+    margin: 0 1vw;
+  }
+  .listNav {
+    margin-top: 2vh;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1vh;
+  }
+}
 @media(max-width:1440px) {
   .footerDiv {
-    height: 10vh;
+    height: 40vh;
   }
-  .findUs li {
-    margin-bottom: 1vh;
+  .social img {
+    width: 5vw;
+    margin: 0 1vw;
   }
 }
 
