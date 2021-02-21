@@ -21,7 +21,7 @@ h2 {
 }
 /* header */
 
-.headerLogondSlogan{
+.headerLogondSlogan {
   display: flex;
   width: 30vw;
 }
@@ -65,13 +65,12 @@ h2 {
   justify-content: flex-end;
 }
 
-
 .logOut {
   margin-bottom: 0.5vh;
   margin-right: 1vw;
   color: brown;
   cursor: pointer;
-  font-size: 3vh; 
+  font-size: 3vh;
 }
 
 .mainListDiv {
@@ -110,7 +109,6 @@ nav a {
   height: 50px;
   background-size: cover;
   background-position: center;
-
 }
 
 .active p {
@@ -131,7 +129,7 @@ nav a {
   margin-top: 2vh;
   text-decoration: none;
   color: white;
-  text-transform: capitalize; 
+  text-transform: capitalize;
 }
 
 .userHeaderName {
@@ -292,7 +290,6 @@ nav a {
   border-bottom: 2px solid black;
 }
 
-
 .lastArticleTitle {
   height: 5vh;
   color: white;
@@ -420,15 +417,22 @@ nav a {
 
 /* Ind Petition */
 
-.singlePetitionContainer {
+.singlePetCtnCtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+}
+
+.singlePetitionContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 10vh;
+  width: 70%;
 }
-.petitionHeaderAuthor{
+.petitionHeaderAuthor {
   text-transform: capitalize;
 }
 .petitionHeaderImg {
@@ -469,15 +473,14 @@ nav a {
 .description {
   background-color: #3e4444;
   color: aliceblue;
-  padding:5vh;
+  padding: 5vh;
   width: 80.2vw;
-  
 }
-.signaturesPetitionInd{
+.signaturesPetitionInd {
   width: 80.2vw;
   text-align: center;
   padding: 1vw;
-  background-color:#3e4444;
+  background-color: #3e4444;
   color: white;
   border-radius: 0vw 0vw 1vw 1vw;
 }
@@ -490,13 +493,22 @@ nav a {
   justify-content: center;
 }
 
+.reasonInput::placeholder {
+  color: white;
+}
+
+.reasonInput {
+  color: white !important;
+  margin-right: 1rem !important;
+}
+
 .inputPetitions input {
   width: 60%;
   outline: none;
   margin-top: 3vh;
   margin-left: 9vw;
   margin-right: 5vw;
-  box-shadow: 2px 2px 5px #999;
+  box-shadow: 2px 2px 5px rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   background: rgba(0, 0, 0, 0.123);
@@ -511,6 +523,7 @@ nav a {
   border-radius: 1vw;
   transition: 0.5s;
   color: rgb(0, 0, 0);
+  margin-bottom: 1rem;
 }
 .sendPetition {
   margin-top: 2.5vh;
@@ -521,46 +534,90 @@ nav a {
   padding: 1vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
 }
-.boxStyleCommentContainer{
+
+.sendReasonButtonCtn {
+  padding-right: 3rem;
+  margin-top: 0.5rem;
+}
+
+.boxStyleCommentContainer {
   width: 100%;
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-content: center;
 }
 
-.boxIconPetitionContainer{
+.boxIconPetitionContainer {
   width: 4vw;
   padding-bottom: 1vh;
 }
 
-.SingleIconContainer{
-  padding-left: 0.8vw;
+.SingleIconContainer {
   margin-top: 1.5vh;
 }
 
-.likesReasonPetition {
-    color: red;
-    cursor: pointer;
-    width: 33px;
-    height: 25px;
+.SingleIconContainer > * {
+  color: white;
+  font-size: 32px;
 }
 
-.reasonsPetitionContainer{
-  display:flex;
-  flex-direction: column;
+.likesReasonPetition {
+  color: red;
+  cursor: pointer;
+  width: 33px;
+  height: 25px;
 }
-.comentaryReasonBox{
+
+.reasonsPetitionContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+.comentaryReasonBox {
   display: flex;
   justify-items: center;
   justify-content: center;
 }
 .reasonComment {
-  margin-top: 1vh;
   font-size: 20px;
   margin-left: 1vw;
+  padding: 3rem 1rem;
+  margin-bottom: 0;
+  color: white;
 }
+.linkToProfilePetCom {
+  display: flex;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.linkToProfilePetCom:hover {
+  color: #82b74b !important;
+}
+
+.iconTrash {
+  transition: 0.2s ease;
+
+  cursor: pointer;
+}
+
+.iconTrash:hover {
+  color: orange;
+}
+
+.iconEdit {
+  color: white;
+  font-size: 32px;
+  transition: 0.2s ease;
+}
+
+.iconEdit:hover {
+  color: #4c6b2b;
+  cursor: pointer;
+}
+
 .inputEditReason {
-  width: 60%;
+  width: 100% !important;
   outline: none;
   display: flex;
   justify-content: center;
@@ -570,12 +627,19 @@ nav a {
   border-bottom: 0.5vh solid green;
   width: 50%;
   height: 7vh;
-  padding: 1vw;
+  padding: 0 1vw;
+  margin: 0 1rem;
   font-size: 1vw;
   text-align: center;
   border-radius: 1vw;
   transition: 0.5s;
-  color: rgb(0, 0, 0);
+  color: white;
+}
+
+.editBlogReasonInput {
+  width: 30rem;
+  padding: 0 1rem;
+  margin-right: 1rem;
 }
 
 .inputPetitions button {
@@ -587,7 +651,7 @@ nav a {
   width: 80.2vw;
   display: flex;
   justify-content: center;
-  background-color:#3e4444;
+  background-color: #3e4444;
   border-radius: 1vw;
   padding: 2vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
@@ -597,7 +661,7 @@ nav a {
   display: flex;
   justify-content: space-between;
   padding: 2vw;
-  background-color:#ffffff38;
+  background-color: #ffffff38;
   border-radius: 2vw;
   margin-top: 1vh;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
@@ -622,7 +686,7 @@ nav a {
 
 .footerDiv {
   width: 100%;
-  height:35vh;
+  height: 35vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -647,7 +711,7 @@ nav a {
   color: aliceblue;
 }
 
-.listNav a:hover{
+.listNav a:hover {
   cursor: pointer;
   color: #c1946a;
 }
@@ -669,7 +733,7 @@ nav a {
   color: #c1946a;
 }
 
-@media(max-width:800px) {
+@media (max-width: 800px) {
   .social img {
     width: 10vw;
     margin: 0 1vw;
@@ -684,7 +748,7 @@ nav a {
     font-size: 1vh;
   }
 }
-@media(max-width:1440px) {
+@media (max-width: 1440px) {
   .footerDiv {
     height: 40vh;
   }
@@ -721,7 +785,6 @@ nav a {
   justify-content: center;
   align-items: center;
 }
-
 
 .containerLog {
   background-color: rgba(0, 0, 0, 0.116);
@@ -834,7 +897,7 @@ nav a {
   font-weight: bold;
 }
 
-@media(max-width:425px) {
+@media (max-width: 425px) {
   .logInBanner {
     height: 30vh !important;
   }
@@ -860,7 +923,8 @@ nav a {
     margin-bottom: 1vh;
   }
 
-  .btnReg, .btnLog {
+  .btnReg,
+  .btnLog {
     width: 30vw;
   }
 
@@ -869,7 +933,7 @@ nav a {
   }
 }
 
-@media(max-width: 1024px) {
+@media (max-width: 1024px) {
   .logInBanner {
     height: 50vh;
   }
@@ -892,7 +956,8 @@ nav a {
     width: 50vw;
     margin-bottom: 1vh;
   }
-  .btnReg, .btnLog {
+  .btnReg,
+  .btnLog {
     width: 50vw;
   }
 }
@@ -961,7 +1026,6 @@ nav a {
   padding: 5vh;
 }
 
-
 .userPicPetitions {
   border-radius: 50vw;
   margin-right: 2vw;
@@ -971,10 +1035,9 @@ nav a {
 .signPetitionName {
   color: black;
   text-shadow: 2px 2px 2px rgba(14, 14, 14, 0.274);
-  margin-top: 2vh;
 }
 
-.returnPet{
+.returnPet {
   color: #405d27;
   text-decoration: none;
   font-size: large;
@@ -1024,7 +1087,7 @@ h6 {
 
 /* inputs */
 
-.createPetition{
+.createPetition {
   width: auto;
   height: 20vh;
   border-radius: 2vh;
@@ -1089,20 +1152,19 @@ h6 {
   border-bottom: 2px solid green;
   padding: 0.8vw 2vw;
   box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.555);
-
 }
 
 .createPetitionButton button:hover {
   background-color: black;
 }
 
-@media (max-width:425px) {
+@media (max-width: 425px) {
   .createPetitionBanner {
     height: 25vh;
     background-position: -90px !important;
   }
 
-.createPetitionButton {
+  .createPetitionButton {
     margin-top: 10vh;
   }
 }
@@ -1112,7 +1174,7 @@ h6 {
     height: 25vh;
     background-position: -90px;
   }
-  
+
   .backgroundCard {
     width: 100%;
   }
@@ -1122,17 +1184,22 @@ h6 {
   }
 
   .backgroundCard p {
-    margin:0%;
+    margin: 0%;
   }
-  .createPetitionInput1nd2, .createPetitionInput3, .createPetitionInput4, .createPetitionInput5{
-  
+  .createPetitionInput1nd2,
+  .createPetitionInput3,
+  .createPetitionInput4,
+  .createPetitionInput5 {
     border-radius: 2vh;
   }
   .createPetitionInput3 textarea {
     height: 6vh;
   }
 
-  .createPetitionInput1nd2 input, .createPetitionInput3 input, .createPetitionInput4 input, .createPetitionInput5 input {
+  .createPetitionInput1nd2 input,
+  .createPetitionInput3 input,
+  .createPetitionInput4 input,
+  .createPetitionInput5 input {
     height: 5vh;
   }
 
@@ -1145,7 +1212,7 @@ h6 {
   }
 }
 
-@media(max-width:1024px) {
+@media (max-width: 1024px) {
   .createPetitionBanner {
     height: 50vh;
     background-position: -100px !important;
@@ -1153,14 +1220,13 @@ h6 {
   .createPetitionContainer {
     width: 100% !important;
   }
-  
 
   .createPetitionButton {
     margin-top: 2vh;
   }
 }
 
-@media (max-width:1440px) {
+@media (max-width: 1440px) {
   .createPetitionBanner {
     height: 60vh;
     background-position: -10vh !important;
@@ -1168,10 +1234,9 @@ h6 {
   .createPetitionContainer {
     width: 100% !important;
   }
-   .createPetitionButton {
+  .createPetitionButton {
     margin-top: 2vh;
   }
-
 }
 
 /* Admin Blog */
@@ -1181,7 +1246,7 @@ h6 {
   height: 100%;
 }
 
-.topSectionAdmin{
+.topSectionAdmin {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1189,26 +1254,26 @@ h6 {
   flex-direction: column;
 }
 
-.whiteAdminText{
+.whiteAdminText {
   padding: 1vh;
   color: whitesmoke;
 }
 
-.adminInputs{
+.adminInputs {
   width: 20vw;
 }
 
-.adminButton{
+.adminButton {
   width: 6vw;
 }
 
-.positionArticleAdmin{
+.positionArticleAdmin {
   padding: 1vh;
   display: flex;
   justify-content: center;
 }
 
-.sectionAdminBlog{
+.sectionAdminBlog {
   display: flex;
   justify-content: center;
 }
@@ -1226,7 +1291,6 @@ h6 {
   width: 100%;
   height: 70vh;
 }
-
 
 /* Community */
 
@@ -1294,7 +1358,6 @@ h6 {
   align-items: flex-end;
 }
 
-
 .profileDrop {
   text-decoration: none;
   color: black;
@@ -1323,7 +1386,7 @@ h6 {
   border-radius: 1vw;
   color: white;
   margin: 1vh;
-  background-image: url('https://image.freepik.com/foto-gratis/hojas-color-verde-oscuro-jardin-textura-hoja-verde-esmeralda-naturaleza-fondo-abstracto-bosque-tropical-encima-vista-hojas-color-verde-oscuro-patron-natural_33867-1475.jpg');
+  background-image: url("https://image.freepik.com/foto-gratis/hojas-color-verde-oscuro-jardin-textura-hoja-verde-esmeralda-naturaleza-fondo-abstracto-bosque-tropical-encima-vista-hojas-color-verde-oscuro-patron-natural_33867-1475.jpg");
   background-size: cover;
   box-shadow: 2px 2px 2px rgb(14 14 14 / 29%);
 }
@@ -1337,7 +1400,7 @@ h6 {
   background-size: cover;
   background-repeat: no-repeat;
 }
-.margin-negativo{
+.margin-negativo {
   margin-bottom: -20vh;
 }
 
@@ -1447,7 +1510,7 @@ textarea {
   background-size: 120%;
   animation: movement 30s infinite linear alternate;
 }
-.portadaArticle::before{
+.portadaArticle::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -1490,7 +1553,7 @@ textarea {
   color: #405d27;
   font-weight: 700;
 }
-.bg-greenLight{
+.bg-greenLight {
   background-color: #405d272a;
 }
 .tituloBlog {
@@ -1545,15 +1608,15 @@ textarea {
   text-align: center;
 }
 
-.authorArticleName{
+.authorArticleName {
   margin-top: 3.5vh;
   margin-left: 1vw;
   color: whitesmoke;
   text-align: center;
 }
 
-.columnArticlePic{
-  display:flex;
+.columnArticlePic {
+  display: flex;
   justify-content: center;
 }
 
@@ -1573,39 +1636,46 @@ textarea {
   border-bottom: 1px solid rgb(68, 59, 59);
 }
 
-.containerArticlePic{
-  display:flex;
+.containerArticlePic {
+  display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.picArticle{
+.picArticle {
   width: 60vw;
   padding-bottom: 1vh;
 }
 
-.articleVisits{
+.articleVisits {
   margin-top: 3.5vh;
   margin-left: 1vw;
   color: whitesmoke;
   text-align: center;
 }
 
-.authorArticlePicture{
+.authorArticlePicture {
   margin-left: 0.5vw;
   padding: 1vh;
   width: 55px;
 }
 
-.commentIconArticle{
+.articleCommentProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.commentIconArticle {
   width: 2.7vw;
   height: 10vh;
 }
 
-.authorAlignArticle{
+.authorAlignArticle {
   display: flex;
 }
 
-.articleDescription{
+.articleDescription {
   padding-top: 3vh;
   width: 100%;
   display: flex;
@@ -1613,60 +1683,66 @@ textarea {
   flex-direction: column;
 }
 
-.textArticleDescription{
+.textArticleDescription {
   width: 60vw;
   color: whitesmoke;
 }
 
-.commentArticleContainerMain{
+.commentArticleContainerMain {
   width: 60vw;
   border-radius: 2vw;
 }
 
-.commentsMapArticleContainer{
+.commentsMapArticleContainer {
   background-color: #3e4444;
   color: white;
   border-radius: 2vw;
 }
 
-.centerArticleImage{
+.centerArticleImage {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.textArticleComment{
+.textArticleComment {
   color: black;
-  margin-top: 3.4vh;
   width: 30vw;
+  padding: 1.3rem;
 }
 
-.articleCommentContainer{
+.artCommentsContainer {
+  margin: 0 0 1.3rem 0;
+  width: 100%;
+}
+
+.articleCommentContainer {
   background: rgba(190, 186, 186, 0.781);
   border-radius: 1vh;
-  width: 40vw;
-  height: 13vh;
-  margin-top: 0.4vh;
+  width: 100% !important;
 }
 
-.nameArticleComment{
-  padding-left:1.5vw;
+.nameArticleComment {
   padding-top: 1vh;
   height: 3vh;
 }
 
-.commentArticleIcons{
-  margin-top: 1vh;
+.commentArticleIcons {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0.3rem;
 }
 
-.editArticleComment{
+.editArticleComment {
   width: 40vw;
   height: 13vh;
   border-radius: 1vh;
   padding: 1vh;
 }
 
-.editArticleCommentContainer{
+.editArticleCommentContainer {
   display: flex;
 }
 
@@ -1743,9 +1819,9 @@ textarea {
   }
 }
 
-/* Media Queries */ 
+/* Media Queries */
 
-@media (max-width: 1440px){
+@media (max-width: 1440px) {
   .containerMain {
     width: 100%;
     height: 100%;
@@ -1768,7 +1844,7 @@ textarea {
   .petitionHeaderImg {
     margin-top: -2vw;
   }
-  .headerLogondSlogan h6{
+  .headerLogondSlogan h6 {
     display: none;
   }
   .mainTitle {
@@ -1779,7 +1855,7 @@ textarea {
     background-color: rgba(0, 0, 0, 0.582);
     padding: 2vw;
   }
-  .sloganBanner h2{
+  .sloganBanner h2 {
     margin-left: 20vw;
     color: white;
   }
@@ -1794,15 +1870,14 @@ textarea {
     background-size: 250%;
   }
 
-  
-@keyframes movement {
-  from {
-    background-position: center;
+  @keyframes movement {
+    from {
+      background-position: center;
+    }
+    to {
+      background-position: center;
+    }
   }
-  to {
-    background-position: center;
-  }
-}
   .lastPetitionsContainer {
     flex-direction: column;
   }
@@ -1835,18 +1910,32 @@ textarea {
   }
   .petitionCreatedImg {
     margin-left: 18vw;
-    width:  65px;
+    width: 65px;
     height: 50px;
     border-radius: 50px;
     background-position: center;
     background-size: cover;
     box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
-  } 
-  
+  }
+}
+
+@media (max-width: 1200px) {
+  .description {
+    padding: 5rem !important;
+  }
+  .commentArticleContainerMain {
+    width: 95%;
+  }
+  .textArticleDescription {
+    width: 80%;
+  }
+  .containerArticlePic {
+    width: 80%;
+  }
 }
 
 @media (max-width: 500px) {
-  .headerLogondSlogan h6{
+  .headerLogondSlogan h6 {
     display: none;
   }
   .mainTitle {
@@ -1857,11 +1946,11 @@ textarea {
     background-color: rgba(0, 0, 0, 0.582);
     padding: 2vw;
   }
-  .sloganBanner h2{
+  .sloganBanner h2 {
     margin-left: 10vw;
     color: white;
   }
-  .containerBanner{
+  .containerBanner {
     text-align: center;
   }
   .containerMain {
@@ -1917,11 +2006,27 @@ textarea {
   }
   .petitionCreatedImg {
     margin-right: 15vw;
-    width:  50px;
+    width: 50px;
     height: 50px;
     border-radius: 50px;
     background-size: cover;
     background-position: center;
     box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
-  } 
+  }
+
+  .description {
+    padding: 3rem !important;
+    font-size: 18px !important;
+  }
+
+  .boxStyleCommentContainer {
+    flex-direction: column;
+  }
+
+  .boxIconPetitionContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
 }

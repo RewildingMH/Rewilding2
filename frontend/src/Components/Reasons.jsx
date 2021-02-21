@@ -10,9 +10,11 @@ import Reason from "./Reason";
 const Reasons = ({ reasons, petId }) => {
   return (
     <div>
-      {reasons.map((reason) => {
-        return <Reason reasons={reason} petId={petId} />;
-      })}
+      {reasons
+        .map((reason) => {
+          return <Reason reasons={reason} petId={petId} />;
+        })
+        .reverse()}
     </div>
   );
 };

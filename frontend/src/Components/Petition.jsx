@@ -57,6 +57,7 @@ const Petition = (props) => {
   const signPetition = async () => {
     if (props.loggedUser) {
       props.signPetition(signature);
+      setSignature({});
     } else {
       Swal.fire({
         title: "Oops!",
@@ -77,7 +78,7 @@ const Petition = (props) => {
   return (
     <div>
       {petition.length && (
-        <>
+        <div className="singlePetCtnCtn">
           <div
             className="createPetitionBanner"
             style={{
@@ -87,7 +88,7 @@ const Petition = (props) => {
             }}
           ></div>
           <h1 className="indPetitionTitle">
-            <span>Petition To: {petition[0].title}</span>
+            <span>{petition[0].title}</span>
           </h1>
           <div className="singlePetitionContainer">
             <div className="petitionHeader">
@@ -107,39 +108,71 @@ const Petition = (props) => {
                 backgroundImage: `url(${petition[0].picture})`,
               }}
             ></div>
-            <div className="description">{petition[0].desc}</div>
+            <div
+              className="descCtn"
+              style={{ display: "flex", flexDirection: "column" }}
+            >
+              <div className="petInfoCtn">
+                <span>
+                  Who it is for: <b>{petition[0].destination}</b>
+                </span>
+              </div>
+              <div className="description">{petition[0].desc}</div>
+            </div>
             <div className="signaturesPetitionInd">
               <h6>
                 {petition[0].signatures.length >= petition[0].goal ? (
-                  <div></div>
+                  <div className="goalReachedContainer">
+                    <h2>This petition has reached its goal</h2>
+                    <span>
+                      {petition[0].signatures.length} persons have helped this
+                      petition reach its goal
+                    </span>
+                  </div>
                 ) : petition[0].signatures.length === 1 ? (
                   petition[0].signatures.length + " person has "
                 ) : (
                   petition[0].signatures.length + " persons have "
                 )}
-                <span>already signed this petition</span>
+                <span>
+                  {petition[0].signatures.length >= petition[0].goal
+                    ? ""
+                    : "signed this petition"}
+                </span>
               </h6>
             </div>
-            <h4 className="py-1">Signs</h4>
             <div className="reasonsPetitionContainer reasonsPetition">
+              <div className="signaturesTitle">
+                <h4 className="py-1">Signatures</h4>
+              </div>
               {petition[0].signatures.length < petition[0].goal && (
                 <div className="inputPetitions">
                   <input
                     type="text"
                     onChange={readInput}
                     placeholder="I'm signing because ... (optional) "
+                    className="reasonInput"
+                    value={
+                      signature && signature.reason ? signature.reason : ""
+                    }
                   />
-                  <p onClick={signPetition} className="sendPetition">
-                    <AiOutlineSend />
-                  </p>
+                  <div className="sendReasonButtonCtn">
+                    <p onClick={signPetition} className="sendPetition">
+                      <AiOutlineSend />
+                    </p>
+                  </div>
                 </div>
               )}
 
               <div className="comentaryReasonBox">
-                <Reasons
-                  reasons={petition[0].reasons}
-                  petId={petition[0]._id}
-                />
+                {petition[0].reasons.length ? (
+                  <Reasons
+                    reasons={petition[0].reasons}
+                    petId={petition[0]._id}
+                  />
+                ) : (
+                  <span>No one left any reasons for signing yet!</span>
+                )}
               </div>
             </div>
           </div>
@@ -149,7 +182,7 @@ const Petition = (props) => {
               <p>Return to Petitions</p>
             </Link>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

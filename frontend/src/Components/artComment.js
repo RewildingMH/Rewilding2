@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import articleActions from '../redux/actions/articleActions';
-import {AiFillDelete, AiTwotoneEdit, AiOutlineSend} from "react-icons/ai";
+import { AiFillDelete, AiTwotoneEdit, AiOutlineSend } from "react-icons/ai";
 
 const ArtComment = ({ comment, profilePicture, name, artId, commentId, userId, loggedUser, editComment, deleteComment }) => {
 
@@ -40,12 +40,12 @@ const ArtComment = ({ comment, profilePicture, name, artId, commentId, userId, l
   return (
     <div className="container">
       <div className="row">
-        <div className="col-2 text-center">
-          <div className="rounded-circle centerArticleImage mx-1" style={{backgroundImage:`url(${profilePicture})`, width: '5vw', height:'5vw'}}></div>
+        <div className="col-2 text-center articleCommentProfile">
+          <div className="rounded-circle centerArticleImage mx-1" style={{ backgroundImage: `url(${profilePicture})`, width: '5vw', height: '5vw' }}></div>
           <p className="nameArticleComment">{name}</p>
         </div>
-        <div className="col-9 d-flex justify-content-between">
-          <div>
+        <div className="col-9 d-flex artCont">
+          <div className="artCommentsContainer">
             {!visible ?
               <div className="articleCommentContainer p-1 px-2">
                 <p className="textArticleComment">{comment}</p>
@@ -55,17 +55,17 @@ const ArtComment = ({ comment, profilePicture, name, artId, commentId, userId, l
                 <input name="editComment" type="text" className="editArticleComment" defaultValue={comment} onChange={modifyComment} />
                 <AiOutlineSend
                   onClick={updateComment}
-                  style={{ cursor: "pointer", height:'5vh', width:'2vw', marginTop:'4vh'}}
+                  style={{ cursor: "pointer", height: '5vh', width: '2vw', marginTop: '4vh' }}
                 />
               </div>
-              }
+            }
           </div>
           <div>
-            {loggedUser && loggedUser.userId === userId &&  !visible &&
-          <div className="commentArticleIcons">
-              <AiFillDelete className="aiIcon delete" onClick={sendDeleteComment} />
-              <AiTwotoneEdit className="aiIcon edit" onClick={() => setVisible(!visible)}/>
-          </div>
+            {loggedUser && loggedUser.userId === userId && !visible &&
+              <div className="commentArticleIcons">
+                <AiFillDelete className="aiIcon delete" onClick={sendDeleteComment} />
+                <AiTwotoneEdit className="aiIcon edit" onClick={() => setVisible(!visible)} />
+              </div>
             }
           </div>
         </div>
