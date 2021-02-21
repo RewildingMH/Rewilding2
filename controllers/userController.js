@@ -18,7 +18,7 @@ const userController = {
             let error = [{ path: ['usernameExist'] }]
             res.json({ success: false, errores: error })
         }
-        file.mv(path.join(__dirname,`../frontend/public/assets/profilePictures/${file.md5}.jpg`), error => {
+        file.mv(path.join(__dirname,`../client/build/assets/profilePictures/${file.md5}.jpg`), error => {
             if (error) {
                 return res.json({ response: error })
             }

@@ -1,4 +1,8 @@
 # dependencies
 /node_modules
 frontend/node_modules
+<<<<<<< HEAD
 /.env
+=======
+/.env
+>>>>>>> 9ee1ac8e07a0619df6cb64037460fb711800164c

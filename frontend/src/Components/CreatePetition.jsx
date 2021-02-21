@@ -66,15 +66,15 @@ const CreatePetition = (props) => {
     e.preventDefault();
     //VALIDACIÓN PARA QUE TODOS LOS CAMPOS ESTÉN COMPLETOS
     if(newPetition.length === undefined && file === undefined){
-      errorAlert("error","todos los campos son obligatorios" )
+      errorAlert("error","All fields are required" )
       return false
     }
     if(!newPetition.goal || !newPetition.description || !newPetition.destination || !newPetition.limitDate || !newPetition.title){
-      errorAlert("error","todos los campos son obligatorios" )
+      errorAlert("error","All fields are required" )
       return false
     }
     if(newPetition.goal < 10){
-      errorAlert("error","La meta de firmas debe ser mayor a 10" )
+      errorAlert("error","The signature goal must be greater than 10" )
       return false
     }
 
@@ -83,7 +83,7 @@ const CreatePetition = (props) => {
     fecha.setHours(0,0,0,0)
 
     if(hoy.getTime() + 2500000000 > fecha.getTime() ){
-      errorAlert("error","La fecha no deberá ser menor a 30 días desde su momento de creación")
+      errorAlert("error","The date should not be less than 30 days from the moment of creation")
       return false
     }
     
