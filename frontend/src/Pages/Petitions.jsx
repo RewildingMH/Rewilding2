@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PetitionCard from "../Components/PetitionCard";
-import petitionsActions from "./../redux/actions/petitionsActions"
+import petitionsActions from './../redux/actions/petitionsActions'
 import petitionsImg from "../assets/petitionsImg.png"
 
 
