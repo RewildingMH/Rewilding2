@@ -6,6 +6,7 @@ import articleActions from '../redux/actions/articleActions'
 import LastArticles from '../Components/LastArticles'
 import petitionsActions from '../redux/actions/petitionsActions'
 import LastPetitions from '../Components/LastPetitions'
+import {Link} from 'react-router-dom'
 
 const HomePage = (props) => {
 
@@ -28,7 +29,9 @@ const HomePage = (props) => {
                     <div className="lastPetitionsCreated">
                         <h2>Last Petitions Created</h2>
                     </div>
-                    {props.lastPetitions.map(lastPetition => <LastPetitions key={lastPetition._id} lastPetition={lastPetition} />).reverse()}
+                    {props.lastPetitions.map(lastPetition => <Link to={`/petitions/${lastPetition._id}`} style={{
+                        textDecoration: "none"
+                    }}><LastPetitions key={lastPetition._id} lastPetition={lastPetition} /></Link>).reverse()}
                     <div className="white">
                     </div>
                 </div>
