@@ -55,7 +55,7 @@ const PetitionCard = (props) => {
                         ? props.petition.desc.slice(0, 70) + "..."
                         : props.petition.desc}
                     </p>
-                    <ProgressBar striped variant="success" animated now={45} className="progressBar"/>
+                    <ProgressBar striped variant="success" animated now={signatures.length} className="progressBar"/>
                     <h6 className="peopleSign"><span>
                       {props.petition.signatures.length
                         ? props.petition.signatures.length === 1

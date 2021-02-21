@@ -1,8 +1,9 @@
 import { connect } from "react-redux"
 import articleActions from "../redux/actions/articleActions"
 import { useState, useEffect } from "react"
-import {AiOutlineSend} from "react-icons/ai";
 import ArtComment from "./ArtComment"
+import {AiOutlineSend} from "react-icons/ai";
+
 
 const CommentArticle = (props) => {
   const [comment, setComment] = useState({});

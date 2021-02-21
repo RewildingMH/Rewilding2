@@ -634,3 +634,10 @@ input[type="file"] {
     padding: 0 0 0 1rem;
   }
 }
+
+@media(max-width:1440px){
+  .communityBanner {
+    height: 30vh !important;
+    background-position: right !important;
+  }
+}
