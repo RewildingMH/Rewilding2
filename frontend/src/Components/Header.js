@@ -27,7 +27,7 @@ const Header = (props) => {
         if (props.loggedUser.rol === "admin") {
             var links = <>
                 <NavLink to="/createPetition">
-                    <p>CREATE PETITION</p>
+                    <p className="createPetitionP">CREATE PETITION</p>
                 </NavLink>
                 <NavLink to="/adminBlog">
                     <p>ADMIN BLOG</p>

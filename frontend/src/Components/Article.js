@@ -43,8 +43,8 @@ const Article = (props) =>{
                     <div className="authorContainerArticle">
                       <div className="authorAlignArticle">
                         <img src={article.author[0].profilePicture} className="authorArticlePicture rounded-circle"></img>
-                        <p className="authorArticleName">{`Author: ${article.author[0].name}.`}</p>
-                        <p className="articleVisits">{`Visits: ${article.visits}`}</p>
+                        <p className="authorArticleName"><span>Author:</span>{article.author[0].name}</p>
+                        <p className="articleVisits"><span>Visits:</span>{article.visits}</p>
                       </div>
                         <BiComment className="commentIconArticle" />
                     </div>
