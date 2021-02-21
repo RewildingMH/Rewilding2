@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import CommentArticle from './CommentArticle'
 import { BiComment } from "react-icons/bi";
+import { AiOutlineEye } from "react-icons/ai";
 
 
 const Article = (props) =>{
@@ -44,9 +45,13 @@ const Article = (props) =>{
                       <div className="authorAlignArticle">
                         <img src={article.author[0].profilePicture} className="authorArticlePicture rounded-circle"></img>
                         <p className="authorArticleName">{`Author: ${article.author[0].name}.`}</p>
-                        <p className="articleVisits">{`Visits: ${article.visits}`}</p>
                       </div>
-                        <BiComment className="commentIconArticle" />
+                        <div className="containerCommentIconArticle">
+                            <AiOutlineEye className="viewIconArticle"/>
+                            <p className="articleVisits text-warning">{`${article.visits}`}</p>
+                            <BiComment className="commentIconArticle" />
+                            <p className="pt-2 px-2 text-warning">{article.comments.length}</p>
+                        </div>
                     </div>
                   </div>
                 </div>

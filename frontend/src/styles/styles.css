@@ -533,6 +533,10 @@ nav a {
   padding-bottom: 1vh;
 }
 
+.containerCommentIconArticle{
+  display:flex;
+}
+
 .SingleIconContainer{
   padding-left: 0.8vw;
   margin-top: 1.5vh;
@@ -1547,6 +1551,7 @@ textarea {
 
 .authorArticleName{
   margin-top: 3.5vh;
+  font-size: 2.9vh;
   margin-left: 1vw;
   color: whitesmoke;
   text-align: center;
@@ -1584,10 +1589,11 @@ textarea {
 }
 
 .articleVisits{
-  margin-top: 3.5vh;
-  margin-left: 1vw;
+  margin-top: 2vh;
   color: whitesmoke;
   text-align: center;
+  padding-right: 1vw;
+  padding-left: 0.5vw;
 }
 
 .authorArticlePicture{
@@ -1599,6 +1605,13 @@ textarea {
 .commentIconArticle{
   width: 2.7vw;
   height: 10vh;
+  color: rgba(252, 186, 4, 0.705);
+}
+
+.viewIconArticle{
+  width: 2.7vw;
+  height: 10vh;
+  color: rgba(252, 186, 4, 0.705);
 }
 
 .authorAlignArticle{
