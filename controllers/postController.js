@@ -144,7 +144,7 @@ const postController = {
       //SI EXISTE EL USUARIO ENVÍA UNA FOTO, LA GUARDA DENTRO DE LA VARIABLE "FILE" Y GUARDA LA FOTO EN LA CARPETA ASSETS
       if (req.files) {
         var file = req.files.file
-        file.mv(path.join(__dirname, '../frontend/public/assets/postsPictures/' + file.md5 + ".jpeg"), error => {
+        file.mv(path.join(__dirname, '../client/build/assets/postsPictures/' + file.md5 + ".jpeg"), error => {
           if (error) {
             return res.json({ response: error })
           }
