@@ -27,7 +27,6 @@ const LastPetitions = (props) => {
             backgroundImage: `url(${picture})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            height: '100vh'
           }}
         ></div>
         <div className="lastPetitionsInfo">
