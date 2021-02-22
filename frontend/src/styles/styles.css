@@ -365,8 +365,8 @@ nav a {
   border-radius: 1vw 0vw 0vw 1vw;
 }
 .lastPetitionImgPetitionCard {
-  width: 30vw;
   height: 100%;
+  width: 30vw;
   border-radius: 1vw 0vw 0vw 1vw;
   background-position: center;
   background-size: cover;
@@ -2001,7 +2001,6 @@ textarea {
   }
   .lastPetitionImgPetitionCard {
     width: 100%;
-    height: 100%;
     border-radius: 1vw 1vw 0vw 0vw;
     background-position: center;
     background-size: cover;
@@ -2109,7 +2108,6 @@ textarea {
     width: 90vw;
   }
   .lastPetitionImgPetitionCard {
-    height: 100%;
     border-radius: 1vw 1vw 0vw 0vw;
     background-position: center;
     background-size: cover;
