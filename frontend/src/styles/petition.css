@@ -88,4 +88,7 @@
   .goalReachedContainer {
     margin: 1rem;
   }
+  .columnPetition {
+    flex-direction: column;
+  }
 }

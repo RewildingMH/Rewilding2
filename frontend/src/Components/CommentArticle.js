@@ -90,7 +90,7 @@ const CommentArticle = (props) => {
           )}
         </div>
         <div className="inputContainer">
-          <input type="text" autoComplete="off" name="comment" placeholder="Enter comment..." value={comment.comment ? comment.comment : ""} onChange={readInput} disabled={!props.loggedUser ? true : false} />
+          <input type="text" autoComplete="off" name="comment" placeholder="Enter comment..." value={comment.comment ? comment.comment : ""} onChange={readInput} disabled={!props.loggedUser ? true : false} style={{ border: "1px solid black" }} />
           <div className="sendButton" onClick={props.loggedUser ? sendComment : () => mustLogin()} style={{ cursor: "pointer" }}>
             <AiOutlineSend />
           </div>
