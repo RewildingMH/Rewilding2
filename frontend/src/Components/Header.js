@@ -15,7 +15,7 @@ const Header = (props) => {
         window.scrollY > 300 ?
             document.querySelector('.navBar').classList.add('affix') :
             document.querySelector('.navBar').classList.remove('affix')
-    }; 
+    };
 
     if (props.loggedUser === null) {
         var links = <>
@@ -36,22 +36,22 @@ const Header = (props) => {
                     <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                     <h6>Hi! {props.loggedUser.name}</h6>
                 </NavLink>
-                <NavLink to="/"> 
+                <NavLink to="/">
                     <GoSignOut className="logOut" onClick={() => props.logoutUser()} />
                 </NavLink>
-                
+
             </>
         } else {
             var links =
                 <>
                     <NavLink to="/createPetition">
-                        <p>CREATE PETITION</p>
+                        <p style={{ whiteSpace: "nowrap" }}>CREATE PETITION</p>
                     </NavLink>
                     <NavLink to={`/profile/${props.loggedUser.userId}`} className="userHeaderLink">
                         <img src={props.loggedUser.profilePicture} alt="profile" className="userImg" />
                         <h6>Hi! {props.loggedUser.name}</h6>
                     </NavLink>
-                    <NavLink to="/"> 
+                    <NavLink to="/">
                         <GoSignOut className="logOut" onClick={() => props.logoutUser()} />
                     </NavLink>
                 </>
@@ -62,11 +62,11 @@ const Header = (props) => {
         <>
             <nav className="navBar">
                 <div className="logo">
-                    <NavLink to="/"  className="headerLogondSlogan">
+                    <NavLink to="/" className="headerLogondSlogan">
                         <div style={{ backgroundImage: `url(${logo})` }} className="logoDiv"></div>
                         <h6><b style={{
                             color: "#75a146"
-                        }}>R E W I L D I N G</b> | a place for the planet</h6> 
+                        }}>R E W I L D I N G</b> | a place for the planet</h6>
                     </NavLink>
                 </div>
                 <div className="pages">

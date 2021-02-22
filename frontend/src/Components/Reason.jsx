@@ -73,7 +73,7 @@ const Reason = ({
     modifyReason(edit);
     setVisible(!visible);
   };
-  if (reason.length) {
+  if (reason && reason.length) {
     return (
       <div className="reasonInd">
         {reason.length > 0 && (
