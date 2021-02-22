@@ -34,19 +34,6 @@ const BurgerMenu = (props) => {
           />
           <h6>Hi! {props.props.loggedUser.name}</h6>
         </NavLink>
-        <NavLink to="/" onClick={closeMenu}>
-          <div id="logOut" className="menu-item" href="/">
-            <div className="iconMenu">
-              <GoSignOut
-                className="logOutIconBurger"
-                onClick={() => props.logoutUser()}
-              />
-            </div>
-            <div className="optionMenu" onClick={() => props.logoutUser()}>
-              LogOut
-            </div>
-          </div>
-        </NavLink>
       </>
     );
   }
@@ -54,7 +41,12 @@ const BurgerMenu = (props) => {
     var login = (
       <>
         <NavLink to="/login" onClick={closeMenu}>
-          <div id="login" className="menu-item" href="/">
+          <div
+            id="login"
+            className="menu-item"
+            href="/"
+            style={{ marginLeft: "1rem" }}
+          >
             <div className="iconMenu">
               <GoSignIn />
             </div>
@@ -112,6 +104,21 @@ const BurgerMenu = (props) => {
           <div className="optionMenu">Create a petition</div>
         </div>
       </NavLink>
+      {props.props.loggedUser && (
+        <NavLink to="/" onClick={closeMenu}>
+          <div id="logOut" className="menu-item" href="/">
+            <div className="iconMenu">
+              <GoSignOut
+                className="logOutIconBurger"
+                onClick={() => props.logoutUser()}
+              />
+            </div>
+            <div className="optionMenu" onClick={() => props.logoutUser()}>
+              LogOut
+            </div>
+          </div>
+        </NavLink>
+      )}
     </Menu>
   );
 };

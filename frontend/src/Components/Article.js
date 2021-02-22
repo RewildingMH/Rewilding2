@@ -40,13 +40,14 @@ const Article = (props) => {
               <h2>{article.articleCategory}</h2>
             </div>
             <div className="container-fluid bg-dark">
-              <div className="articleContainer">
+              <div className="articleContainer" >
                 <div className="titleArticle">
                   <h1>{article.title}</h1>
                 </div>
-                <div className="columnArticlePic">
-                  <div className="containerArticlePic">
+                <div className="columnArticlePic" style={{ width: '100 %' }}>
+                  <div className="containerArticlePic" style={{ width: '100 %' }}>
                     <p className="categoryBlog text-white">{article.createdAt.slice(0, 10)}</p>
+
                     <div className="d-flex justify-content-center" style={{ height: "30rem" }}>
                       <div style={{ backgroundImage: `url(${article.picture})`, width: "100%", height: "100%", backgroundPosition: "center", backgroundSize: "cover" }}></div>
 
