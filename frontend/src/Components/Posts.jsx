@@ -97,6 +97,11 @@ const Posts = (props) => {
     },
   });
 
+  const resetFile = () => {
+    setPathImage("");
+    setFile("");
+  };
+
   // Funcion para validar y llamar a la action que añade un posteo nuevo
   const sendPost = (e) => {
     e.preventDefault();
@@ -145,12 +150,8 @@ const Posts = (props) => {
       });
       e.preventDefault();
       props.addPost(newPost, file);
+      resetFile();
     }
-  };
-
-  const resetFile = () => {
-    setPathImage("");
-    setFile("");
   };
 
   return (
