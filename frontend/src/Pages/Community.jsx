@@ -49,7 +49,10 @@ const Community = (props) => {
               }}
             ></div>
             <div className="communityContainerBelow">
-              <div className="comunityEntry align-items-start">
+              <div
+                className="comunityEntry align-items-start"
+                style={{ marginBottom: "1rem" }}
+              >
                 <div
                   className="col-2 card popularPetitions"
                   style={{
@@ -69,7 +72,10 @@ const Community = (props) => {
                         to={`/petitions/${_id}`}
                         style={{ textDecoration: "none" }}
                       >
-                        <div className="card">
+                        <div
+                          className="card commCards"
+                          style={{ width: "100%" }}
+                        >
                           <div
                             className="communityImg card-img-top"
                             style={{
@@ -78,7 +84,15 @@ const Community = (props) => {
                               backgroundPosition: "center",
                             }}
                           >
-                            <h5 className="cardTitle">{title}</h5>
+                            <h5 className="cardTitle">
+                              {title.length > 30
+                                ? title
+                                    .split(" ")
+                                    .slice(0, 5)
+                                    .join()
+                                    .replace(/,/g, " ") + "..."
+                                : title}
+                            </h5>
                           </div>
                         </div>
                       </Link>
@@ -114,7 +128,10 @@ const Community = (props) => {
                             textDecoration: "none",
                           }}
                         >
-                          <div className="card">
+                          <div
+                            className="card commCards"
+                            style={{ width: "100%" }}
+                          >
                             <div
                               className="communityImg card-img-top"
                               style={{

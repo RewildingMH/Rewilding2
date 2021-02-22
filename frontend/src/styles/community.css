@@ -50,6 +50,8 @@
 .popularPetitionCard {
   margin-top: 3rem;
   margin: 3rem 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .cardTitle {
@@ -527,6 +529,12 @@ input[type="file"] {
   display: flex;
   align-items: center;
   margin-right: 1rem;
+}
+
+@media (max-width: 1500px) {
+  .commCards {
+    width: 80% !important;
+  }
 }
 
 @media (max-width: 1200px) {

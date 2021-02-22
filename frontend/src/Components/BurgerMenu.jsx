@@ -60,7 +60,12 @@ const BurgerMenu = (props) => {
   return (
     <Menu isOpen={open} right>
       <div className="sideBarTitle">
-        <h2>Menu</h2>
+        <div className="brgMenuTitle" style={{ width: "50%" }}>
+          <h2 style={{ fontSize: "42px" }}>Menu</h2>
+        </div>
+        <div className="brgMenuCross">
+          <div onClick={closeMenu}>X</div>
+        </div>
       </div>
       {links}
       {login}
