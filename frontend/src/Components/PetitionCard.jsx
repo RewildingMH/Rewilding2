@@ -39,7 +39,7 @@ const PetitionCard = (props) => {
             className="lastPetitionImgPetitionCard"
             style={{
               backgroundImage: `url(${picture})`,
-              height: '40vh'
+              height: 'auto'
             }}
           ></div>
           <div className="lastPetitionsInfo">

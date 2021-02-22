@@ -38,14 +38,14 @@ const ArtComment = ({ comment, profilePicture, name, artId, commentId, userId, l
     setVisible(!visible)
   }
   return (
-    <div className="container">
+    <div className="container" style={{ marginTop: "1rem" }}>
       <div className="row">
-        <div className="col-2 text-center articleCommentProfile">
+        <div className="col-2 text-center">
           <div className="rounded-circle centerArticleImage mx-1" style={{ backgroundImage: `url(${profilePicture})`, width: '5vw', height: '5vw' }}></div>
           <p className="nameArticleComment">{name}</p>
         </div>
-        <div className="col-9 d-flex artCont">
-          <div className="artCommentsContainer">
+        <div className="col-9 d-flex justify-content-between">
+          <div style={{ width: "90%" }}>
             {!visible ?
               <div className="articleCommentContainer p-1 px-2">
                 <p className="textArticleComment">{comment}</p>

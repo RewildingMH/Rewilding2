@@ -47,7 +47,10 @@ const Article = (props) => {
                 <div className="columnArticlePic">
                   <div className="containerArticlePic">
                     <p className="categoryBlog text-white">{article.createdAt.slice(0, 10)}</p>
-                    <img src={article.picture} className="picArticle"></img>
+                    <div className="d-flex justify-content-center" style={{ height: "30rem" }}>
+                      <div style={{ backgroundImage: `url(${article.picture})`, width: "100%", height: "100%", backgroundPosition: "center", backgroundSize: "cover" }}></div>
+
+                    </div>
                     <div className="authorContainerArticle">
                       <div className="authorAlignArticle">
                         <img src={article.author[0].profilePicture} className="authorArticlePicture"></img>

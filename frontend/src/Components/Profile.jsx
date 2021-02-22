@@ -5,12 +5,15 @@ import petitionsActions from "../redux/actions/petitionsActions";
 import Footer from "./Footer";
 import { PostsProfile } from "./PostsProfile";
 import { ProfilePetitions } from "./ProfilePetitions";
+import postActions from "../redux/actions/postActions";
 
 const Profile = (props) => {
   const [petitionsProfile, setPetitionsProfile] = useState([]);
   const [postsProfile, setPostsProfile] = useState([]);
   const [preloader, setPreloader] = useState(true);
   const { lastName, name, profilePicture } = props.profileUser;
+
+  const { posts } = props;
 
   useEffect(() => {
     fetch();
@@ -20,11 +23,12 @@ const Profile = (props) => {
       )
     );
     setPostsProfile(
-      props.posts.filter((post) => post.userId === props.match.params.id)
+      posts.filter((post) => post.userId === props.match.params.id)
     );
-  }, [props.match.params.id]);
+  }, [props.match.params.id, posts]);
 
   async function fetch() {
+    await props.getPosts();
     await props.getUsersById(props.match.params.id);
     await props.getPetitions();
     setPreloader(false);
@@ -64,7 +68,7 @@ const Profile = (props) => {
                 </>
               ) : (
                 <div className="lastArticlesCreated">
-                  <h2>Not Posts</h2>
+                  <h2>No Posts</h2>
                 </div>
               )}
               {petitionsProfile.length > 0 ? (
@@ -80,7 +84,7 @@ const Profile = (props) => {
                 </>
               ) : (
                 <div className="lastArticlesCreated">
-                  <h2>Not Petitions</h2>
+                  <h2>No Petitions</h2>
                 </div>
               )}
             </div>
@@ -102,5 +106,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   getUsersById: profileActions.getUsersById,
   getPetitions: petitionsActions.getPetitions,
+  getPosts: postActions.getPosts,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

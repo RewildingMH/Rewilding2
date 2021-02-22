@@ -366,7 +366,7 @@ nav a {
 }
 .lastPetitionImgPetitionCard {
   width: 30vw;
-  height: 35vh;
+  height: 100%;
   border-radius: 1vw 0vw 0vw 1vw;
   background-position: center;
   background-size: cover;
@@ -635,7 +635,7 @@ nav a {
   height: 7vh;
   padding: 0 1vw;
   margin: 0 1rem;
-  font-size: 1vw;
+  font-size: 21px;
   text-align: center;
   border-radius: 1vw;
   transition: 0.5s;
@@ -643,7 +643,7 @@ nav a {
 }
 
 .editBlogReasonInput {
-  width: 30rem;
+  width: 100%;
   padding: 0 1rem;
   margin-right: 1rem;
 }
@@ -698,6 +698,7 @@ nav a {
   color: aliceblue;
   background-color: rgb(46, 46, 46);
 }
+
 .logoRew {
   margin-top: 2vh;
 }
@@ -734,7 +735,6 @@ nav a {
 }
 
 .footerDiv p {
-  margin-top: 2vh;
   color: #c1946a;
 }
 
@@ -1382,6 +1382,10 @@ h6 {
     width: 100%;
   
   }
+
+  .sendPetition {
+    font-size: 5vw;
+  }
 }
 
 /* Profile */
@@ -1968,7 +1972,7 @@ textarea {
   }
   .lastPetitionImgPetitionCard {
     width: 100%;
-    height: 35vh;
+    height: 100%;
     border-radius: 1vw 1vw 0vw 0vw;
     background-position: center;
     background-size: cover;
@@ -2073,10 +2077,10 @@ textarea {
   }
   .lastPetitionsContainer {
     flex-direction: column;
-    height: 60vh;
+    width: 90vw;
   }
   .lastPetitionImgPetitionCard {
-    height: 35vh;
+    height: 100%;
     border-radius: 1vw 1vw 0vw 0vw;
     background-position: center;
     background-size: cover;
@@ -2128,5 +2132,13 @@ textarea {
     width: 100%;
     justify-content: space-around;
     align-items: center;
+  }
+
+  .authorContainerArticle {
+    flex-direction: column;
+  }
+  .containerCommentIconArticle {
+    flex-direction: row;
+    justify-content: space-around;
   }
 }

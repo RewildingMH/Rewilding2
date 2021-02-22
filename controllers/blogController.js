@@ -18,17 +18,20 @@ const articleController = {
         idUser: _id
       },
     })
-   file.mv(path.join(__dirname, `../client/build/assets/articlePics/${file.md5}.jpg`), error=>{
-     if(error){
-         return res.json({response:error})
-     }})
-   articleSave.save()
-     .then(articleSaved => {
-       return res.json({ success: true, response: articleSaved })
-     })
-     .catch(error => {
-       return res.json({ success: false, error })
-     })
+
+    file.mv(path.join(__dirname, `../client/build/assets/articlePics/${file.md5}.jpg`), error => {
+      if (error) {
+        return res.json({ response: error })
+      }
+    })
+    articleSave.save()
+      .then(articleSaved => {
+        return res.json({ success: true, response: articleSaved })
+      })
+      .catch(error => {
+        return res.json({ success: false, error })
+      })
+
   },
   getArticles: async (req, res) => {
     try {

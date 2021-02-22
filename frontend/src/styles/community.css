@@ -658,9 +658,9 @@ input[type="file"] {
     font-size: 64px !important;
   }
 }
-
+/* 
 @media (max-width: 1440px) {
   .communityBanner {
     background-position: right !important;
   }
-}
+} */
