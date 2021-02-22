@@ -34,7 +34,7 @@ const Petition = (props) => {
     const reason = e.target.value;
     props.loggedUser
       ? setSignature({
-          reason: reason.trim(),
+          //reason: reason.trim(),
           petId: id,
           token: props.loggedUser.token,
         })
@@ -154,7 +154,7 @@ const Petition = (props) => {
                     placeholder="I'm signing because ... (optional) "
                     className="reasonInput"
                     value={
-                      signature && signature.reason ? signature.reason : ""
+                      signature ? signature.reason : ""
                     }
                   />
                   <div className="sendReasonButtonCtn">
