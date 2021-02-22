@@ -126,7 +126,7 @@ const Reason = ({
                   />
                 </>
               ) : (
-                <p className="text-break reasonComment">{reason}</p>
+                <span className="text-break reasonComment">{reason}</span>
               )}
             </div>
             <div className="boxIconPetitionContainer">

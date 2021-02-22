@@ -99,10 +99,6 @@ p {
   color: white;
 }
 
-.logOutIconBurger{
-  margin-left: 1.3vw;
-}
-
 .sideBarTitle {
   margin: 0;
   display: flex !important;
@@ -176,9 +172,6 @@ nav > a {
 }
 
 @media (max-width: 800px) {
-  .logOutIconBurger{
-    margin-left: 2.5vw;
-  }
   .userLinkBurger {
     margin-top: 2vh;
     margin-bottom: 1vh;
@@ -186,7 +179,7 @@ nav > a {
     margin-left: 2vw;
     display: flex;
   }
-  
+
   .userLinkBurger h6 {
     margin-left: 1vw;
     margin-top: 2vh;
@@ -195,7 +188,7 @@ nav > a {
 }
 
 @media (max-width: 500px) {
-  .logOutIconBurger{
+  .logOutIconBurger {
     margin-left: 4.7vw;
   }
   .userLinkBurger {
@@ -205,7 +198,7 @@ nav > a {
     margin-left: 3vw;
     display: flex;
   }
-  
+
   .userLinkBurger h6 {
     margin-left: 2vw;
     margin-top: 2vh;
