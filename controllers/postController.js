@@ -17,7 +17,7 @@ const postController = {
             return res.json({ response: error })
           }
         })
-        var postPicturesLocation = `/assets/postsPictures/${file.md5}`
+        var postPicturesLocation = `/assets/postsPictures/${file.md5}.jpeg`
       }
 
       //EVALUA SI HAY FOTO EN EL POSTEO, SI NO LA HAY, GRABA EL NUEVO POST SIN LA CLAVE PICTURE
