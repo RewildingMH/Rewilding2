@@ -204,4 +204,7 @@ nav > a {
     margin-top: 2vh;
     color: white;
   }
+  .bm-menu-wrap {
+    width: 100% !important;
+  }
 }
