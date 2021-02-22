@@ -57,7 +57,6 @@ const Petition = (props) => {
   // Funcion que referencia a la action con el objeto de la firma
   const signPetition = async () => {
     if (props.loggedUser) {
-      console.log(signature);
       if (!signature || !signature.reason) {
         Swal.fire({
           title: "Petition signed!",
@@ -70,6 +69,14 @@ const Petition = (props) => {
       } else {
         props.signPetition(signature);
         setSignature({});
+        Swal.fire({
+          title: "Petition signed!",
+          text: "Thank you!",
+          icon: "success",
+          background: "#82b74b",
+          iconColor: "white",
+          backdrop: "rgba(64, 93, 39, 0.3)",
+        });
       }
     } else {
       Swal.fire({
