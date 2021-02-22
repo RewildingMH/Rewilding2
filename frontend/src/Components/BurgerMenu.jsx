@@ -7,7 +7,7 @@ import {
   AiFillLayout,
   AiFillSmile,
   AiFillProfile,
-  AiFillSetting,
+  AiOutlineClose,
 } from "react-icons/ai";
 import { GoSignOut, GoSignIn } from "react-icons/go";
 import authActions from "../redux/actions/authActions";
@@ -64,7 +64,9 @@ const BurgerMenu = (props) => {
           <h2 style={{ fontSize: "42px" }}>Menu</h2>
         </div>
         <div className="brgMenuCross">
-          <div onClick={closeMenu}>X</div>
+          <div onClick={closeMenu}>
+            <AiOutlineClose />
+          </div>
         </div>
       </div>
       {links}
