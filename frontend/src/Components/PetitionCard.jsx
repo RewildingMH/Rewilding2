@@ -39,6 +39,7 @@ const PetitionCard = (props) => {
             className="lastPetitionImgPetitionCard"
             style={{
               backgroundImage: `url(${picture})`,
+              height: '40vh'
             }}
           ></div>
           <div className="lastPetitionsInfo">
@@ -67,6 +68,7 @@ const PetitionCard = (props) => {
               now={signatures.length}
               max={goal}
               className="progressBar"
+              style={{marginBottom: '2vh'}}
             />
             {signatures.length === goal ? (
               <div className="completedCardCtn">
