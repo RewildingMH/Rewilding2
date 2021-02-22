@@ -27,6 +27,7 @@ const PetitionCard = (props) => {
     visits,
     votes,
   } = props.petition;
+
   return (
     <Link
       to={`/petitions/${props.petition._id}`}
