@@ -100,6 +100,7 @@ const Posts = (props) => {
   // Funcion para validar y llamar a la action que añade un posteo nuevo
   const sendPost = (e) => {
     e.preventDefault();
+    console.log('aca ando')
     if (!props.loggedUser) {
       Swal.fire({
         title: "Oops!",
@@ -116,7 +117,10 @@ const Posts = (props) => {
         }
       });
       e.target.value = "";
+      setPathImage("")
+      setFile("");
       return;
+      
     }
     if (!newPost.text) {
       errorAlert(
