@@ -34,7 +34,7 @@ const Petition = (props) => {
     const reason = e.target.value;
     props.loggedUser
       ? setSignature({
-          reason: reason.trim(),
+          reason: reason,
           petId: id,
           token: props.loggedUser.token,
         })
