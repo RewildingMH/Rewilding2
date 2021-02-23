@@ -27,6 +27,7 @@ const PetitionCard = (props) => {
     visits,
     votes,
   } = props.petition;
+
   return (
     <Link
       to={`/petitions/${props.petition._id}`}
@@ -39,6 +40,7 @@ const PetitionCard = (props) => {
             className="lastPetitionImgPetitionCard"
             style={{
               backgroundImage: `url(${picture})`,
+              height: 'auto'
             }}
           ></div>
           <div className="lastPetitionsInfo">
@@ -67,6 +69,7 @@ const PetitionCard = (props) => {
               now={signatures.length}
               max={goal}
               className="progressBar"
+              style={{marginBottom: '2vh'}}
             />
             {signatures.length === goal ? (
               <div className="completedCardCtn">
@@ -85,7 +88,7 @@ const PetitionCard = (props) => {
                       " persons have already signed this petition"
                   : "No one has signed this petition yet"}
               </span>{" "}
-              for a goal of {goal} signs <BsPen />
+              for a goal of {goal} signatures <BsPen />
             </h6>
           </div>
         </div>

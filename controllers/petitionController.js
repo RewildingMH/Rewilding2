@@ -8,14 +8,14 @@ const petitionController = {
     const { title, destination, description, limitDate, goal } = req.body
     const { name, profilePicture, _id } = req.user
     const file = req.files.file
-    file.mv(path.join(__dirname, '../frontend/public/assets/petitionsPictures/' + file.md5), error => {
+    file.mv(path.join(__dirname, '../client/build/assets/petitionsPictures/' + file.md5+".jpeg"), error => {
       if (error) {
 
         return res.json({ response: error })
       }
     })
 
-    const petitionsPicturesLocation = `/assets/petitionsPictures/${file.md5}`
+    const petitionsPicturesLocation = `/assets/petitionsPictures/${file.md5}.jpeg`
 
 
     const petitionSave = new Petition({

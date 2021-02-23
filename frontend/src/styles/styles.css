@@ -448,7 +448,6 @@ nav a {
 .petitionHeader {
   padding: 3vw;
   width: 80.2vw;
-  height: 10vh;
   display: flex;
   background-color: #3e4444;
   color: white;
@@ -692,7 +691,6 @@ nav a {
 
 .footerDiv {
   width: 100%;
-  height: 35vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -740,6 +738,9 @@ nav a {
 }
 
 @media (max-width: 800px) {
+  .lastPetitionsContainer{
+    width: 60vw;
+  }
   .social img {
     width: 10vw;
     margin: 0 1vw;
@@ -916,6 +917,10 @@ nav a {
 }
 
 @media (max-width: 425px) {
+  .petitionBanner{
+    width: 100%;
+    background-position: left !important;
+  }
   .logInBanner {
     height: 30vh !important;
   }
@@ -1334,7 +1339,7 @@ h6 {
   }
   .portadaBlog {
     width: 100%;
-    height: 20vh;
+
   }
 }
 
@@ -1386,7 +1391,6 @@ h6 {
 .petitionBanner {
   width: 100%;
   height: 70vh;
-  background-image: url("https://images.theconversation.com/files/90375/original/image-20150731-24504-exqdo3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=675.0&fit=crop");
 }
 .petitionIndBanner {
   width: 100%;
@@ -1396,7 +1400,7 @@ h6 {
 @media (max-width: 800px) {
   .petitionIndBanner {
     width: 100%;
-    height: 15vh;
+  
   }
 
   .sendPetition {
@@ -2031,6 +2035,9 @@ textarea {
     background-size: cover;
     box-shadow: 2px 2px 2px rgba(14, 14, 14, 0.287);
   }
+  .petitionBanner{
+    height: 50vh;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -2045,6 +2052,9 @@ textarea {
   }
   .containerArticlePic {
     padding: 0 6rem;
+  }
+  .petitionBanner {
+    height: 50vh;
   }
 }
 
@@ -2094,7 +2104,7 @@ textarea {
   }
   .lastPetitionsContainer {
     flex-direction: column;
-    height: 60vh;
+    width: 90vw;
   }
   .lastPetitionImgPetitionCard {
     border-radius: 1vw 1vw 0vw 0vw;

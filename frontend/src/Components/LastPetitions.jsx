@@ -25,6 +25,8 @@ const LastPetitions = (props) => {
           className="lastPetitionImgPetitionCard"
           style={{
             backgroundImage: `url(${picture})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         ></div>
         <div className="lastPetitionsInfo">

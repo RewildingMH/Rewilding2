@@ -1,10 +1,10 @@
 import { connect } from "react-redux"
 import articleActions from "../redux/actions/articleActions"
 import { useState, useEffect } from "react"
-import ArtComment from "./ArtComment"
 import { AiOutlineSend } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
+import ArtComment from './ArtComment';
 
 
 

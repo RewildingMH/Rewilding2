@@ -95,6 +95,7 @@ const userController = {
         try {
             const { givenName, familyName, email, googleId, imageUrl } = req.body
             const userExists = await User.findOne({ username: email })
+            console.log(userExists)
             if (userExists) {
                 var token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
                 return res.json({

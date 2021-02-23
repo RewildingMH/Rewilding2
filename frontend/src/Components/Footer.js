@@ -12,9 +12,9 @@ const Footer = () => {
             <div className="logoRew"><img src={logo}></img></div>
             <div className="listNav">
                 <Link to="/">HOME</Link>
-                <Link to="/blog">BLOG</Link>
-                <Link to="/petitions">PETITIONS</Link>
                 <Link to="/community">COMMUNITY</Link>
+                <Link to="/petitions">PETITIONS</Link>
+                <Link to="/blog">BLOG</Link>                
             </div>
             <div>
                 <p>FIND US:</p>

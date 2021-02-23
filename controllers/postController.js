@@ -12,12 +12,12 @@ const postController = {
       if (req.files) {
         var file = req.files.file
 
-        file.mv(path.join(__dirname, '../client/build/assets/postsPictures/' + file.md5), error => {
+        file.mv(path.join(__dirname, '../client/build/assets/postsPictures/' + file.md5+".jpeg"), error => {
           if (error) {
             return res.json({ response: error })
           }
         })
-        var postPicturesLocation = `/assets/postsPictures/${file.md5}`
+        var postPicturesLocation = `/assets/postsPictures/${file.md5}.jpeg`
       }
 
       //EVALUA SI HAY FOTO EN EL POSTEO, SI NO LA HAY, GRABA EL NUEVO POST SIN LA CLAVE PICTURE
