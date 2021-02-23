@@ -25,7 +25,7 @@ const Profile = (props) => {
     setPostsProfile(
       posts.filter((post) => post.userId === props.match.params.id)
     );
-  }, [props.match.params.id, posts]);
+  }, [props.match.params.id]);
 
   async function fetch() {
     await props.getPosts();
