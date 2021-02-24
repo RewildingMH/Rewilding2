@@ -7,6 +7,7 @@ const petitionSchema = new mongoose.Schema({
   id: { type: mongoose.Schema.ObjectId, ref: 'user' },
   destination: String,
   desc: String,
+  category: {type: String},
   visits: { type: Number, default: 0 },
   votes: [{ id: String }],
   picture: String,
