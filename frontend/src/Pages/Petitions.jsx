@@ -9,6 +9,7 @@ import Footer from '../Components/Footer'
 //COMPONENTE QUE LEE LAS PETICIONES REALIZADAS
 const Petitions = (props) => {
   const [preloader, setPreloader]= useState(true)
+  console.log(props)
   //USEEFFECT QUE ACTIVA UNA ACTION DE REDUX, ESA ACTION HACE UN PEDIDO GET AL SERVIDOR Y TRAE TODAS LAS PETICIONES EXISTENTES
   useEffect(() => {
     fetch()

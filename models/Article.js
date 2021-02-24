@@ -4,7 +4,7 @@ const articleSchema = new mongoose.Schema({
   title: String,
   author: [{ name: String, profilePicture: String, idUser: String  }],
   descripcion: String,
-  articleLikes:{type:[String]},
+  articleLikes:{type: Array},
   visits: {type:Number, default:0},
   picture: String,
   articleCategory:{type:String, enum:["Respect for animals", "Biodiversity", "DANGER OF EXTINCTION", "Animals in the wild", "Ecology"]},

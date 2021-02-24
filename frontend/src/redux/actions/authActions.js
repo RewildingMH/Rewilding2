@@ -5,7 +5,6 @@ import  Swal  from 'sweetalert2';
 const authActions = {
     newUser: (newUser, file) => {
         return async (dispatch, getState) => {
-            console.log(newUser, file)
             try{
                 const form = new FormData()
                 form.append('name',newUser.name)

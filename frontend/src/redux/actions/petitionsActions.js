@@ -57,13 +57,15 @@ const petitionsActions = {
         title,
         destination,//A QUIEN SE LE HACE LA PETICIÓN
         token,
-        goal//LÍMITE DE FIRMAS
+        goal,//LÍMITE DE FIRMAS
+        category
       } = petition
       const form = new FormData()
       form.append('title', title)
       form.append('limitDate', limitDate)
       form.append('description', description)
       form.append('destination', destination)
+      form.append('category', category)
       form.append('goal', goal)
       form.append('petitionPicture', file.result.name)
       form.append('file', file.result)

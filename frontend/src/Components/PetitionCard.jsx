@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import petitionsActions from "../redux/actions/petitionsActions";
 import { connect } from "react-redux";
@@ -7,6 +7,7 @@ import { ProgressBar } from "react-bootstrap";
 
 //COMPONENTE QUE RECIBE DE SU PADRE TODAS LAS PETICIONES MAPEADAS Y LAS RENDERIZA
 const PetitionCard = (props) => {
+  console.log(props)
   //FUNCIÓN PARA SUMAR VISITAS A CADA PETICIÓN CUANDO SE LE HACE CLIC
   const addVisit = (e) => {
     const id = props.petition._id;

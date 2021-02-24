@@ -34,6 +34,7 @@ const CreatePetition = (props) => {
       ...newPetition,
       [field]: value,
       token: props.loggedUser.token,
+      category: 'Animals'
     });
   };
   //CAPTURA EL INPUT FILE

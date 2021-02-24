@@ -4,13 +4,13 @@ const path = require('path')
 
 const petitionController = {
   addPetition: (req, res) => {
+  
     //PARA AGREGAR UNA NUEVA PETICIÓN ES OBLIGATORIO ENVIAR FOTO
-    const { title, destination, description, limitDate, goal } = req.body
+    const { title, destination, description, limitDate, goal, category } = req.body
     const { name, profilePicture, _id } = req.user
     const file = req.files.file
     file.mv(path.join(__dirname, '../client/build/assets/petitionsPictures/' + file.md5+".jpeg"), error => {
       if (error) {
-
         return res.json({ response: error })
       }
     })
@@ -29,7 +29,8 @@ const petitionController = {
       desc: description,
       picture: petitionsPicturesLocation,
       limitDate,
-      goal
+      goal,
+      category
     })
     petitionSave.save()
       .then(petitionSaved => {
@@ -59,6 +60,7 @@ const petitionController = {
   signPetition: async (req, res) => {
     const { petId, reason } = req.body.userSign
     const { name, profilePicture, _id } = req.user
+    console.log(req.body)
 
     try {
       const response = await Petition.findOneAndUpdate(
